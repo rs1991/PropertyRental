@@ -8,8 +8,7 @@ namespace PropertyRental
 {
     internal class Address
     {
-        public string email;
-        public string number;
+        
 
     }
 }

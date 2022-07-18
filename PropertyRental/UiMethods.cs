@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace PropertyRental
 {
-    internal class ContactInformation
+    public class UiMethods
     {
-
-        public string email;
-        public string number;
+        public static void WelcomeMessage()
+        {
+            Console.WriteLine("Welcome to the app!");
+        }
     }
 }
