@@ -8,5 +8,6 @@ namespace PropertyRental
 {
     public class RentalProperty
     {
+        public double RentalPrice;
     }
 }

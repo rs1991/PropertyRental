@@ -8,10 +8,10 @@ namespace PropertyRental
 {
     internal class Address
     {
-        public string doorNumber;
-        public string street;
-        public string city;
-        public string postCode;
+        public int DoorNumber;
+        public string Street;
+        public string City;
+        public string PostCode;
 
     }
 }

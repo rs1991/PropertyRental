@@ -8,15 +8,15 @@ namespace PropertyRental
 {
     public class Tennant
     {
-        public string firstName;
-        public string lastName;
-        public string birthDate;
-        public string jobTitle;
-        public string nationality;
-        public double salary;
-        public int children;
-        public bool pets;
-        public bool smoker;
+        public string FirstName;
+        public string LastName;
+        public string BirthDate;
+        public string JobTitle;
+        public string Nationality;
+        public double Salary;
+        public int Children;
+        public bool Pets;
+        public bool Smoker;
         
     }
    

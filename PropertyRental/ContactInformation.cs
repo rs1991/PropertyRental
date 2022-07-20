@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace PropertyRental
 {
-    internal class ContactInformation
+    public class ContactInformation
     {
 
-        public string email;
-        public string number;
+        public string Email;
+        public string Number;
     }
 }
