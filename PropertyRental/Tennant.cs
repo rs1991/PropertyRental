@@ -10,7 +10,7 @@ namespace PropertyRental
     {
         public string FirstName;
         public string LastName;
-        public string BirthDate;
+        public DateOnly BirthDate;
         public string JobTitle;
         public string Nationality;
         public double Salary;

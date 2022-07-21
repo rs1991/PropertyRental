@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PropertyRental
 {
-    internal class Address
+    public class Address
     {
         public int DoorNumber;
         public string Street;

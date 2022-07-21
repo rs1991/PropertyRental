@@ -9,5 +9,8 @@ namespace PropertyRental
     public class RentalProperty
     {
         public double RentalPrice;
+        public string Address;
+        public DateOnly AvailableOn;
+
     }
 }
