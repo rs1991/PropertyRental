@@ -12,22 +12,22 @@ namespace PropertyRental
         private string address;
         private DateOnly availableOn;
         
-        public double _RentalPrice
+        public double _rentalPrice
         {
-            get { return rentalPrice; }
-            set { rentalPrice = value; }
+            get { return _rentalPrice; }
+            set { _rentalPrice = value; }
         }
 
-        public string _Address
+        public string _address
         {
-            get { return address; }
-            set { address = value; }
+            get { return _address; }
+            set { _address = value; }
         }
 
-        public DateOnly _AvailableOn
+        public DateOnly _availableOn
         {
-            get { return _AvailableOn; }
-            set { _AvailableOn = value; }
+            get { return _availableOn; }
+            set { _availableOn = value; }
         }
 
     }

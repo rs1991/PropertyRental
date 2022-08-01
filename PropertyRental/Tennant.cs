@@ -8,62 +8,62 @@ namespace PropertyRental
 {
     public class Tennant
     {
-        private string firstName;
-        private string lastName;
-        private DateOnly birthDate;
-        private string jobTitle;
-        private string nationality;
-        private double salary;
-        private int children;
-        private bool pets;
-        private bool smoker;
+        private string _firstName;
+        private string _lastName;
+        private DateOnly _birthDate;
+        private string _jobTitle;
+        private string _nationality;
+        private double _salary;
+        private int _children;
+        private bool _pets;
+        private bool _smoker;
 
-        public string _firstName
+        public string FirstName
         {
             get { return _firstName; }
             set { _firstName = value; }
         }
-        public string _lastName
+        public string LastName
         {
             get { return _lastName; }
             set { _lastName = value; }
         }
-        public DateOnly _birthDate
+        public DateOnly BirthDate
         {
             get { return _birthDate; }
             set { _birthDate = value; }
         }
-        public string _jobTitle
+        public string JobTitle
         {
           get { return _jobTitle; }
           set { _jobTitle = value; }
         }
 
-        public string _nationality
+        public string Nationality
         {
             get { return _nationality; }
             set { _nationality = value; }
         }
 
-        public double _salary
+        public double Salary
         {
         get { return _salary; }
         set { _salary = value; }
         }
 
-        public int _children
+        public int Children
         {
             get { return _children;}
             set { _children = value; }
         }
 
-        public bool _pets
+        public bool Pets
         {
             get { return _pets; }
             set { _pets = value; }
         }
 
-        public bool _smoker
+        public bool Smoker
         {
             get { return _smoker; }
             set { _smoker = value; }
