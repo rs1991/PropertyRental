@@ -8,23 +8,23 @@ namespace PropertyRental
 {
     public class RentalProperty
     {
-        private double rentalPrice;
-        private string address;
-        private DateOnly availableOn;
+        private double _rentalPrice;
+        private string _address;
+        private DateOnly _availableOn;
         
-        public double _rentalPrice
+        public double RentalPrice
         {
             get { return _rentalPrice; }
             set { _rentalPrice = value; }
         }
 
-        public string _address
+        public string Address
         {
             get { return _address; }
             set { _address = value; }
         }
 
-        public DateOnly _availableOn
+        public DateOnly AvailableOn
         {
             get { return _availableOn; }
             set { _availableOn = value; }
