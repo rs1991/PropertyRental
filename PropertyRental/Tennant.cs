@@ -17,6 +17,7 @@ namespace PropertyRental
         private int _children;
         private bool _pets;
         private bool _smoker;
+        private int _rentalTerm;
         private Address _address;
         private List<Tennant> _roomMates;
 
@@ -25,59 +26,67 @@ namespace PropertyRental
             get { return _roomMates; }
             set { _roomMates = value; }
         }
-                       
-
+        
+        public int RentalTerm
+        {
+            get { return _rentalTerm;}
+            set { _rentalTerm = value; }
+        } 
+        
         public Address Address
         {
             get { return _address; }
             set { _address = value; }
         }
-
+        
         public string FirstName
         {
             get { return _firstName; }
             set { _firstName = value; }
         }
+        
         public string LastName
         {
             get { return _lastName; }
             set { _lastName = value; }
         }
+        
         public DateOnly BirthDate
         {
             get { return _birthDate; }
             set { _birthDate = value; }
         }
+        
         public string JobTitle
         {
           get { return _jobTitle; }
           set { _jobTitle = value; }
         }
-
+        
         public string Nationality
         {
             get { return _nationality; }
             set { _nationality = value; }
         }
-
+        
         public double Salary
         {
         get { return _salary; }
         set { _salary = value; }
         }
-
+        
         public int Children
         {
             get { return _children;}
             set { _children = value; }
         }
-
+        
         public bool Pets
         {
             get { return _pets; }
             set { _pets = value; }
         }
-
+        
         public bool Smoker
         {
             get { return _smoker; }
