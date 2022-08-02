@@ -9,8 +9,14 @@ namespace PropertyRental
     public class RentalProperty
     {
         private double _rentalPrice;
-        private string _address;
+        private Address _address;
         private DateOnly _availableOn;
+        //Number of rooms
+        //Type House or flat
+        //Description
+        //Gas or electric heating
+        //Council tax band 
+        //Agency 
         
         public double RentalPrice
         {
@@ -18,7 +24,7 @@ namespace PropertyRental
             set { _rentalPrice = value; }
         }
 
-        public string Address
+        public Address Address
         {
             get { return _address; }
             set { _address = value; }

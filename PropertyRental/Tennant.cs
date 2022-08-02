@@ -17,6 +17,21 @@ namespace PropertyRental
         private int _children;
         private bool _pets;
         private bool _smoker;
+        private Address _address;
+        private List<Tennant> _roomMates;
+
+        public List<Tennant> RoomMates
+        {
+            get { return _roomMates; }
+            set { _roomMates = value; }
+        }
+                       
+
+        public Address Address
+        {
+            get { return _address; }
+            set { _address = value; }
+        }
 
         public string FirstName
         {
