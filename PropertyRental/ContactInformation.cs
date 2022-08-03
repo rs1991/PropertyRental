@@ -8,22 +8,24 @@ namespace PropertyRental
 {
     public class ContactInformation
     {
-
-        private string _email;
-        private string _number;
-
-        public string Email
-        {
-            get { return _email; }
-            set { _email = value; }
-        }
-
+       private string _number;
+       
         public string Number
         {
             get { return _number; }
             set { _number = value; }
         }
+    }
 
+    public class MailAddress
+    {
+        private string _address;
 
+        public string Address 
+        { 
+            get { return _address; } 
+            set { _address = value; } 
+        }
     }
 }
+

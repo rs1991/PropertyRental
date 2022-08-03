@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PropertyRental
 {
-    public class Tennant
+    public class Tenant
     {
         private string _firstName;
         private string _lastName;
@@ -19,9 +19,9 @@ namespace PropertyRental
         private bool _smoker;
         private int _rentalTerm;
         private Address _address;
-        private List<Tennant> _roomMates;
+        private List<Tenant> _roomMates;
 
-        public List<Tennant> RoomMates
+        public List<Tenant> RoomMates
         {
             get { return _roomMates; }
             set { _roomMates = value; }
