@@ -3,29 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Mail;
 
 namespace PropertyRental
 {
     public class ContactInformation
     {
        private string _number;
+       private MailAddress _email;
        
         public string Number
         {
             get { return _number; }
             set { _number = value; }
         }
-    }
 
-    public class MailAddress
-    {
-        private string _address;
-
-        public string Address 
-        { 
-            get { return _address; } 
-            set { _address = value; } 
+        public MailAddress Email
+        {
+            get { return _email; }
+            set { _email = value; }
         }
     }
+
+   
 }
 
