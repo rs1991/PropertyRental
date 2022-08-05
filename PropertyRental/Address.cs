@@ -13,7 +13,7 @@ namespace PropertyRental
         private string _city;
         private string _postCode;
        
-
+        
         public int DoorNumber
         {
             get { return _doorNumber; }

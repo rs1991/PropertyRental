@@ -12,6 +12,9 @@ namespace PropertyRental
         private Address _address;
         private string _name;
 
+        /// <summary>
+        /// Agency name and address
+        /// </summary>
         public Address Address 
         {
             get { return _address; }

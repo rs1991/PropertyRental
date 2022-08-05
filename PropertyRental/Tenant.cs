@@ -21,18 +21,27 @@ namespace PropertyRental
         private Address _address;
         private List<Tenant> _roomMates;
 
+        /// <summary>
+        /// Extra tenants/room mates can be added to the rental application
+        /// </summary>
         public List<Tenant> RoomMates
         {
             get { return _roomMates; }
             set { _roomMates = value; }
         }
         
+        /// <summary>
+        /// Rental duration 
+        /// </summary>
         public int RentalTerm
         {
             get { return _rentalTerm;}
             set { _rentalTerm = value; }
         } 
         
+        /// <summary>
+        /// The tenant's current address 
+        /// </summary>
         public Address Address
         {
             get { return _address; }
