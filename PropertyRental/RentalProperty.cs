@@ -20,8 +20,6 @@ namespace PropertyRental
 
 
 
-
-
         /// <summary>
         /// Property can either have gas or electric heating
         /// </summary>
@@ -39,13 +37,19 @@ namespace PropertyRental
             get { return _councilTaxBand; }
             set { _councilTaxBand = value; }
         }
-                
+        
+        /// <summary>
+        /// Agency details 
+        /// </summary>
         public string Agency
         {
             get { return _agency; }
             set { _agency = value; }
         }
 
+        /// <summary>
+        /// Property description 
+        /// </summary>
             
         public string Description
         {
@@ -53,30 +57,45 @@ namespace PropertyRental
             set { _description = value; }
         }
 
+        /// <summary>
+        /// Property type such as flat, house or bungalow
+        /// </summary>
         public List<RentalProperty> PropertyType 
         { 
             get { return _propertyType; }
             set { _propertyType = value; }
         }
 
+        /// <summary>
+        /// Price of rent per calendar month
+        /// </summary>
         public double RentalPrice
         {
             get { return _rentalPrice; }
             set { _rentalPrice = value; }
         }
 
+        /// <summary>
+        /// Property address 
+        /// </summary>
         public Address Address
         {
             get { return _address; }
             set { _address = value; }
         }
 
+        /// <summary>
+        /// Date property will be available
+        /// </summary>
         public DateOnly AvailableOn
         {
             get { return _availableOn; }
             set { _availableOn = value; }
         }
 
+        /// <summary>
+        /// Number of bedrooms
+        /// </summary>
         public int BedRooms
         {
             get { return _bedRooms; }
