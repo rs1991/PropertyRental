@@ -45,9 +45,14 @@ namespace PropertyRental
             int children = Console.Read();
             tenantInfo.Children = children;
             
-            bool pets;
+            bool pets = false;
             Console.WriteLine("Any pets?");
-            pets = Convert.ToBoolean(Console.ReadLine());
+            string petResponse = Console.ReadLine();
+            if (petResponse == "y")
+            {
+                pets = true;
+            }
+          //  pets = Convert.ToBoolean(Console.ReadLine());
             tenantInfo.Pets = pets;
             
             bool smoker;
