@@ -10,7 +10,7 @@ namespace PropertyRental
     {
         private string _firstName;
         private string _lastName;
-        private DateTime _birthDate;
+        private DateOnly _birthDate;
         private string _jobTitle;
         private string _nationality;
         private double _salary;
@@ -31,7 +31,7 @@ namespace PropertyRental
         }
         
         /// <summary>
-        /// Rental duration 
+        /// Rental duration in months 
         /// </summary>
         public int RentalTerm
         {
@@ -60,7 +60,7 @@ namespace PropertyRental
             set { _lastName = value; }
         }
         
-        public DateTime BirthDate
+        public DateOnly BirthDate
         {
             get { return _birthDate; }
             set { _birthDate = value; }

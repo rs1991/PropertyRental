@@ -34,7 +34,7 @@ namespace PropertyRental
             a5.DoorNumber = 5;
             a5.Street = "Blake hall road";
             a5.City = "London";
-             a5.PostCode = "E11 2QQ";
+            a5.PostCode = "E11 2QQ";
             
             var a6 = new Address();
             a6.DoorNumber = 5;
@@ -77,7 +77,7 @@ namespace PropertyRental
             retList.Add(a7);
             retList.Add(a8);
             retList.Add(a9);
-
+            retList.Add(a10);
 
 
         }
@@ -86,11 +86,23 @@ namespace PropertyRental
         {
             var t1 = new Tenant();
 
-            t1.FirstName = "john";
-            var a3 = new Address();
-            a3.Street = "sesame street";
-            a3.DoorNumber = 5;
-            t1.Address = a3;
+            t1.FirstName = "John";
+            t1.LastName = "Smith";
+            t1.BirthDate = new DateOnly (1996, 11, 12);
+            t1.JobTitle = "Project Manager";
+            t1.Nationality = "British";
+            t1.Salary = 65000;
+            t1.Children = 0;
+            t1.Pets = false;
+            t1.Smoker = false;
+            t1.RentalTerm = 12;
+
+
+
+            var a1 = new Address();
+            a1.Street = "sesame street";
+            a1.DoorNumber = 5;
+            t1.Address = a1;
 
             return t1;
         }
