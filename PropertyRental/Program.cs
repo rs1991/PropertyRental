@@ -52,7 +52,19 @@ namespace PropertyRental
             a8.DoorNumber = 41;
             a8.Street = "Sydenham hill";
             a8.City = "London";
-            a8.PostCode = "se26 6th";
+            a8.PostCode = "SE26 6TH";
+
+            var a9 = new Address();
+            a9.DoorNumber = 19;
+            a9.Street = "Swan Drive";
+            a9.City = "London";
+            a9.PostCode = "NW9 5DE";
+
+            var a10 = new Address();
+            a10.DoorNumber = 221;
+            a10.Street = "Ardgowan Road";
+            a10.City = "London";
+            a10.PostCode = "SE6 1AJ";
 
 
             var retList = new List<Address>();  
@@ -64,6 +76,7 @@ namespace PropertyRental
             retList.Add(a6);
             retList.Add(a7);
             retList.Add(a8);
+            retList.Add(a9);
 
 
 
