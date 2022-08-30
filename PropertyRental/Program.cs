@@ -8,15 +8,7 @@ namespace PropertyRental
         static void Main(string[] args)
         {
 
-          //  var x = GenTenant();
-
-
-            
-
-
-            GenerateTenantList();
-
-
+        GenerateTenantList();
 
         }
 

@@ -13,9 +13,9 @@ namespace PropertyRental
             Console.WriteLine("Welcome to the app!");
         }
 
-        
 
-        public static List<Tenant> GenerateTenantList()
+         
+        public static List<Address> GenerateTenantList()
         {
 
             var t1 = new Tenant();
@@ -232,6 +232,7 @@ namespace PropertyRental
             TenantList.Add(t9);
             TenantList.Add(t10);
 
+            
             throw new NotImplementedException();
         }
 
