@@ -20,8 +20,27 @@ namespace PropertyRental
 
         }
 
-         
-        public static List<Address> GenerateTenantList()
+        public static Landlord AddNewLandlord()
+        {
+            throw new NotImplementedException();
+
+        }
+
+        public static RentalProperty AddNewRentalProperty()
+        {
+            throw new NotImplementedException();
+
+        }
+
+        public static RentalProperty AddNewAgency()
+        {
+            throw new NotImplementedException();
+
+        }
+
+
+
+        public static List<Tenant> GenerateTenantList()
         {
 
             var t1 = new Tenant();
@@ -238,7 +257,7 @@ namespace PropertyRental
             TenantList.Add(t9);
             TenantList.Add(t10);
 
-            
+
             throw new NotImplementedException();
         }
 
@@ -317,13 +336,19 @@ namespace PropertyRental
             AddressList.Add(a8);
             AddressList.Add(a9);
             AddressList.Add(a10);
-            
+
             throw new NotImplementedException();
 
 
         }
 
+        public static List<RentalProperty> GenerateRentalPropertyList()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
 
     }
 }
-
