@@ -13,6 +13,12 @@ namespace PropertyRental
             Console.WriteLine("Welcome to the app!");
         }
 
+        public static Tenant AddNewTenant()
+        {
+
+            throw new NotImplementedException();
+
+        }
 
          
         public static List<Address> GenerateTenantList()

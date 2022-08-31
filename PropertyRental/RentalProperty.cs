@@ -19,7 +19,6 @@ namespace PropertyRental
         private string _agency;
 
 
-
         /// <summary>
         /// Property can either have gas or electric heating
         /// </summary>

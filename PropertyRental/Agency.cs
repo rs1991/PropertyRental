@@ -27,6 +27,5 @@ namespace PropertyRental
           set { _name = value; } 
         }
 
-
     }
 }
