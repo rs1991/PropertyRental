@@ -17,7 +17,16 @@ namespace PropertyRental
         private List<RentalProperty> _heating;
         private List<RentalProperty> _councilTaxBand;
         private string _agency;
+        private bool _furnished;
 
+        /// <summary>
+        /// A tenant can rent a property either furnished or unfurnished
+        /// </summary>
+        public bool Furnished
+        {
+            get { return _furnished; }
+            set { _furnished = value; }
+        }
 
         /// <summary>
         /// Property can either have gas or electric heating
