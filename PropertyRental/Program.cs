@@ -7,8 +7,15 @@ namespace PropertyRental
     {
         static void Main(string[] args)
         {
+            var path = @"C:\tmp\TenantList.xml";
 
-        GenerateTenantList();
+            
+
+            List<Tenant> TenantList = LoadTenantList(path);
+
+            WriteTenantList(TenantList, path);
+
+
 
         }
 

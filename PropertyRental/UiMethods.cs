@@ -1,8 +1,9 @@
-﻿using System;
+﻿using System; 
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace PropertyRental
 {
@@ -258,7 +259,29 @@ namespace PropertyRental
             TenantList.Add(t10);
 
 
-            throw new NotImplementedException();
+        
+            return TenantList;
+        }
+
+        public static void WriteTenantList(List<Tenant> TenantList, string path)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Tenant>));
+            using (FileStream file = File.Create(path))
+            {
+                serializer.Serialize(file, TenantList);
+            }
+
+        }
+
+        public static List<Tenant> LoadTenantList(string path)
+        {
+            List<Tenant> TenantList;
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Tenant>));
+            using (FileStream file = File.OpenRead(path))
+            {
+                TenantList = serializer.Deserialize(file) as List<Tenant>;
+            }
+            return TenantList;
         }
 
         public static List<Address> GenerateAddressList()
@@ -337,8 +360,8 @@ namespace PropertyRental
             AddressList.Add(a9);
             AddressList.Add(a10);
 
-            throw new NotImplementedException();
-
+            //throw new NotImplementedException();
+            return AddressList;
 
         }
 
