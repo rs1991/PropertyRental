@@ -365,6 +365,29 @@ namespace PropertyRental
 
         }
 
+        public static void WriteAddressList(List<Address> AddressList, string path)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Tenant>));
+            using (FileStream file = File.Create(path))
+            {
+                serializer.Serialize(file, AddressList);
+            }
+
+        }
+
+        public static List<Address> LoadAddressList(string path)
+        {
+            List<Address> AddressList;
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Address>));
+            using (FileStream file = File.OpenRead(path))
+            {
+                AddressList = serializer.Deserialize(file) as List<Address>;
+            }
+            return AddressList;
+        }
+
+
+
         public static List<RentalProperty> GenerateRentalPropertyList()
         {
             throw new NotImplementedException();
