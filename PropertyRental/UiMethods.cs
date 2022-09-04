@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.Net.Mail;
 
 namespace PropertyRental
 {
@@ -44,6 +45,7 @@ namespace PropertyRental
         public static List<Tenant> GenerateTenantList()
         {
 
+            //First tenant
             var t1 = new Tenant();
 
             t1.FirstName = "John";
@@ -65,6 +67,12 @@ namespace PropertyRental
             a1.PostCode = "NG1 1QZ";
             t1.Address = a1;
 
+            var contact1 = new ContactInformation();
+
+            contact1.Number = "07283472938";
+            contact1.Email = new MailAddress ("john.smith@gmail.com");
+
+            //Second tenant
             var t2 = new Tenant();
 
             t2.FirstName = "Lewis";
@@ -84,7 +92,14 @@ namespace PropertyRental
             a2.Street = "North Parade road";
             a2.City = "Bath";
             a2.PostCode = "BA2 4AL";
+            t2.Address = a2;
 
+            var contact2 = new ContactInformation();
+
+            contact2.Number = "07912384721";
+            contact2.Email = new MailAddress("lewis.miller@gmail.com");
+
+            //Third tenant
             var t3 = new Tenant();
 
             t3.FirstName = "Rachel";
@@ -104,7 +119,14 @@ namespace PropertyRental
             a3.Street = "West Street";
             a3.City = "London";
             a3.PostCode = "WC2H 9NQ";
+            t3.Address = a3;
 
+            var contact3 = new ContactInformation();
+
+            contact3.Number = "07712484721";
+            contact3.Email = new MailAddress("rachel.johnson@gmail.com");
+
+            //4th tenant
             var t4 = new Tenant();
 
             t4.FirstName = "Natasha";
@@ -124,7 +146,15 @@ namespace PropertyRental
             a4.Street = "High Street";
             a4.City = "London";
             a4.PostCode = "W5 5DB";
+            t4.Address = a4;
 
+            var contact4 = new ContactInformation();
+
+            contact4.Number = "07712484721";
+            contact4.Email = new MailAddress("natasha.devon@gmail.com");
+
+
+            //5th tenant
             var t5 = new Tenant();
 
             t5.FirstName = "Laurent";
@@ -144,7 +174,15 @@ namespace PropertyRental
             a5.Street = "South Kensington";
             a5.City = "London";
             a5.PostCode = "SW7 4RB";
+            t5.Address = a5;
 
+            var contact5 = new ContactInformation();
+
+            contact5.Number = "07712484727";
+            contact5.Email = new MailAddress("laurent.sevran@gmail.com");
+
+
+            //6th tenant
             var t6 = new Tenant();
 
             t6.FirstName = "Ali";
@@ -164,6 +202,14 @@ namespace PropertyRental
             a6.Street = "Edgware road";
             a6.City = "London";
             a6.PostCode = "W2 2JE";
+            t6.Address = a6;
+
+            var contact6 = new ContactInformation();
+
+            contact6.Number = "07717487721";
+            contact6.Email = new MailAddress("ali.nachef@gmail.com");
+
+            //7th tenant
 
             var t7 = new Tenant();
 
@@ -184,7 +230,14 @@ namespace PropertyRental
             a7.Street = "Holland Park Avenue";
             a7.City = "London";
             a7.PostCode = "W11 4UE";
+            t7.Address = a7;
 
+            var contact7 = new ContactInformation();
+
+            contact7.Number = "07832091284";
+            contact7.Email = new MailAddress("george.carlin@gmail.com");
+
+            //8th tenant           
             var t8 = new Tenant();
 
             t8.FirstName = "Michael";
@@ -197,14 +250,21 @@ namespace PropertyRental
             t8.Pets = true;
             t8.Smoker = false;
             t8.RentalTerm = 24;
-
+             
             var a8 = new Address();
 
-            a8.DoorNumber = 128;
-            a8.Street = "Down road";
+            a8.DoorNumber = 119;
+            a8.Street = "Holland Park Avenue";
             a8.City = "London";
-            a8.PostCode = "W2 4DE";
+            a8.PostCode = "W11 4UE";
+            t8.Address = a8;
 
+            var contact8 = new ContactInformation();
+
+            contact8.Number = "07832091284";
+            contact8.Email = new MailAddress("michael.evans@gmail.com");
+
+            //9th tenant
             var t9 = new Tenant();
 
             t9.FirstName = "William";
@@ -224,7 +284,14 @@ namespace PropertyRental
             a9.Street = "Driver street";
             a9.City = "London";
             a9.PostCode = "W6 2EZ";
+            t9.Address = a9;
 
+            var contact9 = new ContactInformation();
+
+            contact9.Number = "07817321284";
+            contact9.Email = new MailAddress("william.white@gmail.com");
+
+            //10th tenant
             var t10 = new Tenant();
 
             t10.FirstName = "Benjamin";
@@ -244,6 +311,12 @@ namespace PropertyRental
             a10.Street = "Middleton road";
             a10.City = "London";
             a10.PostCode = "W9 4XV";
+            t10.Address = a10;
+
+            var contact10 = new ContactInformation();
+
+            contact10.Number = "07817321284";
+            contact10.Email = new MailAddress("benjamin.sterling@gmail.com");
 
             var TenantList = new List<Tenant>();
 
@@ -257,9 +330,7 @@ namespace PropertyRental
             TenantList.Add(t8);
             TenantList.Add(t9);
             TenantList.Add(t10);
-
-
-        
+                                
             return TenantList;
         }
 
@@ -359,10 +430,8 @@ namespace PropertyRental
             AddressList.Add(a8);
             AddressList.Add(a9);
             AddressList.Add(a10);
-
-            //throw new NotImplementedException();
+            
             return AddressList;
-
         }
 
         public static void WriteAddressList(List<Address> AddressList, string path)
@@ -387,13 +456,10 @@ namespace PropertyRental
         }
 
 
-
-        public static List<RentalProperty> GenerateRentalPropertyList()
+        public static List<RentalProperty> GenerateRentalProperty()
         {
             throw new NotImplementedException();
         }
-
-
 
 
     }
