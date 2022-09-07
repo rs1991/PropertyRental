@@ -8,7 +8,7 @@ namespace PropertyRental
 {
     public class Energy
     {
-
+        [Flags]
         public enum EnergyType
         {
             Gas,

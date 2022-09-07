@@ -15,7 +15,8 @@ namespace PropertyRental
             Children,
             Pets, 
             Parking,
-            WheelChairAccessible
+            WheelChairAccessible,
+            PropertyType
         };
     }
 }
