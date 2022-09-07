@@ -18,6 +18,7 @@ namespace PropertyRental
         private List<RentalProperty> _councilTaxBand;
         private string _agency;
         private bool _furnished;
+        private int _price;
 
         /// <summary>
         /// A tenant can rent a property either furnished or unfurnished
@@ -108,6 +109,15 @@ namespace PropertyRental
         {
             get { return _bedRooms; }
             set { _bedRooms = value; }
+        }
+
+        /// <summary>
+        /// Monthly rental price
+        /// </summary>
+        public int Price
+        {
+            get { return _price; }
+            set { _price = value; }
         }
 
     }
