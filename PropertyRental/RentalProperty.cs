@@ -19,6 +19,7 @@ namespace PropertyRental
         private string _agency;
         private bool _furnished;
         private int _price;
+        private int _rentalDuration; 
 
         /// <summary>
         /// A tenant can rent a property either furnished or unfurnished
@@ -28,6 +29,12 @@ namespace PropertyRental
             get { return _furnished; }
             set { _furnished = value; }
         }
+        public int RentalDuration
+        {
+            get { return _rentalDuration; }
+            set { _rentalDuration = value; }
+        }
+
 
         /// <summary>
         /// Property can either have gas or electric heating
