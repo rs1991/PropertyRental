@@ -10,13 +10,11 @@ namespace PropertyRental
 {
     public class UiMethods
     {
-        public static void WelcomeMessage()
-        {
-            Console.WriteLine("Welcome to the app!");
-        }
+        
 
         public static Tenant AddNewTenant()
         {
+
 
             throw new NotImplementedException();
 
@@ -458,6 +456,23 @@ namespace PropertyRental
 
         public static List<RentalProperty> GenerateRentalProperty()
         {
+
+            var rp1 = new RentalProperty();
+
+            rp1.Furnished = true;
+            rp1.RentalPrice = 1200;
+            
+            
+
+
+            var a1 = new Address();
+
+            a1.DoorNumber = 190;
+            a1.Street = "Middleton road";
+            a1.City = "London";
+            a1.PostCode = "W9 4XV";
+            rp1.Address = a1;
+
             throw new NotImplementedException();
         }
 

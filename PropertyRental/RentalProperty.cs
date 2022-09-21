@@ -8,7 +8,7 @@ namespace PropertyRental
 {
     public class RentalProperty
     {
-        private double _rentalPrice;
+        
         private Address _address;
         private DateOnly _availableOn;
         private int _bedRooms;
@@ -29,6 +29,10 @@ namespace PropertyRental
             get { return _furnished; }
             set { _furnished = value; }
         }
+
+        /// <summary>
+        /// Duration the Rental property will be available for
+        /// </summary>
         public int RentalDuration
         {
             get { return _rentalDuration; }
@@ -82,14 +86,7 @@ namespace PropertyRental
             set { _propertyType = value; }
         }
 
-        /// <summary>
-        /// Price of rent per calendar month
-        /// </summary>
-        public double RentalPrice
-        {
-            get { return _rentalPrice; }
-            set { _rentalPrice = value; }
-        }
+        
 
         /// <summary>
         /// Property address 
