@@ -460,7 +460,13 @@ namespace PropertyRental
             var rp1 = new RentalProperty();
 
             rp1.Furnished = true;
-            rp1.RentalPrice = 1200;
+            rp1.Price = 6000;
+            rp1.RentalDuration = 12;
+            //rp1.Heating = Gas;
+            rp1.AvailableOn = new DateOnly(2022, 11, 22);
+            rp1.BedRooms = 2;
+            rp1.Description = "Luxurius flat in central London";
+            rp1.Agency = "Best Agency";
             
             
 
