@@ -11,9 +11,10 @@ namespace PropertyRental
         [Flags]
         public enum EnergyType
         {
-            Gas,
-            Electric,
-            Solar
+            Gas = 0,
+            Electric = 1,
+            Solar = 2,
         }
+
     }
 }

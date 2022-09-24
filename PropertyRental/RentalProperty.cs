@@ -12,10 +12,10 @@ namespace PropertyRental
         private Address _address;
         private DateOnly _availableOn;
         private int _bedRooms;
-        private PropertyType _propertyType;
+        private PropertyType.TypeOfProperty _propertyType;
         private string _description;
-        private Energy _heating;
-        private CouncilTaxBand _councilTaxBand;
+        private Energy.EnergyType _heating;
+        private CouncilTaxBand.CouncilTax _councilTaxBand;
         private string _agency;
         private bool _furnished;
         private int _price;
@@ -42,7 +42,7 @@ namespace PropertyRental
         /// <summary>
         /// Property can either have gas or electric heating
         /// </summary>
-        public Energy Heating
+        public Energy.EnergyType Heating
         {
             get { return _heating; }
             set { _heating = value; }
@@ -51,7 +51,7 @@ namespace PropertyRental
         /// <summary>
         /// Property tax based on four different categories. Council tax band A, B, C & D 
         /// </summary>
-        public CouncilTaxBand CouncilTaxBand
+        public CouncilTaxBand.CouncilTax CouncilTaxBand
         {
             get { return _councilTaxBand; }
             set { _councilTaxBand = value; }
@@ -79,7 +79,7 @@ namespace PropertyRental
         /// <summary>
         /// Property type such as flat, house or bungalow
         /// </summary>
-        public PropertyType PropertyType 
+        public PropertyType.TypeOfProperty PropertyType 
         { 
             get { return _propertyType; }
             set { _propertyType = value; }
