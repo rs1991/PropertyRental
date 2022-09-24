@@ -570,106 +570,106 @@ namespace PropertyRental
             var rp6 = new RentalProperty();
 
             rp6.Furnished = true;
-            rp6.Price = 6000;
+            rp6.Price = 2400;
             rp6.RentalDuration = 12;
-            rp6.AvailableOn = new DateOnly(2022, 11, 22);
+            rp6.AvailableOn = new DateOnly(2022, 12, 14);
             rp6.BedRooms = 2;
-            rp6.Description = "Luxurius flat in central London";
-            rp6.Agency = "Best Agency";
-            rp6.Heating = Energy.EnergyType.Gas;
-            rp6.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
-            rp6.PropertyType = PropertyType.TypeOfProperty.Flat;
+            rp6.Description = "Rare to market, very unique and modern";
+            rp6.Agency = "Open rent";
+            rp6.Heating = Energy.EnergyType.Solar;
+            rp6.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_A;
+            rp6.PropertyType = PropertyType.TypeOfProperty.Bungalow;
 
             var a6 = new Address();
 
             a6.DoorNumber = 190;
-            a6.Street = "Middleton road";
+            a6.Street = "Bury Street";
             a6.City = "London";
-            a6.PostCode = "W9 4XV";
+            a6.PostCode = "N9 9JZ";
             rp6.Address = a6;
 
             var rp7 = new RentalProperty();
 
             rp7.Furnished = true;
-            rp7.Price = 6000;
-            rp7.RentalDuration = 12;
-            rp7.AvailableOn = new DateOnly(2022, 11, 22);
+            rp7.Price = 5850;
+            rp7.RentalDuration = 6;
+            rp7.AvailableOn = new DateOnly(2023, 02, 10);
             rp7.BedRooms = 2;
-            rp7.Description = "Luxurius flat in central London";
-            rp7.Agency = "Best Agency";
+            rp7.Description = "This stunning and truly unique penthouse apartment is full of character ";
+            rp7.Agency = "John D Wood and Co";
             rp7.Heating = Energy.EnergyType.Gas;
-            rp7.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
+            rp7.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_C;
             rp7.PropertyType = PropertyType.TypeOfProperty.Flat;
 
             var a7 = new Address();
 
             a7.DoorNumber = 190;
-            a7.Street = "Middleton road";
+            a7.Street = "Water road";
             a7.City = "London";
-            a7.PostCode = "W9 4XV";
+            a7.PostCode = "W4 7XT";
             rp7.Address = a7;
 
             var rp8 = new RentalProperty();
 
             rp8.Furnished = true;
-            rp8.Price = 6000;
-            rp8.RentalDuration = 12;
-            rp8.AvailableOn = new DateOnly(2022, 11, 22);
+            rp8.Price = 2500;
+            rp8.RentalDuration = 3;
+            rp8.AvailableOn = new DateOnly(2022, 12, 10);
             rp8.BedRooms = 2;
-            rp8.Description = "Luxurius flat in central London";
-            rp8.Agency = "Best Agency";
+            rp8.Description = "Proud to present this luxury, bright, and spacious";
+            rp8.Agency = "B&C Properties";
             rp8.Heating = Energy.EnergyType.Gas;
             rp8.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
             rp8.PropertyType = PropertyType.TypeOfProperty.Flat;
 
             var a8 = new Address();
 
-            a8.DoorNumber = 190;
-            a8.Street = "Middleton road";
+            a8.DoorNumber = 40;
+            a8.Street = "Tizzard Grove";
             a8.City = "London";
-            a8.PostCode = "W9 4XV";
+            a8.PostCode = "SE13 8EQ";
             rp8.Address = a8;
 
             var rp9 = new RentalProperty();
 
             rp9.Furnished = true;
-            rp9.Price = 6000;
+            rp9.Price = 67000;
             rp9.RentalDuration = 12;
-            rp9.AvailableOn = new DateOnly(2022, 11, 22);
-            rp9.BedRooms = 2;
-            rp9.Description = "Luxurius flat in central London";
-            rp9.Agency = "Best Agency";
+            rp9.AvailableOn = new DateOnly(2022, 03, 01);
+            rp9.BedRooms = 5;
+            rp9.Description = "Home near Harrods";
+            rp9.Agency = "Stanley Properties";
             rp9.Heating = Energy.EnergyType.Gas;
             rp9.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
-            rp9.PropertyType = PropertyType.TypeOfProperty.Flat;
+            rp9.PropertyType = PropertyType.TypeOfProperty.House;
 
             var a9 = new Address();
 
-            a9.DoorNumber = 190;
-            a9.Street = "Middleton road";
+            a9.DoorNumber = 12;
+            a9.Street = "Herbert Crescent";
             a9.City = "London";
-            a9.PostCode = "W9 4XV";
+            a9.PostCode = "SW1X 7LA";
             rp9.Address = a9;
 
             var rp10 = new RentalProperty();
 
-            rp10.Furnished = true;
-            rp10.Price = 6000;
+            rp10.Furnished = false;
+            rp10.Price = 4000;
             rp10.RentalDuration = 12;
-            rp10.AvailableOn = new DateOnly(2022, 11, 22);
-            rp10.BedRooms = 2;
-            rp10.Description = "Luxurius flat in central London";
-            rp10.Agency = "Best Agency";
-            rp10.Heating = Energy.EnergyType.Gas;
-            rp10.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
-            rp10.PropertyType = PropertyType.TypeOfProperty.Flat;
+            rp10.AvailableOn = new DateOnly(2022, 10, 03);
+            rp10.BedRooms = 4;
+            rp10.Description = "A stunning four-bedroom mid-terrace house situated ";
+            rp10.Agency = "View Properties";
+            rp10.Heating = Energy.EnergyType.Electric;
+            rp10.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_A;
+            rp10.PropertyType = PropertyType.TypeOfProperty.House;
 
             var a10 = new Address();
 
-            a10.DoorNumber = 190;
-            a10.Street = "Middleton road";
+            a10.DoorNumber = 18;
+            a10.Street = "Brownlow road";
             a10.City = "London";
-            a10.PostCode = "W9 4XV";
+            a10.PostCode = "E8 4FE";
             rp10.Address = a10;
 
 
