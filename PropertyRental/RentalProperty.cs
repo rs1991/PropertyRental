@@ -19,7 +19,18 @@ namespace PropertyRental
         private string _agency;
         private bool _furnished;
         private int _price;
-        private int _rentalDuration; 
+        private int _rentalDuration;
+        private bool _smokingAllowed;
+
+        /// <summary>
+        ///Does the property allow smoking
+        /// </summary>
+        public bool SmokingAllowed
+        {
+            get { return _smokingAllowed; }
+            set { _smokingAllowed = value; }
+        }
+
 
         /// <summary>
         /// A tenant can rent a property either furnished or unfurnished
