@@ -18,9 +18,7 @@ namespace PropertyRental
             WriteTenantList(TenantList, path);
 
 
-
-
-            //TODO: create mock rental property data
+                        
 
             //TODO: create matching method (input one tenant, list properties) / return list of matches
 
