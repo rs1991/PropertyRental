@@ -12,17 +12,22 @@ namespace PropertyRental
 
         public static void MatchTenantWithProperty(Tenant tenant, List<RentalProperty> GenerateRentalProperty)
         {
-          if(tenant.Smoker == true)
-            {
-               foreach(var property in GenerateRentalProperty)
-                {
-                    if(property.Furnished == false)
-                    {
-                        Console.WriteLine(property);
-                    }
-                }
-            }
+            
+            
+            
+            throw new NotImplementedException();
 
+          //if(tenant.Smoker == true)
+          //  {
+          //     foreach(var property in GenerateRentalProperty)
+          //      {
+          //          if(property.Furnished == false)
+          //          {
+          //              Console.WriteLine(property);
+          //          }
+          //      }
+          //  }
+            
         }
     }
 }

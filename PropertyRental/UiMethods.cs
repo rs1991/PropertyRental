@@ -10,21 +10,7 @@ namespace PropertyRental
 {
     public class UiMethods
     {
-        
-
-        public static Tenant AddNewTenant()
-        {
-
-
-            throw new NotImplementedException();
-
-        }
-
-        public static Landlord AddNewLandlord()
-        {
-            throw new NotImplementedException();
-
-        }
+     
 
         public static RentalProperty AddNewRentalProperty()
         {
@@ -37,7 +23,6 @@ namespace PropertyRental
             throw new NotImplementedException();
 
         }
-
 
 
         public static List<Tenant> GenerateTenantList()
@@ -454,6 +439,8 @@ namespace PropertyRental
         }
 
 
+
+
         public static List<RentalProperty> GenerateRentalProperty()
         {
 
@@ -469,6 +456,7 @@ namespace PropertyRental
             rp1.Heating = Energy.EnergyType.Gas;
             rp1.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_C;
             rp1.PropertyType = PropertyType.TypeOfProperty.Flat;
+            rp1.SmokingAllowed = true;
 
 
             var a1 = new Address();
@@ -491,6 +479,7 @@ namespace PropertyRental
             rp2.Heating = Energy.EnergyType.Gas;
             rp2.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
             rp2.PropertyType = PropertyType.TypeOfProperty.House;
+            rp2.SmokingAllowed = false;
 
 
             var a2 = new Address();
@@ -513,6 +502,7 @@ namespace PropertyRental
             rp3.Heating = Energy.EnergyType.Electric;
             rp3.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
             rp3.PropertyType = PropertyType.TypeOfProperty.House;
+            rp3.SmokingAllowed = true;
 
 
             var a3 = new Address();
@@ -536,6 +526,7 @@ namespace PropertyRental
             rp4.Heating = Energy.EnergyType.Electric;
             rp4.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_A;
             rp4.PropertyType = PropertyType.TypeOfProperty.Flat;
+            rp4.SmokingAllowed = true;
 
             var a4 = new Address();
 
@@ -557,6 +548,7 @@ namespace PropertyRental
             rp5.Heating = Energy.EnergyType.Solar;
             rp5.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_B;
             rp5.PropertyType = PropertyType.TypeOfProperty.Bungalow;
+            rp5.SmokingAllowed = false;
 
 
             var a5 = new Address();
@@ -579,6 +571,7 @@ namespace PropertyRental
             rp6.Heating = Energy.EnergyType.Solar;
             rp6.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_A;
             rp6.PropertyType = PropertyType.TypeOfProperty.Bungalow;
+            rp6.SmokingAllowed = false;
 
             var a6 = new Address();
 
@@ -600,6 +593,7 @@ namespace PropertyRental
             rp7.Heating = Energy.EnergyType.Gas;
             rp7.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_C;
             rp7.PropertyType = PropertyType.TypeOfProperty.Flat;
+            rp7.SmokingAllowed = false;
 
             var a7 = new Address();
 
@@ -621,6 +615,7 @@ namespace PropertyRental
             rp8.Heating = Energy.EnergyType.Gas;
             rp8.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
             rp8.PropertyType = PropertyType.TypeOfProperty.Flat;
+            rp8.SmokingAllowed = false;
 
             var a8 = new Address();
 
@@ -642,6 +637,7 @@ namespace PropertyRental
             rp9.Heating = Energy.EnergyType.Gas;
             rp9.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
             rp9.PropertyType = PropertyType.TypeOfProperty.House;
+            rp9.SmokingAllowed = false;
 
             var a9 = new Address();
 
@@ -663,6 +659,7 @@ namespace PropertyRental
             rp10.Heating = Energy.EnergyType.Electric;
             rp10.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_A;
             rp10.PropertyType = PropertyType.TypeOfProperty.House;
+            rp10.SmokingAllowed = false;
 
             var a10 = new Address();
 
@@ -672,9 +669,45 @@ namespace PropertyRental
             a10.PostCode = "E8 4FE";
             rp10.Address = a10;
 
+            List<RentalProperty> ListOfRentalProperties = new List<RentalProperty>();
+            ListOfRentalProperties.Add(rp1);
+            ListOfRentalProperties.Add(rp2);
+            ListOfRentalProperties.Add(rp3);
+            ListOfRentalProperties.Add(rp4);
+            ListOfRentalProperties.Add(rp5);
+            ListOfRentalProperties.Add(rp6);
+            ListOfRentalProperties.Add(rp7);
+            ListOfRentalProperties.Add(rp8);
+            ListOfRentalProperties.Add(rp9);
+            ListOfRentalProperties.Add(rp10);
 
-            throw new NotImplementedException();
+            return ListOfRentalProperties;
         }
+
+
+        public static void WriteRentalPropertyList(List<RentalProperty> ListOfRentalProperties, string path)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<RentalProperty>));
+            using (FileStream file = File.Create(path))
+            {
+                serializer.Serialize(file, ListOfRentalProperties);
+            }
+
+        }
+        public static List<RentalProperty> LoadRentalPropertyList(string path)
+        {
+            List<RentalProperty> ListOfRentalProperties;
+            XmlSerializer serializer = new XmlSerializer(typeof(List<RentalProperty>));
+            using (FileStream file = File.OpenRead(path))
+            {
+                ListOfRentalProperties = serializer.Deserialize(file) as List<RentalProperty>;
+            }
+            return ListOfRentalProperties;
+        }
+
+
+
+
 
 
     }
