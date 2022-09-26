@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace PropertyRental
 {
-    public class SearchCriteriaFilter
-    {
+    
         [Flags]
-        public enum CriteriaFilter
+        public enum SearchCriteriaFilter
         {
-            Smoker,
-            Children,
-            Pets, 
-            Parking,
-            WheelChairAccessible,
-            PropertyType
+            Smoker = 0,
+            Children = 1,
+            Pets = 2,  
+            Parking = 3,
+            WheelChairAccessible = 4,
+            PropertyType = 5
         };
-    }
+    
 }

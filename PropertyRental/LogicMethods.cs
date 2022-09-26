@@ -27,8 +27,8 @@ namespace PropertyRental
             }
 
 
-            throw new NotImplementedException();
 
+            /*
             if (tenant.Smoker == true)
             {
                 foreach (var property in rentalProperties)
@@ -39,6 +39,9 @@ namespace PropertyRental
                     }
                 }
             }
+            */
+            throw new NotImplementedException();
+            
 
         }
     }

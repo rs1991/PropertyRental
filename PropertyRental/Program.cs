@@ -8,11 +8,9 @@ namespace PropertyRental
     {
         static void Main(string[] args)
         {
-
-           
+                      
 
             var path = @"C:\tmp\TenantList.xml";
-
 
             List<Tenant> TenantList = LoadTenantList(path);
 

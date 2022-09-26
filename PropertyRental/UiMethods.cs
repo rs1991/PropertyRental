@@ -12,17 +12,7 @@ namespace PropertyRental
     {
      
 
-        public static RentalProperty AddNewRentalProperty()
-        {
-            throw new NotImplementedException();
-
-        }
-
-        public static RentalProperty AddNewAgency()
-        {
-            throw new NotImplementedException();
-
-        }
+                        
 
 
         public static List<Tenant> GenerateTenantList()
@@ -52,7 +42,7 @@ namespace PropertyRental
 
             var contact1 = new ContactInformation();
 
-            contact1.Number = "07283472938";
+            contact1.PhoneNumber = "07283472938";
             contact1.Email = new MailAddress ("john.smith@gmail.com");
 
             //Second tenant
@@ -79,7 +69,7 @@ namespace PropertyRental
 
             var contact2 = new ContactInformation();
 
-            contact2.Number = "07912384721";
+            contact2.PhoneNumber = "07912384721";
             contact2.Email = new MailAddress("lewis.miller@gmail.com");
 
             //Third tenant
@@ -106,7 +96,7 @@ namespace PropertyRental
 
             var contact3 = new ContactInformation();
 
-            contact3.Number = "07712484721";
+            contact3.PhoneNumber = "07712484721";
             contact3.Email = new MailAddress("rachel.johnson@gmail.com");
 
             //4th tenant
@@ -133,7 +123,7 @@ namespace PropertyRental
 
             var contact4 = new ContactInformation();
 
-            contact4.Number = "07712484721";
+            contact4.PhoneNumber = "07712484721";
             contact4.Email = new MailAddress("natasha.devon@gmail.com");
 
 
@@ -161,7 +151,7 @@ namespace PropertyRental
 
             var contact5 = new ContactInformation();
 
-            contact5.Number = "07712484727";
+            contact5.PhoneNumber = "07712484727";
             contact5.Email = new MailAddress("laurent.sevran@gmail.com");
 
 
@@ -189,7 +179,7 @@ namespace PropertyRental
 
             var contact6 = new ContactInformation();
 
-            contact6.Number = "07717487721";
+            contact6.PhoneNumber = "07717487721";
             contact6.Email = new MailAddress("ali.nachef@gmail.com");
 
             //7th tenant
@@ -217,7 +207,7 @@ namespace PropertyRental
 
             var contact7 = new ContactInformation();
 
-            contact7.Number = "07832091284";
+            contact7.PhoneNumber = "07832091284";
             contact7.Email = new MailAddress("george.carlin@gmail.com");
 
             //8th tenant           
@@ -244,7 +234,7 @@ namespace PropertyRental
 
             var contact8 = new ContactInformation();
 
-            contact8.Number = "07832091284";
+            contact8.PhoneNumber = "07832091284";
             contact8.Email = new MailAddress("michael.evans@gmail.com");
 
             //9th tenant
@@ -271,7 +261,7 @@ namespace PropertyRental
 
             var contact9 = new ContactInformation();
 
-            contact9.Number = "07817321284";
+            contact9.PhoneNumber = "07817321284";
             contact9.Email = new MailAddress("william.white@gmail.com");
 
             //10th tenant
@@ -298,7 +288,7 @@ namespace PropertyRental
 
             var contact10 = new ContactInformation();
 
-            contact10.Number = "07817321284";
+            contact10.PhoneNumber = "07817321284";
             contact10.Email = new MailAddress("benjamin.sterling@gmail.com");
 
             var TenantList = new List<Tenant>();
@@ -453,8 +443,8 @@ namespace PropertyRental
             rp1.BedRooms = 1;
             rp1.Description = "This light and spacious ground floor one bedroom flat.";
             rp1.Agency = "Sargeants";
-            rp1.Heating = Energy.EnergyType.Gas;
-            rp1.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_C;
+            rp1.Heating = EnergyType.Gas;
+            rp1.CouncilTaxBand = CouncilTaxBand.Band_C;
             rp1.PropertyType = TypeOfProperty.Flat;
             rp1.SmokingAllowed = true;
 
@@ -476,8 +466,8 @@ namespace PropertyRental
             rp2.BedRooms = 4;
             rp2.Description = "We are delighted to offer for rent this 4 bedroom terrace house within walking distance to local amenities";
             rp2.Agency = "Open Rent";
-            rp2.Heating = Energy.EnergyType.Gas;
-            rp2.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
+            rp2.Heating = EnergyType.Gas;
+            rp2.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp2.PropertyType = TypeOfProperty.House;
             rp2.SmokingAllowed = false;
 
@@ -499,8 +489,8 @@ namespace PropertyRental
             rp3.BedRooms = 3;
             rp3.Description = "An outstanding three bedroom Georgian family home";
             rp3.Agency = "Dexters";
-            rp3.Heating = Energy.EnergyType.Electric;
-            rp3.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
+            rp3.Heating = EnergyType.Electric;
+            rp3.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp3.PropertyType = TypeOfProperty.House;
             rp3.SmokingAllowed = true;
 
@@ -523,8 +513,8 @@ namespace PropertyRental
             rp4.BedRooms = 1;
             rp4.Description = "Situated just moments from Crystal Palace Station and Park";
             rp4.Agency = "Streets ahead";
-            rp4.Heating = Energy.EnergyType.Electric;
-            rp4.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_A;
+            rp4.Heating = EnergyType.Electric;
+            rp4.CouncilTaxBand = CouncilTaxBand.Band_A;
             rp4.PropertyType = TypeOfProperty.Flat;
             rp4.SmokingAllowed = true;
 
@@ -545,8 +535,8 @@ namespace PropertyRental
             rp5.BedRooms = 2;
             rp5.Description = "A spacious 2 bedroom bungalow built circa 1930 ";
             rp5.Agency = "Amanda Roberts agency";
-            rp5.Heating = Energy.EnergyType.Solar;
-            rp5.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_B;
+            rp5.Heating = EnergyType.Solar;
+            rp5.CouncilTaxBand = CouncilTaxBand.Band_B;
             rp5.PropertyType = TypeOfProperty.Bungalow;
             rp5.SmokingAllowed = false;
 
@@ -568,8 +558,8 @@ namespace PropertyRental
             rp6.BedRooms = 2;
             rp6.Description = "Rare to market, very unique and modern";
             rp6.Agency = "Open rent";
-            rp6.Heating = Energy.EnergyType.Solar;
-            rp6.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_A;
+            rp6.Heating = EnergyType.Solar;
+            rp6.CouncilTaxBand = CouncilTaxBand.Band_A;
             rp6.PropertyType = TypeOfProperty.Bungalow;
             rp6.SmokingAllowed = false;
 
@@ -590,8 +580,8 @@ namespace PropertyRental
             rp7.BedRooms = 2;
             rp7.Description = "This stunning and truly unique penthouse apartment is full of character ";
             rp7.Agency = "John D Wood and Co";
-            rp7.Heating = Energy.EnergyType.Gas;
-            rp7.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_C;
+            rp7.Heating = EnergyType.Gas;
+            rp7.CouncilTaxBand = CouncilTaxBand.Band_C;
             rp7.PropertyType = TypeOfProperty.Flat;
             rp7.SmokingAllowed = false;
 
@@ -612,8 +602,8 @@ namespace PropertyRental
             rp8.BedRooms = 2;
             rp8.Description = "Proud to present this luxury, bright, and spacious";
             rp8.Agency = "B&C Properties";
-            rp8.Heating = Energy.EnergyType.Gas;
-            rp8.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
+            rp8.Heating = EnergyType.Gas;
+            rp8.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp8.PropertyType = TypeOfProperty.Flat;
             rp8.SmokingAllowed = false;
 
@@ -634,8 +624,8 @@ namespace PropertyRental
             rp9.BedRooms = 5;
             rp9.Description = "Home near Harrods";
             rp9.Agency = "Stanley Properties";
-            rp9.Heating = Energy.EnergyType.Gas;
-            rp9.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_D;
+            rp9.Heating = EnergyType.Gas;
+            rp9.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp9.PropertyType = TypeOfProperty.House;
             rp9.SmokingAllowed = false;
 
@@ -656,8 +646,8 @@ namespace PropertyRental
             rp10.BedRooms = 4;
             rp10.Description = "A stunning four-bedroom mid-terrace house situated ";
             rp10.Agency = "View Properties";
-            rp10.Heating = Energy.EnergyType.Electric;
-            rp10.CouncilTaxBand = CouncilTaxBand.CouncilTax.Band_A;
+            rp10.Heating = EnergyType.Electric;
+            rp10.CouncilTaxBand = CouncilTaxBand.Band_A;
             rp10.PropertyType = TypeOfProperty.House;
             rp10.SmokingAllowed = false;
 
