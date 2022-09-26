@@ -11,17 +11,10 @@ namespace PropertyRental
         private Address _address;
         private string _firstName;
         private string _lastName;
-        private string _contactInformation;
+        private ContactInformation _contactInformation;
 
 
-        public string Summary
-        {
-            get
-            {
-                return _firstName + " " + _lastName + " " + _address.City;
-            }
-        }
-
+        
         public Address Address
         {
             get { return _address; }
@@ -40,7 +33,7 @@ namespace PropertyRental
             set { _lastName = value; }
         }
 
-        public string ContactInformation
+        public ContactInformation ContactInformation
         {
             get { return _contactInformation; }
             set { _contactInformation = value; }
