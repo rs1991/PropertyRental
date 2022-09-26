@@ -10,24 +10,36 @@ namespace PropertyRental
     public class LogicMethods
     {
 
-        public static void MatchTenantWithProperty(Tenant tenant, List<RentalProperty> GenerateRentalProperty)
+        public static void MatchTenantWithProperty(Tenant tenant, List<RentalProperty> rentalProperties)
         {
-            
-            
-            
+
+            //example var averageSmkersPrice = rentalProperties.Where(p => p.SmokingAllowed == true).Average(x => x.Price);
+
+            List<RentalProperty> matches = new();
+
+            foreach(var property in rentalProperties)
+            {
+                if(tenant.Smoker == property.SmokingAllowed || tenant.Smoker == false)
+                {
+                    //its a match only concering smoking things
+                    matches.Add(property);
+                }
+            }
+
+
             throw new NotImplementedException();
 
-          //if(tenant.Smoker == true)
-          //  {
-          //     foreach(var property in GenerateRentalProperty)
-          //      {
-          //          if(property.Furnished == false)
-          //          {
-          //              Console.WriteLine(property);
-          //          }
-          //      }
-          //  }
-            
+            if (tenant.Smoker == true)
+            {
+                foreach (var property in rentalProperties)
+                {
+                    if (property.SmokingAllowed == true)
+                    {
+                        Console.WriteLine(property);
+                    }
+                }
+            }
+
         }
     }
 }

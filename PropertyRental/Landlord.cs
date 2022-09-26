@@ -14,8 +14,16 @@ namespace PropertyRental
         private string _contactInformation;
 
 
+        public string Summary
+        {
+            get
+            {
+                return _firstName + " " + _lastName + " " + _address.City;
+            }
+        }
+
         public Address Address
-        { 
+        {
             get { return _address; }
             set { _address = value; }
         }

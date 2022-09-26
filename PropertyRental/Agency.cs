@@ -10,7 +10,7 @@ namespace PropertyRental
     {
 
         private Address _address;
-        private string _name;
+        private string _agencyName;
 
         /// <summary>
         /// Agency name and address
@@ -23,8 +23,8 @@ namespace PropertyRental
 
         public string AgencyName 
         { 
-          get { return _name; }
-          set { _name = value; } 
+          get { return _agencyName; }
+          set { _agencyName = value; } 
         }
 
     }

@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace PropertyRental
 {
-    public class PropertyType
+    public enum TypeOfProperty
     {
-        public enum TypeOfProperty
-        {
-            House,
-            Flat,
-            Bungalow
-        }
+        House,
+        Flat,
+        Bungalow
     }
+
 }
