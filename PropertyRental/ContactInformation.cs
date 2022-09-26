@@ -9,13 +9,13 @@ namespace PropertyRental
 {
     public class ContactInformation
     {
-       private string _number;
+       private string _phoneNumber;
        private MailAddress _email;
        
-        public string Number
+        public string PhoneNumber
         {
-            get { return _number; }
-            set { _number = value; }
+            get { return _phoneNumber; }
+            set { _phoneNumber = value; }
         }
 
         public MailAddress Email

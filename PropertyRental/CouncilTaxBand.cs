@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace PropertyRental
 {
-    public class CouncilTaxBand
-    {
-        public enum CouncilTax
+        public enum CouncilTaxBand
         {
             Band_A,
             Band_B,
             Band_C,
             Band_D
         }
-    }
 }

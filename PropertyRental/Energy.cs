@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace PropertyRental
 {
-    public class Energy
-    {
         [Flags]
         public enum EnergyType
         {
@@ -15,6 +13,4 @@ namespace PropertyRental
             Electric = 1,
             Solar = 2,
         }
-
-    }
 }
