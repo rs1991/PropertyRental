@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PropertyRental
 {
+        [Flags]
         public enum CouncilTaxBand
         {
             Band_A,

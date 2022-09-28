@@ -33,7 +33,7 @@ namespace PropertyRental
 
             //TODO: Free all of my Enums from weird classes (See RentalPropertyType)
 
-            //TODO: Refactoring of the code 
+           
 
         }
 
