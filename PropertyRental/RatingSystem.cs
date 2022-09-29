@@ -10,5 +10,9 @@ namespace PropertyRental
     {
         private RentalProperty _rentalProperty;
         private int _score;
+
+        
     }
+
+    
 }

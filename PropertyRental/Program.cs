@@ -8,14 +8,18 @@ namespace PropertyRental
     {
         static void Main(string[] args)
         {
-                      
 
-            var path = @"C:\tmp\TenantList.xml";
+            
+            
+            var path = @"C:\tmp\ListOfRentalProperties.xml";
 
-            List<Tenant> TenantList = LoadTenantList(path);
 
-            WriteTenantList(TenantList, path);
+            //List<Tenant> TenantList = LoadTenantList(path1);
 
+            //WriteTenantList(TenantList, path1);
+            //List<RentalProperty> ListOfRentalProperties = LoadRentalPropertyList(path1);
+            //WriteRentalPropertyList(ListOfRentalProperties, path1);
+            GenerateRentalProperty();
 
             Tenant tenant = new Tenant();
             List<RentalProperty> Rental = LoadRentalPropertyList(path);
@@ -31,7 +35,7 @@ namespace PropertyRental
 
             //TODO: Create a new blazor project 
 
-            //TODO: Free all of my Enums from weird classes (See RentalPropertyType)
+            
 
            
 

@@ -11,8 +11,7 @@ namespace PropertyRental
     public class UiMethods
     {
      
-
-                        
+                              
 
 
         public static List<Tenant> GenerateTenantList()
@@ -431,7 +430,7 @@ namespace PropertyRental
 
 
 
-        public static List<RentalProperty> GenerateRentalProperty()
+        public static List<RentalProperty> RentalPropertyList()
         {
 
             var rp1 = new RentalProperty();
@@ -675,28 +674,25 @@ namespace PropertyRental
         }
 
 
-        public static void WriteRentalPropertyList(List<RentalProperty> ListOfRentalProperties, string path)
+        public static void WriteRentalPropertyList(List<RentalProperty> ListOfRentalProperties, string path1)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<RentalProperty>));
-            using (FileStream file = File.Create(path))
+            using (FileStream file = File.Create(path1))
             {
                 serializer.Serialize(file, ListOfRentalProperties);
             }
 
         }
-        public static List<RentalProperty> LoadRentalPropertyList(string path)
+        public static List<RentalProperty> LoadRentalPropertyList(string path1)
         {
             List<RentalProperty> ListOfRentalProperties;
             XmlSerializer serializer = new XmlSerializer(typeof(List<RentalProperty>));
-            using (FileStream file = File.OpenRead(path))
+            using (FileStream file = File.OpenRead(path1))
             {
                 ListOfRentalProperties = serializer.Deserialize(file) as List<RentalProperty>;
             }
             return ListOfRentalProperties;
         }
-
-
-
 
 
 
