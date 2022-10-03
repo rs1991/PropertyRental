@@ -2,6 +2,7 @@
 using static PropertyRental.UiMethods;
 using static PropertyRental.LogicMethods;
 
+
 namespace PropertyRental
 {
     internal class Program
@@ -9,23 +10,30 @@ namespace PropertyRental
         static void Main(string[] args)
         {
 
-            
-            
-            var path = @"C:\tmp\ListOfRentalProperties.xml";
+
+            var path = @"C:\tmp\TenantList.xml";
+            var path2 = @"C:\tmp\ListOfRentalProperties.xml";
 
 
-            //List<Tenant> TenantList = LoadTenantList(path1);
+            List<Tenant> TenantList = LogicMethods.GenerateListOfMockTenants();
 
-            //WriteTenantList(TenantList, path1);
-            //List<RentalProperty> ListOfRentalProperties = LoadRentalPropertyList(path1);
-            //WriteRentalPropertyList(ListOfRentalProperties, path1);
-            GenerateRentalProperty();
+            var dStorage = new DataStorage();
 
-            Tenant tenant = new Tenant();
-            List<RentalProperty> Rental = LoadRentalPropertyList(path);
+            dStorage.ListOfTenants = TenantList;
+            WriteTenantList(TenantList, path);
+
+            WriteDataStorage(dStorage, path);
+
+            List<RentalProperty> RentalPropertyList = LoadRentalPropertyList(path2);
+
+            WriteRentalPropertyList(RentalPropertyList, path2);
 
 
-            MatchTenantWithProperty(tenant, Rental);
+            //Tenant tenant = new Tenant();
+            //List<RentalProperty> Rental = LoadRentalPropertyList(path);
+
+
+            //MatchTenantWithProperty(tenant, Rental);
 
 
 
@@ -35,9 +43,7 @@ namespace PropertyRental
 
             //TODO: Create a new blazor project 
 
-            
 
-           
 
         }
 
