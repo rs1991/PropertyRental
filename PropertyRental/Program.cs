@@ -11,22 +11,22 @@ namespace PropertyRental
         {
 
 
-            var path = @"C:\tmp\TenantList.xml";
-            var path2 = @"C:\tmp\ListOfRentalProperties.xml";
+            var path = @"C:\tmp\MockDataStorage.xml";
+            
 
 
-            List<Tenant> TenantList = LogicMethods.GenerateListOfMockTenants();
+            List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
+            List<RentalProperty> RentalProperties = LogicMethods.GenerateMockRentalPropertyList();
 
             var dStorage = new DataStorage();
 
             dStorage.ListOfTenants = TenantList;
-            WriteTenantList(TenantList, path);
+            dStorage.ListOfRentalProperties = RentalProperties;
+  
 
             WriteDataStorage(dStorage, path);
 
-            List<RentalProperty> RentalPropertyList = LoadRentalPropertyList(path2);
-
-            WriteRentalPropertyList(RentalPropertyList, path2);
+            
 
 
             //Tenant tenant = new Tenant();
