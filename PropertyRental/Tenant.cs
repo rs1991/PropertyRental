@@ -17,7 +17,7 @@ namespace PropertyRental
         private int _children;
         private bool _pets;
         private bool _smoker;
-        private bool _gender;
+        private Gender _gender;
         private int _rentalTerm;
         private Address _address;
         private List<Tenant> _roomMates;
@@ -103,7 +103,7 @@ namespace PropertyRental
             set { _smoker = value; }
         }
 
-        public bool Gender { 
+        public Gender Gender { 
             get { return _gender; }
             set { _gender = value; }
         }
