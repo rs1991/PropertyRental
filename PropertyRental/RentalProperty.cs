@@ -12,7 +12,7 @@ namespace PropertyRental
         private Address _address;
         private DateOnly _availableOn;
         private int _bedRooms;
-        private TypeOfProperty _propertyType;
+        private TypeOfHome _homeType;
         private string _description;
         private EnergyType _heating;
         private CouncilTaxBand _councilTaxBand;
@@ -90,10 +90,10 @@ namespace PropertyRental
         /// <summary>
         /// Property type such as flat, house or bungalow
         /// </summary>
-        public TypeOfProperty PropertyType 
+        public TypeOfHome HomeType 
         { 
-            get { return _propertyType; }
-            set { _propertyType = value; }
+            get { return _homeType; }
+            set { _homeType = value; }
         }
 
         

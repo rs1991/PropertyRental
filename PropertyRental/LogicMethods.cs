@@ -26,7 +26,7 @@ namespace PropertyRental
             rp1.Agency = "Sargeants";
             rp1.Heating = EnergyType.Gas;
             rp1.CouncilTaxBand = CouncilTaxBand.Band_C;
-            rp1.PropertyType = TypeOfProperty.Flat;
+            rp1.HomeType = TypeOfHome.Flat;
             rp1.SmokingAllowed = true;
 
             var a1 = new Address();
@@ -48,7 +48,7 @@ namespace PropertyRental
             rp2.Agency = "Open Rent";
             rp2.Heating = EnergyType.Gas;
             rp2.CouncilTaxBand = CouncilTaxBand.Band_D;
-            rp2.PropertyType = TypeOfProperty.House;
+            rp2.HomeType = TypeOfHome.House;
             rp2.SmokingAllowed = false;
 
             var a2 = new Address();
@@ -70,7 +70,7 @@ namespace PropertyRental
             rp3.Agency = "Dexters";
             rp3.Heating = EnergyType.Electric;
             rp3.CouncilTaxBand = CouncilTaxBand.Band_D;
-            rp3.PropertyType = TypeOfProperty.House;
+            rp3.HomeType = TypeOfHome.House;
             rp3.SmokingAllowed = true;
 
             var a3 = new Address();
@@ -92,7 +92,7 @@ namespace PropertyRental
             rp4.Agency = "Streets ahead";
             rp4.Heating = EnergyType.Electric;
             rp4.CouncilTaxBand = CouncilTaxBand.Band_A;
-            rp4.PropertyType = TypeOfProperty.Flat;
+            rp4.HomeType = TypeOfHome.Flat;
             rp4.SmokingAllowed = true;
 
             var a4 = new Address();
@@ -114,7 +114,7 @@ namespace PropertyRental
             rp5.Agency = "Amanda Roberts agency";
             rp5.Heating = EnergyType.Solar;
             rp5.CouncilTaxBand = CouncilTaxBand.Band_B;
-            rp5.PropertyType = TypeOfProperty.Bungalow;
+            rp5.HomeType = TypeOfHome.Bungalow;
             rp5.SmokingAllowed = false;
 
             var a5 = new Address();
@@ -136,7 +136,7 @@ namespace PropertyRental
             rp6.Agency = "Open rent";
             rp6.Heating = EnergyType.Solar;
             rp6.CouncilTaxBand = CouncilTaxBand.Band_A;
-            rp6.PropertyType = TypeOfProperty.Bungalow;
+            rp6.HomeType = TypeOfHome.Bungalow;
             rp6.SmokingAllowed = false;
 
             var a6 = new Address();
@@ -158,7 +158,7 @@ namespace PropertyRental
             rp7.Agency = "John D Wood and Co";
             rp7.Heating = EnergyType.Gas;
             rp7.CouncilTaxBand = CouncilTaxBand.Band_C;
-            rp7.PropertyType = TypeOfProperty.Flat;
+            rp7.HomeType = TypeOfHome.Flat;
             rp7.SmokingAllowed = false;
 
             var a7 = new Address();
@@ -180,7 +180,7 @@ namespace PropertyRental
             rp8.Agency = "B&C Properties";
             rp8.Heating = EnergyType.Gas;
             rp8.CouncilTaxBand = CouncilTaxBand.Band_D;
-            rp8.PropertyType = TypeOfProperty.Flat;
+            rp8.HomeType = TypeOfHome.Flat;
             rp8.SmokingAllowed = false;
 
             var a8 = new Address();
@@ -202,7 +202,7 @@ namespace PropertyRental
             rp9.Agency = "Stanley Properties";
             rp9.Heating = EnergyType.Gas;
             rp9.CouncilTaxBand = CouncilTaxBand.Band_D;
-            rp9.PropertyType = TypeOfProperty.House;
+            rp9.HomeType = TypeOfHome.House;
             rp9.SmokingAllowed = false;
 
             var a9 = new Address();
@@ -224,7 +224,7 @@ namespace PropertyRental
             rp10.Agency = "View Properties";
             rp10.Heating = EnergyType.Electric;
             rp10.CouncilTaxBand = CouncilTaxBand.Band_A;
-            rp10.PropertyType = TypeOfProperty.House;
+            rp10.HomeType = TypeOfHome.House;
             rp10.SmokingAllowed = false;
 
             var a10 = new Address();
