@@ -26,7 +26,9 @@ namespace PropertyRental
 
             WriteDataStorage(dStorage, path);
 
-            
+            Tenant Tenant = new Tenant();
+
+            MatchTenantWithProperty(Tenant, RentalProperties);
 
 
             //Tenant tenant = new Tenant();

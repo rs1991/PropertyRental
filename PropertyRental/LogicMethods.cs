@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using static PropertyRental.UiMethods;
 using System.Xml.Serialization;
 using System.Xml;
+using System.Net.Http.Json;
 
 namespace PropertyRental
 {
@@ -632,11 +633,8 @@ namespace PropertyRental
         }
         public static void MatchTenantWithProperty(Tenant tenant, List<RentalProperty> rentalProperties)
         {
-
             //example var averageSmkersPrice = rentalProperties.Where(p => p.SmokingAllowed == true).Average(x => x.Price);
-
             List<RentalProperty> matches = new();
-
             foreach(var property in rentalProperties)
             {
                 if(tenant.Smoker == property.SmokingAllowed || tenant.Smoker == false)
@@ -646,7 +644,11 @@ namespace PropertyRental
                 }
             }
 
-
+            foreach (RentalProperty match in matches)
+            {
+                //Console.WriteLine(match);
+                
+            }
 
             /*
             if (tenant.Smoker == true)
@@ -660,9 +662,7 @@ namespace PropertyRental
                 }
             }
             */
-            throw new NotImplementedException();
-            
-
+            //throw new NotImplementedException();
         }
 
 
