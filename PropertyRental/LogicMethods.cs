@@ -631,11 +631,11 @@ namespace PropertyRental
 
             return TenantList;
         }
-        public static void MatchTenantWithProperty(Tenant tenant, List<RentalProperty> rentalProperties)
+        public static void MatchTenantWithHome(Tenant tenant, List<RentalProperty> rentalHomes)
         {
             //example var averageSmkersPrice = rentalProperties.Where(p => p.SmokingAllowed == true).Average(x => x.Price);
             List<RentalProperty> matches = new();
-            foreach(var property in rentalProperties)
+            foreach(var property in rentalHomes)
             {
                 if(tenant.Smoker == property.SmokingAllowed || tenant.Smoker == false)
                 {
@@ -646,7 +646,8 @@ namespace PropertyRental
 
             foreach (RentalProperty match in matches)
             {
-                //Console.WriteLine(match);
+                Console.WriteLine(match);
+                
                 
             }
 
