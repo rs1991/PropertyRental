@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PropertyRental
 {
-    public class RentalProperty
+    public class RentalHome
     {
         
         private Address _address;

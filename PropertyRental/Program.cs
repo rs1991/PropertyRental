@@ -16,19 +16,19 @@ namespace PropertyRental
 
 
             List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
-            List<RentalProperty> RentalProperties = LogicMethods.GenerateMockRentalPropertyList();
+            List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalPropertyList();
 
             var dStorage = new DataStorage();
 
             dStorage.ListOfTenants = TenantList;
-            dStorage.ListOfRentalProperties = RentalProperties;
+            dStorage.ListOfRentalHomes = RentalHomes;
   
 
             WriteDataStorage(dStorage, path);
 
             Tenant Tenant = new Tenant();
 
-            MatchTenantWithProperty(Tenant, RentalProperties);
+            MatchTenantWithHome(Tenant, RentalHomes);
 
 
             //Tenant tenant = new Tenant();

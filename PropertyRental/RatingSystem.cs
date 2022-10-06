@@ -8,7 +8,7 @@ namespace PropertyRental
 {
     public class RatingSystem
     {
-        private RentalProperty _rentalProperty;
+        private RentalHome _rentalHome;
         private int _score;
 
         

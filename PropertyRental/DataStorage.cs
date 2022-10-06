@@ -9,7 +9,7 @@ namespace PropertyRental
     public class DataStorage
     {
         public List<Tenant> ListOfTenants;
-        public List<RentalProperty> ListOfRentalProperties;
+        public List<RentalHome> ListOfRentalHomes;
     }
 
 }

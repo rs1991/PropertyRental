@@ -13,10 +13,10 @@ namespace PropertyRental
 {
     public class LogicMethods
     {
-        public static List<RentalProperty> GenerateMockRentalPropertyList()
+        public static List<RentalHome> GenerateMockRentalPropertyList()
         {
 
-            var rp1 = new RentalProperty();
+            var rp1 = new RentalHome();
 
             rp1.Furnished = true;
             rp1.Price = 1350;
@@ -38,7 +38,7 @@ namespace PropertyRental
             a1.PostCode = "W5 3RE";
             rp1.Address = a1;
 
-            var rp2 = new RentalProperty();
+            var rp2 = new RentalHome();
 
             rp2.Furnished = false;
             rp2.Price = 2200;
@@ -60,7 +60,7 @@ namespace PropertyRental
             a2.PostCode = "N9 4XV";
             rp2.Address = a2;
 
-            var rp3 = new RentalProperty();
+            var rp3 = new RentalHome();
 
             rp3.Furnished = false;
             rp3.Price = 11700;
@@ -82,7 +82,7 @@ namespace PropertyRental
             a3.PostCode = "SW3 4QX";
             rp3.Address = a3;
 
-            var rp4 = new RentalProperty();
+            var rp4 = new RentalHome();
 
             rp4.Furnished = true;
             rp4.Price = 1000;
@@ -104,7 +104,7 @@ namespace PropertyRental
             a4.PostCode = "SE20 1NF";
             rp4.Address = a4;
 
-            var rp5 = new RentalProperty();
+            var rp5 = new RentalHome();
 
             rp5.Furnished = false;
             rp5.Price = 1700;
@@ -126,7 +126,7 @@ namespace PropertyRental
             a5.PostCode = "E4 8OM";
             rp5.Address = a5;
 
-            var rp6 = new RentalProperty();
+            var rp6 = new RentalHome();
 
             rp6.Furnished = true;
             rp6.Price = 2400;
@@ -148,7 +148,7 @@ namespace PropertyRental
             a6.PostCode = "N9 9JZ";
             rp6.Address = a6;
 
-            var rp7 = new RentalProperty();
+            var rp7 = new RentalHome();
 
             rp7.Furnished = true;
             rp7.Price = 5850;
@@ -170,7 +170,7 @@ namespace PropertyRental
             a7.PostCode = "W4 7XT";
             rp7.Address = a7;
 
-            var rp8 = new RentalProperty();
+            var rp8 = new RentalHome();
 
             rp8.Furnished = true;
             rp8.Price = 2500;
@@ -192,7 +192,7 @@ namespace PropertyRental
             a8.PostCode = "SE13 8EQ";
             rp8.Address = a8;
 
-            var rp9 = new RentalProperty();
+            var rp9 = new RentalHome();
 
             rp9.Furnished = true;
             rp9.Price = 67000;
@@ -214,7 +214,7 @@ namespace PropertyRental
             a9.PostCode = "SW1X 7LA";
             rp9.Address = a9;
 
-            var rp10 = new RentalProperty();
+            var rp10 = new RentalHome();
 
             rp10.Furnished = false;
             rp10.Price = 4000;
@@ -236,7 +236,7 @@ namespace PropertyRental
             a10.PostCode = "E8 4FE";
             rp10.Address = a10;
 
-            List<RentalProperty> ListOfRentalProperties = new List<RentalProperty>();
+            List<RentalHome> ListOfRentalProperties = new List<RentalHome>();
             ListOfRentalProperties.Add(rp1);
             ListOfRentalProperties.Add(rp2);
             ListOfRentalProperties.Add(rp3);
@@ -631,38 +631,37 @@ namespace PropertyRental
 
             return TenantList;
         }
-        public static void MatchTenantWithHome(Tenant tenant, List<RentalProperty> rentalHomes)
+        public static void MatchTenantWithHome(Tenant tenant, List<RentalHome> rentalHomes)
         {
             //example var averageSmkersPrice = rentalProperties.Where(p => p.SmokingAllowed == true).Average(x => x.Price);
-            List<RentalProperty> matches = new();
+            List<RentalHome> matches = new();
+            
+            
             foreach(var property in rentalHomes)
             {
                 if(tenant.Smoker == property.SmokingAllowed || tenant.Smoker == false)
                 {
-                    //its a match only concering smoking things
+                    
                     matches.Add(property);
+                    
                 }
             }
 
-            foreach (RentalProperty match in matches)
+            var smokingAllowed = matches.Where(match => match.SmokingAllowed == false);
+            foreach (var s in smokingAllowed)
             {
-                Console.WriteLine(match);
-                
-                
+                Console.WriteLine(s);
             }
 
-            /*
-            if (tenant.Smoker == true)
-            {
-                foreach (var property in rentalProperties)
-                {
-                    if (property.SmokingAllowed == true)
-                    {
-                        Console.WriteLine(property);
-                    }
-                }
-            }
-            */
+
+            //foreach (RentalProperty match in matches)
+            //{
+            //    Console.WriteLine(match);
+
+
+            //}
+
+
             //throw new NotImplementedException();
         }
 
