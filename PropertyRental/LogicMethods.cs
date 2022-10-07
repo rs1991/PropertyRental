@@ -637,20 +637,19 @@ namespace PropertyRental
             List<RentalHome> matches = new();
             
             
-            foreach(var property in rentalHomes)
+            foreach(var home in rentalHomes)
             {
-                if(tenant.Smoker == property.SmokingAllowed || tenant.Smoker == false)
+                if(tenant.Smoker == home.SmokingAllowed || tenant.Smoker == false)
                 {
-                    
-                    matches.Add(property);
-                    
+                    matches.Add(home);
                 }
+                
             }
 
             var smokingAllowed = matches.Where(match => match.SmokingAllowed == false);
             foreach (var s in smokingAllowed)
             {
-                Console.WriteLine(s);
+                Console.WriteLine(s.SmokingAllowed);
             }
 
 

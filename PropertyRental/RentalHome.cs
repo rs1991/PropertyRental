@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace PropertyRental
 {
@@ -21,6 +22,9 @@ namespace PropertyRental
         private int _price;
         private int _rentalDuration;
         private bool _smokingAllowed;
+        private bool _petsAllowed;
+
+       
 
         /// <summary>
         ///Does the property allow smoking
