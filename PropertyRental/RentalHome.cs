@@ -23,7 +23,16 @@ namespace PropertyRental
         private int _rentalDuration;
         private bool _smokingAllowed;
         private bool _petsAllowed;
+        private bool _childrenAllowed;
 
+        /// <summary>
+        /// A rental home can either allow children or not
+        /// </summary>
+        public bool ChildrenAllowed
+        {
+            get { return _childrenAllowed; }
+            set { _childrenAllowed = value; }
+        }
        
 
         /// <summary>
@@ -43,6 +52,15 @@ namespace PropertyRental
         {
             get { return _furnished; }
             set { _furnished = value; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool PetsAllowed
+        {
+            get { return _petsAllowed; }
+            set { _petsAllowed = value; }
         }
 
         /// <summary>

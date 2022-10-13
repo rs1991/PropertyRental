@@ -14,7 +14,7 @@ namespace PropertyRental
         private string _jobTitle;
         private string _nationality;
         private double _salary;
-        private int _children;
+        private bool _children;
         private bool _pets;
         private bool _smoker;
         private Gender _gender;
@@ -85,7 +85,7 @@ namespace PropertyRental
         set { _salary = value; }
         }
         
-        public int Children
+        public bool Children
         {
             get { return _children;}
             set { _children = value; }

@@ -29,6 +29,7 @@ namespace PropertyRental
             rp1.CouncilTaxBand = CouncilTaxBand.Band_C;
             rp1.HomeType = TypeOfHome.Flat;
             rp1.SmokingAllowed = true;
+            rp1.PetsAllowed = true;
 
             var a1 = new Address();
 
@@ -51,6 +52,7 @@ namespace PropertyRental
             rp2.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp2.HomeType = TypeOfHome.House;
             rp2.SmokingAllowed = false;
+            rp2.PetsAllowed = true;
 
             var a2 = new Address();
 
@@ -73,6 +75,7 @@ namespace PropertyRental
             rp3.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp3.HomeType = TypeOfHome.House;
             rp3.SmokingAllowed = true;
+            rp3.PetsAllowed = false;
 
             var a3 = new Address();
 
@@ -95,6 +98,7 @@ namespace PropertyRental
             rp4.CouncilTaxBand = CouncilTaxBand.Band_A;
             rp4.HomeType = TypeOfHome.Flat;
             rp4.SmokingAllowed = true;
+            rp4.PetsAllowed = false;
 
             var a4 = new Address();
 
@@ -117,6 +121,7 @@ namespace PropertyRental
             rp5.CouncilTaxBand = CouncilTaxBand.Band_B;
             rp5.HomeType = TypeOfHome.Bungalow;
             rp5.SmokingAllowed = false;
+            rp5.PetsAllowed = false;
 
             var a5 = new Address();
 
@@ -139,6 +144,7 @@ namespace PropertyRental
             rp6.CouncilTaxBand = CouncilTaxBand.Band_A;
             rp6.HomeType = TypeOfHome.Bungalow;
             rp6.SmokingAllowed = false;
+            rp6.PetsAllowed = false;
 
             var a6 = new Address();
 
@@ -161,6 +167,7 @@ namespace PropertyRental
             rp7.CouncilTaxBand = CouncilTaxBand.Band_C;
             rp7.HomeType = TypeOfHome.Flat;
             rp7.SmokingAllowed = false;
+            rp7.PetsAllowed = false;
 
             var a7 = new Address();
 
@@ -183,6 +190,7 @@ namespace PropertyRental
             rp8.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp8.HomeType = TypeOfHome.Flat;
             rp8.SmokingAllowed = false;
+            rp8.PetsAllowed = true;
 
             var a8 = new Address();
 
@@ -205,6 +213,7 @@ namespace PropertyRental
             rp9.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp9.HomeType = TypeOfHome.House;
             rp9.SmokingAllowed = false;
+            rp9.PetsAllowed = false;
 
             var a9 = new Address();
 
@@ -227,6 +236,7 @@ namespace PropertyRental
             rp10.CouncilTaxBand = CouncilTaxBand.Band_A;
             rp10.HomeType = TypeOfHome.House;
             rp10.SmokingAllowed = false;
+            rp10.PetsAllowed = false;
 
             var a10 = new Address();
 
@@ -342,7 +352,7 @@ namespace PropertyRental
             t1.JobTitle = "Project Manager";
             t1.Nationality = "British";
             t1.Salary = 65000;
-            t1.Children = 0;
+            t1.Children = false;
             t1.Pets = false;
             t1.Smoker = false;
             t1.RentalTerm = 12;
@@ -370,7 +380,7 @@ namespace PropertyRental
             t2.JobTitle = "Accountant";
             t2.Nationality = "British";
             t2.Salary = 50000;
-            t2.Children = 0;
+            t2.Children = false;
             t2.Pets = true;
             t2.Smoker = false;
             t2.RentalTerm = 18;
@@ -398,7 +408,7 @@ namespace PropertyRental
             t3.JobTitle = "Business development manager";
             t3.Nationality = "British";
             t3.Salary = 150555;
-            t3.Children = 2;
+            t3.Children = true;
             t3.Pets = true;
             t3.Smoker = true;
             t3.RentalTerm = 12;
@@ -426,7 +436,7 @@ namespace PropertyRental
             t4.JobTitle = "Librarian";
             t4.Nationality = "British";
             t4.Salary = 150555;
-            t4.Children = 2;
+            t4.Children = true;
             t4.Pets = true;
             t4.Smoker = false;
             t4.RentalTerm = 12;
@@ -455,7 +465,7 @@ namespace PropertyRental
             t5.JobTitle = "Teacher";
             t5.Nationality = "French";
             t5.Salary = 52357;
-            t5.Children = 1;
+            t5.Children = true;
             t5.Pets = false;
             t5.Smoker = true;
             t5.RentalTerm = 12;
@@ -484,7 +494,7 @@ namespace PropertyRental
             t6.JobTitle = "Civil Engineer";
             t6.Nationality = "Lebanese";
             t6.Salary = 76317;
-            t6.Children = 4;
+            t6.Children = true;
             t6.Pets = false;
             t6.Smoker = false;
             t6.RentalTerm = 12;
@@ -513,7 +523,7 @@ namespace PropertyRental
             t7.JobTitle = "Comedian";
             t7.Nationality = "American";
             t7.Salary = 250123;
-            t7.Children = 1;
+            t7.Children = true;
             t7.Pets = false;
             t7.Smoker = false;
             t7.RentalTerm = 12;
@@ -541,7 +551,7 @@ namespace PropertyRental
             t8.JobTitle = "Marketing executive";
             t8.Nationality = "British";
             t8.Salary = 45000;
-            t8.Children = 0;
+            t8.Children = false;
             t8.Pets = true;
             t8.Smoker = false;
             t8.RentalTerm = 24;
@@ -569,7 +579,7 @@ namespace PropertyRental
             t9.JobTitle = "HR director";
             t9.Nationality = "British";
             t9.Salary = 122357;
-            t9.Children = 3;
+            t9.Children = true;
             t9.Pets = false;
             t9.Smoker = true;
             t9.RentalTerm = 12;
@@ -597,7 +607,7 @@ namespace PropertyRental
             t10.JobTitle = "Garden designer";
             t10.Nationality = "British";
             t10.Salary = 66310;
-            t10.Children = 0;
+            t10.Children = false;
             t10.Pets = false;
             t10.Smoker = false;
             t10.RentalTerm = 6;
@@ -643,6 +653,15 @@ namespace PropertyRental
                 {
                     matches.Add(home);
                 }
+                if(tenant.Pets == home.PetsAllowed || tenant.Pets == false)
+                {
+                    matches.Add(home);
+                }
+                if(tenant.Children == home.ChildrenAllowed || tenant.Children == false)
+                {
+                    matches.Add(home);
+                }
+               
                 
             }
 
