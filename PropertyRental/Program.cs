@@ -38,17 +38,11 @@ namespace PropertyRental
             //MatchTenantWithProperty(tenant, Rental);
 
 
-
             //TODO: create matching method (input one tenant, list properties) / return list of matches
-
-            //TODO: Build a rating system in the form of a class  
-
-            //TODO: Create a new blazor project 
-
-
+            
+            //TODO: Build a rating system in the form of a class 
 
         }
-
 
     }
 }

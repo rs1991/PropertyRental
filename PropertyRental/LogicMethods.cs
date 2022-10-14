@@ -641,7 +641,7 @@ namespace PropertyRental
 
             return TenantList;
         }
-        public static void MatchTenantWithHome(Tenant tenant, List<RentalHome> rentalHomes)
+        public static List<RentalHome> MatchTenantWithHome(Tenant tenant, List<RentalHome> rentalHomes)
         {
             //example var averageSmkersPrice = rentalProperties.Where(p => p.SmokingAllowed == true).Average(x => x.Price);
             List<RentalHome> matches = new();
@@ -681,6 +681,9 @@ namespace PropertyRental
 
 
             //throw new NotImplementedException();
+
+            return matches;
+
         }
 
 
