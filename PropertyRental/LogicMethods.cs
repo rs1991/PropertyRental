@@ -8,6 +8,7 @@ using static PropertyRental.UiMethods;
 using System.Xml.Serialization;
 using System.Xml;
 using System.Net.Http.Json;
+using System.Text.RegularExpressions;
 
 namespace PropertyRental
 {
@@ -646,7 +647,6 @@ namespace PropertyRental
             //example var averageSmkersPrice = rentalProperties.Where(p => p.SmokingAllowed == true).Average(x => x.Price);
             List<RentalHome> matches = new();
             
-            
             foreach(var home in rentalHomes)
             {
                 if(tenant.Smoker == home.SmokingAllowed || tenant.Smoker == false)
@@ -661,29 +661,32 @@ namespace PropertyRental
                 {
                     matches.Add(home);
                 }
-               
-                
+                if(tenant.Budget == home.Price)
+                {
+                    matches.Add(home);
+                }
+                if(tenant.FurnitureRequired == home.Furnished)
+                {
+                    matches.Add(home);
+                }
+                if(tenant.ParkingRequired == home.Parking)
+                {
+                    matches.Add(home);
+                }
+                if(tenant.GardenRequired == home.Garden)
+                {
+                    matches.Add(home);
+                }
+                if(tenant.BedRoomsRequired == home.BedRooms)
+                {
+                    matches.Add(home);
+                }
             }
-
-            var smokingAllowed = matches.Where(match => match.SmokingAllowed == false);
-            foreach (var s in smokingAllowed)
-            {
-                Console.WriteLine(s.SmokingAllowed);
-            }
-
-
-            //foreach (RentalProperty match in matches)
-            //{
-            //    Console.WriteLine(match);
-
-
-            //}
-
-
-            //throw new NotImplementedException();
-
+            
+            var smokingAllowed = matches.Where(match => match.SmokingAllowed == false).ToList();
+            Console.WriteLine(smokingAllowed);
+            
             return matches;
-
         }
 
 

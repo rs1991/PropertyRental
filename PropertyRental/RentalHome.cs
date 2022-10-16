@@ -24,6 +24,27 @@ namespace PropertyRental
         private bool _smokingAllowed;
         private bool _petsAllowed;
         private bool _childrenAllowed;
+        private bool _garden;
+        private bool _parking;
+
+        /// <summary>
+        /// Parking available or not? 
+        /// </summary>
+        public bool Parking
+        {
+            get { return _parking; }
+            set {_parking = value;}
+        } 
+
+        /// <summary>
+        /// Does the home have a garden
+        /// </summary>
+        public bool Garden
+        {
+            get { return _garden; }
+            set { _garden = value; }
+        }
+
 
         /// <summary>
         /// A rental home can either allow children or not

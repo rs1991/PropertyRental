@@ -19,8 +19,50 @@ namespace PropertyRental
         private bool _smoker;
         private Gender _gender;
         private int _rentalTerm;
+        private int _budget;
+        private bool _parkingRequired;
+        private bool _furnitureRequired;
+        private bool _gardenRequired;
+        private int _bedroomsRequired;
         private Address _address;
         private List<Tenant> _roomMates;
+
+
+        public int BedRoomsRequired
+        {
+            get { return _bedroomsRequired; }
+            set { _bedroomsRequired = value; }
+        }
+
+        public bool GardenRequired
+        {
+            get { return _gardenRequired; }
+            set { _gardenRequired = value; }
+        } 
+        public bool FurnitureRequired
+        {
+            get { return _furnitureRequired; }
+            set { _furnitureRequired = value; }
+        }
+
+        /// <summary>
+        /// Does the tenant require parking?
+        /// </summary>
+        public bool ParkingRequired
+        {
+            get { return _parkingRequired; }
+            set { _parkingRequired = value; }
+        }
+
+
+        /// <summary>
+        /// Monthly rental budget
+        /// </summary>
+        public int Budget
+        {
+            get { return _budget; }
+            set { _budget = value; }
+        }
 
         /// <summary>
         /// Extra tenants/room mates can be added to the rental application
