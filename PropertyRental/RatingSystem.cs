@@ -8,10 +8,22 @@ namespace PropertyRental
 {
     public class RatingSystem
     {
-        private RentalHome _rentalHome;
-        private int _score;
-
         
+        private int _score;
+        private int _rating; 
+
+        public int Score 
+        { 
+            get { return _score; } 
+            set { _score = value; } 
+        }
+
+        public int Rating 
+        {
+            get { return _rating; } 
+            set { _rating = value; } 
+        }
+
     }
 
     
