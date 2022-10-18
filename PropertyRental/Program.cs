@@ -30,14 +30,10 @@ namespace PropertyRental
             
 
             List<RentalHome> Matches = MatchTenantWithHome(Tenant, RentalHomes);
-
+            
             DisplayMatch(Matches);
 
-
-            //Tenant tenant = new Tenant();
-            //List<RentalProperty> Rental = LoadRentalPropertyList(path);
-
-            //MatchTenantWithProperty(tenant, Rental);
+                        
 
 
             //TODO: create matching method (input one tenant, list properties) / return list of matches
