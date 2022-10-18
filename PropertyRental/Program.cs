@@ -27,19 +27,21 @@ namespace PropertyRental
             WriteDataStorage(dStorage, path);
 
             Tenant Tenant = new Tenant();
+            
 
-            MatchTenantWithHome(Tenant, RentalHomes);
+            List<RentalHome> Matches = MatchTenantWithHome(Tenant, RentalHomes);
+
+            DisplayMatch(Matches);
 
 
             //Tenant tenant = new Tenant();
             //List<RentalProperty> Rental = LoadRentalPropertyList(path);
 
-
             //MatchTenantWithProperty(tenant, Rental);
 
 
             //TODO: create matching method (input one tenant, list properties) / return list of matches
-            
+
             //TODO: Build a rating system in the form of a class 
 
         }

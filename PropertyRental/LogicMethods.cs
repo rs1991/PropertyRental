@@ -649,42 +649,45 @@ namespace PropertyRental
             
             foreach(var home in rentalHomes)
             {
-                if(tenant.Smoker == home.SmokingAllowed || tenant.Smoker == false)
+                bool isMatch = true;
+                if(!(tenant.Smoker == home.SmokingAllowed || tenant.Smoker == false))
                 {
-                    matches.Add(home);
+                    isMatch = false;
                 }
-                if(tenant.Pets == home.PetsAllowed || tenant.Pets == false)
+                if(!(tenant.Pets == home.PetsAllowed || tenant.Pets == false))
                 {
-                    matches.Add(home);
+                    isMatch = false;
                 }
-                if(tenant.Children == home.ChildrenAllowed || tenant.Children == false)
+                if(!(tenant.Children == home.ChildrenAllowed || tenant.Children == false))
                 {
-                    matches.Add(home);
+                    isMatch = false;
                 }
-                if(tenant.Budget == home.Price)
+                if(tenant.Budget <= home.Price) 
                 {
-                    matches.Add(home);
+                    isMatch = true;
                 }
-                if(tenant.FurnitureRequired == home.Furnished)
+                if(tenant.FurnitureRequired == home.Furnished || tenant.FurnitureRequired == false)
                 {
-                    matches.Add(home);
+                    isMatch = false;
                 }
-                if(tenant.ParkingRequired == home.Parking)
+                if(tenant.ParkingRequired == home.Parking || tenant.ParkingRequired == false)
                 {
-                    matches.Add(home);
+                    isMatch = false;
                 }
-                if(tenant.GardenRequired == home.Garden)
+                if(tenant.GardenRequired == home.Garden || tenant.GardenRequired == false)
                 {
-                    matches.Add(home);
+                    isMatch = false;
                 }
                 if(tenant.BedRoomsRequired == home.BedRooms)
                 {
-                    matches.Add(home);
+                    isMatch |= false;
                 }
+                if (isMatch) 
+                    matches.Add(home);
             }
             
-            var smokingAllowed = matches.Where(match => match.SmokingAllowed == false).ToList();
-            Console.WriteLine(smokingAllowed);
+            //var smokingAllowed = matches.Where(match => match.SmokingAllowed == false).ToList();
+            //Console.WriteLine(smokingAllowed);
             
             return matches;
         }
