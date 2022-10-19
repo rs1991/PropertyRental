@@ -21,10 +21,5 @@ namespace PropertyRental
         }
 
         
-
-        
-
- 
-
     }
 }

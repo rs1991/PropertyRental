@@ -645,11 +645,9 @@ namespace PropertyRental
         }
         public static List<RentalHome> MatchTenantWithHome(Tenant tenant, List<RentalHome> rentalHomes)
         {
-
-            //Tenant tenant
-            List<RentalHome> matches = new();
-           
+                       
             
+            List<RentalHome> matches = new();
 
             foreach (var home in rentalHomes)
             {
@@ -696,6 +694,22 @@ namespace PropertyRental
             return matches;
         }
 
+
+        public static double AffordabilityCheck(Tenant tenant, RentalHome rentalHome)
+        {
+            double months = 12; 
+            double check = months * rentalHome.Price;
+            double decision = check * 2;
+            if(decision == tenant.Salary)
+            {
+                Console.WriteLine("Congratulations!, You have passed the affordability check");
+            }
+            else
+            {
+                Console.WriteLine("Unfortunately, you have not passed the affordability check");
+            }
+            throw new NotImplementedException();
+        }
 
         public static void WriteDataStorage(DataStorage lists, string path)
         {
