@@ -25,7 +25,7 @@ namespace PropertyRental
             WriteDataStorage(dStorage, path);
 
             Tenant Tenant = new Tenant();
-            Tenant.Smoker = false;
+            Tenant.Smoker = true;
             Tenant.Pets = false;
             Tenant.Children = false;
             Tenant.Budget = 15000;

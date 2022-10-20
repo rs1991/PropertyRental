@@ -19,7 +19,7 @@ namespace PropertyRental
 
             var rp1 = new RentalHome();
 
-            rp1.Furnished = false;
+            rp1.Furnished = true;
             rp1.Price = 1350;
             rp1.RentalDuration = 12;
             rp1.AvailableOn = new DateOnly(2022, 11, 22);
@@ -67,7 +67,7 @@ namespace PropertyRental
 
             var rp3 = new RentalHome();
 
-            rp3.Furnished = false;
+            rp3.Furnished = true;
             rp3.Price = 11700;
             rp3.RentalDuration = 12;
             rp3.AvailableOn = new DateOnly(2023, 01, 02);
@@ -115,7 +115,7 @@ namespace PropertyRental
 
             var rp5 = new RentalHome();
 
-            rp5.Furnished = false;
+            rp5.Furnished = true;
             rp5.Price = 1700;
             rp5.RentalDuration = 12;
             rp5.AvailableOn = new DateOnly(2022, 09, 29);
@@ -163,7 +163,7 @@ namespace PropertyRental
 
             var rp7 = new RentalHome();
 
-            rp7.Furnished = false;
+            rp7.Furnished = true;
             rp7.Price = 5850;
             rp7.RentalDuration = 6;
             rp7.AvailableOn = new DateOnly(2023, 02, 10);
@@ -197,7 +197,7 @@ namespace PropertyRental
             rp8.Heating = EnergyType.Gas;
             rp8.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp8.HomeType = TypeOfHome.Flat;
-            rp8.SmokingAllowed = false;
+            rp8.SmokingAllowed = true;
             rp8.PetsAllowed = false;
             rp8.ChildrenAllowed = false;
 
@@ -211,7 +211,7 @@ namespace PropertyRental
 
             var rp9 = new RentalHome();
 
-            rp9.Furnished = false;
+            rp9.Furnished = true;
             rp9.Price = 67000;
             rp9.RentalDuration = 12;
             rp9.AvailableOn = new DateOnly(2022, 03, 01);
@@ -221,7 +221,7 @@ namespace PropertyRental
             rp9.Heating = EnergyType.Gas;
             rp9.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp9.HomeType = TypeOfHome.House;
-            rp9.SmokingAllowed = false;
+            rp9.SmokingAllowed = true;
             rp9.PetsAllowed = false;
             rp9.ChildrenAllowed = false;
 
@@ -662,7 +662,7 @@ namespace PropertyRental
 
             foreach (var home in rentalHomes)
             {
-                bool isMatch = false;
+                bool isMatch = true;
 
                 if(tenant.Smoker != home.SmokingAllowed)
                 {

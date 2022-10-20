@@ -16,7 +16,7 @@ namespace PropertyRental
         {
             foreach (var Match in Matches)
             {
-                Console.WriteLine($"Address {Match.Address.City} - {Match.Address.Street}");
+                Console.WriteLine($"Suitable home: {Match.Address.City} - {Match.Address.PostCode} - {Match.Description}");
             }
         }
 
