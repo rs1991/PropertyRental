@@ -25,20 +25,21 @@ namespace PropertyRental
             WriteDataStorage(dStorage, path);
 
             Tenant Tenant = new Tenant();
-            Tenant.Smoker = true;
-            Tenant.BedRoomsRequired = 2;
-            Tenant.ParkingRequired = true;
+            Tenant.Smoker = false;
             Tenant.Pets = false;
             Tenant.Children = false;
-                       
+            Tenant.Budget = 15000;
+            Tenant.FurnitureRequired = false;
+            Tenant.ParkingRequired = false;
+            Tenant.GardenRequired = false;
+            Tenant.BedRoomsRequired = 3;
+
 
             List<RentalHome> Matches = MatchTenantWithHome(Tenant, RentalHomes);
             
             DisplayMatch(Matches);
 
             
-
-            //TODO: create matching method (input one tenant, list properties) / return list of matches
             //TODO: Build a rating system in the form of a class 
 
         }

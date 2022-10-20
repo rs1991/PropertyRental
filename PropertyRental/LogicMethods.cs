@@ -19,18 +19,19 @@ namespace PropertyRental
 
             var rp1 = new RentalHome();
 
-            rp1.Furnished = true;
+            rp1.Furnished = false;
             rp1.Price = 1350;
             rp1.RentalDuration = 12;
             rp1.AvailableOn = new DateOnly(2022, 11, 22);
-            rp1.BedRooms = 1;
+            rp1.BedRooms = 3;
             rp1.Description = "This light and spacious ground floor one bedroom flat.";
             rp1.Agency = "Sargeants";
             rp1.Heating = EnergyType.Gas;
             rp1.CouncilTaxBand = CouncilTaxBand.Band_C;
             rp1.HomeType = TypeOfHome.Flat;
-            rp1.SmokingAllowed = true;
-            rp1.PetsAllowed = true;
+            rp1.SmokingAllowed = false;
+            rp1.PetsAllowed = false;
+            rp1.ChildrenAllowed = false;
 
             var a1 = new Address();
 
@@ -46,14 +47,15 @@ namespace PropertyRental
             rp2.Price = 2200;
             rp2.RentalDuration = 12;
             rp2.AvailableOn = new DateOnly(2022, 10, 13);
-            rp2.BedRooms = 4;
+            rp2.BedRooms = 3;
             rp2.Description = "We are delighted to offer for rent this 4 bedroom terrace house within walking distance to local amenities";
             rp2.Agency = "Open Rent";
             rp2.Heating = EnergyType.Gas;
             rp2.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp2.HomeType = TypeOfHome.House;
             rp2.SmokingAllowed = false;
-            rp2.PetsAllowed = true;
+            rp2.PetsAllowed = false;
+            rp2.ChildrenAllowed = false;
 
             var a2 = new Address();
 
@@ -75,8 +77,9 @@ namespace PropertyRental
             rp3.Heating = EnergyType.Electric;
             rp3.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp3.HomeType = TypeOfHome.House;
-            rp3.SmokingAllowed = true;
+            rp3.SmokingAllowed = false;
             rp3.PetsAllowed = false;
+            rp3.ChildrenAllowed = false;
 
             var a3 = new Address();
 
@@ -88,18 +91,19 @@ namespace PropertyRental
 
             var rp4 = new RentalHome();
 
-            rp4.Furnished = true;
+            rp4.Furnished = false;
             rp4.Price = 1000;
             rp4.RentalDuration = 12;
             rp4.AvailableOn = new DateOnly(2022, 11, 30);
-            rp4.BedRooms = 1;
+            rp4.BedRooms = 3;
             rp4.Description = "Situated just moments from Crystal Palace Station and Park";
             rp4.Agency = "Streets ahead";
             rp4.Heating = EnergyType.Electric;
             rp4.CouncilTaxBand = CouncilTaxBand.Band_A;
             rp4.HomeType = TypeOfHome.Flat;
-            rp4.SmokingAllowed = true;
+            rp4.SmokingAllowed = false;
             rp4.PetsAllowed = false;
+            rp4.ChildrenAllowed = false;
 
             var a4 = new Address();
 
@@ -115,7 +119,7 @@ namespace PropertyRental
             rp5.Price = 1700;
             rp5.RentalDuration = 12;
             rp5.AvailableOn = new DateOnly(2022, 09, 29);
-            rp5.BedRooms = 2;
+            rp5.BedRooms = 3;
             rp5.Description = "A spacious 2 bedroom bungalow built circa 1930 ";
             rp5.Agency = "Amanda Roberts agency";
             rp5.Heating = EnergyType.Solar;
@@ -123,6 +127,7 @@ namespace PropertyRental
             rp5.HomeType = TypeOfHome.Bungalow;
             rp5.SmokingAllowed = false;
             rp5.PetsAllowed = false;
+            rp5.ChildrenAllowed = false;
 
             var a5 = new Address();
 
@@ -134,11 +139,11 @@ namespace PropertyRental
 
             var rp6 = new RentalHome();
 
-            rp6.Furnished = true;
+            rp6.Furnished = false;
             rp6.Price = 2400;
             rp6.RentalDuration = 12;
             rp6.AvailableOn = new DateOnly(2022, 12, 14);
-            rp6.BedRooms = 2;
+            rp6.BedRooms = 3;
             rp6.Description = "Rare to market, very unique and modern";
             rp6.Agency = "Open rent";
             rp6.Heating = EnergyType.Solar;
@@ -146,6 +151,7 @@ namespace PropertyRental
             rp6.HomeType = TypeOfHome.Bungalow;
             rp6.SmokingAllowed = false;
             rp6.PetsAllowed = false;
+            rp6.ChildrenAllowed = false;
 
             var a6 = new Address();
 
@@ -157,11 +163,11 @@ namespace PropertyRental
 
             var rp7 = new RentalHome();
 
-            rp7.Furnished = true;
+            rp7.Furnished = false;
             rp7.Price = 5850;
             rp7.RentalDuration = 6;
             rp7.AvailableOn = new DateOnly(2023, 02, 10);
-            rp7.BedRooms = 2;
+            rp7.BedRooms = 3;
             rp7.Description = "This stunning and truly unique penthouse apartment is full of character ";
             rp7.Agency = "John D Wood and Co";
             rp7.Heating = EnergyType.Gas;
@@ -169,6 +175,7 @@ namespace PropertyRental
             rp7.HomeType = TypeOfHome.Flat;
             rp7.SmokingAllowed = false;
             rp7.PetsAllowed = false;
+            rp7.ChildrenAllowed = false;
 
             var a7 = new Address();
 
@@ -179,19 +186,20 @@ namespace PropertyRental
             rp7.Address = a7;
 
             var rp8 = new RentalHome();
-
-            rp8.Furnished = true;
+                        
+            rp8.Furnished = false;
             rp8.Price = 2500;
             rp8.RentalDuration = 3;
             rp8.AvailableOn = new DateOnly(2022, 12, 10);
-            rp8.BedRooms = 2;
+            rp8.BedRooms = 3;
             rp8.Description = "Proud to present this luxury, bright, and spacious";
             rp8.Agency = "B&C Properties";
             rp8.Heating = EnergyType.Gas;
             rp8.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp8.HomeType = TypeOfHome.Flat;
             rp8.SmokingAllowed = false;
-            rp8.PetsAllowed = true;
+            rp8.PetsAllowed = false;
+            rp8.ChildrenAllowed = false;
 
             var a8 = new Address();
 
@@ -203,11 +211,11 @@ namespace PropertyRental
 
             var rp9 = new RentalHome();
 
-            rp9.Furnished = true;
+            rp9.Furnished = false;
             rp9.Price = 67000;
             rp9.RentalDuration = 12;
             rp9.AvailableOn = new DateOnly(2022, 03, 01);
-            rp9.BedRooms = 5;
+            rp9.BedRooms = 3;
             rp9.Description = "Home near Harrods";
             rp9.Agency = "Stanley Properties";
             rp9.Heating = EnergyType.Gas;
@@ -215,6 +223,7 @@ namespace PropertyRental
             rp9.HomeType = TypeOfHome.House;
             rp9.SmokingAllowed = false;
             rp9.PetsAllowed = false;
+            rp9.ChildrenAllowed = false;
 
             var a9 = new Address();
 
@@ -230,7 +239,7 @@ namespace PropertyRental
             rp10.Price = 4000;
             rp10.RentalDuration = 12;
             rp10.AvailableOn = new DateOnly(2022, 10, 03);
-            rp10.BedRooms = 4;
+            rp10.BedRooms = 3;
             rp10.Description = "A stunning four-bedroom mid-terrace house situated ";
             rp10.Agency = "View Properties";
             rp10.Heating = EnergyType.Electric;
@@ -238,6 +247,8 @@ namespace PropertyRental
             rp10.HomeType = TypeOfHome.House;
             rp10.SmokingAllowed = false;
             rp10.PetsAllowed = false;
+            rp10.ChildrenAllowed = false;
+            
 
             var a10 = new Address();
 
@@ -355,7 +366,7 @@ namespace PropertyRental
             t1.Salary = 65000;
             t1.Children = false;
             t1.Pets = false;
-            t1.Smoker = false;
+            t1.Smoker = true;
             t1.RentalTerm = 12;
             t1.Gender = Gender.Male;
 
@@ -653,42 +664,42 @@ namespace PropertyRental
             {
                 bool isMatch = false;
 
-                if(!(tenant.Smoker == home.SmokingAllowed || tenant.Smoker == false))
+                if(tenant.Smoker != home.SmokingAllowed)
+                {
+                    continue;
+                }
+                if(tenant.Pets != home.PetsAllowed)
                 {
                     isMatch = false;
                 }
-                if(!(tenant.Pets == home.PetsAllowed || tenant.Pets == false))
+                if(tenant.Children != home.ChildrenAllowed)
                 {
                     isMatch = false;
                 }
-                if(!(tenant.Children == home.ChildrenAllowed || tenant.Children == false))
+                if(tenant.Budget < home.Price)
                 {
                     isMatch = false;
                 }
-                if(!(tenant.Budget <= home.Price))
+                if(tenant.FurnitureRequired != home.Furnished)
                 {
                     isMatch = false;
                 }
-                if(!(tenant.FurnitureRequired == home.Furnished || tenant.FurnitureRequired == false))
+                if(tenant.ParkingRequired != home.Parking)
                 {
                     isMatch = false;
                 }
-                if(!(tenant.ParkingRequired == home.Parking || tenant.ParkingRequired == false))
+                if(tenant.GardenRequired != home.Garden)
                 {
                     isMatch = false;
                 }
-                if(!(tenant.GardenRequired == home.Garden || tenant.GardenRequired == false))
+                if(tenant.BedRoomsRequired != home.BedRooms)
                 {
                     isMatch = false;
                 }
-                if(!(tenant.BedRoomsRequired == home.BedRooms))
+                if (isMatch) 
                 {
-                    isMatch = false;
-                }
-                if (isMatch)
-                { 
                     matches.Add(home);
-                } 
+                }
             }
             
             return matches;
