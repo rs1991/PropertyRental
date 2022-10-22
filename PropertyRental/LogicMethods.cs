@@ -19,19 +19,20 @@ namespace PropertyRental
 
             var rp1 = new RentalHome();
 
-            rp1.Furnished = true;
+            rp1.Furnished = false;
             rp1.Price = 1350;
             rp1.RentalDuration = 12;
             rp1.AvailableOn = new DateOnly(2022, 11, 22);
-            rp1.BedRooms = 3;
+            rp1.BedRooms = 1;
             rp1.Description = "This light and spacious ground floor one bedroom flat.";
             rp1.Agency = "Sargeants";
             rp1.Heating = EnergyType.Gas;
             rp1.CouncilTaxBand = CouncilTaxBand.Band_C;
             rp1.HomeType = TypeOfHome.Flat;
-            rp1.SmokingAllowed = false;
+            rp1.SmokingAllowed = true;
             rp1.PetsAllowed = false;
             rp1.ChildrenAllowed = false;
+            rp1.Parking = false;
 
             var a1 = new Address();
 
@@ -47,15 +48,16 @@ namespace PropertyRental
             rp2.Price = 2200;
             rp2.RentalDuration = 12;
             rp2.AvailableOn = new DateOnly(2022, 10, 13);
-            rp2.BedRooms = 3;
+            rp2.BedRooms = 4;
             rp2.Description = "We are delighted to offer for rent this 4 bedroom terrace house within walking distance to local amenities";
             rp2.Agency = "Open Rent";
             rp2.Heating = EnergyType.Gas;
             rp2.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp2.HomeType = TypeOfHome.House;
-            rp2.SmokingAllowed = false;
+            rp2.SmokingAllowed = true;
             rp2.PetsAllowed = false;
             rp2.ChildrenAllowed = false;
+            rp2.Parking = false;
 
             var a2 = new Address();
 
@@ -67,7 +69,7 @@ namespace PropertyRental
 
             var rp3 = new RentalHome();
 
-            rp3.Furnished = true;
+            rp3.Furnished = false;
             rp3.Price = 11700;
             rp3.RentalDuration = 12;
             rp3.AvailableOn = new DateOnly(2023, 01, 02);
@@ -77,9 +79,10 @@ namespace PropertyRental
             rp3.Heating = EnergyType.Electric;
             rp3.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp3.HomeType = TypeOfHome.House;
-            rp3.SmokingAllowed = false;
+            rp3.SmokingAllowed = true;
             rp3.PetsAllowed = false;
             rp3.ChildrenAllowed = false;
+            rp3.Parking = false;
 
             var a3 = new Address();
 
@@ -101,9 +104,10 @@ namespace PropertyRental
             rp4.Heating = EnergyType.Electric;
             rp4.CouncilTaxBand = CouncilTaxBand.Band_A;
             rp4.HomeType = TypeOfHome.Flat;
-            rp4.SmokingAllowed = false;
+            rp4.SmokingAllowed = true;
             rp4.PetsAllowed = false;
             rp4.ChildrenAllowed = false;
+            rp4.Parking = false;
 
             var a4 = new Address();
 
@@ -115,7 +119,7 @@ namespace PropertyRental
 
             var rp5 = new RentalHome();
 
-            rp5.Furnished = true;
+            rp5.Furnished = false;
             rp5.Price = 1700;
             rp5.RentalDuration = 12;
             rp5.AvailableOn = new DateOnly(2022, 09, 29);
@@ -125,9 +129,10 @@ namespace PropertyRental
             rp5.Heating = EnergyType.Solar;
             rp5.CouncilTaxBand = CouncilTaxBand.Band_B;
             rp5.HomeType = TypeOfHome.Bungalow;
-            rp5.SmokingAllowed = false;
+            rp5.SmokingAllowed = true;
             rp5.PetsAllowed = false;
             rp5.ChildrenAllowed = false;
+            rp5.Parking = false;
 
             var a5 = new Address();
 
@@ -152,6 +157,7 @@ namespace PropertyRental
             rp6.SmokingAllowed = false;
             rp6.PetsAllowed = false;
             rp6.ChildrenAllowed = false;
+            rp6.Parking = false;
 
             var a6 = new Address();
 
@@ -163,7 +169,7 @@ namespace PropertyRental
 
             var rp7 = new RentalHome();
 
-            rp7.Furnished = true;
+            rp7.Furnished = false;
             rp7.Price = 5850;
             rp7.RentalDuration = 6;
             rp7.AvailableOn = new DateOnly(2023, 02, 10);
@@ -176,6 +182,7 @@ namespace PropertyRental
             rp7.SmokingAllowed = false;
             rp7.PetsAllowed = false;
             rp7.ChildrenAllowed = false;
+            rp7.Parking = false;
 
             var a7 = new Address();
 
@@ -191,15 +198,16 @@ namespace PropertyRental
             rp8.Price = 2500;
             rp8.RentalDuration = 3;
             rp8.AvailableOn = new DateOnly(2022, 12, 10);
-            rp8.BedRooms = 3;
+            rp8.BedRooms = 5;
             rp8.Description = "Proud to present this luxury, bright, and spacious";
             rp8.Agency = "B&C Properties";
             rp8.Heating = EnergyType.Gas;
             rp8.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp8.HomeType = TypeOfHome.Flat;
-            rp8.SmokingAllowed = true;
+            rp8.SmokingAllowed = false;
             rp8.PetsAllowed = false;
             rp8.ChildrenAllowed = false;
+            rp8.Parking = false;
 
             var a8 = new Address();
 
@@ -211,7 +219,7 @@ namespace PropertyRental
 
             var rp9 = new RentalHome();
 
-            rp9.Furnished = true;
+            rp9.Furnished = false;
             rp9.Price = 67000;
             rp9.RentalDuration = 12;
             rp9.AvailableOn = new DateOnly(2022, 03, 01);
@@ -221,9 +229,10 @@ namespace PropertyRental
             rp9.Heating = EnergyType.Gas;
             rp9.CouncilTaxBand = CouncilTaxBand.Band_D;
             rp9.HomeType = TypeOfHome.House;
-            rp9.SmokingAllowed = true;
+            rp9.SmokingAllowed = false;
             rp9.PetsAllowed = false;
             rp9.ChildrenAllowed = false;
+            rp9.Parking = false;
 
             var a9 = new Address();
 
@@ -248,7 +257,7 @@ namespace PropertyRental
             rp10.SmokingAllowed = false;
             rp10.PetsAllowed = false;
             rp10.ChildrenAllowed = false;
-            
+            rp10.Parking = false;
 
             var a10 = new Address();
 
@@ -656,7 +665,7 @@ namespace PropertyRental
         }
         public static List<RentalHome> MatchTenantWithHome(Tenant tenant, List<RentalHome> rentalHomes)
         {
-                       
+                      
             
             List<RentalHome> matches = new();
 
@@ -664,9 +673,9 @@ namespace PropertyRental
             {
                 bool isMatch = true;
 
-                if(tenant.Smoker != home.SmokingAllowed)
+                if(tenant.Smoker != home.SmokingAllowed && tenant.Smoker == true)
                 {
-                    continue;
+                    isMatch = false;
                 }
                 if(tenant.Pets != home.PetsAllowed)
                 {
@@ -692,7 +701,7 @@ namespace PropertyRental
                 {
                     isMatch = false;
                 }
-                if(tenant.BedRoomsRequired != home.BedRooms)
+                if(tenant.BedRoomsRequired < home.BedRooms)
                 {
                     isMatch = false;
                 }
