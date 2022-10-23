@@ -714,13 +714,20 @@ namespace PropertyRental
             return matches;
         }
 
-
+        /// <summary>
+        /// The monthly rent is multiplied by 12 to give the total for the year.
+        /// Once the total for the year is added up, it is then checked that the total is twice the yearly salary of the prospective tenant. 
+        /// </summary>
+        /// <param name="tenant"></param>
+        /// <param name="rentalHome"></param>
+        /// <returns></returns>
+        
         public static double AffordabilityCheck(Tenant tenant, RentalHome rentalHome)
         {
             double months = 12; 
             double check = months * rentalHome.Price;
             double decision = check * 2;
-            if(decision == tenant.Salary)
+            if(tenant.Salary >= decision)
             {
                 Console.WriteLine("Congratulations!, You have passed the affordability check");
             }
@@ -728,7 +735,8 @@ namespace PropertyRental
             {
                 Console.WriteLine("Unfortunately, you have not passed the affordability check");
             }
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return decision;
         }
 
         public static void WriteDataStorage(DataStorage lists, string path)

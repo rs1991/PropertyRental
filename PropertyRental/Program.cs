@@ -28,18 +28,26 @@ namespace PropertyRental
             Tenant.Smoker = false;
             Tenant.Pets = false;
             Tenant.Children = false;
-            Tenant.Budget = 122000;
+            Tenant.Budget = 3000;
             Tenant.FurnitureRequired = false;
             Tenant.ParkingRequired = false;
             Tenant.GardenRequired = false;
             Tenant.BedRoomsRequired = 3;
+            Tenant.Salary = 40000;
 
 
             List<RentalHome> Matches = MatchTenantWithHome(Tenant, RentalHomes);
             
             DisplayMatch(Matches);
 
-            
+            RentalHome rentalHome = new RentalHome();
+            rentalHome.Price = 5000;
+
+            AffordabilityCheck(Tenant, rentalHome);
+
+
+
+
             //TODO: Build a rating system in the form of a class 
 
         }
