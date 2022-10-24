@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -148,6 +149,13 @@ namespace PropertyRental
         public Gender Gender { 
             get { return _gender; }
             set { _gender = value; }
+        }
+
+        public override string ToString()
+        {
+            return $"Smoker: {Smoker} Pet owner: {Pets} Children: {Children} Budget: {Budget}" +
+                $" Furniture required: {FurnitureRequired} Parking required: {ParkingRequired} " +
+                $"Garden: {GardenRequired} Bedrooms required: {BedRoomsRequired} ";
         }
 
     }
