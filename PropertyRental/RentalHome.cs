@@ -176,5 +176,7 @@ namespace PropertyRental
             set { _price = value; }
         }
 
+        //TODO: add tostring method
+
     }
 }

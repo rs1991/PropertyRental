@@ -56,7 +56,7 @@ namespace PropertyRental
             rp2.HomeType = TypeOfHome.House;
             rp2.SmokingAllowed = true;
             rp2.PetsAllowed = false;
-            rp2.ChildrenAllowed = false;
+            rp2.ChildrenAllowed = true;
             rp2.Parking = false;
 
             var a2 = new Address();
@@ -701,7 +701,7 @@ namespace PropertyRental
                 {
                     isMatch = false;
                 }
-                if(tenant.BedRoomsRequired < home.BedRooms)
+                if(tenant.BedRoomsRequired > home.BedRooms)
                 {
                     isMatch = false;
                 }
@@ -714,6 +714,49 @@ namespace PropertyRental
             return matches;
         }
 
+        public static void RatingScore(Tenant tenant, List<RentalHome> rentalHomes)
+        {
+            int score = 0;
+            foreach (var home in rentalHomes)
+            {
+                if (tenant.Smoker != home.SmokingAllowed && tenant.Smoker == true)
+                {
+                    score++;
+                }
+                if (tenant.Pets != home.PetsAllowed)
+                {
+                    score++;
+                }
+                if (tenant.Children != home.ChildrenAllowed)
+                {
+                    score++;
+                }
+                if (tenant.Budget < home.Price)
+                {
+                    score++;
+                }
+                if (tenant.FurnitureRequired != home.Furnished)
+                {
+                    score++;
+                }
+                if (tenant.ParkingRequired != home.Parking)
+                {
+                    score++;
+                }
+                if (tenant.GardenRequired != home.Garden)
+                {
+                    score++;
+                }
+                if (tenant.BedRoomsRequired < home.BedRooms)
+                {
+                    score++;
+                }
+            }
+            throw new NotImplementedException();
+        }
+
+
+
         /// <summary>
         /// The monthly rent is multiplied by 12 to give the total for the year.
         /// Once the total for the year is added up, it is then checked that the total is twice the yearly salary of the prospective tenant. 
@@ -721,22 +764,18 @@ namespace PropertyRental
         /// <param name="tenant"></param>
         /// <param name="rentalHome"></param>
         /// <returns></returns>
-        
-        public static double AffordabilityCheck(Tenant tenant, RentalHome rentalHome)
+
+        public static bool AffordabilityCheck(Tenant tenant, RentalHome rentalHome)
         {
             double months = 12; 
             double check = months * rentalHome.Price;
             double decision = check * 2;
+            
             if(tenant.Salary >= decision)
             {
-                Console.WriteLine("Congratulations!, You have passed the affordability check");
+                return true;
             }
-            else
-            {
-                Console.WriteLine("Unfortunately, you have not passed the affordability check");
-            }
-            //throw new NotImplementedException();
-            return decision;
+            return false;
         }
 
         public static void WriteDataStorage(DataStorage lists, string path)

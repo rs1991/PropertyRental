@@ -33,7 +33,7 @@ namespace PropertyRental
             Tenant.ParkingRequired = false;
             Tenant.GardenRequired = false;
             Tenant.BedRoomsRequired = 3;
-            Tenant.Salary = 40000;
+            Tenant.Salary = 122000;
 
 
             List<RentalHome> Matches = MatchTenantWithHome(Tenant, RentalHomes);
@@ -43,10 +43,13 @@ namespace PropertyRental
             RentalHome rentalHome = new RentalHome();
             rentalHome.Price = 5000;
 
-            AffordabilityCheck(Tenant, rentalHome);
 
 
+            bool accepted = AffordabilityCheck(Tenant, rentalHome);
 
+            Console.WriteLine(accepted);
+
+            //RatingScore(Tenant, RentalHomes);
 
             //TODO: Build a rating system in the form of a class 
 
