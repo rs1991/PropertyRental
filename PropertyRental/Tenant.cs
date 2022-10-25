@@ -27,7 +27,12 @@ namespace PropertyRental
         private int _bedroomsRequired;
         private Address _address;
         private List<Tenant> _roomMates;
+        private double _floorSizeRequired;
 
+        public double FloorSizeRequired 
+        { get { return _floorSizeRequired; } 
+          set { _floorSizeRequired = value; }
+        }
 
         public int BedRoomsRequired
         {

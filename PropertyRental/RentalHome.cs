@@ -26,6 +26,16 @@ namespace PropertyRental
         private bool _childrenAllowed;
         private bool _garden;
         private bool _parking;
+        private double _floorSize;
+
+        /// <summary>
+        /// How many square meters does this home have
+        /// </summary>
+        public double FloorSize
+        {
+            get { return _floorSize; }
+            set { _floorSize = value; }
+        }
 
         /// <summary>
         /// Parking available or not? 
@@ -176,12 +186,13 @@ namespace PropertyRental
             set { _price = value; }
         }
 
-        //TODO: add tostring method
+        
 
         public override string ToString()
         {
             return $"Smoking allowed: {SmokingAllowed} Furnished: {Furnished} Pets: {PetsAllowed}" +
-                $" Children: {ChildrenAllowed} Price per month: {Price} Parking: {Parking} Garden: {Garden} Bedrooms: {BedRooms} ";
+                $" Children: {ChildrenAllowed} Price per month: {Price} Parking: {Parking} Garden: {Garden} " +
+                $"Bedrooms: {BedRooms} ";
         }
 
     }

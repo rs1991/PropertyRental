@@ -677,11 +677,11 @@ namespace PropertyRental
                 {
                     isMatch = false;
                 }
-                if(tenant.Pets != home.PetsAllowed)
+                if(tenant.Pets != home.PetsAllowed && tenant.Pets == true)
                 {
                     isMatch = false;
                 }
-                if(tenant.Children != home.ChildrenAllowed)
+                if(tenant.Children != home.ChildrenAllowed && tenant.Children == true)
                 {
                     isMatch = false;
                 }
@@ -689,15 +689,15 @@ namespace PropertyRental
                 {
                     isMatch = false;
                 }
-                if(tenant.FurnitureRequired != home.Furnished)
+                if(tenant.FurnitureRequired != home.Furnished && tenant.FurnitureRequired == true)
                 {
                     isMatch = false;
                 }
-                if(tenant.ParkingRequired != home.Parking)
+                if(tenant.ParkingRequired != home.Parking && tenant.ParkingRequired == true)
                 {
                     isMatch = false;
                 }
-                if(tenant.GardenRequired != home.Garden)
+                if(tenant.GardenRequired != home.Garden && tenant.GardenRequired == true )
                 {
                     isMatch = false;
                 }
@@ -714,47 +714,55 @@ namespace PropertyRental
             return matches;
         }
 
-        public static void RatingScore(Tenant tenant, List<RentalHome> rentalHomes)
+        /// <summary>
+        /// Overall rating is calculated to determine how suitable the home is for a tenant
+        /// </summary>
+        /// <param name="tenant"></param>
+        /// <param name="rentalHome"></param>
+        /// <returns>Rating</returns>
+        public static int RatingScore(Tenant tenant, RentalHome rentalHome) 
         {
-            int score = 0;
-            foreach (var home in rentalHomes)
+            int rating = 0;
+            
+            if (tenant.Smoker != rentalHome.SmokingAllowed && tenant.Smoker == true)
             {
-                if (tenant.Smoker != home.SmokingAllowed && tenant.Smoker == true)
-                {
-                    score++;
-                }
-                if (tenant.Pets != home.PetsAllowed)
-                {
-                    score++;
-                }
-                if (tenant.Children != home.ChildrenAllowed)
-                {
-                    score++;
-                }
-                if (tenant.Budget < home.Price)
-                {
-                    score++;
-                }
-                if (tenant.FurnitureRequired != home.Furnished)
-                {
-                    score++;
-                }
-                if (tenant.ParkingRequired != home.Parking)
-                {
-                    score++;
-                }
-                if (tenant.GardenRequired != home.Garden)
-                {
-                    score++;
-                }
-                if (tenant.BedRoomsRequired < home.BedRooms)
-                {
-                    score++;
-                }
+                rating += 5;
             }
-            throw new NotImplementedException();
+            if (tenant.Pets != rentalHome.PetsAllowed && tenant.Pets == true)
+            {
+                rating += 5;
+            }
+            if (tenant.Children != rentalHome.ChildrenAllowed && tenant.Children == true)
+            {
+                rating += 5;
+            }
+            if (tenant.Budget < rentalHome.Price)
+            {
+                rating += 30;
+            }
+            if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
+            {
+                rating += 5;
+            }
+            if (tenant.ParkingRequired != rentalHome.Parking && tenant.ParkingRequired == true)
+            {
+                rating += 5;
+            }
+            if (tenant.GardenRequired != rentalHome.Garden && tenant.GardenRequired == true)
+            {
+                rating += 5;
+            }
+            if (tenant.BedRoomsRequired < rentalHome.BedRooms)
+            {
+                rating += 15;
+            }
+            if(rentalHome.FloorSize > tenant.FloorSizeRequired)
+            {
+                rating += 15;
+            }
+            return rating;
         }
-
+        
 
 
         /// <summary>

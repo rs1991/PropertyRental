@@ -25,15 +25,16 @@ namespace PropertyRental
             WriteDataStorage(dStorage, path);
 
             Tenant Tenant = new Tenant();
-            Tenant.Smoker = false;
+            Tenant.Smoker = true;
             Tenant.Pets = false;
             Tenant.Children = false;
-            Tenant.Budget = 3000;
+            Tenant.Budget = 2000;
             Tenant.FurnitureRequired = false;
             Tenant.ParkingRequired = false;
             Tenant.GardenRequired = false;
             Tenant.BedRoomsRequired = 3;
             Tenant.Salary = 122000;
+            
 
 
             List<RentalHome> Matches = MatchTenantWithHome(Tenant, RentalHomes);
@@ -42,12 +43,24 @@ namespace PropertyRental
 
             RentalHome rentalHome = new RentalHome();
             rentalHome.Price = 5000;
+            rentalHome.FloorSize = 110;
+            rentalHome.BedRooms = 3;
+            rentalHome.Garden = true;
+            rentalHome.Parking = false;
+            rentalHome.PetsAllowed = true;
+            rentalHome.ChildrenAllowed = false;
+            rentalHome.SmokingAllowed = true;
 
 
 
-            bool accepted = AffordabilityCheck(Tenant, rentalHome);
+            AffordabilityCheck(Tenant, rentalHome);
 
-            Console.WriteLine(accepted);
+            int TotalScore = RatingScore(Tenant, rentalHome);
+
+            Console.WriteLine(TotalScore);
+
+
+
 
             //RatingScore(Tenant, RentalHomes);
 
