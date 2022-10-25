@@ -57,8 +57,9 @@ namespace PropertyRental
 
             int TotalScore = RatingScore(Tenant, rentalHome);
 
-            Console.WriteLine(TotalScore);
+            TotalRating(TotalScore);
 
+            
 
 
 

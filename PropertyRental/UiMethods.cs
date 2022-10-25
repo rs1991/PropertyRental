@@ -20,6 +20,11 @@ namespace PropertyRental
             }
         }
 
+        public static void TotalRating(int TotalScore)
+        {
+            
+            Console.WriteLine($"This home has a rating of: {TotalScore}");
+        }
         
     }
 }
