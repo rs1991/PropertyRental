@@ -723,7 +723,7 @@ namespace PropertyRental
         public static double RatingScore(Tenant tenant, RentalHome rentalHome) 
         {
             double rating = 0;
-            double score = 0;
+            
             
             if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
             {
@@ -739,8 +739,8 @@ namespace PropertyRental
             }
             if (tenant.Budget > rentalHome.Price)
             {
+                double score;
                 score = tenant.Budget / rentalHome.Price * 100;
-
                 rating = rating + score;
             }
             if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
