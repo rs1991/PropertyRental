@@ -724,13 +724,13 @@ namespace PropertyRental
         {
             int rating = 0;
             
-            if (tenant.Smoker != rentalHome.SmokingAllowed && tenant.Smoker == true)
+            if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
             {
-                rating += 5;
+                rating += 10;
             }
             if (tenant.Pets != rentalHome.PetsAllowed && tenant.Pets == true)
             {
-                rating += 5;
+                rating += 10;
             }
             if (tenant.Children != rentalHome.ChildrenAllowed && tenant.Children == true)
             {
