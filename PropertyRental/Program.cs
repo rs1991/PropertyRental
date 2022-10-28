@@ -28,7 +28,7 @@ namespace PropertyRental
             Tenant.Smoker = false;
             Tenant.Pets = false;
             Tenant.Children = false;
-            Tenant.Budget = 2000;
+            Tenant.Budget = 8000;
             Tenant.FurnitureRequired = false;
             Tenant.ParkingRequired = false;
             Tenant.GardenRequired = false;
@@ -42,7 +42,7 @@ namespace PropertyRental
             DisplayMatch(Matches);
 
             RentalHome rentalHome = new RentalHome();
-            rentalHome.Price = 5000;
+            rentalHome.Price = 4000;
             rentalHome.FloorSize = 110;
             rentalHome.BedRooms = 3;
             rentalHome.Garden = true;

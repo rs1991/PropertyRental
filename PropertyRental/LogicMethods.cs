@@ -720,9 +720,10 @@ namespace PropertyRental
         /// <param name="tenant"></param>
         /// <param name="rentalHome"></param>
         /// <returns>Rating</returns>
-        public static int RatingScore(Tenant tenant, RentalHome rentalHome) 
+        public static double RatingScore(Tenant tenant, RentalHome rentalHome) 
         {
-            int rating = 0;
+            double rating = 0;
+            double score = 0;
             
             if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
             {
@@ -736,9 +737,11 @@ namespace PropertyRental
             {
                 rating += 5;
             }
-            if (tenant.Budget < rentalHome.Price)
+            if (tenant.Budget > rentalHome.Price)
             {
-                rating += 30;
+                score = tenant.Budget / rentalHome.Price * 100;
+
+                rating = rating + score;
             }
             if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
             {
