@@ -9,6 +9,8 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.Net.Http.Json;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using System.Net.Cache;
 
 namespace PropertyRental
 {
@@ -804,5 +806,21 @@ namespace PropertyRental
                 serializer.Serialize(streamWriter, lists);
             }
         }
-    }
+
+
+        public static async void GetDistanceInformation() 
+        {
+
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=ub68bq&origins=ub11hz&unitsimperial&mode=walking&key=AIzaSyC1C2d1MUZSFQ-Kc8nRxssvn9sPAwsQuIY");
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<Distance>(responseBody);
+            foreach (var item in result.text)
+            {
+                Console.WriteLine(item);
+            }
+        }
+       
+}
 }

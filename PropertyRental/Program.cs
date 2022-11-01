@@ -2,7 +2,7 @@
 using static PropertyRental.UiMethods;
 using static PropertyRental.LogicMethods;
 using System.Net.Http;
-
+using Newtonsoft.Json;
 
 namespace PropertyRental
 {
@@ -58,14 +58,16 @@ namespace PropertyRental
 
             AffordabilityCheck(Tenant, rentalHome);
 
-            
+
+            GetDistanceInformation();
+
 
 
 
 
             //RatingScore(Tenant, RentalHomes);
 
-            //TODO: Build a rating system in the form of a class 
+
 
         }
 
