@@ -1,6 +1,7 @@
 ﻿using System;
 using static PropertyRental.UiMethods;
 using static PropertyRental.LogicMethods;
+using System.Net.Http;
 
 
 namespace PropertyRental
@@ -9,6 +10,8 @@ namespace PropertyRental
     {
         static void Main(string[] args)
         {
+                        
+        
 
             var path = @"C:\tmp\MockDataStorage.xml";
             
@@ -55,11 +58,8 @@ namespace PropertyRental
 
             AffordabilityCheck(Tenant, rentalHome);
 
-            int TotalScore = RatingScore(Tenant, rentalHome);
-
-            TotalRating(TotalScore);
-
             
+
 
 
 
