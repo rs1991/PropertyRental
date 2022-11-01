@@ -812,7 +812,7 @@ namespace PropertyRental
         {
 
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=ub68bq&origins=ub11hz&unitsimperial&mode=walking&key=AIzaSyC1C2d1MUZSFQ-Kc8nRxssvn9sPAwsQuIY");
+            HttpResponseMessage response = await client.GetAsync("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=ub68bq&origins=ub11hz&unitsimperial&mode=walking&key=");
             response.EnsureSuccessStatusCode();
             var responseBody = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<Distance>(responseBody);
