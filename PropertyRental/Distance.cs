@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace PropertyRental
 {
@@ -26,5 +27,9 @@ namespace PropertyRental
         public Distance distance { get; set; }
         public Duration duration { get; set; }
         public string status { get; set; }
+
+
+
+       
     }
 }

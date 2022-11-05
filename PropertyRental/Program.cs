@@ -10,9 +10,7 @@ namespace PropertyRental
     {
         static void Main(string[] args)
         {
-                        
-        
-
+            
             var path = @"C:\tmp\MockDataStorage.xml";
             
 
@@ -54,19 +52,11 @@ namespace PropertyRental
             rentalHome.ChildrenAllowed = false;
             rentalHome.SmokingAllowed = true;
 
-
-
             AffordabilityCheck(Tenant, rentalHome);
 
 
-            GetDistanceInformation();
-
-
-
-
-
-            //RatingScore(Tenant, RentalHomes);
-
+            //GetDistanceInformation();
+            DistanceInfo();
 
 
         }

@@ -11,6 +11,8 @@ using System.Net.Http.Json;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using System.Net.Cache;
+using System.Net;
+using System.IO;
 
 namespace PropertyRental
 {
@@ -808,19 +810,49 @@ namespace PropertyRental
         }
 
 
-        public static async void GetDistanceInformation() 
+        /*
+        public static void GetDistanceInformation() 
         {
-
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=ub68bq&origins=ub11hz&unitsimperial&mode=walking&key=");
+            HttpResponseMessage response = client.GetAsync("").Result;
             response.EnsureSuccessStatusCode();
-            var responseBody = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<Distance>(responseBody);
-            foreach (var item in result.text)
-            {
-                Console.WriteLine(item);
-            }
+            string body = response.Content.ReadAsStringAsync().Result;
+            var result = JsonConvert.DeserializeObject<Element>(body);
+            Console.WriteLine(result.distance.text);
         }
-       
+        */
+
+        public static void DistanceInfo()
+        {
+            var client = new WebClient();
+            var json = client.DownloadString("");
+            var result = JsonConvert.DeserializeObject<Element>(json);
+            Console.WriteLine(result.distance.ToString());
+                  
+        }
+
+
+
+
+
+
+
+
+
+
+    }
 }
-}
+
+
+/*
+       public List <Distance> DistanceInfo()
+       {
+           WebClient webClient = new WebClient();
+           webClient.BaseAddress = ("");
+           //var json = webClient.DownloadString("City/Something");
+           var list = JsonConvert.DeserializeObject<List<Distance>>(json);
+           return list.ToList(); 
+
+
+       }
+       */
