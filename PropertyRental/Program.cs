@@ -54,10 +54,19 @@ namespace PropertyRental
 
             AffordabilityCheck(Tenant, rentalHome);
 
+            Address a1 = new Address();
+            a1.PostCode = "NG35DB";
+            
+            Address a2 = new Address();
+            a2.PostCode = "NG71QZ";
 
-            //GetDistanceInformation();
-            DistanceInfo();
 
+            DistanceInfo(a2, a1);
+
+
+
+            //TODO: Create method that inputs two addresses and then calculates the distance
+            //TODO: Add the distance calculation to the Rating method  
 
         }
 

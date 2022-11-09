@@ -197,7 +197,7 @@ namespace PropertyRental
             rp7.Address = a7;
 
             var rp8 = new RentalHome();
-                        
+
             rp8.Furnished = false;
             rp8.Price = 2500;
             rp8.RentalDuration = 3;
@@ -669,52 +669,52 @@ namespace PropertyRental
         }
         public static List<RentalHome> MatchTenantWithHome(Tenant tenant, List<RentalHome> rentalHomes)
         {
-                      
-            
+
+
             List<RentalHome> matches = new();
 
             foreach (var home in rentalHomes)
             {
                 bool isMatch = true;
 
-                if(tenant.Smoker != home.SmokingAllowed && tenant.Smoker == true)
+                if (tenant.Smoker != home.SmokingAllowed && tenant.Smoker == true)
                 {
                     isMatch = false;
                 }
-                if(tenant.Pets != home.PetsAllowed && tenant.Pets == true)
+                if (tenant.Pets != home.PetsAllowed && tenant.Pets == true)
                 {
                     isMatch = false;
                 }
-                if(tenant.Children != home.ChildrenAllowed && tenant.Children == true)
+                if (tenant.Children != home.ChildrenAllowed && tenant.Children == true)
                 {
                     isMatch = false;
                 }
-                if(tenant.Budget < home.Price)
+                if (tenant.Budget < home.Price)
                 {
                     isMatch = false;
                 }
-                if(tenant.FurnitureRequired != home.Furnished && tenant.FurnitureRequired == true)
+                if (tenant.FurnitureRequired != home.Furnished && tenant.FurnitureRequired == true)
                 {
                     isMatch = false;
                 }
-                if(tenant.ParkingRequired != home.Parking && tenant.ParkingRequired == true)
+                if (tenant.ParkingRequired != home.Parking && tenant.ParkingRequired == true)
                 {
                     isMatch = false;
                 }
-                if(tenant.GardenRequired != home.Garden && tenant.GardenRequired == true )
+                if (tenant.GardenRequired != home.Garden && tenant.GardenRequired == true)
                 {
                     isMatch = false;
                 }
-                if(tenant.BedRoomsRequired > home.BedRooms)
+                if (tenant.BedRoomsRequired > home.BedRooms)
                 {
                     isMatch = false;
                 }
-                if (isMatch) 
+                if (isMatch)
                 {
                     matches.Add(home);
                 }
             }
-            
+
             return matches;
         }
 
@@ -724,11 +724,11 @@ namespace PropertyRental
         /// <param name="tenant"></param>
         /// <param name="rentalHome"></param>
         /// <returns>Rating</returns>
-        public static double RatingScore(Tenant tenant, RentalHome rentalHome) 
+        public static double RatingScore(Tenant tenant, RentalHome rentalHome)
         {
             double rating = 0;
-            
-            
+
+
             if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
             {
                 rating += 10;
@@ -763,13 +763,13 @@ namespace PropertyRental
             {
                 rating += 15;
             }
-            if(rentalHome.FloorSize > tenant.FloorSizeRequired)
+            if (rentalHome.FloorSize > tenant.FloorSizeRequired)
             {
                 rating += 15;
             }
             return rating;
         }
-        
+
 
 
         /// <summary>
@@ -782,11 +782,11 @@ namespace PropertyRental
 
         public static bool AffordabilityCheck(Tenant tenant, RentalHome rentalHome)
         {
-            double months = 12; 
+            double months = 12;
             double check = months * rentalHome.Price;
             double decision = check * 2;
-            
-            if(tenant.Salary >= decision)
+
+            if (tenant.Salary >= decision)
             {
                 return true;
             }
@@ -817,42 +817,29 @@ namespace PropertyRental
             HttpResponseMessage response = client.GetAsync("").Result;
             response.EnsureSuccessStatusCode();
             string body = response.Content.ReadAsStringAsync().Result;
-            var result = JsonConvert.DeserializeObject<Element>(body);
-            Console.WriteLine(result.distance.text);
+            Element Result = JsonConvert.DeserializeObject<Element>(body);
+            Console.WriteLine(Result.distance.value);
         }
         */
 
-        public static void DistanceInfo()
+
+        public DistanceInfo GetDistance(Address a1, Address a2)
         {
-            var client = new WebClient();
-            var json = client.DownloadString("");
-            var result = JsonConvert.DeserializeObject<Element>(json);
-            Console.WriteLine(result.distance.ToString());
-                  
+                        
+            throw new NotImplementedException();
         }
 
-
-
-
-
-
-
-
+        
+        public static void DistanceInfo(Address origin, Address destination)
+        {
+            var client = new WebClient();
+            var body = client.DownloadString($"https://maps.googleapis.com/maps/api/distancematrix/json?destinations={destination.PostCode}&origins={origin.PostCode}&unitsimperial&mode=walking&key=");
+            var result = JsonConvert.DeserializeObject<GMapsJsonObj>(body);
+        }
+        
 
 
     }
+
 }
 
-
-/*
-       public List <Distance> DistanceInfo()
-       {
-           WebClient webClient = new WebClient();
-           webClient.BaseAddress = ("");
-           //var json = webClient.DownloadString("City/Something");
-           var list = JsonConvert.DeserializeObject<List<Distance>>(json);
-           return list.ToList(); 
-
-
-       }
-       */
