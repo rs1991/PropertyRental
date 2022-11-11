@@ -665,7 +665,7 @@ namespace PropertyRental
         public static GMapsJsonObj DistanceInfo(Address origin, Address destination)
         {
             var client = new WebClient();
-            var body = client.DownloadString($"https://maps.googleapis.com/maps/api/distancematrix/json?destinations={destination.PostCode}&origins={origin.PostCode}&unitsimperial&mode=walking&key=AIzaSyCW1CcK7eWmnvJ9g0u6q-C5IWeonb-QxDE");
+            var body = client.DownloadString($"https://maps.googleapis.com/maps/api/distancematrix/json?destinations={destination.PostCode}&origins={origin.PostCode}&unitsimperial&mode=walking&key=");
             var distance = JsonConvert.DeserializeObject<GMapsJsonObj>(body);
             return distance;
         }
