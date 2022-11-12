@@ -641,14 +641,12 @@ namespace PropertyRental
             double months = 12;
             double check = months * rentalHome.Price;
             double decision = check * 2;
-            
             if (tenant.Salary >= decision)
             {
                 return true;
             }
             return false;
         }
-
         public static void WriteDataStorage(DataStorage lists, string path)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(DataStorage));
@@ -662,12 +660,19 @@ namespace PropertyRental
                 serializer.Serialize(streamWriter, lists);
             }
         }
-        public static GMapsJsonObj DistanceInfo(Address origin, Address destination)
+        public static double DistanceInfo(Address origin, Address destination)
         {
             var client = new WebClient();
             var body = client.DownloadString($"https://maps.googleapis.com/maps/api/distancematrix/json?destinations={destination.PostCode}&origins={origin.PostCode}&unitsimperial&mode=walking&key=");
             var distance = JsonConvert.DeserializeObject<GMapsJsonObj>(body);
-            return distance;
+
+            string distanceText = distance.rows[0].elements[0].distance.text;
+            double conversion;
+            Double.TryParse(distanceText, out conversion);
+                        
+
+            return conversion;
+            
         }
     }
 }
