@@ -51,7 +51,16 @@ namespace PropertyRental
             rentalHome.PetsAllowed = true;
             rentalHome.ChildrenAllowed = false;
             rentalHome.SmokingAllowed = true;
+            //rentalHome.Address.PostCode = "SE1 1TQ";
 
+
+            RatingScore(TenantList[0], RentalHomes[0]);
+
+            string apikey = @"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt";
+
+            DistanceInfo(TenantList[0], RentalHomes[0], apikey);
+
+            /*
             AffordabilityCheck(Tenant, rentalHome);
 
             Address a1 = new Address();
@@ -61,9 +70,9 @@ namespace PropertyRental
             a2.PostCode = "NG71QZ";
 
 
-            DistanceInfo(a2, a1);
-
-
+            int distance = DistanceInfo(a2, a1);
+            */
+            
 
             //TODO: Create method that inputs two addresses and then calculates the distance
             //TODO: Add the distance calculation to the Rating method  
