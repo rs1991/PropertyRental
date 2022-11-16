@@ -54,26 +54,12 @@ namespace PropertyRental
             //rentalHome.Address.PostCode = "SE1 1TQ";
 
 
-            RatingScore(TenantList[0], RentalHomes[0]);
+            //RatingScore(TenantList[0], RentalHomes[0]);
+                        
+            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
 
-            string apikey = @"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt";
-
-            DistanceInfo(TenantList[0], RentalHomes[0], apikey);
-
-            /*
-            AffordabilityCheck(Tenant, rentalHome);
-
-            Address a1 = new Address();
-            a1.PostCode = "NG35DB";
+            DistanceInfo(RentalHomes[0], RentalHomes[0], api);
             
-            Address a2 = new Address();
-            a2.PostCode = "NG71QZ";
-
-
-            int distance = DistanceInfo(a2, a1);
-            */
-            
-
             //TODO: Create method that inputs two addresses and then calculates the distance
             //TODO: Add the distance calculation to the Rating method  
 
