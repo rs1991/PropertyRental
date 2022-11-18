@@ -1,4 +1,5 @@
 ﻿using System;
+using static PropertyRental.Program;
 using System.Net.Mail;
 using System.Text;
 using static PropertyRental.UiMethods;
@@ -601,9 +602,7 @@ namespace PropertyRental
         public static double RatingScore(Tenant tenant, RentalHome rentalHome)
         {
             double rating = 0;
-           
-            //int distance = DistanceInfo(tenant.Address ,rentalHome.Address);
-
+            
             if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
             {
                 rating += 10;
@@ -634,15 +633,16 @@ namespace PropertyRental
             {
                 rating += 5;
             }
-            if (tenant.BedRoomsRequired < rentalHome.BedRooms)
+            if (rentalHome.BedRooms >= tenant.BedRoomsRequired)
             {
                 rating += 15;
             }
-            if (rentalHome.FloorSize > tenant.FloorSizeRequired)
+            if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
             {
                 rating += 15;
             }
-                        
+            
+            
             return rating;
         }
         /// <summary>

@@ -49,6 +49,7 @@ namespace PropertyRental
             OriginToDestinationDistance(AddressList[0], AddressList[1], api);
             
             
+            
             //TODO: Add the distance calculation to the Rating method  
 
         }
