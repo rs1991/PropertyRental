@@ -12,16 +12,18 @@ namespace PropertyRental
         {
             
             var path = @"C:\tmp\MockDataStorage.xml";
-            
+            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+
 
             List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
             List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalPropertyList();
+            List<Address> AddressList = LogicMethods.GenerateMockAddressList();
 
             var dStorage = new DataStorage();
 
             dStorage.ListOfTenants = TenantList;
             dStorage.ListOfRentalHomes = RentalHomes;
-  
+            dStorage.ListOfAddresses = AddressList;
 
             WriteDataStorage(dStorage, path);
 
@@ -55,12 +57,26 @@ namespace PropertyRental
 
 
             //RatingScore(TenantList[0], RentalHomes[0]);
-                        
-            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
 
-            DistanceInfo(RentalHomes[0], RentalHomes[0], api);
+            Address a1 = new Address();
+            a1.DoorNumber = 121;
+            a1.Street = "Holborn";
+            a1.City = "London";
+            a1.PostCode = "EC1N2TD";
+
+            Address a2 = new Address();
+            a2.DoorNumber = 33;
+            a2.Street = "Foley st";
+            a2.City = "London";
+            a2.PostCode = "W1W7TL";
+
+            string origin = JsonConvert.SerializeObject(a1);
+            string destination = JsonConvert.SerializeObject(a2);
+
+
+            OriginToDestinationDistance(destination, origin, api);
             
-            //TODO: Create method that inputs two addresses and then calculates the distance
+            
             //TODO: Add the distance calculation to the Rating method  
 
         }

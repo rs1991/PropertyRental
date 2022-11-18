@@ -676,8 +676,9 @@ namespace PropertyRental
                 serializer.Serialize(streamWriter, lists);
             }
         }
-        public static int DistanceInfo(Address origin, Address destination, string apiKey)
+        public static int OriginToDestinationDistance(string origin, string destination, string apiKey)
         {
+            
             var client = new WebClient();
             var body = client.DownloadString($"https://maps.googleapis.com/maps/api/distancematrix/json?destinations={destination}&origins={origin}&unitsimperial&mode=walking&key={apiKey}");
             var distance = JsonConvert.DeserializeObject<GMapsJsonObj>(body);
