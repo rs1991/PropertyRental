@@ -676,11 +676,13 @@ namespace PropertyRental
                 serializer.Serialize(streamWriter, lists);
             }
         }
-        public static int OriginToDestinationDistance(string origin, string destination, string apiKey)
+        public static int OriginToDestinationDistance(Address origin, Address destination, string apiKey)
         {
-            
+            string start = JsonConvert.SerializeObject(origin);
+            string end = JsonConvert.SerializeObject(destination);
+
             var client = new WebClient();
-            var body = client.DownloadString($"https://maps.googleapis.com/maps/api/distancematrix/json?destinations={destination}&origins={origin}&unitsimperial&mode=walking&key={apiKey}");
+            var body = client.DownloadString($"https://maps.googleapis.com/maps/api/distancematrix/json?destinations={end}&origins={start}&unitsimperial&mode=walking&key={apiKey}");
             var distance = JsonConvert.DeserializeObject<GMapsJsonObj>(body);
             int distanceInt = distance.rows[0].elements[0].distance.value;
             

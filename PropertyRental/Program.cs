@@ -44,37 +44,9 @@ namespace PropertyRental
             
             DisplayMatch(Matches);
 
-            RentalHome rentalHome = new RentalHome();
-            rentalHome.Price = 4000;
-            rentalHome.FloorSize = 110;
-            rentalHome.BedRooms = 3;
-            rentalHome.Garden = true;
-            rentalHome.Parking = false;
-            rentalHome.PetsAllowed = true;
-            rentalHome.ChildrenAllowed = false;
-            rentalHome.SmokingAllowed = true;
-            //rentalHome.Address.PostCode = "SE1 1TQ";
-
-
             //RatingScore(TenantList[0], RentalHomes[0]);
 
-            Address a1 = new Address();
-            a1.DoorNumber = 121;
-            a1.Street = "Holborn";
-            a1.City = "London";
-            a1.PostCode = "EC1N2TD";
-
-            Address a2 = new Address();
-            a2.DoorNumber = 33;
-            a2.Street = "Foley st";
-            a2.City = "London";
-            a2.PostCode = "W1W7TL";
-
-            string origin = JsonConvert.SerializeObject(a1);
-            string destination = JsonConvert.SerializeObject(a2);
-
-
-            OriginToDestinationDistance(destination, origin, api);
+            OriginToDestinationDistance(AddressList[0], AddressList[1], api);
             
             
             //TODO: Add the distance calculation to the Rating method  
