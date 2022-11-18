@@ -676,7 +676,7 @@ namespace PropertyRental
                 serializer.Serialize(streamWriter, lists);
             }
         }
-        public static int OriginToDestinationDistance(Address origin, Address destination, string apiKey)
+        public static int DistanceCalculation(Address origin, Address destination, string apiKey)
         {
             string start = JsonConvert.SerializeObject(origin);
             string end = JsonConvert.SerializeObject(destination);
