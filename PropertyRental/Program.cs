@@ -42,14 +42,12 @@ namespace PropertyRental
 
             List<RentalHome> Matches = MatchTenantWithHome(Tenant, RentalHomes);
             
-            DisplayMatch(Matches);
+            //DisplayMatch(Matches);
 
             //RatingScore(TenantList[0], RentalHomes[0]);
 
-            OriginToDestinationDistance(AddressList[0], AddressList[1], api);
-            
-            
-            
+            RatingScore(TenantList[1], RentalHomes[1]);
+
             //TODO: Add the distance calculation to the Rating method  
 
         }

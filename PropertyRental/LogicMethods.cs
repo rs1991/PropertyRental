@@ -603,6 +603,12 @@ namespace PropertyRental
         {
             double rating = 0;
             
+            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+            List<Address> AddressList = LogicMethods.GenerateMockAddressList();
+
+            int distanceValue = DistanceCalculation(AddressList[0], AddressList[1], api);
+
+
             if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
             {
                 rating += 10;
@@ -641,7 +647,13 @@ namespace PropertyRental
             {
                 rating += 15;
             }
-            
+
+            int idealDistance = 2000;
+            if (distanceValue <= idealDistance)
+            {
+                rating += 50;
+            }
+            Console.WriteLine("The rating: " + rating);
             
             return rating;
         }
