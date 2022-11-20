@@ -12,7 +12,7 @@ namespace PropertyRental
         {
             
             var path = @"C:\tmp\MockDataStorage.xml";
-            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+            
 
 
             List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
