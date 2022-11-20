@@ -599,11 +599,11 @@ namespace PropertyRental
         /// <param name="tenant"></param>
         /// <param name="rentalHome"></param>
         /// <returns>Rating</returns>
-        public static double RatingScore(Tenant tenant, RentalHome rentalHome)
+        public static double RatingScore(Tenant tenant, RentalHome rentalHome, string api)
         {
             double rating = 0;
             
-            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+            
             List<Address> AddressList = LogicMethods.GenerateMockAddressList();
 
             int distanceValue = DistanceCalculation(AddressList[0], AddressList[1], api);

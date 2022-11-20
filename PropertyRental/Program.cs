@@ -12,7 +12,8 @@ namespace PropertyRental
         {
             
             var path = @"C:\tmp\MockDataStorage.xml";
-            
+            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+
 
 
             List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
@@ -46,7 +47,7 @@ namespace PropertyRental
 
             //RatingScore(TenantList[0], RentalHomes[0]);
 
-            RatingScore(TenantList[1], RentalHomes[1]);
+            RatingScore(TenantList[1], RentalHomes[1], api);
 
             //TODO: Add the distance calculation to the Rating method  
 
