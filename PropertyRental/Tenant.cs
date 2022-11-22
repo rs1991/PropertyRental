@@ -26,12 +26,16 @@ namespace PropertyRental
         private bool _gardenRequired;
         private int _bedroomsRequired;
         private Address _address;
+        private Address _preferredAdress;
         private List<Tenant> _roomMates;
         private double _floorSizeRequired;
 
-        public double FloorSizeRequired 
-        { get { return _floorSizeRequired; } 
-          set { _floorSizeRequired = value; }
+        public Address PreferredAdress { get { return _preferredAdress; } set { _preferredAdress = value; } }
+
+        public double FloorSizeRequired
+        {
+            get { return _floorSizeRequired; }
+            set { _floorSizeRequired = value; }
         }
 
         public int BedRoomsRequired
@@ -44,7 +48,7 @@ namespace PropertyRental
         {
             get { return _gardenRequired; }
             set { _gardenRequired = value; }
-        } 
+        }
         public bool FurnitureRequired
         {
             get { return _furnitureRequired; }
@@ -78,16 +82,16 @@ namespace PropertyRental
             get { return _roomMates; }
             set { _roomMates = value; }
         }
-        
+
         /// <summary>
         /// Rental duration in months 
         /// </summary>
         public int RentalTerm
         {
-            get { return _rentalTerm;}
+            get { return _rentalTerm; }
             set { _rentalTerm = value; }
-        } 
-        
+        }
+
         /// <summary>
         /// The tenant's current address 
         /// </summary>
@@ -96,62 +100,63 @@ namespace PropertyRental
             get { return _address; }
             set { _address = value; }
         }
-        
+
         public string FirstName
         {
             get { return _firstName; }
             set { _firstName = value; }
         }
-        
+
         public string LastName
         {
             get { return _lastName; }
             set { _lastName = value; }
         }
-        
+
         public DateTime BirthDate
         {
             get { return _birthDate; }
             set { _birthDate = value; }
         }
-        
+
         public string JobTitle
         {
-          get { return _jobTitle; }
-          set { _jobTitle = value; }
+            get { return _jobTitle; }
+            set { _jobTitle = value; }
         }
-        
+
         public string Nationality
         {
             get { return _nationality; }
             set { _nationality = value; }
         }
-        
+
         public double Salary
         {
-        get { return _salary; }
-        set { _salary = value; }
+            get { return _salary; }
+            set { _salary = value; }
         }
-        
+
         public bool Children
         {
-            get { return _children;}
+            get { return _children; }
             set { _children = value; }
         }
-        
+
         public bool Pets
         {
             get { return _pets; }
             set { _pets = value; }
         }
-        
+
         public bool Smoker
         {
             get { return _smoker; }
             set { _smoker = value; }
         }
 
-        public Gender Gender { 
+        public Gender Gender
+        {
             get { return _gender; }
             set { _gender = value; }
         }
@@ -164,5 +169,5 @@ namespace PropertyRental
         }
 
     }
-   
+
 }

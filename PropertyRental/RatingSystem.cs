@@ -10,7 +10,7 @@ namespace PropertyRental
     {
         
         private int _score;
-        private int _rating; 
+        private RentalHome _rentalHome; 
 
         public int Score 
         { 
@@ -18,10 +18,10 @@ namespace PropertyRental
             set { _score = value; } 
         }
 
-        public int Rating 
+        public RentalHome Rental 
         {
-            get { return _rating; } 
-            set { _rating = value; } 
+            get { return _rentalHome; } 
+            set { _rentalHome = value; } 
         }
 
     }

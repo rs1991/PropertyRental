@@ -7,6 +7,8 @@ using System.Xml.Serialization;
 using System.Xml;
 using Newtonsoft.Json;
 using System.Net;
+using static System.Formats.Asn1.AsnWriter;
+
 namespace PropertyRental
 {
     public class LogicMethods
@@ -34,6 +36,7 @@ namespace PropertyRental
             a1.City = "London";
             a1.PostCode = "W5 3RE";
             rp1.Address = a1;
+
             var rp2 = new RentalHome();
             rp2.Furnished = false;
             rp2.Price = 2200;
@@ -49,12 +52,14 @@ namespace PropertyRental
             rp2.PetsAllowed = false;
             rp2.ChildrenAllowed = true;
             rp2.Parking = false;
+            
             var a2 = new Address();
             a2.DoorNumber = 90;
             a2.Street = "Victoria Road";
             a2.City = "London";
             a2.PostCode = "N9 4XV";
             rp2.Address = a2;
+            
             var rp3 = new RentalHome();
             rp3.Furnished = false;
             rp3.Price = 11700;
@@ -70,12 +75,14 @@ namespace PropertyRental
             rp3.PetsAllowed = false;
             rp3.ChildrenAllowed = false;
             rp3.Parking = false;
+            
             var a3 = new Address();
             a3.DoorNumber = 4;
             a3.Street = "Lincoln Street";
             a3.City = "London";
             a3.PostCode = "SW3 4QX";
             rp3.Address = a3;
+            
             var rp4 = new RentalHome();
             rp4.Furnished = false;
             rp4.Price = 1000;
@@ -91,12 +98,14 @@ namespace PropertyRental
             rp4.PetsAllowed = false;
             rp4.ChildrenAllowed = false;
             rp4.Parking = false;
+            
             var a4 = new Address();
             a4.DoorNumber = 31;
             a4.Street = "Hamlet road";
             a4.City = "London";
             a4.PostCode = "SE20 1NF";
             rp4.Address = a4;
+            
             var rp5 = new RentalHome();
             rp5.Furnished = false;
             rp5.Price = 1700;
@@ -223,7 +232,7 @@ namespace PropertyRental
             a10.City = "London";
             a10.PostCode = "E8 4FE";
             rp10.Address = a10;
-            
+
             List<RentalHome> ListOfRentalProperties = new List<RentalHome>();
             ListOfRentalProperties.Add(rp1);
             ListOfRentalProperties.Add(rp2);
@@ -240,65 +249,65 @@ namespace PropertyRental
         public static List<Address> GenerateMockAddressList()
         {
             var a1 = new Address();
-            a1.DoorNumber = 5;
-            a1.Street = "Derby Road";
-            a1.City = "Nottingham";
-            a1.PostCode = "NG5 3LW";
-            
+            a1.DoorNumber = 130;
+            a1.Street = "Argyle road";
+            a1.City = "London";
+            a1.PostCode = "W13 8ER";
+
             var a2 = new Address();
-            a2.DoorNumber = 33;
-            a2.Street = "Brook Street";
-            a2.City = "Nottingham";
-            a2.PostCode = "NG1 1EA";
-            
+            a2.DoorNumber = 22;
+            a2.Street = "Singapore road";
+            a2.City = "London";
+            a2.PostCode = "W13 0UF";
+
             var a3 = new Address();
-            a3.DoorNumber = 47;
-            a3.Street = "Brook Street";
-            a3.City = "Nottingham";
-            a3.PostCode = "NG1 1EA";
-            
+            a3.DoorNumber = 20;
+            a3.Street = "Rosemount Rd";
+            a3.City = "London";
+            a3.PostCode = "W13 0HJ";
+
             var a4 = new Address();
             a4.DoorNumber = 5;
             a4.Street = "Daleham Mews";
             a4.City = "London";
             a4.PostCode = "NW3 5DB";
-            
+
             var a5 = new Address();
             a5.DoorNumber = 5;
             a5.Street = "Blake hall road";
             a5.City = "London";
             a5.PostCode = "E11 2QQ";
-            
+
             var a6 = new Address();
             a6.DoorNumber = 5;
             a6.Street = "Boydell Court";
             a6.City = "London";
             a6.PostCode = "NW8 6Nh";
-            
+
             var a7 = new Address();
             a7.DoorNumber = 44;
             a7.Street = "Lowndes Square";
             a7.City = "London";
             a7.PostCode = "SW1 9xt";
-            
+
             var a8 = new Address();
             a8.DoorNumber = 41;
             a8.Street = "Sydenham hill";
             a8.City = "London";
             a8.PostCode = "SE26 6TH";
-            
+
             var a9 = new Address();
             a9.DoorNumber = 19;
             a9.Street = "Swan Drive";
             a9.City = "London";
             a9.PostCode = "NW9 5DE";
-            
+
             var a10 = new Address();
             a10.DoorNumber = 221;
             a10.Street = "Ardgowan Road";
             a10.City = "London";
             a10.PostCode = "SE6 1AJ";
-            
+
             var AddressList = new List<Address>();
             AddressList.Add(a1);
             AddressList.Add(a2);
@@ -310,7 +319,7 @@ namespace PropertyRental
             AddressList.Add(a8);
             AddressList.Add(a9);
             AddressList.Add(a10);
-            
+
             return AddressList;
         }
         public static List<Tenant> GenerateMockListOfTenants()
@@ -328,17 +337,28 @@ namespace PropertyRental
             t1.Smoker = true;
             t1.RentalTerm = 12;
             t1.Gender = Gender.Male;
+
             var a1 = new Address();
             a1.DoorNumber = 64;
             a1.Street = "Lenton Boulevard";
             a1.City = "Nottingham";
             a1.PostCode = "NG1 1QZ";
             t1.Address = a1;
+
+            var prefAddress1 = new Address();
+            prefAddress1.DoorNumber = 22;
+            prefAddress1.Street = "Holborn";
+            prefAddress1.City = "London";
+            prefAddress1.PostCode = "EC1N 2TD";
+            t1.PreferredAdress = prefAddress1;
+
             var contact1 = new ContactInformation();
             contact1.PhoneNumber = "07283472938";
             contact1.Email = new MailAddress("john.smith@gmail.com");
+
             //Second tenant
             var t2 = new Tenant();
+
             t2.FirstName = "Lewis";
             t2.LastName = "Miller";
             t2.BirthDate = new DateTime(1987, 06, 16);
@@ -350,15 +370,27 @@ namespace PropertyRental
             t2.Smoker = false;
             t2.RentalTerm = 18;
             t2.Gender = Gender.Male;
+
             var a2 = new Address();
+
             a2.DoorNumber = 13;
             a2.Street = "North Parade road";
             a2.City = "Bath";
             a2.PostCode = "BA2 4AL";
             t2.Address = a2;
+
+            var prefAddress2 = new Address();
+            prefAddress2.DoorNumber = 33;
+            prefAddress2.Street = "Foley Street";
+            prefAddress2.City = "London";
+            prefAddress2.PostCode = "W1W 7TL";
+            t2.PreferredAdress = prefAddress2;
+
+
             var contact2 = new ContactInformation();
             contact2.PhoneNumber = "07912384721";
             contact2.Email = new MailAddress("lewis.miller@gmail.com");
+
             //Third tenant
             var t3 = new Tenant();
             t3.FirstName = "Rachel";
@@ -372,15 +404,25 @@ namespace PropertyRental
             t3.Smoker = true;
             t3.RentalTerm = 12;
             t3.Gender = Gender.Female;
+            
             var a3 = new Address();
             a3.DoorNumber = 64;
             a3.Street = "West Street";
             a3.City = "London";
             a3.PostCode = "WC2H 9NQ";
             t3.Address = a3;
+            
             var contact3 = new ContactInformation();
             contact3.PhoneNumber = "07712484721";
             contact3.Email = new MailAddress("rachel.johnson@gmail.com");
+
+            var prefAddress3 = new Address();
+            prefAddress3.DoorNumber = 22;
+            prefAddress3.Street = "Holborn";
+            prefAddress3.City = "London";
+            prefAddress3.PostCode = "EC1N 2TD";
+            t3.PreferredAdress = prefAddress3;
+
             //4th tenant
             var t4 = new Tenant();
             t4.FirstName = "Natasha";
@@ -394,15 +436,25 @@ namespace PropertyRental
             t4.Smoker = false;
             t4.RentalTerm = 12;
             t4.Gender = Gender.Female;
+            
             var a4 = new Address();
             a4.DoorNumber = 16;
             a4.Street = "High Street";
             a4.City = "London";
             a4.PostCode = "W5 5DB";
             t4.Address = a4;
+            
             var contact4 = new ContactInformation();
             contact4.PhoneNumber = "07712484721";
             contact4.Email = new MailAddress("natasha.devon@gmail.com");
+
+            var prefAddress4 = new Address();
+            prefAddress4.DoorNumber = 22;
+            prefAddress4.Street = "Holborn";
+            prefAddress4.City = "London";
+            prefAddress4.PostCode = "EC1N 2TD";
+            t4.PreferredAdress = prefAddress4;
+
             //5th tenant
             var t5 = new Tenant();
             t5.FirstName = "Laurent";
@@ -425,6 +477,14 @@ namespace PropertyRental
             var contact5 = new ContactInformation();
             contact5.PhoneNumber = "07712484727";
             contact5.Email = new MailAddress("laurent.sevran@gmail.com");
+
+            var prefAddress5 = new Address();
+            prefAddress5.DoorNumber = 22;
+            prefAddress5.Street = "Holborn";
+            prefAddress5.City = "London";
+            prefAddress5.PostCode = "EC1N 2TD";
+            t5.PreferredAdress = prefAddress5;
+
             //6th tenant
             var t6 = new Tenant();
             t6.FirstName = "Ali";
@@ -438,15 +498,25 @@ namespace PropertyRental
             t6.Smoker = false;
             t6.RentalTerm = 12;
             t6.Gender = Gender.Male;
+
             var a6 = new Address();
             a6.DoorNumber = 16;
             a6.Street = "Edgware road";
             a6.City = "London";
             a6.PostCode = "W2 2JE";
             t6.Address = a6;
+            
             var contact6 = new ContactInformation();
             contact6.PhoneNumber = "07717487721";
             contact6.Email = new MailAddress("ali.nachef@gmail.com");
+
+            var prefAddress6 = new Address();
+            prefAddress6.DoorNumber = 22;
+            prefAddress6.Street = "Holborn";
+            prefAddress6.City = "London";
+            prefAddress6.PostCode = "EC1N 2TD";
+            t6.PreferredAdress = prefAddress6;
+
             //7th tenant
             var t7 = new Tenant();
             t7.FirstName = "George";
@@ -460,15 +530,25 @@ namespace PropertyRental
             t7.Smoker = false;
             t7.RentalTerm = 12;
             t7.Gender = Gender.Male;
+
             var a7 = new Address();
             a7.DoorNumber = 119;
             a7.Street = "Holland Park Avenue";
             a7.City = "London";
             a7.PostCode = "W11 4UE";
             t7.Address = a7;
+
             var contact7 = new ContactInformation();
             contact7.PhoneNumber = "07832091284";
             contact7.Email = new MailAddress("george.carlin@gmail.com");
+
+            var prefAddress7 = new Address();
+            prefAddress7.DoorNumber = 44;
+            prefAddress7.Street = "Essex Rd";
+            prefAddress7.City = "London";
+            prefAddress7.PostCode = "N1 8LN";
+            t7.PreferredAdress = prefAddress7;
+
             //8th tenant           
             var t8 = new Tenant();
             t8.FirstName = "Michael";
@@ -482,15 +562,25 @@ namespace PropertyRental
             t8.Smoker = false;
             t8.RentalTerm = 24;
             t8.Gender = Gender.Male;
+            
             var a8 = new Address();
             a8.DoorNumber = 119;
             a8.Street = "Holland Park Avenue";
             a8.City = "London";
             a8.PostCode = "W11 4UE";
             t8.Address = a8;
+            
             var contact8 = new ContactInformation();
             contact8.PhoneNumber = "07832091284";
             contact8.Email = new MailAddress("michael.evans@gmail.com");
+
+            var prefAddress8 = new Address();
+            prefAddress8.DoorNumber = 37;
+            prefAddress8.Street = "Berners St";
+            prefAddress8.City = "London";
+            prefAddress8.PostCode = "W1T 3LZ";
+            t8.PreferredAdress = prefAddress8;
+
             //9th tenant
             var t9 = new Tenant();
             t9.FirstName = "William";
@@ -504,15 +594,25 @@ namespace PropertyRental
             t9.Smoker = true;
             t9.RentalTerm = 12;
             t9.Gender = Gender.Male;
+
             var a9 = new Address();
             a9.DoorNumber = 19;
             a9.Street = "Driver street";
             a9.City = "London";
             a9.PostCode = "W6 2EZ";
             t9.Address = a9;
+            
             var contact9 = new ContactInformation();
             contact9.PhoneNumber = "07817321284";
             contact9.Email = new MailAddress("william.white@gmail.com");
+
+            var prefAddress9 = new Address();
+            prefAddress9.DoorNumber = 53;
+            prefAddress9.Street = "Cleveland St";
+            prefAddress9.City = "London";
+            prefAddress9.PostCode = "W1T 4JJ";
+            t9.PreferredAdress = prefAddress9;
+
             //10th tenant
             var t10 = new Tenant();
             t10.FirstName = "Benjamin";
@@ -526,15 +626,25 @@ namespace PropertyRental
             t10.Smoker = false;
             t10.RentalTerm = 6;
             t3.Gender = Gender.Male;
+
             var a10 = new Address();
             a10.DoorNumber = 190;
             a10.Street = "Middleton road";
             a10.City = "London";
             a10.PostCode = "W9 4XV";
             t10.Address = a10;
+            
             var contact10 = new ContactInformation();
             contact10.PhoneNumber = "07817321284";
             contact10.Email = new MailAddress("benjamin.sterling@gmail.com");
+
+            var prefAddress10 = new Address();
+            prefAddress10.DoorNumber = 66;
+            prefAddress10.Street = "Whitfield St";
+            prefAddress10.City = "London";
+            prefAddress10.PostCode = "W1T 4EY";
+            t10.PreferredAdress = prefAddress10;
+
             var TenantList = new List<Tenant>();
             TenantList.Add(t1);
             TenantList.Add(t2);
@@ -546,8 +656,12 @@ namespace PropertyRental
             TenantList.Add(t8);
             TenantList.Add(t9);
             TenantList.Add(t10);
+
             return TenantList;
         }
+
+
+
         public static List<RentalHome> MatchTenantWithHome(Tenant tenant, List<RentalHome> rentalHomes)
         {
             List<RentalHome> matches = new();
@@ -602,12 +716,8 @@ namespace PropertyRental
         public static double RatingScore(Tenant tenant, RentalHome rentalHome, string api)
         {
             double rating = 0;
-            
-            
-            List<Address> AddressList = LogicMethods.GenerateMockAddressList();
 
-            int distanceValue = DistanceCalculation(AddressList[0], AddressList[1], api);
-
+            int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
 
             if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
             {
@@ -647,16 +757,57 @@ namespace PropertyRental
             {
                 rating += 15;
             }
-
-            int idealDistance = 2000;
-            if (distanceValue <= idealDistance)
+            int idealDistance = 500;
+            int acceptableDistance = 2000;
+            int distanceTolerancePercentage = 10;
+            if (walkingDistanceValue > idealDistance || walkingDistanceValue <= acceptableDistance)
             {
                 rating += 50;
+                double distanceToleranceCalculation = distanceTolerancePercentage * walkingDistanceValue / 100;
+                if (walkingDistanceValue <= idealDistance || walkingDistanceValue <= distanceToleranceCalculation)
+                {
+                    rating += 100;
+                }
             }
-            Console.WriteLine("The rating: " + rating);
-            
             return rating;
         }
+
+
+        /*
+            //Walking Distance displayed in meters 
+            
+            if (walkingDistanceValue > idealDistance && walkingDistanceValue <= acceptableDistance)
+                {
+                    rating += 80;
+                    int distanceTolerance = walkingDistanceValue * distanceTolerancePercentage / 100;
+                    if (walkingDistanceValue <= distanceTolerance)
+                    {
+                        rating += 50;
+                    }
+                }
+                    
+                }
+            
+          */
+
+
+
+        //TODO: make the points relative to distance
+        //TODO: make the points relative to distance
+        //TODO: make the points relative to distance
+
+        //TODO: make the points relative to distance
+        //TODO: make the points relative to distance
+
+
+
+
+
+
+
+
+
+
         /// <summary>
         /// The monthly rent is multiplied by 12 to give the total for the year.
         /// Once the total for the year is added up, it is then checked that the total is twice the yearly salary of the prospective tenant. 
@@ -675,6 +826,10 @@ namespace PropertyRental
             }
             return false;
         }
+
+
+
+
         public static void WriteDataStorage(DataStorage lists, string path)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(DataStorage));
@@ -690,6 +845,7 @@ namespace PropertyRental
         }
         public static int DistanceCalculation(Address origin, Address destination, string apiKey)
         {
+            //string bla = $"{origin.City} {origin.Street} {origin.DoorNumber}";
             string start = JsonConvert.SerializeObject(origin);
             string end = JsonConvert.SerializeObject(destination);
 
@@ -697,8 +853,10 @@ namespace PropertyRental
             var body = client.DownloadString($"https://maps.googleapis.com/maps/api/distancematrix/json?destinations={end}&origins={start}&unitsimperial&mode=walking&key={apiKey}");
             var distance = JsonConvert.DeserializeObject<GMapsJsonObj>(body);
             int distanceInt = distance.rows[0].elements[0].distance.value;
-            
+
             return distanceInt;
         }
     }
 }
+
+

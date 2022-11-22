@@ -19,6 +19,7 @@ namespace PropertyRental
             List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
             List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalPropertyList();
             List<Address> AddressList = LogicMethods.GenerateMockAddressList();
+            //List<Address> TenantPreferredAddressList = LogicMethods.GenerateMockTenantPreferredAddressList();
 
             var dStorage = new DataStorage();
 
@@ -28,28 +29,18 @@ namespace PropertyRental
 
             WriteDataStorage(dStorage, path);
 
-            Tenant Tenant = new Tenant();
-            Tenant.Smoker = false;
-            Tenant.Pets = false;
-            Tenant.Children = false;
-            Tenant.Budget = 8000;
-            Tenant.FurnitureRequired = false;
-            Tenant.ParkingRequired = false;
-            Tenant.GardenRequired = false;
-            Tenant.BedRoomsRequired = 3;
-            Tenant.Salary = 122000;
+            List<RentalHome> Matches = MatchTenantWithHome(TenantList[1], RentalHomes);
             
-
-
-            List<RentalHome> Matches = MatchTenantWithHome(Tenant, RentalHomes);
-            
-            //DisplayMatch(Matches);
+            DisplayMatch(Matches);
 
             //RatingScore(TenantList[0], RentalHomes[0]);
 
-            RatingScore(TenantList[1], RentalHomes[1], api);
+            RatingScore(TenantList[9], RentalHomes[1], api);
 
-            //TODO: Add the distance calculation to the Rating method  
+
+            //TODO: add preferred adresses to test data
+            //TODO: build a loop to test all your data
+            //todo: save those results for a (each) tenatn to a list of RatingSystem
 
         }
 
