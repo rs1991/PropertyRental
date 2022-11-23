@@ -35,12 +35,13 @@ namespace PropertyRental
 
             //RatingScore(TenantList[0], RentalHomes[0]);
 
-            RatingScore(TenantList[9], RentalHomes[1], api);
+            RatingScore(TenantList[0], RentalHomes[2], api);
 
 
-            //TODO: add preferred adresses to test data
+            
             //TODO: build a loop to test all your data
-            //todo: save those results for a (each) tenatn to a list of RatingSystem
+            //TODO: save those results for a (each) tenatn to a list of RatingSystem
+            
 
         }
 

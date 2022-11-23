@@ -52,14 +52,14 @@ namespace PropertyRental
             rp2.PetsAllowed = false;
             rp2.ChildrenAllowed = true;
             rp2.Parking = false;
-            
+
             var a2 = new Address();
             a2.DoorNumber = 90;
             a2.Street = "Victoria Road";
             a2.City = "London";
             a2.PostCode = "N9 4XV";
             rp2.Address = a2;
-            
+
             var rp3 = new RentalHome();
             rp3.Furnished = false;
             rp3.Price = 11700;
@@ -75,14 +75,14 @@ namespace PropertyRental
             rp3.PetsAllowed = false;
             rp3.ChildrenAllowed = false;
             rp3.Parking = false;
-            
+
             var a3 = new Address();
             a3.DoorNumber = 4;
             a3.Street = "Lincoln Street";
             a3.City = "London";
             a3.PostCode = "SW3 4QX";
             rp3.Address = a3;
-            
+
             var rp4 = new RentalHome();
             rp4.Furnished = false;
             rp4.Price = 1000;
@@ -98,14 +98,14 @@ namespace PropertyRental
             rp4.PetsAllowed = false;
             rp4.ChildrenAllowed = false;
             rp4.Parking = false;
-            
+
             var a4 = new Address();
             a4.DoorNumber = 31;
             a4.Street = "Hamlet road";
             a4.City = "London";
             a4.PostCode = "SE20 1NF";
             rp4.Address = a4;
-            
+
             var rp5 = new RentalHome();
             rp5.Furnished = false;
             rp5.Price = 1700;
@@ -337,6 +337,11 @@ namespace PropertyRental
             t1.Smoker = true;
             t1.RentalTerm = 12;
             t1.Gender = Gender.Male;
+            t1.FloorSizeRequired = 50;
+            t1.GardenRequired = true;
+            t1.ParkingRequired = true;
+            t1.FurnitureRequired = false;
+            t1.BedRoomsRequired = 2;
 
             var a1 = new Address();
             a1.DoorNumber = 64;
@@ -370,6 +375,11 @@ namespace PropertyRental
             t2.Smoker = false;
             t2.RentalTerm = 18;
             t2.Gender = Gender.Male;
+            t2.FloorSizeRequired = 55;
+            t2.GardenRequired = true;
+            t2.ParkingRequired = true;
+            t2.FurnitureRequired = false;
+            t2.BedRoomsRequired = 3;
 
             var a2 = new Address();
 
@@ -404,14 +414,19 @@ namespace PropertyRental
             t3.Smoker = true;
             t3.RentalTerm = 12;
             t3.Gender = Gender.Female;
-            
+            t3.FloorSizeRequired = 30;
+            t3.GardenRequired = false;
+            t3.ParkingRequired = true;
+            t3.FurnitureRequired = false;
+            t3.BedRoomsRequired = 3;
+
             var a3 = new Address();
             a3.DoorNumber = 64;
             a3.Street = "West Street";
             a3.City = "London";
             a3.PostCode = "WC2H 9NQ";
             t3.Address = a3;
-            
+
             var contact3 = new ContactInformation();
             contact3.PhoneNumber = "07712484721";
             contact3.Email = new MailAddress("rachel.johnson@gmail.com");
@@ -431,19 +446,24 @@ namespace PropertyRental
             t4.JobTitle = "Librarian";
             t4.Nationality = "British";
             t4.Salary = 150555;
-            t4.Children = true;
+            t4.Children = false;
             t4.Pets = true;
             t4.Smoker = false;
             t4.RentalTerm = 12;
             t4.Gender = Gender.Female;
-            
+            t4.FloorSizeRequired = 30;
+            t4.GardenRequired = false;
+            t4.ParkingRequired = false;
+            t4.FurnitureRequired = false;
+            t4.BedRoomsRequired = 1;
+
             var a4 = new Address();
             a4.DoorNumber = 16;
             a4.Street = "High Street";
             a4.City = "London";
             a4.PostCode = "W5 5DB";
             t4.Address = a4;
-            
+
             var contact4 = new ContactInformation();
             contact4.PhoneNumber = "07712484721";
             contact4.Email = new MailAddress("natasha.devon@gmail.com");
@@ -468,12 +488,19 @@ namespace PropertyRental
             t5.Smoker = true;
             t5.RentalTerm = 12;
             t5.Gender = Gender.Male;
+            t5.FloorSizeRequired = 35;
+            t5.GardenRequired = false;
+            t5.ParkingRequired = false;
+            t5.FurnitureRequired = false;
+            t5.BedRoomsRequired = 1;
+
             var a5 = new Address();
             a5.DoorNumber = 16;
             a5.Street = "South Kensington";
             a5.City = "London";
             a5.PostCode = "SW7 4RB";
             t5.Address = a5;
+
             var contact5 = new ContactInformation();
             contact5.PhoneNumber = "07712484727";
             contact5.Email = new MailAddress("laurent.sevran@gmail.com");
@@ -498,6 +525,11 @@ namespace PropertyRental
             t6.Smoker = false;
             t6.RentalTerm = 12;
             t6.Gender = Gender.Male;
+            t6.FloorSizeRequired = 30;
+            t6.GardenRequired = true;
+            t6.ParkingRequired = true;
+            t6.FurnitureRequired = false;
+            t6.BedRoomsRequired = 2;
 
             var a6 = new Address();
             a6.DoorNumber = 16;
@@ -505,7 +537,7 @@ namespace PropertyRental
             a6.City = "London";
             a6.PostCode = "W2 2JE";
             t6.Address = a6;
-            
+
             var contact6 = new ContactInformation();
             contact6.PhoneNumber = "07717487721";
             contact6.Email = new MailAddress("ali.nachef@gmail.com");
@@ -530,6 +562,11 @@ namespace PropertyRental
             t7.Smoker = false;
             t7.RentalTerm = 12;
             t7.Gender = Gender.Male;
+            t7.FloorSizeRequired = 30;
+            t7.GardenRequired = true;
+            t7.ParkingRequired = false;
+            t7.FurnitureRequired = true;
+            t7.BedRoomsRequired = 3;
 
             var a7 = new Address();
             a7.DoorNumber = 119;
@@ -562,14 +599,19 @@ namespace PropertyRental
             t8.Smoker = false;
             t8.RentalTerm = 24;
             t8.Gender = Gender.Male;
-            
+            t8.FloorSizeRequired = 100;
+            t8.GardenRequired = true;
+            t8.ParkingRequired = true;
+            t8.FurnitureRequired = true;
+            t8.BedRoomsRequired = 5;
+
             var a8 = new Address();
             a8.DoorNumber = 119;
             a8.Street = "Holland Park Avenue";
             a8.City = "London";
             a8.PostCode = "W11 4UE";
             t8.Address = a8;
-            
+
             var contact8 = new ContactInformation();
             contact8.PhoneNumber = "07832091284";
             contact8.Email = new MailAddress("michael.evans@gmail.com");
@@ -594,6 +636,11 @@ namespace PropertyRental
             t9.Smoker = true;
             t9.RentalTerm = 12;
             t9.Gender = Gender.Male;
+            t9.FloorSizeRequired = 100;
+            t9.GardenRequired = false;
+            t9.ParkingRequired = true;
+            t9.FurnitureRequired = true;
+            t9.BedRoomsRequired = 5;
 
             var a9 = new Address();
             a9.DoorNumber = 19;
@@ -601,7 +648,7 @@ namespace PropertyRental
             a9.City = "London";
             a9.PostCode = "W6 2EZ";
             t9.Address = a9;
-            
+
             var contact9 = new ContactInformation();
             contact9.PhoneNumber = "07817321284";
             contact9.Email = new MailAddress("william.white@gmail.com");
@@ -625,7 +672,12 @@ namespace PropertyRental
             t10.Pets = false;
             t10.Smoker = false;
             t10.RentalTerm = 6;
-            t3.Gender = Gender.Male;
+            t10.Gender = Gender.Male;
+            t10.FloorSizeRequired = 60;
+            t10.GardenRequired = false;
+            t10.ParkingRequired = true;
+            t10.FurnitureRequired = false;
+            t10.BedRoomsRequired = 3;
 
             var a10 = new Address();
             a10.DoorNumber = 190;
@@ -633,7 +685,7 @@ namespace PropertyRental
             a10.City = "London";
             a10.PostCode = "W9 4XV";
             t10.Address = a10;
-            
+
             var contact10 = new ContactInformation();
             contact10.PhoneNumber = "07817321284";
             contact10.Email = new MailAddress("benjamin.sterling@gmail.com");
@@ -715,98 +767,72 @@ namespace PropertyRental
         /// <returns>Rating</returns>
         public static double RatingScore(Tenant tenant, RentalHome rentalHome, string api)
         {
-            double rating = 0;
-
+            double points = 0;
             int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
+            int idealDistance = 500;
+            int acceptableDistance = 2000;
+            int distanceTolerancePercentage = 10;
 
+            if (walkingDistanceValue > idealDistance || walkingDistanceValue <= acceptableDistance)
+            {
+                points += 50;
+                double distanceToleranceCalculation = distanceTolerancePercentage * walkingDistanceValue / 100;
+                if (walkingDistanceValue <= idealDistance || walkingDistanceValue <= distanceToleranceCalculation)
+                {
+                    points += 100;
+                }
+            }
+            double floorSizeTolerancePercentage = 10;
+            double floorSizeTolerance;
+            if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
+            {
+                points += 20;
+                floorSizeTolerance = floorSizeTolerancePercentage * rentalHome.FloorSize / 100;
+                double newFloorSize = floorSizeTolerance + rentalHome.FloorSize;
+                if (newFloorSize <= floorSizeTolerance)
+                {
+                    points += 10;
+                }
+            }
             if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
             {
-                rating += 10;
+                points += 10;
             }
             if (tenant.Pets != rentalHome.PetsAllowed && tenant.Pets == true)
             {
-                rating += 10;
+                points += 10;
             }
             if (tenant.Children != rentalHome.ChildrenAllowed && tenant.Children == true)
             {
-                rating += 5;
+                points += 5;
             }
             if (tenant.Budget > rentalHome.Price)
             {
                 double score;
                 score = tenant.Budget / rentalHome.Price * 100;
-                rating = rating + score;
+                points = points + score;
             }
-            if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
-            {
-                rating += 5;
-            }
-            if (tenant.ParkingRequired != rentalHome.Parking && tenant.ParkingRequired == true)
-            {
-                rating += 5;
-            }
-            if (tenant.GardenRequired != rentalHome.Garden && tenant.GardenRequired == true)
-            {
-                rating += 5;
-            }
-            if (rentalHome.BedRooms >= tenant.BedRoomsRequired)
-            {
-                rating += 15;
-            }
-            if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
-            {
-                rating += 15;
-            }
-            int idealDistance = 500;
-            int acceptableDistance = 2000;
-            int distanceTolerancePercentage = 10;
-            if (walkingDistanceValue > idealDistance || walkingDistanceValue <= acceptableDistance)
-            {
-                rating += 50;
-                double distanceToleranceCalculation = distanceTolerancePercentage * walkingDistanceValue / 100;
-                if (walkingDistanceValue <= idealDistance || walkingDistanceValue <= distanceToleranceCalculation)
+                if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
                 {
-                    rating += 100;
+                points += 5;
                 }
-            }
-            return rating;
-        }
-
-
-        /*
-            //Walking Distance displayed in meters 
-            
-            if (walkingDistanceValue > idealDistance && walkingDistanceValue <= acceptableDistance)
+                if (tenant.ParkingRequired != rentalHome.Parking && tenant.ParkingRequired == true)
                 {
-                    rating += 80;
-                    int distanceTolerance = walkingDistanceValue * distanceTolerancePercentage / 100;
-                    if (walkingDistanceValue <= distanceTolerance)
-                    {
-                        rating += 50;
-                    }
+                points += 5;
                 }
-                    
+                if (tenant.GardenRequired != rentalHome.Garden && tenant.GardenRequired == true)
+                {
+                points += 5;
                 }
-            
-          */
-
-
-
-        //TODO: make the points relative to distance
-        //TODO: make the points relative to distance
-        //TODO: make the points relative to distance
-
-        //TODO: make the points relative to distance
-        //TODO: make the points relative to distance
-
-
-
-
-
-
-
-
-
+                if (rentalHome.BedRooms >= tenant.BedRoomsRequired)
+                {
+                points += 15;
+                }
+                return points;
+            }
+        
+         
+    
 
         /// <summary>
         /// The monthly rent is multiplied by 12 to give the total for the year.
