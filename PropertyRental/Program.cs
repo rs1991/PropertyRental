@@ -35,7 +35,7 @@ namespace PropertyRental
 
             //RatingScore(TenantList[0], RentalHomes[0]);
 
-            RatingScore(TenantList[0], RentalHomes[2], api);
+            RatingScore(TenantList[1], RentalHomes[5], api);
 
 
             

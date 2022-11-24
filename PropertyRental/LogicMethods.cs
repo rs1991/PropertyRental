@@ -30,6 +30,8 @@ namespace PropertyRental
             rp1.PetsAllowed = false;
             rp1.ChildrenAllowed = false;
             rp1.Parking = false;
+            rp1.FloorSize = 100;
+            
             var a1 = new Address();
             a1.DoorNumber = 134;
             a1.Street = "Darwin Road";
@@ -52,6 +54,7 @@ namespace PropertyRental
             rp2.PetsAllowed = false;
             rp2.ChildrenAllowed = true;
             rp2.Parking = false;
+            rp2.FloorSize = 50;
 
             var a2 = new Address();
             a2.DoorNumber = 90;
@@ -75,6 +78,7 @@ namespace PropertyRental
             rp3.PetsAllowed = false;
             rp3.ChildrenAllowed = false;
             rp3.Parking = false;
+            rp3.FloorSize = 60;
 
             var a3 = new Address();
             a3.DoorNumber = 4;
@@ -98,6 +102,7 @@ namespace PropertyRental
             rp4.PetsAllowed = false;
             rp4.ChildrenAllowed = false;
             rp4.Parking = false;
+            rp4.FloorSize = 90;
 
             var a4 = new Address();
             a4.DoorNumber = 31;
@@ -121,12 +126,15 @@ namespace PropertyRental
             rp5.PetsAllowed = false;
             rp5.ChildrenAllowed = false;
             rp5.Parking = false;
+            rp5.FloorSize = 45;
+
             var a5 = new Address();
             a5.DoorNumber = 2;
             a5.Street = "Sunset Avenue";
             a5.City = "London";
             a5.PostCode = "E4 8OM";
             rp5.Address = a5;
+            
             var rp6 = new RentalHome();
             rp6.Furnished = false;
             rp6.Price = 2400;
@@ -142,12 +150,15 @@ namespace PropertyRental
             rp6.PetsAllowed = false;
             rp6.ChildrenAllowed = false;
             rp6.Parking = false;
+            rp6.FloorSize = 105;
+
             var a6 = new Address();
             a6.DoorNumber = 190;
             a6.Street = "Bury Street";
             a6.City = "London";
             a6.PostCode = "N9 9JZ";
             rp6.Address = a6;
+            
             var rp7 = new RentalHome();
             rp7.Furnished = false;
             rp7.Price = 5850;
@@ -163,12 +174,15 @@ namespace PropertyRental
             rp7.PetsAllowed = false;
             rp7.ChildrenAllowed = false;
             rp7.Parking = false;
+            rp7.FloorSize = 55;
+
             var a7 = new Address();
             a7.DoorNumber = 190;
             a7.Street = "Water road";
             a7.City = "London";
             a7.PostCode = "W4 7XT";
             rp7.Address = a7;
+            
             var rp8 = new RentalHome();
             rp8.Furnished = false;
             rp8.Price = 2500;
@@ -184,12 +198,15 @@ namespace PropertyRental
             rp8.PetsAllowed = false;
             rp8.ChildrenAllowed = false;
             rp8.Parking = false;
+            rp8.FloorSize = 66;
+
             var a8 = new Address();
             a8.DoorNumber = 40;
             a8.Street = "Tizzard Grove";
             a8.City = "London";
             a8.PostCode = "SE13 8EQ";
             rp8.Address = a8;
+            
             var rp9 = new RentalHome();
             rp9.Furnished = false;
             rp9.Price = 67000;
@@ -205,12 +222,15 @@ namespace PropertyRental
             rp9.PetsAllowed = false;
             rp9.ChildrenAllowed = false;
             rp9.Parking = false;
+            rp9.FloorSize = 40;
+
             var a9 = new Address();
             a9.DoorNumber = 12;
             a9.Street = "Herbert Crescent";
             a9.City = "London";
             a9.PostCode = "SW1X 7LA";
             rp9.Address = a9;
+            
             var rp10 = new RentalHome();
             rp10.Furnished = false;
             rp10.Price = 4000;
@@ -226,6 +246,8 @@ namespace PropertyRental
             rp10.PetsAllowed = false;
             rp10.ChildrenAllowed = false;
             rp10.Parking = false;
+            rp10.FloorSize = 70;
+
             var a10 = new Address();
             a10.DoorNumber = 18;
             a10.Street = "Brownlow road";
@@ -234,6 +256,7 @@ namespace PropertyRental
             rp10.Address = a10;
 
             List<RentalHome> ListOfRentalProperties = new List<RentalHome>();
+           
             ListOfRentalProperties.Add(rp1);
             ListOfRentalProperties.Add(rp2);
             ListOfRentalProperties.Add(rp3);
@@ -244,6 +267,7 @@ namespace PropertyRental
             ListOfRentalProperties.Add(rp8);
             ListOfRentalProperties.Add(rp9);
             ListOfRentalProperties.Add(rp10);
+            
             return ListOfRentalProperties;
         }
         public static List<Address> GenerateMockAddressList()
@@ -769,18 +793,16 @@ namespace PropertyRental
         {
             double points = 0;
             int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
-            int idealDistance = 500;
-            int acceptableDistance = 2000;
-            int distanceTolerancePercentage = 10;
-
-            if (walkingDistanceValue > idealDistance || walkingDistanceValue <= acceptableDistance)
+            int maximumAcceptedwalkingDistanceValue = 5000;
+            if (walkingDistanceValue > maximumAcceptedwalkingDistanceValue)
             {
-                points += 50;
-                double distanceToleranceCalculation = distanceTolerancePercentage * walkingDistanceValue / 100;
-                if (walkingDistanceValue <= idealDistance || walkingDistanceValue <= distanceToleranceCalculation)
-                {
-                    points += 100;
-                }
+                points += 0;
+            }
+            if (walkingDistanceValue <= maximumAcceptedwalkingDistanceValue)
+            {
+                points = maximumAcceptedwalkingDistanceValue - walkingDistanceValue;
+                points = points / 100;
+                points += points;
             }
             double floorSizeTolerancePercentage = 10;
             double floorSizeTolerance;
@@ -794,42 +816,42 @@ namespace PropertyRental
                     points += 10;
                 }
             }
-            if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
-            {
-                points += 10;
-            }
-            if (tenant.Pets != rentalHome.PetsAllowed && tenant.Pets == true)
-            {
-                points += 10;
-            }
-            if (tenant.Children != rentalHome.ChildrenAllowed && tenant.Children == true)
-            {
-                points += 5;
-            }
-            if (tenant.Budget > rentalHome.Price)
-            {
-                double score;
-                score = tenant.Budget / rentalHome.Price * 100;
-                points = points + score;
-            }
+                if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
+                {
+                    points += 10;
+                }
+                if (tenant.Pets != rentalHome.PetsAllowed && tenant.Pets == true)
+                {
+                    points += 10;
+                }
+                if (tenant.Children != rentalHome.ChildrenAllowed && tenant.Children == true)
+                {
+                    points += 5;
+                }
+                if (tenant.Budget > rentalHome.Price)
+                {
+                    double score;
+                    score = tenant.Budget / rentalHome.Price * 100;
+                    points = points + score;
+                }
                 if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
                 {
-                points += 5;
+                    points += 5;
                 }
                 if (tenant.ParkingRequired != rentalHome.Parking && tenant.ParkingRequired == true)
                 {
-                points += 5;
+                    points += 5;
                 }
                 if (tenant.GardenRequired != rentalHome.Garden && tenant.GardenRequired == true)
                 {
-                points += 5;
+                    points += 5;
                 }
                 if (rentalHome.BedRooms >= tenant.BedRoomsRequired)
                 {
-                points += 15;
+                    points += 15;
                 }
                 return points;
-            }
+        }
         
          
     
@@ -884,5 +906,6 @@ namespace PropertyRental
         }
     }
 }
+
 
 
