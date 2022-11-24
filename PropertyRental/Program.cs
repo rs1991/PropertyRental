@@ -3,6 +3,7 @@ using static PropertyRental.UiMethods;
 using static PropertyRental.LogicMethods;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace PropertyRental
 {
@@ -13,7 +14,6 @@ namespace PropertyRental
 
             var path = @"C:\tmp\MockDataStorage.xml";
             string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
-
 
 
             List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
@@ -29,17 +29,7 @@ namespace PropertyRental
 
             WriteDataStorage(dStorage, path);
 
-            //List<RentalHome> Matches = MatchTenantWithHome(TenantList[1], RentalHomes);
-
-            //DisplayMatch(Matches);
-
-            foreach(var tenant in TenantList)
-            {
-                HomeScoreList(RentalHomes, tenant, api);
-               
-     
-            }
-            
+            DisplayHomeScoreList(RentalHomes, TenantList, api);
 
 
             //TODO: build a loop to test all your data

@@ -38,5 +38,13 @@ namespace PropertyRental
                     Console.WriteLine($"Home: {home} Score: {score}");
             }
         }
+
+        public static void DisplayHomeScoreList(List<RentalHome> RentalHomes, List<Tenant> TenantList, string api)
+        {
+            foreach (var tenant in TenantList)
+            {
+                HomeScoreList(RentalHomes, tenant, api);
+            }
+        }
     }
 }
