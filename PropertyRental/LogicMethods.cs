@@ -791,10 +791,11 @@ namespace PropertyRental
         /// <returns>Rating</returns>
         public static double RatingScore(Tenant tenant, RentalHome rentalHome, string api)
         {
+            
             double points = 0;
             int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
             int maximumAcceptedwalkingDistanceValue = 5000;
-            if (walkingDistanceValue > maximumAcceptedwalkingDistanceValue)
+                      if (walkingDistanceValue > maximumAcceptedwalkingDistanceValue)
             {
                 points += 0;
             }
@@ -850,7 +851,7 @@ namespace PropertyRental
                 {
                     points += 15;
                 }
-                return points;
+            return points;
         }
         
          

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Xml;
 using System.Text.RegularExpressions;
+using static PropertyRental.LogicMethods;
 
 namespace PropertyRental
 {
@@ -25,6 +26,17 @@ namespace PropertyRental
             
             Console.WriteLine($"This home has a rating of: {TotalScore}");
         }
-        
+
+        public static void HomeScoreList(List<RentalHome> RentalHomes, Tenant tenant, string api)
+        {
+            List<RentalHome> ListOfHomes = new List<RentalHome>();
+            foreach (var home in RentalHomes)
+            {
+                    double score = RatingScore(tenant, home, api);
+                    ListOfHomes.Add(home);
+                    MatchTenantWithHome(tenant, RentalHomes);
+                    Console.WriteLine($"Home: {home} Score: {score}");
+            }
+        }
     }
 }

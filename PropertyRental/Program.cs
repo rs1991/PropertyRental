@@ -10,7 +10,7 @@ namespace PropertyRental
     {
         static void Main(string[] args)
         {
-            
+
             var path = @"C:\tmp\MockDataStorage.xml";
             string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
 
@@ -19,7 +19,7 @@ namespace PropertyRental
             List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
             List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalPropertyList();
             List<Address> AddressList = LogicMethods.GenerateMockAddressList();
-            //List<Address> TenantPreferredAddressList = LogicMethods.GenerateMockTenantPreferredAddressList();
+          //List<Address> TenantPreferredAddressList = LogicMethods.GenerateMockTenantPreferredAddressList();
 
             var dStorage = new DataStorage();
 
@@ -29,19 +29,22 @@ namespace PropertyRental
 
             WriteDataStorage(dStorage, path);
 
-            List<RentalHome> Matches = MatchTenantWithHome(TenantList[1], RentalHomes);
+            //List<RentalHome> Matches = MatchTenantWithHome(TenantList[1], RentalHomes);
+
+            //DisplayMatch(Matches);
+
+            foreach(var tenant in TenantList)
+            {
+                HomeScoreList(RentalHomes, tenant, api);
+               
+     
+            }
             
-            DisplayMatch(Matches);
-
-            //RatingScore(TenantList[0], RentalHomes[0]);
-
-            RatingScore(TenantList[1], RentalHomes[5], api);
 
 
-            
             //TODO: build a loop to test all your data
             //TODO: save those results for a (each) tenatn to a list of RatingSystem
-            
+
 
         }
 
