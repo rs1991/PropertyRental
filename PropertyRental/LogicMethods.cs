@@ -19,7 +19,7 @@ namespace PropertyRental
             rp1.Furnished = false;
             rp1.Price = 1350;
             rp1.RentalDuration = 12;
-            rp1.AvailableOn = new DateOnly(2022, 11, 22);
+            rp1.AvailableOn = new DateTime(2022, 11, 22);
             rp1.BedRooms = 1;
             rp1.Description = "This light and spacious ground floor one bedroom flat.";
             rp1.Agency = "Sargeants";
@@ -795,7 +795,10 @@ namespace PropertyRental
             double points = 0;
             int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
             int maximumAcceptedwalkingDistanceValue = 5000;
-                      if (walkingDistanceValue > maximumAcceptedwalkingDistanceValue)
+            double floorSizeTolerancePercentage = 10;
+            double floorSizeTolerance;
+
+            if (walkingDistanceValue > maximumAcceptedwalkingDistanceValue)
             {
                 points += 0;
             }
@@ -805,8 +808,7 @@ namespace PropertyRental
                 points = points / 100;
                 points += points;
             }
-            double floorSizeTolerancePercentage = 10;
-            double floorSizeTolerance;
+            
             if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
             {
                 points += 20;
@@ -851,6 +853,7 @@ namespace PropertyRental
                 {
                     points += 15;
                 }
+                if(rentalHome.AvailableOn < tenant)
             return points;
         }
         
@@ -875,8 +878,6 @@ namespace PropertyRental
             }
             return false;
         }
-
-
 
 
         public static void WriteDataStorage(DataStorage lists, string path)

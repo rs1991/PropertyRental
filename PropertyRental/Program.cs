@@ -29,11 +29,13 @@ namespace PropertyRental
 
             WriteDataStorage(dStorage, path);
 
+
             DisplayHomeScoreList(RentalHomes, TenantList, api);
-
-
+            
             //TODO: build a loop to test all your data
             //TODO: save those results for a (each) tenatn to a list of RatingSystem
+
+            
 
 
         }

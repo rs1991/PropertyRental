@@ -11,7 +11,7 @@ namespace PropertyRental
     {
         
         private Address _address;
-        private DateOnly _availableOn;
+        private DateTime _availableOn;
         private int _bedRooms;
         private TypeOfHome _homeType;
         private string _description;
@@ -162,7 +162,7 @@ namespace PropertyRental
         /// <summary>
         /// Date property will be available
         /// </summary>
-        public DateOnly AvailableOn
+        public DateTime AvailableOn
         {
             get { return _availableOn; }
             set { _availableOn = value; }
