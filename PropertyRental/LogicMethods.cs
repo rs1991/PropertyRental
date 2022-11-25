@@ -43,7 +43,7 @@ namespace PropertyRental
             rp2.Furnished = false;
             rp2.Price = 2200;
             rp2.RentalDuration = 12;
-            rp2.AvailableOn = new DateOnly(2022, 10, 13);
+            rp2.AvailableOn = new DateTime(2022, 10, 13);
             rp2.BedRooms = 4;
             rp2.Description = "We are delighted to offer for rent this 4 bedroom terrace house within walking distance to local amenities";
             rp2.Agency = "Open Rent";
@@ -67,7 +67,7 @@ namespace PropertyRental
             rp3.Furnished = false;
             rp3.Price = 11700;
             rp3.RentalDuration = 12;
-            rp3.AvailableOn = new DateOnly(2023, 01, 02);
+            rp3.AvailableOn = new DateTime(2023, 01, 02);
             rp3.BedRooms = 3;
             rp3.Description = "An outstanding three bedroom Georgian family home";
             rp3.Agency = "Dexters";
@@ -91,7 +91,7 @@ namespace PropertyRental
             rp4.Furnished = false;
             rp4.Price = 1000;
             rp4.RentalDuration = 12;
-            rp4.AvailableOn = new DateOnly(2022, 11, 30);
+            rp4.AvailableOn = new DateTime(2022, 11, 30);
             rp4.BedRooms = 3;
             rp4.Description = "Situated just moments from Crystal Palace Station and Park";
             rp4.Agency = "Streets ahead";
@@ -115,7 +115,7 @@ namespace PropertyRental
             rp5.Furnished = false;
             rp5.Price = 1700;
             rp5.RentalDuration = 12;
-            rp5.AvailableOn = new DateOnly(2022, 09, 29);
+            rp5.AvailableOn = new DateTime(2022, 09, 29);
             rp5.BedRooms = 3;
             rp5.Description = "A spacious 2 bedroom bungalow built circa 1930 ";
             rp5.Agency = "Amanda Roberts agency";
@@ -139,7 +139,7 @@ namespace PropertyRental
             rp6.Furnished = false;
             rp6.Price = 2400;
             rp6.RentalDuration = 12;
-            rp6.AvailableOn = new DateOnly(2022, 12, 14);
+            rp6.AvailableOn = new DateTime(2022, 12, 14);
             rp6.BedRooms = 3;
             rp6.Description = "Rare to market, very unique and modern";
             rp6.Agency = "Open rent";
@@ -163,7 +163,7 @@ namespace PropertyRental
             rp7.Furnished = false;
             rp7.Price = 5850;
             rp7.RentalDuration = 6;
-            rp7.AvailableOn = new DateOnly(2023, 02, 10);
+            rp7.AvailableOn = new DateTime(2023, 02, 10);
             rp7.BedRooms = 3;
             rp7.Description = "This stunning and truly unique penthouse apartment is full of character ";
             rp7.Agency = "John D Wood and Co";
@@ -187,7 +187,7 @@ namespace PropertyRental
             rp8.Furnished = false;
             rp8.Price = 2500;
             rp8.RentalDuration = 3;
-            rp8.AvailableOn = new DateOnly(2022, 12, 10);
+            rp8.AvailableOn = new DateTime(2022, 12, 10);
             rp8.BedRooms = 5;
             rp8.Description = "Proud to present this luxury, bright, and spacious";
             rp8.Agency = "B&C Properties";
@@ -211,7 +211,7 @@ namespace PropertyRental
             rp9.Furnished = false;
             rp9.Price = 67000;
             rp9.RentalDuration = 12;
-            rp9.AvailableOn = new DateOnly(2022, 03, 01);
+            rp9.AvailableOn = new DateTime(2022, 03, 01);
             rp9.BedRooms = 3;
             rp9.Description = "Home near Harrods";
             rp9.Agency = "Stanley Properties";
@@ -235,7 +235,7 @@ namespace PropertyRental
             rp10.Furnished = false;
             rp10.Price = 4000;
             rp10.RentalDuration = 12;
-            rp10.AvailableOn = new DateOnly(2022, 10, 03);
+            rp10.AvailableOn = new DateTime(2022, 10, 03);
             rp10.BedRooms = 3;
             rp10.Description = "A stunning four-bedroom mid-terrace house situated ";
             rp10.Agency = "View Properties";
@@ -854,6 +854,9 @@ namespace PropertyRental
                     points += 15;
                 }
                 if(rentalHome.AvailableOn < tenant)
+            {
+
+            }
             return points;
         }
         
