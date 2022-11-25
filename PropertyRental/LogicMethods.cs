@@ -702,6 +702,7 @@ namespace PropertyRental
             t10.ParkingRequired = true;
             t10.FurnitureRequired = false;
             t10.BedRoomsRequired = 3;
+            
 
             var a10 = new Address();
             a10.DoorNumber = 190;

@@ -12,6 +12,7 @@ namespace PropertyRental
         private string _firstName;
         private string _lastName;
         private DateTime _birthDate;
+        private DateTime _availableToMoveOn;
         private string _jobTitle;
         private string _nationality;
         private double _salary;
@@ -119,6 +120,15 @@ namespace PropertyRental
             set { _birthDate = value; }
         }
 
+        /// <summary>
+        /// Date that the tenant is available to move on
+        /// </summary>
+        public DateTime AvailableToMoveOn
+        {
+            get { return _availableToMoveOn; }
+            set { _availableToMoveOn = value; }
+        }
+      
         public string JobTitle
         {
             get { return _jobTitle; }
