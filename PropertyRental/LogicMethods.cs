@@ -19,7 +19,7 @@ namespace PropertyRental
             rp1.Furnished = false;
             rp1.Price = 1350;
             rp1.RentalDuration = 12;
-            rp1.AvailableOn = new DateTime(2022, 11, 22);
+            rp1.AvailableOn = new DateTime(2022, 11, 30);
             rp1.BedRooms = 1;
             rp1.Description = "This light and spacious ground floor one bedroom flat.";
             rp1.Agency = "Sargeants";
@@ -43,7 +43,7 @@ namespace PropertyRental
             rp2.Furnished = false;
             rp2.Price = 2200;
             rp2.RentalDuration = 12;
-            rp2.AvailableOn = new DateTime(2022, 10, 13);
+            rp2.AvailableOn = new DateTime(2022, 11, 30);
             rp2.BedRooms = 4;
             rp2.Description = "We are delighted to offer for rent this 4 bedroom terrace house within walking distance to local amenities";
             rp2.Agency = "Open Rent";
@@ -366,6 +366,7 @@ namespace PropertyRental
             t1.ParkingRequired = true;
             t1.FurnitureRequired = false;
             t1.BedRoomsRequired = 2;
+            t1.AvailableToMoveOn = new DateTime(2022, 12, 08);
 
             var a1 = new Address();
             a1.DoorNumber = 64;
@@ -404,6 +405,7 @@ namespace PropertyRental
             t2.ParkingRequired = true;
             t2.FurnitureRequired = false;
             t2.BedRoomsRequired = 3;
+            t2.AvailableToMoveOn = new DateTime(2022, 12, 10);
 
             var a2 = new Address();
 
@@ -443,6 +445,7 @@ namespace PropertyRental
             t3.ParkingRequired = true;
             t3.FurnitureRequired = false;
             t3.BedRoomsRequired = 3;
+            t3.AvailableToMoveOn = new DateTime(2022, 12, 14);
 
             var a3 = new Address();
             a3.DoorNumber = 64;
@@ -480,6 +483,7 @@ namespace PropertyRental
             t4.ParkingRequired = false;
             t4.FurnitureRequired = false;
             t4.BedRoomsRequired = 1;
+            t4.AvailableToMoveOn = new DateTime(2022, 12, 14);
 
             var a4 = new Address();
             a4.DoorNumber = 16;
@@ -517,6 +521,7 @@ namespace PropertyRental
             t5.ParkingRequired = false;
             t5.FurnitureRequired = false;
             t5.BedRoomsRequired = 1;
+            t5.AvailableToMoveOn = new DateTime(2022, 12, 14);
 
             var a5 = new Address();
             a5.DoorNumber = 16;
@@ -554,6 +559,7 @@ namespace PropertyRental
             t6.ParkingRequired = true;
             t6.FurnitureRequired = false;
             t6.BedRoomsRequired = 2;
+            t6.AvailableToMoveOn = new DateTime(2022, 12, 14);
 
             var a6 = new Address();
             a6.DoorNumber = 16;
@@ -591,6 +597,7 @@ namespace PropertyRental
             t7.ParkingRequired = false;
             t7.FurnitureRequired = true;
             t7.BedRoomsRequired = 3;
+            t7.AvailableToMoveOn = new DateTime(2022, 12, 14);
 
             var a7 = new Address();
             a7.DoorNumber = 119;
@@ -628,6 +635,7 @@ namespace PropertyRental
             t8.ParkingRequired = true;
             t8.FurnitureRequired = true;
             t8.BedRoomsRequired = 5;
+            t8.AvailableToMoveOn = new DateTime(2022, 12, 14);
 
             var a8 = new Address();
             a8.DoorNumber = 119;
@@ -665,6 +673,7 @@ namespace PropertyRental
             t9.ParkingRequired = true;
             t9.FurnitureRequired = true;
             t9.BedRoomsRequired = 5;
+            t9.AvailableToMoveOn = new DateTime(2022, 12, 30);
 
             var a9 = new Address();
             a9.DoorNumber = 19;
@@ -702,7 +711,7 @@ namespace PropertyRental
             t10.ParkingRequired = true;
             t10.FurnitureRequired = false;
             t10.BedRoomsRequired = 3;
-            
+            t10.AvailableToMoveOn = new DateTime(2022, 11, 30);
 
             var a10 = new Address();
             a10.DoorNumber = 190;
@@ -854,10 +863,11 @@ namespace PropertyRental
                 {
                     points += 15;
                 }
-                if(rentalHome.AvailableOn < tenant)
-            {
-
-            }
+                if(rentalHome.AvailableOn == tenant.AvailableToMoveOn)
+                {
+                    points += 100;
+                }
+                
             return points;
         }
         
