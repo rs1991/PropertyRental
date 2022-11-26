@@ -91,7 +91,7 @@ namespace PropertyRental
             rp4.Furnished = false;
             rp4.Price = 1000;
             rp4.RentalDuration = 12;
-            rp4.AvailableOn = new DateTime(2022, 11, 30);
+            rp4.AvailableOn = new DateTime(2022, 11, 29);
             rp4.BedRooms = 3;
             rp4.Description = "Situated just moments from Crystal Palace Station and Park";
             rp4.Agency = "Streets ahead";
@@ -115,7 +115,7 @@ namespace PropertyRental
             rp5.Furnished = false;
             rp5.Price = 1700;
             rp5.RentalDuration = 12;
-            rp5.AvailableOn = new DateTime(2022, 09, 29);
+            rp5.AvailableOn = new DateTime(2022, 12, 29);
             rp5.BedRooms = 3;
             rp5.Description = "A spacious 2 bedroom bungalow built circa 1930 ";
             rp5.Agency = "Amanda Roberts agency";
@@ -139,7 +139,7 @@ namespace PropertyRental
             rp6.Furnished = false;
             rp6.Price = 2400;
             rp6.RentalDuration = 12;
-            rp6.AvailableOn = new DateTime(2022, 12, 14);
+            rp6.AvailableOn = new DateTime(2023, 01, 14);
             rp6.BedRooms = 3;
             rp6.Description = "Rare to market, very unique and modern";
             rp6.Agency = "Open rent";
@@ -211,7 +211,7 @@ namespace PropertyRental
             rp9.Furnished = false;
             rp9.Price = 67000;
             rp9.RentalDuration = 12;
-            rp9.AvailableOn = new DateTime(2022, 03, 01);
+            rp9.AvailableOn = new DateTime(2023, 03, 01);
             rp9.BedRooms = 3;
             rp9.Description = "Home near Harrods";
             rp9.Agency = "Stanley Properties";
@@ -235,7 +235,7 @@ namespace PropertyRental
             rp10.Furnished = false;
             rp10.Price = 4000;
             rp10.RentalDuration = 12;
-            rp10.AvailableOn = new DateTime(2022, 10, 03);
+            rp10.AvailableOn = new DateTime(2022, 12, 13);
             rp10.BedRooms = 3;
             rp10.Description = "A stunning four-bedroom mid-terrace house situated ";
             rp10.Agency = "View Properties";
@@ -366,7 +366,7 @@ namespace PropertyRental
             t1.ParkingRequired = true;
             t1.FurnitureRequired = false;
             t1.BedRoomsRequired = 2;
-            t1.AvailableToMoveOn = new DateTime(2022, 12, 08);
+            t1.AvailableToMoveOn = new DateTime(2022, 11, 30); 
 
             var a1 = new Address();
             a1.DoorNumber = 64;
@@ -405,7 +405,7 @@ namespace PropertyRental
             t2.ParkingRequired = true;
             t2.FurnitureRequired = false;
             t2.BedRoomsRequired = 3;
-            t2.AvailableToMoveOn = new DateTime(2022, 12, 10);
+            t2.AvailableToMoveOn = new DateTime(2022, 11, 30);
 
             var a2 = new Address();
 
@@ -445,7 +445,7 @@ namespace PropertyRental
             t3.ParkingRequired = true;
             t3.FurnitureRequired = false;
             t3.BedRoomsRequired = 3;
-            t3.AvailableToMoveOn = new DateTime(2022, 12, 14);
+            t3.AvailableToMoveOn = new DateTime(2022, 11, 30);
 
             var a3 = new Address();
             a3.DoorNumber = 64;
@@ -483,7 +483,7 @@ namespace PropertyRental
             t4.ParkingRequired = false;
             t4.FurnitureRequired = false;
             t4.BedRoomsRequired = 1;
-            t4.AvailableToMoveOn = new DateTime(2022, 12, 14);
+            t4.AvailableToMoveOn = new DateTime(2023, 01, 01);
 
             var a4 = new Address();
             a4.DoorNumber = 16;
@@ -635,7 +635,7 @@ namespace PropertyRental
             t8.ParkingRequired = true;
             t8.FurnitureRequired = true;
             t8.BedRoomsRequired = 5;
-            t8.AvailableToMoveOn = new DateTime(2022, 12, 14);
+            t8.AvailableToMoveOn = new DateTime(2022, 12, 23);
 
             var a8 = new Address();
             a8.DoorNumber = 119;
@@ -711,7 +711,7 @@ namespace PropertyRental
             t10.ParkingRequired = true;
             t10.FurnitureRequired = false;
             t10.BedRoomsRequired = 3;
-            t10.AvailableToMoveOn = new DateTime(2022, 11, 30);
+            t10.AvailableToMoveOn = new DateTime(2022, 12, 30);
 
             var a10 = new Address();
             a10.DoorNumber = 190;
@@ -801,24 +801,18 @@ namespace PropertyRental
         /// <returns>Rating</returns>
         public static double RatingScore(Tenant tenant, RentalHome rentalHome, string api)
         {
-            
             double points = 0;
             int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
             int maximumAcceptedwalkingDistanceValue = 5000;
             double floorSizeTolerancePercentage = 10;
             double floorSizeTolerance;
-
-            if (walkingDistanceValue > maximumAcceptedwalkingDistanceValue)
-            {
-                points += 0;
-            }
+            
             if (walkingDistanceValue <= maximumAcceptedwalkingDistanceValue)
             {
                 points = maximumAcceptedwalkingDistanceValue - walkingDistanceValue;
                 points = points / 100;
                 points += points;
             }
-            
             if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
             {
                 points += 20;
@@ -863,13 +857,23 @@ namespace PropertyRental
                 {
                     points += 15;
                 }
-                if(rentalHome.AvailableOn == tenant.AvailableToMoveOn)
+                TimeSpan days = rentalHome.AvailableOn.Subtract(tenant.AvailableToMoveOn);
+                double Days = days.Days;
+                if (Days <= 30)
                 {
                     points += 100;
+                if(Days <= 60)
+                {
+                    points += 50;
+                  
                 }
-                
-            return points;
+                }
+
+                return points;
         }
+                
+            
+        
         
          
     
