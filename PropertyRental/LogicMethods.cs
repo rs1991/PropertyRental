@@ -31,7 +31,7 @@ namespace PropertyRental
             rp1.ChildrenAllowed = false;
             rp1.Parking = false;
             rp1.FloorSize = 100;
-            
+
             var a1 = new Address();
             a1.DoorNumber = 134;
             a1.Street = "Darwin Road";
@@ -134,7 +134,7 @@ namespace PropertyRental
             a5.City = "London";
             a5.PostCode = "E4 8OM";
             rp5.Address = a5;
-            
+
             var rp6 = new RentalHome();
             rp6.Furnished = false;
             rp6.Price = 2400;
@@ -158,7 +158,7 @@ namespace PropertyRental
             a6.City = "London";
             a6.PostCode = "N9 9JZ";
             rp6.Address = a6;
-            
+
             var rp7 = new RentalHome();
             rp7.Furnished = false;
             rp7.Price = 5850;
@@ -182,7 +182,7 @@ namespace PropertyRental
             a7.City = "London";
             a7.PostCode = "W4 7XT";
             rp7.Address = a7;
-            
+
             var rp8 = new RentalHome();
             rp8.Furnished = false;
             rp8.Price = 2500;
@@ -206,7 +206,7 @@ namespace PropertyRental
             a8.City = "London";
             a8.PostCode = "SE13 8EQ";
             rp8.Address = a8;
-            
+
             var rp9 = new RentalHome();
             rp9.Furnished = false;
             rp9.Price = 67000;
@@ -230,7 +230,7 @@ namespace PropertyRental
             a9.City = "London";
             a9.PostCode = "SW1X 7LA";
             rp9.Address = a9;
-            
+
             var rp10 = new RentalHome();
             rp10.Furnished = false;
             rp10.Price = 4000;
@@ -256,7 +256,7 @@ namespace PropertyRental
             rp10.Address = a10;
 
             List<RentalHome> ListOfRentalProperties = new List<RentalHome>();
-           
+
             ListOfRentalProperties.Add(rp1);
             ListOfRentalProperties.Add(rp2);
             ListOfRentalProperties.Add(rp3);
@@ -267,7 +267,7 @@ namespace PropertyRental
             ListOfRentalProperties.Add(rp8);
             ListOfRentalProperties.Add(rp9);
             ListOfRentalProperties.Add(rp10);
-            
+
             return ListOfRentalProperties;
         }
         public static List<Address> GenerateMockAddressList()
@@ -366,7 +366,7 @@ namespace PropertyRental
             t1.ParkingRequired = true;
             t1.FurnitureRequired = false;
             t1.BedRoomsRequired = 2;
-            t1.AvailableToMoveOn = new DateTime(2022, 11, 30); 
+            t1.AvailableToMoveOn = new DateTime(2022, 11, 30);
 
             var a1 = new Address();
             a1.DoorNumber = 64;
@@ -748,135 +748,99 @@ namespace PropertyRental
 
 
 
-        public static List<RentalHome> MatchTenantWithHome(Tenant tenant, List<RentalHome> rentalHomes)
-        {
-            List<RentalHome> matches = new();
-            foreach (var home in rentalHomes)
-            {
-                bool isMatch = true;
-                if (tenant.Smoker != home.SmokingAllowed && tenant.Smoker == true)
-                {
-                    isMatch = false;
-                }
-                if (tenant.Pets != home.PetsAllowed && tenant.Pets == true)
-                {
-                    isMatch = false;
-                }
-                if (tenant.Children != home.ChildrenAllowed && tenant.Children == true)
-                {
-                    isMatch = false;
-                }
-                if (tenant.Budget < home.Price)
-                {
-                    isMatch = false;
-                }
-                if (tenant.FurnitureRequired != home.Furnished && tenant.FurnitureRequired == true)
-                {
-                    isMatch = false;
-                }
-                if (tenant.ParkingRequired != home.Parking && tenant.ParkingRequired == true)
-                {
-                    isMatch = false;
-                }
-                if (tenant.GardenRequired != home.Garden && tenant.GardenRequired == true)
-                {
-                    isMatch = false;
-                }
-                if (tenant.BedRoomsRequired > home.BedRooms)
-                {
-                    isMatch = false;
-                }
-                if (isMatch)
-                {
-                    matches.Add(home);
-                }
-            }
-            return matches;
-        }
+     
         /// <summary>
         /// Overall rating is calculated to determine how suitable the home is for a tenant
         /// </summary>
         /// <param name="tenant"></param>
         /// <param name="rentalHome"></param>
         /// <returns>Rating</returns>
-        public static double RatingScore(Tenant tenant, RentalHome rentalHome, string api)
+        public static double PointsScored(Tenant tenant, RentalHome rentalHome, string api)
         {
             double points = 0;
             int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
             int maximumAcceptedwalkingDistanceValue = 5000;
             double floorSizeTolerancePercentage = 10;
             double floorSizeTolerance;
-            
             if (walkingDistanceValue <= maximumAcceptedwalkingDistanceValue)
             {
                 points = maximumAcceptedwalkingDistanceValue - walkingDistanceValue;
                 points = points / 100;
                 points += points;
             }
+
+
             if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
             {
                 points += 20;
                 floorSizeTolerance = floorSizeTolerancePercentage * rentalHome.FloorSize / 100;
-                double newFloorSize = floorSizeTolerance + rentalHome.FloorSize;
-                if (newFloorSize <= floorSizeTolerance)
+                double rentalSizePlus220pct = floorSizeTolerance + rentalHome.FloorSize;
+         
+
+                if (rentalSizePlus220pct <= floorSizeTolerance)
                 {
                     points += 10;
                 }
             }
-                if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
-                {
-                    points += 10;
-                }
-                if (tenant.Pets != rentalHome.PetsAllowed && tenant.Pets == true)
-                {
-                    points += 10;
-                }
-                if (tenant.Children != rentalHome.ChildrenAllowed && tenant.Children == true)
-                {
-                    points += 5;
-                }
-                if (tenant.Budget > rentalHome.Price)
-                {
-                    double score;
-                    score = tenant.Budget / rentalHome.Price * 100;
-                    points = points + score;
-                }
-                if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
-                {
-                    points += 5;
-                }
-                if (tenant.ParkingRequired != rentalHome.Parking && tenant.ParkingRequired == true)
-                {
-                    points += 5;
-                }
-                if (tenant.GardenRequired != rentalHome.Garden && tenant.GardenRequired == true)
-                {
-                    points += 5;
-                }
-                if (rentalHome.BedRooms >= tenant.BedRoomsRequired)
-                {
-                    points += 15;
-                }
-                TimeSpan days = rentalHome.AvailableOn.Subtract(tenant.AvailableToMoveOn);
-                double Days = days.Days;
-                if (Days <= 30)
-                {
-                    points += 100;
-                if(Days <= 60)
-                {
-                    points += 50;
-                  
-                }
-                }
+            if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
+            {
+                points += 10;
+            }
+            if (tenant.Pets != rentalHome.PetsAllowed && tenant.Pets == true)
+            {
+                points += 10;
+            }
+            if (tenant.Children != rentalHome.ChildrenAllowed && tenant.Children == true)
+            {
+                points += 5;
+            }
+            if (tenant.Budget > rentalHome.Price)
+            {
+                double score;
+                score = tenant.Budget / rentalHome.Price * 100;
+                points = points + score;
+            }
+            if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
+            {
+                points += 5;
+            }
+            if (tenant.ParkingRequired != rentalHome.Parking && tenant.ParkingRequired == true)
+            {
+                points += 5;
+            }
+            if (tenant.GardenRequired != rentalHome.Garden && tenant.GardenRequired == true)
+            {
+                points += 5;
+            }
+            if (rentalHome.BedRooms >= tenant.BedRoomsRequired)
+            {
+                points += 15;
+            }
+            TimeSpan timedifferencebetweenavaialbedateandtenentesmovedate = rentalHome.AvailableOn.Subtract(tenant.AvailableToMoveOn);
+            TimeSpan timeDifference2 = tenant.AvailableToMoveOn - rentalHome.AvailableOn;
 
-                return points;
+            //if its already avaialbe (eg avaiaibleon is before move date) => award fioxed points
+
+            double Days = timedifferencebetweenavaialbedateandtenentesmovedate.Days;
+
+            double AbsoluteDays = Math.Abs(Days);
+            if (Days > 0 && Days <= 30)
+            {
+                points += 100;
+            }
+            double Tolerance = 5;
+            if (Days >= Tolerance)
+            {
+                points += 100;
+            }
+            return points;
         }
-                
-            
-        
-        
-         
-    
+
+
+
+
+
+
 
         /// <summary>
         /// The monthly rent is multiplied by 12 to give the total for the year.

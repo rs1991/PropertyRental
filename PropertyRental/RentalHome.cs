@@ -188,7 +188,7 @@ namespace PropertyRental
 
         
 
-        public override string ToString()
+        public override string ToString() //TODO: simplify
         {
             return $"Smoking allowed: {SmokingAllowed} Furnished: {Furnished} Pets: {PetsAllowed}" +
                 $" Children: {ChildrenAllowed} Price per month: {Price} Parking: {Parking} Garden: {Garden} " +
