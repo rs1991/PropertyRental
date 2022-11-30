@@ -14,6 +14,7 @@ namespace PropertyRental
         private DateTime _availableOn;
         private int _bedRooms;
         private TypeOfHome _homeType;
+        private SearchCriteriaFilter _wheelChairAccess;
         private string _description;
         private EnergyType _heating;
         private CouncilTaxBand _councilTaxBand;
@@ -28,6 +29,12 @@ namespace PropertyRental
         private bool _parking;
         private double _floorSize;
 
+
+        public SearchCriteriaFilter WheelChairAccess
+        {
+            get { return _wheelChairAccess; }
+            set { _wheelChairAccess = value; }
+        }
         /// <summary>
         /// How many square meters does this home have
         /// </summary>
