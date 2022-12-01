@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PropertyRental
 {
-    public class RentalHomeAndScore //TODO fix naming
+    public class RentalHomeScoreTracker 
     {
         
         private int _score;
