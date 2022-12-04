@@ -30,7 +30,7 @@ namespace PropertyRental
             rp1.PetsAllowed = false;
             rp1.ChildrenAllowed = false;
             rp1.Parking = false;
-            rp1.FloorSize = 100;
+            rp1.FloorSize = 40;
 
             var a1 = new Address();
             a1.DoorNumber = 134;
@@ -748,7 +748,6 @@ namespace PropertyRental
 
 
 
-     
         /// <summary>
         /// Overall rating is calculated to determine how suitable the home is for a tenant
         /// </summary>
@@ -760,82 +759,72 @@ namespace PropertyRental
             double points = 0;
             int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
             int maximumAcceptedwalkingDistanceValue = 5000;
-            double floorSizeTolerancePercentage = 10;
-            double floorSizeTolerance;
+            
+            if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
+                
+                points += 20;
+            double percentageTolerance = 0.05;
+            double fivePercentSmallerThanWhatTenantWants = tenant.FloorSizeRequired * percentageTolerance;
+            if (rentalHome.FloorSize <= fivePercentSmallerThanWhatTenantWants)
+            {
+                points += 10;
+            }
             if (walkingDistanceValue <= maximumAcceptedwalkingDistanceValue)
             {
                 points = maximumAcceptedwalkingDistanceValue - walkingDistanceValue;
-                points = points / 100;
-                points += points;
+                    points = points / 100;
+                    points += points;
             }
-
-
-            if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
+                TimeSpan timedifferencebetweenavaialbedateandtenentesmovedate = rentalHome.AvailableOn.Subtract(tenant.AvailableToMoveOn);
+                //TimeSpan timeDifference2 = tenant.AvailableToMoveOn - rentalHome.AvailableOn;
+                //if its already avaialbe (eg avaiaibleon is before move date) => award fioxed points
+                double Days = timedifferencebetweenavaialbedateandtenentesmovedate.Days;
+                double AbsoluteDays = Math.Abs(Days);
+            if (AbsoluteDays > 0 && AbsoluteDays <= 30)
             {
-                points += 20;
-                floorSizeTolerance = floorSizeTolerancePercentage * rentalHome.FloorSize / 100;
-                double rentalSizePlus220pct = floorSizeTolerance + rentalHome.FloorSize;
-         
-
-                if (rentalSizePlus220pct <= floorSizeTolerance)
-                {
-                    points += 10;
-                }
-            }
-            if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
-            {
-                points += 10;
-            }
-            if (tenant.Pets != rentalHome.PetsAllowed && tenant.Pets == true)
-            {
-                points += 10;
-            }
-            if (tenant.Children != rentalHome.ChildrenAllowed && tenant.Children == true)
-            {
-                points += 5;
-            }
-            if (tenant.Budget > rentalHome.Price)
-            {
-                double score;
-                score = tenant.Budget / rentalHome.Price * 100;
-                points = points + score;
-            }
-            if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
-            {
-                points += 5;
-            }
-            if (tenant.ParkingRequired != rentalHome.Parking && tenant.ParkingRequired == true)
-            {
-                points += 5;
-            }
-            if (tenant.GardenRequired != rentalHome.Garden && tenant.GardenRequired == true)
-            {
-                points += 5;
-            }
-            if (rentalHome.BedRooms >= tenant.BedRoomsRequired)
-            {
-                points += 15;
-            }
-            TimeSpan timedifferencebetweenavaialbedateandtenentesmovedate = rentalHome.AvailableOn.Subtract(tenant.AvailableToMoveOn);
-            TimeSpan timeDifference2 = tenant.AvailableToMoveOn - rentalHome.AvailableOn;
-
-            //if its already avaialbe (eg avaiaibleon is before move date) => award fioxed points
-
-            double Days = timedifferencebetweenavaialbedateandtenentesmovedate.Days;
-
-            double AbsoluteDays = Math.Abs(Days);
-            if (Days > 0 && Days <= 30)
-            {
-                points += 100;
+                    points += 100;
             }
             double Tolerance = 5;
             if (Days >= Tolerance)
             {
                 points += 100;
             }
-            return points;
-        }
-
+                if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
+                {
+                    points += 10;
+                }
+                if (tenant.Pets != rentalHome.PetsAllowed && tenant.Pets == true)
+                {
+                    points += 10;
+                }
+                if (tenant.Children != rentalHome.ChildrenAllowed && tenant.Children == true)
+                {
+                    points += 5;
+                }
+                if (tenant.Budget > rentalHome.Price)
+                {
+                    double score;
+                    score = tenant.Budget / rentalHome.Price * 100;
+                    points = points + score;
+                }
+                if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
+                {
+                    points += 5;
+                }
+                if (tenant.ParkingRequired != rentalHome.Parking && tenant.ParkingRequired == true)
+                {
+                    points += 5;
+                }
+                if (tenant.GardenRequired != rentalHome.Garden && tenant.GardenRequired == true)
+                {
+                    points += 5;
+                }
+                if (rentalHome.BedRooms >= tenant.BedRoomsRequired)
+                {
+                    points += 15;
+                }
+                return points;
+            }
 
 
 
@@ -888,8 +877,22 @@ namespace PropertyRental
 
             return distanceInt;
         }
+
+
+        public static void DisplayScoreForEachHome(List<RentalHomeScoreTracker> RentalHomeScoreList)
+        {
+            
+            foreach (var score in RentalHomeScoreList)
+            {
+                
+                
+                Console.WriteLine("Scores: " + score.Rental.Address.PostCode);
+            }
     }
-}
+            }
+        }
+    
+
 
 
 

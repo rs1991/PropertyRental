@@ -11,6 +11,7 @@ namespace PropertyRental
         public List<Tenant> ListOfTenants;
         public List<RentalHome> ListOfRentalHomes;
         public List<Address> ListOfAddresses;
+        public List<RentalHomeScoreTracker> ListOfScores;
     }
 
 }
