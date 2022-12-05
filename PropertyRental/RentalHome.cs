@@ -195,7 +195,7 @@ namespace PropertyRental
 
         
 
-        public override string ToString() //TODO: simplify
+        public override string ToString()
         {
             return $"Address: {Address.PostCode} FloorSize: {FloorSize} Available On: {AvailableOn} Price: {Price} +" +
                 $" Floor size: {FloorSize} Heating: {Heating}";

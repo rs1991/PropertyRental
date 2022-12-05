@@ -757,74 +757,80 @@ namespace PropertyRental
         public static double PointsScored(Tenant tenant, RentalHome rentalHome, string api)
         {
             double points = 0;
-            int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
-            int maximumAcceptedwalkingDistanceValue = 5000;
-            
-            if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
-                
-                points += 20;
-            double percentageTolerance = 0.05;
-            double fivePercentSmallerThanWhatTenantWants = tenant.FloorSizeRequired * percentageTolerance;
-            if (rentalHome.FloorSize <= fivePercentSmallerThanWhatTenantWants)
+
+            if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
             {
                 points += 10;
             }
+            if (tenant.Pets != rentalHome.PetsAllowed && tenant.Pets == true)
+            {
+                points += 10;
+            }
+            if (tenant.Children != rentalHome.ChildrenAllowed && tenant.Children == true)
+            {
+                points += 5;
+            }
+            if (tenant.Budget > rentalHome.Price)
+            {
+                double score;
+                score = tenant.Budget / rentalHome.Price * 100;
+                points = points + score;
+            }
+            if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
+            {
+                points += 5;
+            }
+            if (tenant.ParkingRequired != rentalHome.Parking && tenant.ParkingRequired == true)
+            {
+                points += 5;
+            }
+            if (tenant.GardenRequired != rentalHome.Garden && tenant.GardenRequired == true)
+            {
+                points += 5;
+            }
+            if (rentalHome.BedRooms >= tenant.BedRoomsRequired)
+            {
+                points += 15;
+            }
+            if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
+            {
+                points += 20;
+
+
+            }
+            if (rentalHome.FloorSize < tenant.FloorSizeRequired)
+            {
+                double sizeDifference = rentalHome.FloorSize / tenant.FloorSizeRequired;
+                points += sizeDifference;
+            }
+            
+            int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
+            int maximumAcceptedwalkingDistanceValue = 5000;
             if (walkingDistanceValue <= maximumAcceptedwalkingDistanceValue)
             {
                 points = maximumAcceptedwalkingDistanceValue - walkingDistanceValue;
-                    points = points / 100;
-                    points += points;
+                points = points / 100;
+                points += points;
             }
-                TimeSpan timedifferencebetweenavaialbedateandtenentesmovedate = rentalHome.AvailableOn.Subtract(tenant.AvailableToMoveOn);
-                //TimeSpan timeDifference2 = tenant.AvailableToMoveOn - rentalHome.AvailableOn;
-                //if its already avaialbe (eg avaiaibleon is before move date) => award fioxed points
-                double Days = timedifferencebetweenavaialbedateandtenentesmovedate.Days;
-                double AbsoluteDays = Math.Abs(Days);
+            TimeSpan timedifferencebetweenavaialbedateandtenentesmovedate = rentalHome.AvailableOn.Subtract(tenant.AvailableToMoveOn);
+            //TimeSpan timeDifference2 = tenant.AvailableToMoveOn - rentalHome.AvailableOn;
+            //if its already avaialbe (eg avaiaibleon is before move date) => award fioxed points
+            double Days = timedifferencebetweenavaialbedateandtenentesmovedate.Days;
+            double AbsoluteDays = Math.Abs(Days);
             if (AbsoluteDays > 0 && AbsoluteDays <= 30)
             {
-                    points += 100;
+                points += 100;
             }
             double Tolerance = 5;
             if (Days >= Tolerance)
             {
                 points += 100;
             }
-                if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
-                {
-                    points += 10;
-                }
-                if (tenant.Pets != rentalHome.PetsAllowed && tenant.Pets == true)
-                {
-                    points += 10;
-                }
-                if (tenant.Children != rentalHome.ChildrenAllowed && tenant.Children == true)
-                {
-                    points += 5;
-                }
-                if (tenant.Budget > rentalHome.Price)
-                {
-                    double score;
-                    score = tenant.Budget / rentalHome.Price * 100;
-                    points = points + score;
-                }
-                if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
-                {
-                    points += 5;
-                }
-                if (tenant.ParkingRequired != rentalHome.Parking && tenant.ParkingRequired == true)
-                {
-                    points += 5;
-                }
-                if (tenant.GardenRequired != rentalHome.Garden && tenant.GardenRequired == true)
-                {
-                    points += 5;
-                }
-                if (rentalHome.BedRooms >= tenant.BedRoomsRequired)
-                {
-                    points += 15;
-                }
-                return points;
-            }
+            return points;
+        }
+
+
+
 
 
 
@@ -881,18 +887,12 @@ namespace PropertyRental
 
         public static void DisplayScoreForEachHome(List<RentalHomeScoreTracker> RentalHomeScoreList)
         {
-            
             foreach (var score in RentalHomeScoreList)
             {
-                
-                
                 Console.WriteLine("Scores: " + score.Rental.Address.PostCode);
             }
-    }
-            }
         }
-    
 
+    }
 
-
-
+}
