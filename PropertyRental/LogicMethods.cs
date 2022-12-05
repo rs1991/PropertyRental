@@ -366,7 +366,8 @@ namespace PropertyRental
             t1.ParkingRequired = true;
             t1.FurnitureRequired = false;
             t1.BedRoomsRequired = 2;
-            t1.AvailableToMoveOn = new DateTime(2022, 11, 30);
+            t1.MustMoveInOnThisDate = new DateTime(2022, 11, 30);
+
 
             var a1 = new Address();
             a1.DoorNumber = 64;
@@ -405,7 +406,7 @@ namespace PropertyRental
             t2.ParkingRequired = true;
             t2.FurnitureRequired = false;
             t2.BedRoomsRequired = 3;
-            t2.AvailableToMoveOn = new DateTime(2022, 11, 30);
+            t2.MustMoveInOnThisDate = new DateTime(2022, 12, 30);
 
             var a2 = new Address();
 
@@ -445,7 +446,7 @@ namespace PropertyRental
             t3.ParkingRequired = true;
             t3.FurnitureRequired = false;
             t3.BedRoomsRequired = 3;
-            t3.AvailableToMoveOn = new DateTime(2022, 11, 30);
+            t3.MustMoveInOnThisDate = new DateTime(2022, 12, 22);
 
             var a3 = new Address();
             a3.DoorNumber = 64;
@@ -796,35 +797,32 @@ namespace PropertyRental
             {
                 points += 20;
 
-
             }
             if (rentalHome.FloorSize < tenant.FloorSizeRequired)
             {
                 double sizeDifference = rentalHome.FloorSize / tenant.FloorSizeRequired;
                 points += sizeDifference;
             }
+           
             
+            TimeSpan timeDiffBetweenTenantAndHomeAvailablity = rentalHome.AvailableOn.Subtract(tenant.MustMoveInOnThisDate);
+            double Days = timeDiffBetweenTenantAndHomeAvailablity.Days;
+            double AbsoluteDays = Math.Abs(Days);
+            
+            if (AbsoluteDays < 0 || AbsoluteDays == Days)
+            {
+                points += 200;
+            }
+            
+
             int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
             int maximumAcceptedwalkingDistanceValue = 5000;
+            
             if (walkingDistanceValue <= maximumAcceptedwalkingDistanceValue)
             {
                 points = maximumAcceptedwalkingDistanceValue - walkingDistanceValue;
                 points = points / 100;
                 points += points;
-            }
-            TimeSpan timedifferencebetweenavaialbedateandtenentesmovedate = rentalHome.AvailableOn.Subtract(tenant.AvailableToMoveOn);
-            //TimeSpan timeDifference2 = tenant.AvailableToMoveOn - rentalHome.AvailableOn;
-            //if its already avaialbe (eg avaiaibleon is before move date) => award fioxed points
-            double Days = timedifferencebetweenavaialbedateandtenentesmovedate.Days;
-            double AbsoluteDays = Math.Abs(Days);
-            if (AbsoluteDays > 0 && AbsoluteDays <= 30)
-            {
-                points += 100;
-            }
-            double Tolerance = 5;
-            if (Days >= Tolerance)
-            {
-                points += 100;
             }
             return points;
         }

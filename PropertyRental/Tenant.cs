@@ -13,6 +13,7 @@ namespace PropertyRental
         private string _lastName;
         private DateTime _birthDate;
         private DateTime _availableToMoveOn;
+        private DateTime _mustMoveInOnThisDate;
         private string _jobTitle;
         private string _nationality;
         private double _salary;
@@ -30,6 +31,7 @@ namespace PropertyRental
         private Address _preferredAdress;
         private List<Tenant> _roomMates;
         private double _floorSizeRequired;
+
 
         public Address PreferredAdress { get { return _preferredAdress; } set { _preferredAdress = value; } }
 
@@ -127,6 +129,13 @@ namespace PropertyRental
         {
             get { return _availableToMoveOn; }
             set { _availableToMoveOn = value; }
+        }
+
+        public DateTime MustMoveInOnThisDate
+        {
+            get { return _mustMoveInOnThisDate; }
+            set { _mustMoveInOnThisDate = value; }
+
         }
       
         public string JobTitle
