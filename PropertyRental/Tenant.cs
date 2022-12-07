@@ -31,9 +31,19 @@ namespace PropertyRental
         private Address _preferredAdress;
         private List<Tenant> _roomMates;
         private double _floorSizeRequired;
+        private SearchCriteriaFilter _wheelChairAccessAvailable;
 
+        public SearchCriteriaFilter WheelChairAccessNeeded
+        {
+            get { return _wheelChairAccessAvailable; }
+            set { _wheelChairAccessAvailable = value; }
+        }
 
-        public Address PreferredAdress { get { return _preferredAdress; } set { _preferredAdress = value; } }
+        public Address PreferredAdress 
+        { 
+            get { return _preferredAdress; } 
+            set { _preferredAdress = value; } 
+        }
 
         public double FloorSizeRequired
         {

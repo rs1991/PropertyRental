@@ -31,6 +31,7 @@ namespace PropertyRental
             rp1.ChildrenAllowed = false;
             rp1.Parking = false;
             rp1.FloorSize = 40;
+            rp1.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
             var a1 = new Address();
             a1.DoorNumber = 134;
@@ -55,6 +56,7 @@ namespace PropertyRental
             rp2.ChildrenAllowed = true;
             rp2.Parking = false;
             rp2.FloorSize = 50;
+            rp2.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
             var a2 = new Address();
             a2.DoorNumber = 90;
@@ -79,6 +81,7 @@ namespace PropertyRental
             rp3.ChildrenAllowed = false;
             rp3.Parking = false;
             rp3.FloorSize = 60;
+            rp3.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
             var a3 = new Address();
             a3.DoorNumber = 4;
@@ -103,6 +106,7 @@ namespace PropertyRental
             rp4.ChildrenAllowed = false;
             rp4.Parking = false;
             rp4.FloorSize = 90;
+            rp4.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
             var a4 = new Address();
             a4.DoorNumber = 31;
@@ -127,6 +131,7 @@ namespace PropertyRental
             rp5.ChildrenAllowed = false;
             rp5.Parking = false;
             rp5.FloorSize = 45;
+            rp5.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
             var a5 = new Address();
             a5.DoorNumber = 2;
@@ -151,6 +156,7 @@ namespace PropertyRental
             rp6.ChildrenAllowed = false;
             rp6.Parking = false;
             rp6.FloorSize = 105;
+            rp6.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
             var a6 = new Address();
             a6.DoorNumber = 190;
@@ -175,6 +181,7 @@ namespace PropertyRental
             rp7.ChildrenAllowed = false;
             rp7.Parking = false;
             rp7.FloorSize = 55;
+            rp7.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
             var a7 = new Address();
             a7.DoorNumber = 190;
@@ -199,6 +206,7 @@ namespace PropertyRental
             rp8.ChildrenAllowed = false;
             rp8.Parking = false;
             rp8.FloorSize = 66;
+            rp8.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
             var a8 = new Address();
             a8.DoorNumber = 40;
@@ -223,6 +231,7 @@ namespace PropertyRental
             rp9.ChildrenAllowed = false;
             rp9.Parking = false;
             rp9.FloorSize = 40;
+            rp9.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
             var a9 = new Address();
             a9.DoorNumber = 12;
@@ -367,6 +376,7 @@ namespace PropertyRental
             t1.FurnitureRequired = false;
             t1.BedRoomsRequired = 2;
             t1.MustMoveInOnThisDate = new DateTime(2022, 11, 30);
+            t1.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible; 
 
 
             var a1 = new Address();
@@ -760,6 +770,10 @@ namespace PropertyRental
             double points = 0;
 
             if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
+            {
+                points += 10;
+            }
+            if(tenant.WheelChairAccessNeeded == rentalHome.WheelChairAccess)
             {
                 points += 10;
             }
