@@ -20,19 +20,26 @@ namespace PropertyRental
             List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
             List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalPropertyList();
             List<Address> AddressList = LogicMethods.GenerateMockAddressList();
+            List<RentalHomeScoreTracker> ScoresList = new List<RentalHomeScoreTracker>();
+            
             
             var dStorage = new DataStorage();
 
             dStorage.ListOfTenants = TenantList;
             dStorage.ListOfRentalHomes = RentalHomes;
             dStorage.ListOfAddresses = AddressList;
+            dStorage.ListOfScores = ScoresList;
+            
                          
 
             WriteDataStorage(dStorage, path);
 
-            
-            DisplayHomeScoreList(RentalHomes, TenantList, api);
+            DisplayScoreForEachHome(ScoresList, RentalHomes, TenantList[5], api);
 
+            //DisplayHomeScoreList(RentalHomes, TenantList, api);
+
+
+            //disScoreForHome();
 
             //HomeScoreListDisplay(ScoresList);
 

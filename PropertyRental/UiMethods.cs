@@ -23,35 +23,36 @@ namespace PropertyRental
         {
             Console.WriteLine($"This home has a rating of: {TotalScore}");
         }
-        public static List<RentalHomeScoreTracker> GenerateRentalHomeScores(List<RentalHome> RentalHomes, Tenant tenant, string api)
-        {
-            throw new NotImplementedException();
-            List<RentalHomeScoreTracker> RentailHomeAndScores = new();
 
-            foreach (var home in RentalHomes)
-            {
-                double score = PointsScored(tenant, home, api);
-
-                Console.WriteLine($"Home: {home.Address.DoorNumber}, {home.Address.Street}, {home.Address.City}, {home.Address.PostCode} Score: {score} Tenant: {tenant.FirstName}");
-            }
-        }
-      
+                
         public static void DisplayHomeScoreList(List<RentalHome> homes, List<Tenant> tenants, string api)
         //   public static void DisplayHomeScoreList(List<RentailhomeAndScore> RentalHomesAndScore)
         {
+             
             foreach (var t in tenants) { 
             foreach (var h in homes)
             {
                     double score = PointsScored(t, h, api);
                     //HomeScoreListDisplay(ScoresList);
-                    //Console.WriteLine($"{h.Address.PostCode} {t.FirstName} {t.LastName} Score: {sc}");
+                    
                         Console.WriteLine($"{t.FirstName} {h.Address.PostCode} Score: {score}");
+                        
+                    
                 }
             }
-            }
+           
         }
 
 
 
+
         }
+
+   
+
     
+
+
+
+        }
+

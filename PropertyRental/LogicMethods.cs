@@ -8,6 +8,7 @@ using System.Xml;
 using Newtonsoft.Json;
 using System.Net;
 using static System.Formats.Asn1.AsnWriter;
+using System.Collections.Generic;
 
 namespace PropertyRental
 {
@@ -895,14 +896,19 @@ namespace PropertyRental
         }
 
 
-        public static void DisplayScoreForEachHome(List<RentalHomeScoreTracker> RentalHomeScoreList)
+        public static void DisplayScoreForEachHome(List<RentalHomeScoreTracker> ScoresList, List<RentalHome> ListOfRentalHomes, Tenant tenant, string api)
         {
-            foreach (var score in RentalHomeScoreList)
+            foreach (var rentalHome in ListOfRentalHomes)
+
             {
-                Console.WriteLine("Scores: " + score.Rental.Address.PostCode);
+                double scores = PointsScored(tenant, rentalHome, api);
+                RentalHomeScoreTracker ScoreStorage = new RentalHomeScoreTracker();
+                ScoreStorage.Rental = rentalHome;
+                ScoreStorage.Score = scores;
+                ScoresList.Add(ScoreStorage);
+                Console.WriteLine($"{tenant.FirstName} {rentalHome.Address.PostCode} {ScoreStorage.Score}");
+                
             }
         }
-
-    }
-
+     }
 }
