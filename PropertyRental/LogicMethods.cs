@@ -377,8 +377,7 @@ namespace PropertyRental
             t1.BedRoomsRequired = 2;
             t1.MustMoveInOnThisDate = new DateTime(2022, 11, 30);
             t1.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible; 
-
-
+            
             var a1 = new Address();
             a1.DoorNumber = 64;
             a1.Street = "Lenton Boulevard";
@@ -456,7 +455,7 @@ namespace PropertyRental
             t3.ParkingRequired = true;
             t3.FurnitureRequired = false;
             t3.BedRoomsRequired = 3;
-            t3.MustMoveInOnThisDate = new DateTime(2022, 12, 22);
+            t3.MustMoveInOnThisDate = new DateTime(2023, 01, 10);
 
             var a3 = new Address();
             a3.DoorNumber = 64;
@@ -495,6 +494,7 @@ namespace PropertyRental
             t4.FurnitureRequired = false;
             t4.BedRoomsRequired = 1;
             t4.AvailableToMoveOn = new DateTime(2023, 01, 01);
+            t4.MustMoveInOnThisDate = new DateTime(2023, 01, 13);
 
             var a4 = new Address();
             a4.DoorNumber = 16;
@@ -533,6 +533,7 @@ namespace PropertyRental
             t5.FurnitureRequired = false;
             t5.BedRoomsRequired = 1;
             t5.AvailableToMoveOn = new DateTime(2022, 12, 14);
+            t5.MustMoveInOnThisDate = new DateTime(2023, 01, 10);
 
             var a5 = new Address();
             a5.DoorNumber = 16;
@@ -571,6 +572,7 @@ namespace PropertyRental
             t6.FurnitureRequired = false;
             t6.BedRoomsRequired = 2;
             t6.AvailableToMoveOn = new DateTime(2022, 12, 14);
+            t6.MustMoveInOnThisDate = new DateTime(2023, 01, 23);
 
             var a6 = new Address();
             a6.DoorNumber = 16;
@@ -609,6 +611,7 @@ namespace PropertyRental
             t7.FurnitureRequired = true;
             t7.BedRoomsRequired = 3;
             t7.AvailableToMoveOn = new DateTime(2022, 12, 14);
+            t7.MustMoveInOnThisDate = new DateTime(2023, 01, 11);
 
             var a7 = new Address();
             a7.DoorNumber = 119;
@@ -647,6 +650,7 @@ namespace PropertyRental
             t8.FurnitureRequired = true;
             t8.BedRoomsRequired = 5;
             t8.AvailableToMoveOn = new DateTime(2022, 12, 23);
+            t3.MustMoveInOnThisDate = new DateTime(2023, 01, 30);
 
             var a8 = new Address();
             a8.DoorNumber = 119;
@@ -840,12 +844,6 @@ namespace PropertyRental
             }
             return points;
         }
-
-
-
-
-
-
 
 
 

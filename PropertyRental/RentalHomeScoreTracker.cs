@@ -10,10 +10,10 @@ namespace PropertyRental
     public class RentalHomeScoreTracker 
     {
         
-        private int _score;
+        private double _score;
         private RentalHome _rentalHome; 
 
-        public int Score 
+        public double Score 
         { 
             get { return _score; } 
             set { _score = value; } 
