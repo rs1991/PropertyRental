@@ -377,8 +377,8 @@ namespace PropertyRental
             t1.FurnitureRequired = false;
             t1.BedRoomsRequired = 2;
             t1.MustMoveInOnThisDate = new DateTime(2022, 11, 30);
-            t1.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible; 
-            
+            t1.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible;
+
             var a1 = new Address();
             a1.DoorNumber = 64;
             a1.Street = "Lenton Boulevard";
@@ -778,7 +778,7 @@ namespace PropertyRental
             {
                 points += 10;
             }
-            if(tenant.WheelChairAccessNeeded == rentalHome.WheelChairAccess)
+            if (tenant.WheelChairAccessNeeded == rentalHome.WheelChairAccess)
             {
                 points += 10;
             }
@@ -822,21 +822,21 @@ namespace PropertyRental
                 double sizeDifference = rentalHome.FloorSize / tenant.FloorSizeRequired;
                 points += sizeDifference;
             }
-           
-            
+
+
             TimeSpan timeDiffBetweenTenantAndHomeAvailablity = rentalHome.AvailableOn.Subtract(tenant.MustMoveInOnThisDate);
             double Days = timeDiffBetweenTenantAndHomeAvailablity.Days;
             double AbsoluteDays = Math.Abs(Days);
-            
+
             if (AbsoluteDays < 0 || AbsoluteDays == Days)
             {
                 points += 200;
             }
-            
+
 
             int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
             int maximumAcceptedwalkingDistanceValue = 5000;
-            
+
             if (walkingDistanceValue <= maximumAcceptedwalkingDistanceValue)
             {
                 points = maximumAcceptedwalkingDistanceValue - walkingDistanceValue;
@@ -896,19 +896,18 @@ namespace PropertyRental
         }
 
 
-        public static void DisplayScoreForEachHome(List<RentalHomeScoreTracker> ScoresList, List<RentalHome> ListOfRentalHomes, Tenant tenant, string api)
+        public static void DisplayScoreForEachHome(List<RentalHome> ListOfRentalHomes, Tenant tenant, string api)
         {
-            foreach (var rentalHome in ListOfRentalHomes)
-
-            {
-                double scores = PointsScored(tenant, rentalHome, api);
-                RentalHomeScoreTracker ScoreStorage = new RentalHomeScoreTracker();
-                ScoreStorage.Rental = rentalHome;
-                ScoreStorage.Score = scores;
-                ScoresList.Add(ScoreStorage);
-                Console.WriteLine($"{tenant.FirstName} {rentalHome.Address.PostCode} {ScoreStorage.Score}");
-                
-            }
+            List<RentalHomeScoreTracker> ScoresList = new List<RentalHomeScoreTracker>();
+                foreach (var rentalHome in ListOfRentalHomes)
+                {
+                    double scores = PointsScored(tenant, rentalHome, api);
+                    RentalHomeScoreTracker ScoreStorage = new RentalHomeScoreTracker();
+                    ScoreStorage.Rental = rentalHome;
+                    ScoreStorage.Score = scores;
+                    ScoresList.Add(ScoreStorage);
+                    Console.WriteLine($"{tenant.FirstName} {rentalHome.Address.PostCode} {ScoreStorage.Score}");
+                }
         }
-     }
+    }
 }

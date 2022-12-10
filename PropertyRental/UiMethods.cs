@@ -7,7 +7,6 @@ using System.Net.Mail;
 using System.Xml;
 using System.Text.RegularExpressions;
 using static PropertyRental.LogicMethods;
-
 namespace PropertyRental
 {
     public class UiMethods
@@ -23,36 +22,12 @@ namespace PropertyRental
         {
             Console.WriteLine($"This home has a rating of: {TotalScore}");
         }
-
-                
-        public static void DisplayHomeScoreList(List<RentalHome> homes, List<Tenant> tenants, string api)
-        //   public static void DisplayHomeScoreList(List<RentailhomeAndScore> RentalHomesAndScore)
+        public static void MethodToLoopThroughEachTenant(List<Tenant>TenantList, List<RentalHome> RentalHomes, string api)
         {
-             
-            foreach (var t in tenants) { 
-            foreach (var h in homes)
+            foreach (var Tenant in TenantList)
             {
-                    double score = PointsScored(t, h, api);
-                    //HomeScoreListDisplay(ScoresList);
-                    
-                        Console.WriteLine($"{t.FirstName} {h.Address.PostCode} Score: {score}");
-                        
-                    
-                }
+                DisplayScoreForEachHome(RentalHomes, Tenant, api);
             }
-           
         }
-
-
-
-
         }
-
-   
-
-    
-
-
-
-        }
-
+    }
