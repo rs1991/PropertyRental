@@ -28,7 +28,13 @@ namespace PropertyRental
         private bool _garden;
         private bool _parking;
         private double _floorSize;
+        private SearchCriteriaFilter _elevatorAvailable;
 
+        public SearchCriteriaFilter ElevatorAvailable
+        {
+            get { return _elevatorAvailable; }
+            set { _elevatorAvailable = value; }
+        }
 
         public SearchCriteriaFilter WheelChairAccess
         {

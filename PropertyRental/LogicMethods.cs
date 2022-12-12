@@ -33,6 +33,7 @@ namespace PropertyRental
             rp1.Parking = false;
             rp1.FloorSize = 40;
             rp1.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp1.ElevatorAvailable = SearchCriteriaFilter.Elevator;
 
             var a1 = new Address();
             a1.DoorNumber = 134;
@@ -58,6 +59,7 @@ namespace PropertyRental
             rp2.Parking = false;
             rp2.FloorSize = 50;
             rp2.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp2.ElevatorAvailable = SearchCriteriaFilter.Elevator;
 
             var a2 = new Address();
             a2.DoorNumber = 90;
@@ -183,6 +185,7 @@ namespace PropertyRental
             rp7.Parking = false;
             rp7.FloorSize = 55;
             rp7.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp7.ElevatorAvailable = SearchCriteriaFilter.Elevator;
 
             var a7 = new Address();
             a7.DoorNumber = 190;
@@ -496,6 +499,7 @@ namespace PropertyRental
             t4.BedRoomsRequired = 1;
             t4.AvailableToMoveOn = new DateTime(2023, 01, 01);
             t4.MustMoveInOnThisDate = new DateTime(2023, 01, 13);
+            t4.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
 
             var a4 = new Address();
             a4.DoorNumber = 16;
@@ -535,6 +539,7 @@ namespace PropertyRental
             t5.BedRoomsRequired = 1;
             t5.AvailableToMoveOn = new DateTime(2022, 12, 14);
             t5.MustMoveInOnThisDate = new DateTime(2023, 01, 10);
+            t5.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
 
             var a5 = new Address();
             a5.DoorNumber = 16;
@@ -690,6 +695,7 @@ namespace PropertyRental
             t9.FurnitureRequired = true;
             t9.BedRoomsRequired = 5;
             t9.AvailableToMoveOn = new DateTime(2022, 12, 30);
+            t9.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
 
             var a9 = new Address();
             a9.DoorNumber = 19;
@@ -728,6 +734,7 @@ namespace PropertyRental
             t10.FurnitureRequired = false;
             t10.BedRoomsRequired = 3;
             t10.AvailableToMoveOn = new DateTime(2022, 12, 30);
+            t10.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
 
             var a10 = new Address();
             a10.DoorNumber = 190;
@@ -807,6 +814,10 @@ namespace PropertyRental
             if (tenant.GardenRequired != rentalHome.Garden && tenant.GardenRequired == true)
             {
                 points += 5;
+            }
+            if(tenant.ElevatorAccessRequired == rentalHome.ElevatorAvailable)
+            {
+                points += 10;
             }
             if (rentalHome.BedRooms >= tenant.BedRoomsRequired)
             {

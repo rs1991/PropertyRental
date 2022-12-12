@@ -32,6 +32,15 @@ namespace PropertyRental
         private List<Tenant> _roomMates;
         private double _floorSizeRequired;
         private SearchCriteriaFilter _wheelChairAccessAvailable;
+        private SearchCriteriaFilter _elevatorAccessRequired;
+        
+
+        public SearchCriteriaFilter ElevatorAccessRequired
+        {
+            get { return _elevatorAccessRequired; }
+            set { _elevatorAccessRequired = value; }
+        }
+
 
         public SearchCriteriaFilter WheelChairAccessNeeded
         {
