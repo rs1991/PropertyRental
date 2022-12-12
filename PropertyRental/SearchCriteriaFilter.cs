@@ -15,7 +15,8 @@ namespace PropertyRental
             Pets = 2,  
             Parking = 3,
             WheelChairAccessible = 4,
-            HomeType = 5
+            HomeType = 5,
+            Elevator = 6
         };
     
 }

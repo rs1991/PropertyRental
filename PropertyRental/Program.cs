@@ -20,27 +20,18 @@ namespace PropertyRental
             List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
             List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalPropertyList();
             List<Address> AddressList = LogicMethods.GenerateMockAddressList();
-            List<RentalHomeScoreTracker> ScoresList = new List<RentalHomeScoreTracker>();
-            
             
             var dStorage = new DataStorage();
 
             dStorage.ListOfTenants = TenantList;
             dStorage.ListOfRentalHomes = RentalHomes;
             dStorage.ListOfAddresses = AddressList;
-            dStorage.ListOfScores = ScoresList;
-            
-                         
 
             WriteDataStorage(dStorage, path);
 
-            MethodToLoopThroughEachTenant(TenantList, RentalHomes, api);
-
-            
+            MethodToLoopThroughEachTenant(TenantList, RentalHomes, api);            
 
 
-            //TODO: build a loop to test all your data
-            //TODO: save those results for a (each) tenatn to a list of RatingSystem
             //TODO: Clean up this code
 
 

@@ -770,7 +770,7 @@ namespace PropertyRental
         /// <param name="tenant"></param>
         /// <param name="rentalHome"></param>
         /// <returns>Rating</returns>
-        public static double PointsScored(Tenant tenant, RentalHome rentalHome, string api)
+        public static double PointsScoredForEachHome(Tenant tenant, RentalHome rentalHome, string api)
         {
             double points = 0;
 
@@ -815,15 +815,13 @@ namespace PropertyRental
             if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
             {
                 points += 20;
-
             }
             if (rentalHome.FloorSize < tenant.FloorSizeRequired)
             {
                 double sizeDifference = rentalHome.FloorSize / tenant.FloorSizeRequired;
                 points += sizeDifference;
             }
-
-
+           
             TimeSpan timeDiffBetweenTenantAndHomeAvailablity = rentalHome.AvailableOn.Subtract(tenant.MustMoveInOnThisDate);
             double Days = timeDiffBetweenTenantAndHomeAvailablity.Days;
             double AbsoluteDays = Math.Abs(Days);
@@ -832,7 +830,6 @@ namespace PropertyRental
             {
                 points += 200;
             }
-
 
             int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
             int maximumAcceptedwalkingDistanceValue = 5000;
@@ -901,7 +898,7 @@ namespace PropertyRental
             List<RentalHomeScoreTracker> ScoresList = new List<RentalHomeScoreTracker>();
                 foreach (var rentalHome in ListOfRentalHomes)
                 {
-                    double scores = PointsScored(tenant, rentalHome, api);
+                    double scores = PointsScoredForEachHome(tenant, rentalHome, api);
                     RentalHomeScoreTracker ScoreStorage = new RentalHomeScoreTracker();
                     ScoreStorage.Rental = rentalHome;
                     ScoreStorage.Score = scores;
