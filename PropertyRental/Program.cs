@@ -29,12 +29,9 @@ namespace PropertyRental
 
             WriteDataStorage(dStorage, path);
 
-            MethodToLoopThroughEachTenant(TenantList, RentalHomes, api);            
 
-
-            //TODO: Clean up this code
-
-
+            DisplayTheScore(RentalHomes, TenantList, api);
+            
         }
 
     }

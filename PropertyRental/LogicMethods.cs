@@ -33,8 +33,7 @@ namespace PropertyRental
             rp1.Parking = false;
             rp1.FloorSize = 40;
             rp1.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-            rp1.ElevatorAvailable = SearchCriteriaFilter.Elevator;
-
+            
             var a1 = new Address();
             a1.DoorNumber = 134;
             a1.Street = "Darwin Road";
@@ -110,6 +109,7 @@ namespace PropertyRental
             rp4.Parking = false;
             rp4.FloorSize = 90;
             rp4.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            
 
             var a4 = new Address();
             a4.DoorNumber = 31;
@@ -135,6 +135,7 @@ namespace PropertyRental
             rp5.Parking = false;
             rp5.FloorSize = 45;
             rp5.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp5.ElevatorAvailable = SearchCriteriaFilter.Elevator;
 
             var a5 = new Address();
             a5.DoorNumber = 2;
@@ -160,6 +161,7 @@ namespace PropertyRental
             rp6.Parking = false;
             rp6.FloorSize = 105;
             rp6.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            
 
             var a6 = new Address();
             a6.DoorNumber = 190;
@@ -260,6 +262,8 @@ namespace PropertyRental
             rp10.ChildrenAllowed = false;
             rp10.Parking = false;
             rp10.FloorSize = 70;
+            rp10.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp10.ElevatorAvailable = SearchCriteriaFilter.Elevator;
 
             var a10 = new Address();
             a10.DoorNumber = 18;
@@ -371,16 +375,15 @@ namespace PropertyRental
             t1.Salary = 65000;
             t1.Children = false;
             t1.Pets = false;
-            t1.Smoker = true;
+            t1.Smoker = false;
             t1.RentalTerm = 12;
             t1.Gender = Gender.Male;
-            t1.FloorSizeRequired = 50;
+            t1.FloorSizeRequired = 40;
             t1.GardenRequired = true;
             t1.ParkingRequired = true;
             t1.FurnitureRequired = false;
-            t1.BedRoomsRequired = 2;
-            t1.MustMoveInOnThisDate = new DateTime(2022, 11, 30);
-            t1.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible;
+            t1.BedRoomsRequired = 1;
+            t1.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
 
             var a1 = new Address();
             a1.DoorNumber = 64;
@@ -420,9 +423,10 @@ namespace PropertyRental
             t2.FurnitureRequired = false;
             t2.BedRoomsRequired = 3;
             t2.MustMoveInOnThisDate = new DateTime(2022, 12, 30);
-
+            t2.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible;
+            t2.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
+            
             var a2 = new Address();
-
             a2.DoorNumber = 13;
             a2.Street = "North Parade road";
             a2.City = "Bath";
@@ -460,6 +464,8 @@ namespace PropertyRental
             t3.FurnitureRequired = false;
             t3.BedRoomsRequired = 3;
             t3.MustMoveInOnThisDate = new DateTime(2023, 01, 10);
+            t3.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
+
 
             var a3 = new Address();
             a3.DoorNumber = 64;
@@ -500,6 +506,7 @@ namespace PropertyRental
             t4.AvailableToMoveOn = new DateTime(2023, 01, 01);
             t4.MustMoveInOnThisDate = new DateTime(2023, 01, 13);
             t4.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
+            
 
             var a4 = new Address();
             a4.DoorNumber = 16;
@@ -540,6 +547,7 @@ namespace PropertyRental
             t5.AvailableToMoveOn = new DateTime(2022, 12, 14);
             t5.MustMoveInOnThisDate = new DateTime(2023, 01, 10);
             t5.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
+            t5.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible;
 
             var a5 = new Address();
             a5.DoorNumber = 16;
@@ -553,7 +561,7 @@ namespace PropertyRental
             contact5.Email = new MailAddress("laurent.sevran@gmail.com");
 
             var prefAddress5 = new Address();
-            prefAddress5.DoorNumber = 22;
+            prefAddress5.DoorNumber = 22; 
             prefAddress5.Street = "Holborn";
             prefAddress5.City = "London";
             prefAddress5.PostCode = "EC1N 2TD";
@@ -579,6 +587,7 @@ namespace PropertyRental
             t6.BedRoomsRequired = 2;
             t6.AvailableToMoveOn = new DateTime(2022, 12, 14);
             t6.MustMoveInOnThisDate = new DateTime(2023, 01, 23);
+            t6.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
 
             var a6 = new Address();
             a6.DoorNumber = 16;
@@ -656,7 +665,7 @@ namespace PropertyRental
             t8.FurnitureRequired = true;
             t8.BedRoomsRequired = 5;
             t8.AvailableToMoveOn = new DateTime(2022, 12, 23);
-            t3.MustMoveInOnThisDate = new DateTime(2023, 01, 30);
+            t8.MustMoveInOnThisDate = new DateTime(2023, 01, 30);
 
             var a8 = new Address();
             a8.DoorNumber = 119;
@@ -830,16 +839,24 @@ namespace PropertyRental
             if (rentalHome.FloorSize < tenant.FloorSizeRequired)
             {
                 double sizeDifference = rentalHome.FloorSize / tenant.FloorSizeRequired;
-                points += sizeDifference;
+                points += sizeDifference * 20;
             }
            
+            //find the differnece in days between rental home avail. and moving in date
+            //if move in date is after or equal to availability then award points
+            //else no points
+            //this check is only for people that have a real deadline
+
             TimeSpan timeDiffBetweenTenantAndHomeAvailablity = rentalHome.AvailableOn.Subtract(tenant.MustMoveInOnThisDate);
             double Days = timeDiffBetweenTenantAndHomeAvailablity.Days;
-            double AbsoluteDays = Math.Abs(Days);
 
-            if (AbsoluteDays < 0 || AbsoluteDays == Days)
+            if (Days <= 0 )
             {
-                points += 200;
+                points += 200; 
+            }
+            else
+            {
+                return 0;
             }
 
             int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
@@ -906,15 +923,15 @@ namespace PropertyRental
 
         public static void DisplayScoreForEachHome(List<RentalHome> ListOfRentalHomes, Tenant tenant, string api)
         {
-            List<RentalHomeScoreTracker> ScoresList = new List<RentalHomeScoreTracker>();
+            List<RentalHomeScore> ScoresList = new List<RentalHomeScore>();
                 foreach (var rentalHome in ListOfRentalHomes)
                 {
-                    double scores = PointsScoredForEachHome(tenant, rentalHome, api);
-                    RentalHomeScoreTracker ScoreStorage = new RentalHomeScoreTracker();
+                    double score = PointsScoredForEachHome(tenant, rentalHome, api);
+                    RentalHomeScore ScoreStorage = new RentalHomeScore();
                     ScoreStorage.Rental = rentalHome;
-                    ScoreStorage.Score = scores;
-                    ScoresList.Add(ScoreStorage);
-                    Console.WriteLine($"{tenant.FirstName} {rentalHome.Address.PostCode} {ScoreStorage.Score}");
+                    ScoreStorage.Score = score;
+                    ScoresList.Add(ScoreStorage);   
+                    Console.WriteLine($" Tenant: {tenant.FirstName} {rentalHome.Address.PostCode} Score: {score}");
                 }
         }
     }

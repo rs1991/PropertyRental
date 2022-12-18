@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PropertyRental
 {
-    public class RentalHomeScoreTracker 
+    public class RentalHomeScore 
     {
         
         private double _score;
