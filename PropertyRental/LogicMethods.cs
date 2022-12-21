@@ -422,10 +422,10 @@ namespace PropertyRental
             t2.ParkingRequired = true;
             t2.FurnitureRequired = false;
             t2.BedRoomsRequired = 3;
-            t2.MustMoveInOnThisDate = new DateTime(2022, 12, 30);
             t2.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible;
             t2.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
-            
+            t2.MustMoveInOnThisDate = new DateTime(2022, 11, 22);
+
             var a2 = new Address();
             a2.DoorNumber = 13;
             a2.Street = "North Parade road";
@@ -463,9 +463,8 @@ namespace PropertyRental
             t3.ParkingRequired = true;
             t3.FurnitureRequired = false;
             t3.BedRoomsRequired = 3;
-            t3.MustMoveInOnThisDate = new DateTime(2023, 01, 10);
             t3.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
-
+            t3.MustMoveInOnThisDate = new DateTime(2022, 11, 29);
 
             var a3 = new Address();
             a3.DoorNumber = 64;
@@ -744,6 +743,7 @@ namespace PropertyRental
             t10.BedRoomsRequired = 3;
             t10.AvailableToMoveOn = new DateTime(2022, 12, 30);
             t10.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
+            t10.MustMoveInOnThisDate = new DateTime(2022, 04, 18);
 
             var a10 = new Address();
             a10.DoorNumber = 190;
@@ -849,8 +849,8 @@ namespace PropertyRental
 
             TimeSpan timeDiffBetweenTenantAndHomeAvailablity = rentalHome.AvailableOn.Subtract(tenant.MustMoveInOnThisDate);
             double Days = timeDiffBetweenTenantAndHomeAvailablity.Days;
-
-            if (Days <= 0 )
+            //If the DateTime value has not been assigned to a tenant for when they need to move in then the default MinValue is used.
+            if (Days <= 0 || tenant.MustMoveInOnThisDate.Equals(DateTime.MinValue))
             {
                 points += 200; 
             }
@@ -931,7 +931,7 @@ namespace PropertyRental
                     ScoreStorage.Rental = rentalHome;
                     ScoreStorage.Score = score;
                     ScoresList.Add(ScoreStorage);   
-                    Console.WriteLine($" Tenant: {tenant.FirstName} {rentalHome.Address.PostCode} Score: {score}");
+                    //Console.WriteLine($" Tenant: {tenant.FirstName} {rentalHome.Address.PostCode} Score: {score}");
                 }
         }
     }
