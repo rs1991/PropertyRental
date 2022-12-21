@@ -30,7 +30,7 @@ namespace PropertyRental
             WriteDataStorage(dStorage, path);
 
 
-            //DisplayTheScore(RentalHomes, TenantList, api); 
+            
             DisplayTheScoreForEachTenant(TenantList, RentalHomes, api);
         }
 
