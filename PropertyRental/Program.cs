@@ -29,7 +29,6 @@ namespace PropertyRental
 
             WriteDataStorage(dStorage, path);
 
-
             
             DisplayTheScoreForEachTenant(TenantList, RentalHomes, api);
         }

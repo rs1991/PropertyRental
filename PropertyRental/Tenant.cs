@@ -202,7 +202,7 @@ namespace PropertyRental
         public override string ToString()
         {
             return $"First Name: {FirstName} Floorsize required: {FloorSizeRequired} Must move on this date: {MustMoveInOnThisDate} " +
-                $"Budget: {Budget} Bedrooms required: {BedRoomsRequired} Smoker: {Smoker} ";
+                $"Budget: {Budget} Bedrooms required: {BedRoomsRequired} Elevator: {ElevatorAccessRequired} Smoker: {Smoker} ";
         }
 
     }

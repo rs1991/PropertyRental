@@ -33,6 +33,7 @@ namespace PropertyRental
             rp1.Parking = false;
             rp1.FloorSize = 40;
             rp1.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp1.ElevatorAvailable = SearchCriteriaFilter.Elevator;
             
             var a1 = new Address();
             a1.DoorNumber = 134;
@@ -58,7 +59,6 @@ namespace PropertyRental
             rp2.Parking = false;
             rp2.FloorSize = 50;
             rp2.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-            rp2.ElevatorAvailable = SearchCriteriaFilter.Elevator;
 
             var a2 = new Address();
             a2.DoorNumber = 90;
@@ -109,6 +109,7 @@ namespace PropertyRental
             rp4.Parking = false;
             rp4.FloorSize = 90;
             rp4.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp4.ElevatorAvailable = SearchCriteriaFilter.Elevator;
             
 
             var a4 = new Address();
@@ -135,7 +136,7 @@ namespace PropertyRental
             rp5.Parking = false;
             rp5.FloorSize = 45;
             rp5.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-            rp5.ElevatorAvailable = SearchCriteriaFilter.Elevator;
+          
 
             var a5 = new Address();
             a5.DoorNumber = 2;
@@ -383,7 +384,7 @@ namespace PropertyRental
             t1.ParkingRequired = true;
             t1.FurnitureRequired = false;
             t1.BedRoomsRequired = 1;
-            t1.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
+          
 
             var a1 = new Address();
             a1.DoorNumber = 64;
@@ -586,8 +587,7 @@ namespace PropertyRental
             t6.BedRoomsRequired = 2;
             t6.AvailableToMoveOn = new DateTime(2022, 12, 14);
             t6.MustMoveInOnThisDate = new DateTime(2023, 01, 23);
-            t6.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
-
+            
             var a6 = new Address();
             a6.DoorNumber = 16;
             a6.Street = "Edgware road";
@@ -703,8 +703,7 @@ namespace PropertyRental
             t9.FurnitureRequired = true;
             t9.BedRoomsRequired = 5;
             t9.AvailableToMoveOn = new DateTime(2022, 12, 30);
-            t9.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
-
+            
             var a9 = new Address();
             a9.DoorNumber = 19;
             a9.Street = "Driver street";
@@ -742,7 +741,6 @@ namespace PropertyRental
             t10.FurnitureRequired = false;
             t10.BedRoomsRequired = 3;
             t10.AvailableToMoveOn = new DateTime(2022, 12, 30);
-            t10.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
             t10.MustMoveInOnThisDate = new DateTime(2022, 04, 18);
 
             var a10 = new Address();
