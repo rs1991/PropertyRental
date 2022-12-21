@@ -44,16 +44,7 @@ namespace PropertyRental
         }
 
 
-        public static void DisplayTheScore(List<RentalHome> ListOfRentalHomes, List<Tenant> TenantList, string api)
-        {
-            foreach(var home in ListOfRentalHomes) { 
-            foreach(var tenant in TenantList)
-            {
-                    double score = PointsScoredForEachHome(tenant, home, api);
-                    Console.WriteLine($"{tenant.FirstName} {home.Address.PostCode} {score}");
-            }
-            }
-        }
+       
 
 
     }
