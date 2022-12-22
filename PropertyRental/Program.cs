@@ -30,7 +30,10 @@ namespace PropertyRental
             WriteDataStorage(dStorage, path);
 
             
-            DisplayTheScoreForEachTenant(TenantList, RentalHomes, api);
+            List<RentalHomeScore> Scores = ScoreListForEachHome(TenantList, RentalHomes, api);
+
+            displayScoreOnly(Scores);
+
         }
 
     }

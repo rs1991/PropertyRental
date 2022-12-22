@@ -26,7 +26,7 @@ namespace PropertyRental
         
 
 
-        public static void DisplayTheScoreForEachTenant(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
+        public static List<RentalHomeScore> ScoreListForEachHome(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
         {
             List<RentalHomeScore> ScoresList = new List<RentalHomeScore>();
             foreach (var home in RentalHomes)
@@ -38,9 +38,21 @@ namespace PropertyRental
                     ScoreStorage.Rental = home;
                     ScoreStorage.Score = score;
                     ScoresList.Add(ScoreStorage);
-                    Console.WriteLine($"{tenant.FirstName} {home.Address.PostCode} Score: {score}");
+                    //Console.WriteLine($"{tenant.FirstName} {home.Address.PostCode} Score: {score}");
                 }
             }
+
+            return ScoresList; 
+        }
+
+        public static void displayScoreOnly(List<RentalHomeScore> ScoresList)
+        {
+            foreach(var score in ScoresList)
+            {
+                Console.WriteLine(score.Score);
+                Console.WriteLine(score.Rental.Address.PostCode);
+            }
+                
         }
 
 
