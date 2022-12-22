@@ -29,12 +29,11 @@ namespace PropertyRental
         {
             foreach(var score in ScoresList)
             {
-                Console.WriteLine(score.Score);
-                Console.WriteLine(score.Rental.Address.PostCode);
+                Console.WriteLine($"Score: {score.Score} Address: {score.Rental.Address.PostCode} {score.Tenant.FirstName}");
             }
-                
         }
 
+        
 
 
     }

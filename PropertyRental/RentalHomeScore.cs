@@ -11,7 +11,8 @@ namespace PropertyRental
     {
         
         private double _score;
-        private RentalHome _rentalHome; 
+        private RentalHome _rentalHome;
+        private Tenant _tenant;
 
         public double Score 
         { 
@@ -23,6 +24,12 @@ namespace PropertyRental
         {
             get { return _rentalHome; } 
             set { _rentalHome = value; } 
+        }
+
+        public Tenant Tenant
+        {
+            get { return _tenant; }
+            set { _tenant = value; }
         }
 
       

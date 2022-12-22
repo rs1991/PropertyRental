@@ -906,7 +906,6 @@ namespace PropertyRental
         }
         public static int DistanceCalculation(Address origin, Address destination, string apiKey)
         {
-            //string bla = $"{origin.City} {origin.Street} {origin.DoorNumber}";
             string start = JsonConvert.SerializeObject(origin);
             string end = JsonConvert.SerializeObject(destination);
 
@@ -919,7 +918,6 @@ namespace PropertyRental
         }
 
 
-
         public static List<RentalHomeScore> ScoreListForEachHome(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
         {
             List<RentalHomeScore> ScoresList = new List<RentalHomeScore>();
@@ -929,13 +927,12 @@ namespace PropertyRental
                 {
                     double score = PointsScoredForEachHome(tenant, home, api);
                     RentalHomeScore ScoreStorage = new RentalHomeScore();
+                    ScoreStorage.Tenant = tenant;
                     ScoreStorage.Rental = home;
                     ScoreStorage.Score = score;
                     ScoresList.Add(ScoreStorage);
-                    //Console.WriteLine($"{tenant.FirstName} {home.Address.PostCode} Score: {score}");
                 }
             }
-
             return ScoresList;
         }
 
