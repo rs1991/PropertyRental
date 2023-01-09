@@ -12,13 +12,7 @@ namespace PropertyRental
 {
     public class UiMethods
     {
-        public static void DisplayMatch(List<RentalHome> Matches)
-        {
-            foreach (var Match in Matches)
-            {
-                Console.WriteLine($"Suitable home: {Match.Address.City} - {Match.Address.PostCode} - {Match.Description}");
-            }
-        }
+        
         
         public static void displayScoreOnly(List<RentalHomeScore> ScoresList)
         {
