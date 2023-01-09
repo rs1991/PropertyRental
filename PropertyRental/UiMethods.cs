@@ -19,10 +19,7 @@ namespace PropertyRental
                 Console.WriteLine($"Suitable home: {Match.Address.City} - {Match.Address.PostCode} - {Match.Description}");
             }
         }
-        public static void TotalRating(int TotalScore)
-        {
-            Console.WriteLine($"This home has a rating of: {TotalScore}");
-        }
+        
         
 
         public static void displayScoreOnly(List<RentalHomeScore> ScoresList)
@@ -34,7 +31,6 @@ namespace PropertyRental
         }
 
         
-
 
     }
     }

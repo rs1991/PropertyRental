@@ -847,7 +847,7 @@ namespace PropertyRental
 
             TimeSpan timeDiffBetweenTenantAndHomeAvailablity = rentalHome.AvailableOn.Subtract(tenant.MustMoveInOnThisDate);
             double Days = timeDiffBetweenTenantAndHomeAvailablity.Days;
-            //If the DateTime value has not been assigned to a tenant for when they need to move in then the default MinValue is used.
+            
             if (Days <= 0 || tenant.MustMoveInOnThisDate.Equals(DateTime.MinValue))
             {
                 points += 200; 
