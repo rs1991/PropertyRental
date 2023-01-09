@@ -32,11 +32,7 @@ namespace PropertyRental
             set { _tenant = value; }
         }
 
-      
-
-
 
     }
 
-    
 }

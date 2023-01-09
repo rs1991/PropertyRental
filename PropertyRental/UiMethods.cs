@@ -20,8 +20,6 @@ namespace PropertyRental
             }
         }
         
-        
-
         public static void displayScoreOnly(List<RentalHomeScore> ScoresList)
         {
             foreach(var score in ScoresList)
@@ -30,7 +28,5 @@ namespace PropertyRental
             }
         }
 
-        
-
     }
-    }
+}

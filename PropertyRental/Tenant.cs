@@ -33,6 +33,9 @@ namespace PropertyRental
         private double _floorSizeRequired;
         private SearchCriteriaFilter _wheelChairAccessAvailable;
         private SearchCriteriaFilter _elevatorAccessRequired;
+        private EnergyType _tenantsPreferredEnergyType;
+        private CouncilTaxBand _tenantsPreferredcouncilTaxBand;
+        private TypeOfHome _tenantspreferredHomeType;
         
 
         public SearchCriteriaFilter ElevatorAccessRequired
@@ -41,6 +44,23 @@ namespace PropertyRental
             set { _elevatorAccessRequired = value; }
         }
 
+        public EnergyType EnergyType
+        {
+            get { return _tenantsPreferredEnergyType; }
+            set { _tenantsPreferredEnergyType = value; }
+        }
+
+        public CouncilTaxBand CouncilTaxBand
+        {
+            get { return _tenantsPreferredcouncilTaxBand; }
+            set { _tenantsPreferredcouncilTaxBand = value; }
+        }
+
+        public TypeOfHome TenantPreferredHomeType
+        {
+            get { return _tenantspreferredHomeType;}
+            set { _tenantspreferredHomeType = value; }
+        }
 
         public SearchCriteriaFilter WheelChairAccessNeeded
         {

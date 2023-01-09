@@ -384,7 +384,7 @@ namespace PropertyRental
             t1.ParkingRequired = true;
             t1.FurnitureRequired = false;
             t1.BedRoomsRequired = 1;
-          
+            t1.CouncilTaxBand = CouncilTaxBand.Band_C;
 
             var a1 = new Address();
             a1.DoorNumber = 64;
@@ -789,6 +789,10 @@ namespace PropertyRental
             double points = 0;
 
             if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
+            {
+                points += 10;
+            }
+            if(tenant.CouncilTaxBand == rentalHome.CouncilTaxBand)
             {
                 points += 10;
             }
