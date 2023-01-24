@@ -10,6 +10,8 @@ using System.Net;
 using static System.Formats.Asn1.AsnWriter;
 using System.Collections.Generic;
 
+
+
 namespace PropertyRental
 {
     public class LogicMethods
@@ -385,6 +387,8 @@ namespace PropertyRental
             t1.FurnitureRequired = false;
             t1.BedRoomsRequired = 1;
             t1.CouncilTaxBand = CouncilTaxBand.Band_C;
+            t1.TenantPreferredHomeType = TypeOfHome.Flat;
+            t1.TenantPreferredEnergyType = EnergyType.Gas;
 
             var a1 = new Address();
             a1.DoorNumber = 64;
@@ -426,6 +430,9 @@ namespace PropertyRental
             t2.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible;
             t2.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
             t2.MustMoveInOnThisDate = new DateTime(2022, 11, 22);
+            t2.CouncilTaxBand = CouncilTaxBand.Band_D;
+            t2.TenantPreferredHomeType = TypeOfHome.House;
+            t2.TenantPreferredEnergyType = EnergyType.Solar;
 
             var a2 = new Address();
             a2.DoorNumber = 13;
@@ -466,6 +473,9 @@ namespace PropertyRental
             t3.BedRoomsRequired = 3;
             t3.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
             t3.MustMoveInOnThisDate = new DateTime(2022, 11, 29);
+            t3.CouncilTaxBand = CouncilTaxBand.Band_C;
+            t3.TenantPreferredHomeType = TypeOfHome.House;
+            t3.TenantPreferredEnergyType = EnergyType.Gas;
 
             var a3 = new Address();
             a3.DoorNumber = 64;
@@ -506,7 +516,10 @@ namespace PropertyRental
             t4.AvailableToMoveOn = new DateTime(2023, 01, 01);
             t4.MustMoveInOnThisDate = new DateTime(2023, 01, 13);
             t4.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
-            
+            t4.CouncilTaxBand = CouncilTaxBand.Band_B;
+            t4.TenantPreferredHomeType = TypeOfHome.Flat;
+            t4.TenantPreferredEnergyType = EnergyType.Electric;
+
 
             var a4 = new Address();
             a4.DoorNumber = 16;
@@ -548,6 +561,9 @@ namespace PropertyRental
             t5.MustMoveInOnThisDate = new DateTime(2023, 01, 10);
             t5.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
             t5.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible;
+            t5.CouncilTaxBand = CouncilTaxBand.Band_D;
+            t5.TenantPreferredHomeType = TypeOfHome.Flat;
+            t5.TenantPreferredEnergyType = EnergyType.Electric;
 
             var a5 = new Address();
             a5.DoorNumber = 16;
@@ -587,7 +603,10 @@ namespace PropertyRental
             t6.BedRoomsRequired = 2;
             t6.AvailableToMoveOn = new DateTime(2022, 12, 14);
             t6.MustMoveInOnThisDate = new DateTime(2023, 01, 23);
-            
+            t6.CouncilTaxBand = CouncilTaxBand.Band_D;
+            t6.TenantPreferredHomeType = TypeOfHome.Bungalow;
+            t6.TenantPreferredEnergyType = EnergyType.Gas;
+
             var a6 = new Address();
             a6.DoorNumber = 16;
             a6.Street = "Edgware road";
@@ -626,6 +645,9 @@ namespace PropertyRental
             t7.BedRoomsRequired = 3;
             t7.AvailableToMoveOn = new DateTime(2022, 12, 14);
             t7.MustMoveInOnThisDate = new DateTime(2023, 01, 11);
+            t7.CouncilTaxBand = CouncilTaxBand.Band_B;
+            t7.TenantPreferredHomeType = TypeOfHome.House;
+            t7.TenantPreferredEnergyType = EnergyType.Gas;
 
             var a7 = new Address();
             a7.DoorNumber = 119;
@@ -665,6 +687,9 @@ namespace PropertyRental
             t8.BedRoomsRequired = 5;
             t8.AvailableToMoveOn = new DateTime(2022, 12, 23);
             t8.MustMoveInOnThisDate = new DateTime(2023, 01, 30);
+            t4.CouncilTaxBand = CouncilTaxBand.Band_A;
+            t4.TenantPreferredHomeType = TypeOfHome.House;
+            t4.TenantPreferredEnergyType = EnergyType.Gas;
 
             var a8 = new Address();
             a8.DoorNumber = 119;
@@ -703,7 +728,10 @@ namespace PropertyRental
             t9.FurnitureRequired = true;
             t9.BedRoomsRequired = 5;
             t9.AvailableToMoveOn = new DateTime(2022, 12, 30);
-            
+            t9.CouncilTaxBand = CouncilTaxBand.Band_C;
+            t9.TenantPreferredHomeType = TypeOfHome.House;
+            t9.TenantPreferredEnergyType = EnergyType.Gas;
+
             var a9 = new Address();
             a9.DoorNumber = 19;
             a9.Street = "Driver street";
@@ -742,6 +770,9 @@ namespace PropertyRental
             t10.BedRoomsRequired = 3;
             t10.AvailableToMoveOn = new DateTime(2022, 12, 30);
             t10.MustMoveInOnThisDate = new DateTime(2022, 04, 18);
+            t10.CouncilTaxBand = CouncilTaxBand.Band_A;
+            t10.TenantPreferredHomeType = TypeOfHome.Flat;
+            t10.TenantPreferredEnergyType = EnergyType.Gas;
 
             var a10 = new Address();
             a10.DoorNumber = 190;
@@ -851,6 +882,8 @@ namespace PropertyRental
 
             TimeSpan timeDiffBetweenTenantAndHomeAvailablity = rentalHome.AvailableOn.Subtract(tenant.MustMoveInOnThisDate);
             double Days = timeDiffBetweenTenantAndHomeAvailablity.Days;
+
+            //DateTime.MinValue here indicates that the tenant has not set a deadline that they need to move in by
             
             if (Days <= 0 || tenant.MustMoveInOnThisDate.Equals(DateTime.MinValue))
             {

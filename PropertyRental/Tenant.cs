@@ -44,7 +44,7 @@ namespace PropertyRental
             set { _elevatorAccessRequired = value; }
         }
 
-        public EnergyType EnergyType
+        public EnergyType TenantPreferredEnergyType
         {
             get { return _tenantsPreferredEnergyType; }
             set { _tenantsPreferredEnergyType = value; }

@@ -4,6 +4,11 @@ using static PropertyRental.LogicMethods;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
+
 using static System.Formats.Asn1.AsnWriter;
 
 namespace PropertyRental
@@ -27,10 +32,11 @@ namespace PropertyRental
             dStorage.ListOfAddresses = AddressList;
 
             WriteDataStorage(dStorage, path);
-            
+
             List<RentalHomeScore> Scores = ScoreListForEachHome(TenantList, RentalHomes, api);
 
             displayScoreOnly(Scores);
+
 
         }
 
