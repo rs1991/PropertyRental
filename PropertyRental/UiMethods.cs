@@ -10,7 +10,7 @@ using static PropertyRental.LogicMethods;
 using System.Collections;
 using System.Net;
 using HtmlAgilityPack;
-
+using ScrapySharp.Network;
 
 namespace PropertyRental
 {
@@ -38,19 +38,16 @@ namespace PropertyRental
             return doc;
         }
 
-        /*
-        public static List<string> GetHomesList(string url)
+        public static void GetDataFromWeb()
         {
-            var List<string> homeLinks = new List<string>();
-            HtmlDocument doc = GetWebDocument(url);
-            HtmlNodeCollection linkNodes = doc.DocumentNode.SelectNodes(xpath: "");
+            HtmlWeb web = new HtmlWeb();
+            var htmlDoc = web.Load("https://www.gumtree.com/search?featured_filter=false&q=&search_category=property-to-rent&urgent_filter=false&sort=date&search_scope=false&photos_filter=false&search_location=London&tl=&distance=0.0001");
+            var nodes = htmlDoc.DocumentNode.SelectNodes("//h2");
 
-            
-
-            return homeLinks;
-
+            foreach (var node in nodes)
+            {
+                Console.WriteLine(node.InnerText);
+            }
         }
-        */
-        
     }
 }
