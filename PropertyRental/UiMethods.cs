@@ -24,19 +24,7 @@ namespace PropertyRental
                 Console.WriteLine($"Score: {score.Score} Address: {score.Rental.Address.PostCode} {score.Tenant.FirstName}");
             }
         }
-
-        /// <summary>
-        /// Method to get the website and convert it to a document
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        public static HtmlDocument GetWebDocument(string url)
-        {
-            HtmlWeb website = new HtmlWeb();
-            HtmlDocument doc = new HtmlDocument();
-            
-            return doc;
-        }
+                
 
         public static void GetDataFromWeb()
         {
