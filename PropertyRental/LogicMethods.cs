@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Net;
 using static System.Formats.Asn1.AsnWriter;
 using System.Collections.Generic;
+using HtmlAgilityPack;
 
 
 
@@ -971,6 +972,21 @@ namespace PropertyRental
                 }
             }
             return ScoresList;
+        }
+
+        public static void GetDataFromWeb()
+        {
+            HtmlWeb web = new HtmlWeb();
+            var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=&minBedrooms=&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
+            var nodes = htmlDoc.DocumentNode.SelectNodes("//div[@class='l-searchResults']");
+
+            foreach (var node in nodes)
+            {
+                Console.WriteLine(node.InnerText);
+            }
+
+
+
         }
 
     }
