@@ -10,6 +10,10 @@ using System.Net;
 using static System.Formats.Asn1.AsnWriter;
 using System.Collections.Generic;
 using HtmlAgilityPack;
+using CsvHelper;
+using System.IO;
+using System.Collections.Generic;
+using System.Globalization;
 
 
 
@@ -978,15 +982,22 @@ namespace PropertyRental
         {
             HtmlWeb web = new HtmlWeb();
             var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=&minBedrooms=&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
-            var nodes = htmlDoc.DocumentNode.SelectNodes("//div[@class='l-searchResults']");
+            
+            //string priceXpath = "//*[@class='propertyCard-priceValue']";
+            string addressXpath = "//*[@class='propertyCard-address property-card-updates']";
 
-            foreach (var node in nodes)
+            
+  
+
+            
+            for(int i = 0; i < 20; i++)
             {
-                Console.WriteLine(node.InnerText);
+                //var price = htmlDoc.DocumentNode.SelectNodes(priceXpath)[i].InnerText;
+                var address = htmlDoc.DocumentNode.SelectNodes(addressXpath)[i].InnerText;
+                Console.WriteLine(address);
+
             }
-
-
-
+            
         }
 
     }

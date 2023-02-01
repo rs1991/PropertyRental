@@ -9,7 +9,6 @@ using System.Text.RegularExpressions;
 using static PropertyRental.LogicMethods;
 using System.Collections;
 using System.Net;
-
 using ScrapySharp.Network;
 
 namespace PropertyRental
