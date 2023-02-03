@@ -981,23 +981,26 @@ namespace PropertyRental
         public static void GetDataFromWeb()
         {
             HtmlWeb web = new HtmlWeb();
-            var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=&minBedrooms=&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
-            
-            //string priceXpath = "//*[@class='propertyCard-priceValue']";
-            string addressXpath = "//*[@class='propertyCard-address property-card-updates']";
+            var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=OUTCODE%5E2744&maxPrice=2000&propertyTypes=&mustHave=&dontShow=&furnishTypes=&keywords=");
 
-            
-  
+            var cardXpath = "//*[@class='propertyCard-wrapper']";
 
+            var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
             
-            for(int i = 0; i < 20; i++)
+            foreach(var node in cardNodes)
             {
-                //var price = htmlDoc.DocumentNode.SelectNodes(priceXpath)[i].InnerText;
-                var address = htmlDoc.DocumentNode.SelectNodes(addressXpath)[i].InnerText;
-                Console.WriteLine(address);
 
+                var priceNode = node.SelectSingleNode(".//*[@class='propertyCard-priceValue']");
+                var contactNode = node.SelectSingleNode(".//*[@class='propertyCard-contactsPhoneNumber']");
+                var informationNode = node.SelectSingleNode(".//*[@class='property-information']");
+
+                var price = priceNode.InnerHtml;
+                var contact = contactNode.InnerHtml;
+                var info = informationNode.InnerHtml;
+                Console.WriteLine($"Details: {price} {contact} {info}");
+
+                
             }
-            
         }
 
     }
