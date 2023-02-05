@@ -9,6 +9,6 @@ namespace PropertyRental
     public class HomeData
     {
         public string Price{ get; set; }
-        public string Address{ get; set; }
+        public string AgentPhoneNumber{ get; set; }
     }
 }

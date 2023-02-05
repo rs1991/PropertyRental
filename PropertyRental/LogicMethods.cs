@@ -968,7 +968,7 @@ namespace PropertyRental
                 foreach (var tenant in TenantList)
                 {
                     double score = PointsScoredForEachHome(tenant, home, api);
-                    RentalHomeScore ScoreStorage = new RentalHomeScore();
+                    RentalHomeScore ScoreStorage = new RentalHomeScore();   
                     ScoreStorage.Tenant = tenant;
                     ScoreStorage.Rental = home;
                     ScoreStorage.Score = score;
@@ -984,24 +984,27 @@ namespace PropertyRental
             var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=OUTCODE%5E2744&maxPrice=2000&propertyTypes=&mustHave=&dontShow=&furnishTypes=&keywords=");
 
             var cardXpath = "//*[@class='propertyCard-wrapper']";
+            
 
             var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
-            
-            foreach(var node in cardNodes)
-            {
 
+            List<HomeData> ScrapedDataList = new List<HomeData>();
+            foreach (var node in cardNodes)
+            {
                 var priceNode = node.SelectSingleNode(".//*[@class='propertyCard-priceValue']");
                 var contactNode = node.SelectSingleNode(".//*[@class='propertyCard-contactsPhoneNumber']");
-                var informationNode = node.SelectSingleNode(".//*[@class='property-information']");
-
+                
                 var price = priceNode.InnerHtml;
                 var contact = contactNode.InnerHtml;
-                var info = informationNode.InnerHtml;
-                Console.WriteLine($"Details: {price} {contact} {info}");
+                HomeData ScrapedDataStorage = new HomeData();
+                ScrapedDataStorage.Price = price;
+                ScrapedDataStorage.AgentPhoneNumber = contact;
+                ScrapedDataList.Add(ScrapedDataStorage);
+
+                
 
                 
             }
         }
-
+        }
     }
-}
