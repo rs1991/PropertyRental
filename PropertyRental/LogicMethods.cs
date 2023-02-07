@@ -41,7 +41,7 @@ namespace PropertyRental
             rp1.FloorSize = 40;
             rp1.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp1.ElevatorAvailable = SearchCriteriaFilter.Elevator;
-            
+
             var a1 = new Address();
             a1.DoorNumber = 134;
             a1.Street = "Darwin Road";
@@ -117,7 +117,7 @@ namespace PropertyRental
             rp4.FloorSize = 90;
             rp4.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp4.ElevatorAvailable = SearchCriteriaFilter.Elevator;
-            
+
 
             var a4 = new Address();
             a4.DoorNumber = 31;
@@ -143,7 +143,7 @@ namespace PropertyRental
             rp5.Parking = false;
             rp5.FloorSize = 45;
             rp5.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-          
+
 
             var a5 = new Address();
             a5.DoorNumber = 2;
@@ -169,7 +169,7 @@ namespace PropertyRental
             rp6.Parking = false;
             rp6.FloorSize = 105;
             rp6.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-            
+
 
             var a6 = new Address();
             a6.DoorNumber = 190;
@@ -582,7 +582,7 @@ namespace PropertyRental
             contact5.Email = new MailAddress("laurent.sevran@gmail.com");
 
             var prefAddress5 = new Address();
-            prefAddress5.DoorNumber = 22; 
+            prefAddress5.DoorNumber = 22;
             prefAddress5.Street = "Holborn";
             prefAddress5.City = "London";
             prefAddress5.PostCode = "EC1N 2TD";
@@ -828,7 +828,7 @@ namespace PropertyRental
             {
                 points += 10;
             }
-            if(tenant.CouncilTaxBand == rentalHome.CouncilTaxBand)
+            if (tenant.CouncilTaxBand == rentalHome.CouncilTaxBand)
             {
                 points += 10;
             }
@@ -862,7 +862,7 @@ namespace PropertyRental
             {
                 points += 5;
             }
-            if(tenant.ElevatorAccessRequired == rentalHome.ElevatorAvailable)
+            if (tenant.ElevatorAccessRequired == rentalHome.ElevatorAvailable)
             {
                 points += 10;
             }
@@ -879,7 +879,7 @@ namespace PropertyRental
                 double sizeDifference = rentalHome.FloorSize / tenant.FloorSizeRequired;
                 points += sizeDifference * 20;
             }
-           
+
             //find the differnece in days between rental home avail. and moving in date
             //if move in date is after or equal to availability then award points
             //else no points
@@ -889,10 +889,10 @@ namespace PropertyRental
             double Days = timeDiffBetweenTenantAndHomeAvailablity.Days;
 
             //DateTime.MinValue here indicates that the tenant has not set a deadline that they need to move in by
-            
+
             if (Days <= 0 || tenant.MustMoveInOnThisDate.Equals(DateTime.MinValue))
             {
-                points += 200; 
+                points += 200;
             }
             else
             {
@@ -968,7 +968,7 @@ namespace PropertyRental
                 foreach (var tenant in TenantList)
                 {
                     double score = PointsScoredForEachHome(tenant, home, api);
-                    RentalHomeScore ScoreStorage = new RentalHomeScore();   
+                    RentalHomeScore ScoreStorage = new RentalHomeScore();
                     ScoreStorage.Tenant = tenant;
                     ScoreStorage.Rental = home;
                     ScoreStorage.Score = score;
@@ -984,27 +984,39 @@ namespace PropertyRental
             var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=OUTCODE%5E2744&maxPrice=2000&propertyTypes=&mustHave=&dontShow=&furnishTypes=&keywords=");
 
             var cardXpath = "//*[@class='propertyCard-wrapper']";
-            
 
             var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
 
+
             List<HomeData> ScrapedDataList = new List<HomeData>();
+
             foreach (var node in cardNodes)
             {
-                var priceNode = node.SelectSingleNode(".//*[@class='propertyCard-priceValue']");
-                var contactNode = node.SelectSingleNode(".//*[@class='propertyCard-contactsPhoneNumber']");
+
                 
-                var price = priceNode.InnerHtml;
-                var contact = contactNode.InnerHtml;
+                    var priceNode = node.SelectSingleNode(".//*[@class='propertyCard-priceValue']");
+                    var contactNode = node.SelectSingleNode(".//*[@class='propertyCard-contactsPhoneNumber']");
+                    var bedroomNode = node.SelectSingleNode(".//*[@class='propertyCard-details']"); 
+
+
                 HomeData ScrapedDataStorage = new HomeData();
-                ScrapedDataStorage.Price = price;
-                ScrapedDataStorage.AgentPhoneNumber = contact;
-                ScrapedDataList.Add(ScrapedDataStorage);
+                    var price = priceNode.InnerHtml;
+                    var contact = contactNode.InnerHtml;
+                    var rooms = bedroomNode.InnerHtml;
 
-                
 
-                
+                    ScrapedDataStorage.Price = price;
+                    ScrapedDataStorage.AgentPhoneNumber = contact;
+                    ScrapedDataStorage.NoBedrooms = rooms;
+                    ScrapedDataList.Add(ScrapedDataStorage);
+
+               
+
+
+                }
             }
         }
-        }
     }
+
+        
+        
