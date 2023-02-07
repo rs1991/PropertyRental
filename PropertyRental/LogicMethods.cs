@@ -992,27 +992,20 @@ namespace PropertyRental
 
             foreach (var node in cardNodes)
             {
-
+                var priceNode = node.SelectSingleNode(".//*[@class='propertyCard-priceValue']");
+                var contactNode = node.SelectSingleNode(".//*[@class='propertyCard-contactsPhoneNumber']");
+                var addressNode = node.SelectSingleNode(".//*[@class='propertyCard-address']");
                 
-                    var priceNode = node.SelectSingleNode(".//*[@class='propertyCard-priceValue']");
-                    var contactNode = node.SelectSingleNode(".//*[@class='propertyCard-contactsPhoneNumber']");
-                    var bedroomNode = node.SelectSingleNode(".//*[@class='propertyCard-details']"); 
-
-
                 HomeData ScrapedDataStorage = new HomeData();
-                    var price = priceNode.InnerHtml;
-                    var contact = contactNode.InnerHtml;
-                    var rooms = bedroomNode.InnerHtml;
-
-
-                    ScrapedDataStorage.Price = price;
-                    ScrapedDataStorage.AgentPhoneNumber = contact;
-                    ScrapedDataStorage.NoBedrooms = rooms;
-                    ScrapedDataList.Add(ScrapedDataStorage);
-
-               
-
-
+                
+                var price = priceNode.InnerHtml;
+                var contact = contactNode.InnerHtml;
+                var homeAddress = addressNode.InnerHtml;
+                
+                ScrapedDataStorage.Price = price;
+                ScrapedDataStorage.AgentPhoneNumber = contact;
+                ScrapedDataStorage.HomeAddress = homeAddress;
+                ScrapedDataList.Add(ScrapedDataStorage);
                 }
             }
         }

@@ -10,6 +10,6 @@ namespace PropertyRental
     {
         public string Price{ get; set; }
         public string AgentPhoneNumber{ get; set; }
-        public string HomeDetails{ get; set; }
+        public string HomeAddress{ get; set; }
     }
 }
