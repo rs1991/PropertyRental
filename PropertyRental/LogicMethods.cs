@@ -1000,7 +1000,7 @@ namespace PropertyRental
                 
                 var price = priceNode.InnerHtml;
                 var contact = contactNode.InnerHtml;
-                var homeAddress = addressNode.InnerHtml;
+                var homeAddress = addressNode.InnerHtml.Trim();
                 
                 ScrapedDataStorage.Price = price;
                 ScrapedDataStorage.AgentPhoneNumber = contact;
