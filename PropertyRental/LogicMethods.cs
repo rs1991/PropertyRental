@@ -995,16 +995,20 @@ namespace PropertyRental
                 var priceNode = node.SelectSingleNode(".//*[@class='propertyCard-priceValue']");
                 var contactNode = node.SelectSingleNode(".//*[@class='propertyCard-contactsPhoneNumber']");
                 var addressNode = node.SelectSingleNode(".//*[@class='propertyCard-address']");
-                
+                var homeDetailsNode = node.SelectSingleNode(".//div[@class='propertyCard-details']");
+                 
+
                 HomeData ScrapedDataStorage = new HomeData();
                 
                 var price = priceNode.InnerHtml;
                 var contact = contactNode.InnerHtml;
-                var homeAddress = addressNode.InnerHtml.Trim();
+                var homeAddress = addressNode.InnerText.Trim();
+                var homeDetails = homeDetailsNode.InnerHtml;
                 
-                ScrapedDataStorage.Price = price;
+                ScrapedDataStorage.RentalPrice = price;
                 ScrapedDataStorage.AgentPhoneNumber = contact;
                 ScrapedDataStorage.HomeAddress = homeAddress;
+                ScrapedDataStorage.HomeDetails = homeDetails;
                 ScrapedDataList.Add(ScrapedDataStorage);
                 }
             }
