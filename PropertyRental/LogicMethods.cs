@@ -997,6 +997,7 @@ namespace PropertyRental
                 var addressNode = node.SelectSingleNode(".//*[@class='propertyCard-address']");
                 var homeDetailsNode = node.SelectSingleNode(".//div[@class='propertyCard-details']");
                 var homeDescriptionNode = node.SelectSingleNode(".//div[@class='propertyCard-description']");
+                var dateRentalHomeWasAddedNode = node.SelectSingleNode(".//span[@class='propertyCard-branchSummary-addedOrReduced']");
 
 
 
@@ -1006,13 +1007,16 @@ namespace PropertyRental
                 var contact = contactNode.InnerHtml;
                 var homeAddress = addressNode.InnerText.Trim();
                 var homeDetails = homeDetailsNode.InnerText.Trim();
-                var homeDescription = homeDescriptionNode.InnerText.Trim(); 
-                
+                var homeDescription = homeDescriptionNode.InnerText.Trim();
+                var dateRentalHomeWasAdded = dateRentalHomeWasAddedNode.InnerHtml;
+
+
                 ScrapedDataStorage.RentalPrice = price;
-                ScrapedDataStorage.AgentPhoneNumber = contact;
+                ScrapedDataStorage.EstateAgentPhoneNumber = contact;
                 ScrapedDataStorage.HomeAddress = homeAddress;
                 ScrapedDataStorage.HomeDetails = homeDetails;
                 ScrapedDataStorage.HomeDescription = homeDescription;
+                ScrapedDataStorage.DateHomeWasAdded = dateRentalHomeWasAdded;
                 ScrapedDataList.Add(ScrapedDataStorage);
                 }
             }
