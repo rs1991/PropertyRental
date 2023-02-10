@@ -12,5 +12,6 @@ namespace PropertyRental
         public string AgentPhoneNumber{ get; set; }
         public string HomeAddress{ get; set; }
         public string HomeDetails { get; set; }
+        public string HomeDescription { get; set; }
     }
 }
