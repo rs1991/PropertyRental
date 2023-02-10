@@ -10,9 +10,9 @@ namespace PropertyRental
     {
         public string RentalPrice{ get; set; }
         public string EstateAgentPhoneNumber{ get; set; }
-        public string HomeAddress{ get; set; }
-        public string HomeDetails { get; set; }
-        public string HomeDescription { get; set; }
+        public string RentalHomeAddress { get; set; }
+        public string RentalHomeDetails { get; set; }
+        public string RentalHomeDescription { get; set; }
         public string DateHomeWasAdded { get; set; }
     }
 }

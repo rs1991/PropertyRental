@@ -1013,9 +1013,9 @@ namespace PropertyRental
 
                 ScrapedDataStorage.RentalPrice = price;
                 ScrapedDataStorage.EstateAgentPhoneNumber = contact;
-                ScrapedDataStorage.HomeAddress = homeAddress;
-                ScrapedDataStorage.HomeDetails = homeDetails;
-                ScrapedDataStorage.HomeDescription = homeDescription;
+                ScrapedDataStorage.RentalHomeAddress = homeAddress;
+                ScrapedDataStorage.RentalHomeDetails = homeDetails;
+                ScrapedDataStorage.RentalHomeDescription = homeDescription;
                 ScrapedDataStorage.DateHomeWasAdded = dateRentalHomeWasAdded;
                 ScrapedDataList.Add(ScrapedDataStorage);
                 }
