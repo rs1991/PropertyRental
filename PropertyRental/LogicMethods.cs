@@ -1012,12 +1012,12 @@ namespace PropertyRental
 
 
 
-                ScrapedDataStorage.MonthlyRentalPrice = rentalHomeprice;
+                //ScrapedDataStorage.MonthlyRentalPrice = rentalHomeprice;
                 ScrapedDataStorage.EstateAgentPhoneNumber = agentPhoneNumber;
                 ScrapedDataStorage.RentalHomeAddress = rentalHomeAddress;
                 ScrapedDataStorage.RentalHomeDetails = rentalHomeDetails;
                 ScrapedDataStorage.RentalHomeDescription = rentalHomeDescription;
-                ScrapedDataStorage.DateRentalHomeWasAdded = dateRentalHomeWasAdded;
+                //ScrapedDataStorage.DateRentalHomeWasAdded = dateRentalHomeWasAdded;
                 ScrapedDataList.Add(ScrapedDataStorage);
                 }
             }
