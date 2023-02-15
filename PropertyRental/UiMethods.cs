@@ -16,7 +16,7 @@ namespace PropertyRental
     public class UiMethods
     {        
         
-        public static void displayScoreOnly(List<RentalHomeScore> ScoresList)
+        public static void displayScoreOnly(List<RentalHomePointsScore> ScoresList)
         {
             foreach(var score in ScoresList)
             {

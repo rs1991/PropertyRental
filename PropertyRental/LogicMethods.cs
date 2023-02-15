@@ -14,8 +14,7 @@ using CsvHelper;
 using System.IO;
 using System.Collections.Generic;
 using System.Globalization;
-
-
+using System.Security.Cryptography.X509Certificates;
 
 namespace PropertyRental
 {
@@ -960,15 +959,15 @@ namespace PropertyRental
         }
 
 
-        public static List<RentalHomeScore> ScoreListForEachHome(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
+        public static List<RentalHomePointsScore> ScoreListForEachHome(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
         {
-            List<RentalHomeScore> ScoresList = new List<RentalHomeScore>();
+            List<RentalHomePointsScore> ScoresList = new List<RentalHomePointsScore>();
             foreach (var home in RentalHomes)
             {
                 foreach (var tenant in TenantList)
                 {
                     double score = PointsScoredForEachHome(tenant, home, api);
-                    RentalHomeScore ScoreStorage = new RentalHomeScore();
+                    RentalHomePointsScore ScoreStorage = new RentalHomePointsScore();
                     ScoreStorage.Tenant = tenant;
                     ScoreStorage.Rental = home;
                     ScoreStorage.Score = score;
@@ -988,7 +987,7 @@ namespace PropertyRental
             var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
 
 
-            List<HomeData> ScrapedDataList = new List<HomeData>();
+            List<RightmoveRentalHomeData> ScrapedDataList = new List<RightmoveRentalHomeData>();
 
             foreach (var node in cardNodes)
             {
@@ -1001,22 +1000,24 @@ namespace PropertyRental
 
 
 
-                HomeData ScrapedDataStorage = new HomeData();
-                
-                var price = priceNode.InnerHtml;
-                var contact = contactNode.InnerHtml;
-                var homeAddress = addressNode.InnerText.Trim();
-                var homeDetails = homeDetailsNode.InnerText.Trim();
-                var homeDescription = homeDescriptionNode.InnerText.Trim();
+                RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData();
+
+                string rentalHomeprice = priceNode.InnerHtml;
+                var agentPhoneNumber = contactNode.InnerHtml;
+                var rentalHomeAddress = addressNode.InnerText.Trim();
+                var rentalHomeDetails = homeDetailsNode.InnerText.Trim();
+                var rentalHomeDescription = homeDescriptionNode.InnerText.Trim();
                 var dateRentalHomeWasAdded = dateRentalHomeWasAddedNode.InnerHtml;
 
 
-                ScrapedDataStorage.RentalPrice = price;
-                ScrapedDataStorage.EstateAgentPhoneNumber = contact;
-                ScrapedDataStorage.RentalHomeAddress = homeAddress;
-                ScrapedDataStorage.RentalHomeDetails = homeDetails;
-                ScrapedDataStorage.RentalHomeDescription = homeDescription;
-                ScrapedDataStorage.DateHomeWasAdded = dateRentalHomeWasAdded;
+
+
+                ScrapedDataStorage.MonthlyRentalPrice = rentalHomeprice;
+                ScrapedDataStorage.EstateAgentPhoneNumber = agentPhoneNumber;
+                ScrapedDataStorage.RentalHomeAddress = rentalHomeAddress;
+                ScrapedDataStorage.RentalHomeDetails = rentalHomeDetails;
+                ScrapedDataStorage.RentalHomeDescription = rentalHomeDescription;
+                ScrapedDataStorage.DateRentalHomeWasAdded = dateRentalHomeWasAdded;
                 ScrapedDataList.Add(ScrapedDataStorage);
                 }
             }

@@ -16,7 +16,9 @@ namespace PropertyRental
             Parking = 3,
             WheelChairAccessible = 4,
             HomeType = 5,
-            Elevator = 6
+            Elevator = 6,
+            SwimmingPool = 7,
+            Garden = 8,
         };
     
 }

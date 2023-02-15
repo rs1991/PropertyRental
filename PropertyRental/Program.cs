@@ -27,13 +27,15 @@ namespace PropertyRental
 
             WriteDataStorage(dStorage, path);
 
-            List<RentalHomeScore> Scores = ScoreListForEachHome(TenantList, RentalHomes, api);
+            List<RentalHomePointsScore> Scores = ScoreListForEachHome(TenantList, RentalHomes, api);
 
             //displayScoreOnly(Scores);
 
             GetDataFromWeb();
 
-            
+            //var hd = new RightmoveRentalHomeData();
+
+            //var nr = new RentalHome(hd);
 
         }
 

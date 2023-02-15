@@ -30,6 +30,14 @@ namespace PropertyRental
         private double _floorSize;
         private SearchCriteriaFilter _elevatorAvailable;
 
+        /*
+        public RentalHome(RightmoveRentalHomeData rmd)
+        {
+            //   _price = rmd.RentalPrice;
+            throw new NotImplementedException();
+        }
+        */
+
         public SearchCriteriaFilter ElevatorAvailable
         {
             get { return _elevatorAvailable; }

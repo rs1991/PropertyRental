@@ -12,6 +12,7 @@ namespace PropertyRental
         House = 0,
         Flat = 1,
         Bungalow = 2,
+        Penthouse = 3,
     }
 
 }
