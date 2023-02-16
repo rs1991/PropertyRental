@@ -980,7 +980,7 @@ namespace PropertyRental
         public static void GetDataFromWeb()
         {
             HtmlWeb web = new HtmlWeb();
-            var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=OUTCODE%5E2744&maxPrice=2000&propertyTypes=&mustHave=&dontShow=&furnishTypes=&keywords=");
+            var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=&minBedrooms=&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
 
             var cardXpath = "//*[@class='propertyCard-wrapper']";
 
@@ -1001,14 +1001,15 @@ namespace PropertyRental
 
 
                 RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData();
-
+                
                 var rentalHomeprice = priceNode.InnerText;
                 var rentalHomepriceReplacedChar = rentalHomeprice;
-                rentalHomepriceReplacedChar.Replace("£", "").Replace("pcm", "");
+                string result = rentalHomepriceReplacedChar.Replace("£", "").Replace("pcm", "");
                 double convertedMonthlyRentalPrice;
-                double.TryParse(rentalHomepriceReplacedChar, out convertedMonthlyRentalPrice);
-
+                double.TryParse(result, out convertedMonthlyRentalPrice);
                 
+
+
                 var agentPhoneNumber = contactNode.InnerHtml;
                 var rentalHomeAddress = addressNode.InnerText.Trim();
                 var rentalHomeDetails = homeDetailsNode.InnerText.Trim();
