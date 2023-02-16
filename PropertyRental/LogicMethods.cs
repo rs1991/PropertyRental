@@ -1002,7 +1002,13 @@ namespace PropertyRental
 
                 RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData();
 
-                string rentalHomeprice = priceNode.InnerHtml;
+                var rentalHomeprice = priceNode.InnerText;
+                var rentalHomepriceReplacedChar = rentalHomeprice;
+                rentalHomepriceReplacedChar.Replace("£", "").Replace("pcm", "");
+                double convertedMonthlyRentalPrice;
+                double.TryParse(rentalHomepriceReplacedChar, out convertedMonthlyRentalPrice);
+
+                
                 var agentPhoneNumber = contactNode.InnerHtml;
                 var rentalHomeAddress = addressNode.InnerText.Trim();
                 var rentalHomeDetails = homeDetailsNode.InnerText.Trim();
@@ -1011,8 +1017,7 @@ namespace PropertyRental
 
 
 
-
-                //ScrapedDataStorage.MonthlyRentalPrice = rentalHomeprice;
+                ScrapedDataStorage.MonthlyRentalPrice = convertedMonthlyRentalPrice;
                 ScrapedDataStorage.EstateAgentPhoneNumber = agentPhoneNumber;
                 ScrapedDataStorage.RentalHomeAddress = rentalHomeAddress;
                 ScrapedDataStorage.RentalHomeDetails = rentalHomeDetails;

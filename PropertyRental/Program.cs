@@ -37,6 +37,21 @@ namespace PropertyRental
 
             //var nr = new RentalHome(hd);
 
+            
+            /*Test data
+            string[] values = { "1,907.76", "£1,907 pcm"};
+            
+            double number;
+
+            foreach (var value in values)
+            {
+                if (Double.TryParse(value, out number))
+                    Console.WriteLine("Able to parse", value, number);
+                else
+                    Console.WriteLine("Unable to parse '{0}'.", value);
+            }
+            */
+
         }
 
     }
