@@ -979,8 +979,13 @@ namespace PropertyRental
 
         public static void GetDataFromWeb()
         {
-            HtmlWeb web = new HtmlWeb();
-            var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=&minBedrooms=&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
+        
+        HtmlWeb web = new HtmlWeb();
+        
+
+        var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=REGION%5E87490&maxPrice=1000&sortType=10&propertyTypes=&includeLetAgreed=false&mustHave=&dontShow=&furnishTypes=&keywords=");
+
+            
 
             var cardXpath = "//*[@class='propertyCard-wrapper']";
 
@@ -1014,18 +1019,26 @@ namespace PropertyRental
                 var rentalHomeAddress = addressNode.InnerText.Trim();
                 var rentalHomeDetails = homeDetailsNode.InnerText.Trim();
                 var rentalHomeDescription = homeDescriptionNode.InnerText.Trim();
+                
+                
                 var dateRentalHomeWasAdded = dateRentalHomeWasAddedNode.InnerHtml;
 
+                DateTime today = DateTime.Now;
 
+                if(dateRentalHomeWasAdded.Contains("Added today") || dateRentalHomeWasAdded.Contains("Reduced today"))
+                {
+                    DateTime convertedtDate = today;
 
                 ScrapedDataStorage.MonthlyRentalPrice = convertedMonthlyRentalPrice;
                 ScrapedDataStorage.EstateAgentPhoneNumber = agentPhoneNumber;
                 ScrapedDataStorage.RentalHomeAddress = rentalHomeAddress;
                 ScrapedDataStorage.RentalHomeDetails = rentalHomeDetails;
                 ScrapedDataStorage.RentalHomeDescription = rentalHomeDescription;
-                //ScrapedDataStorage.DateRentalHomeWasAdded = dateRentalHomeWasAdded;
+                ScrapedDataStorage.DateRentalHomeWasAdded = convertedtDate;
                 ScrapedDataList.Add(ScrapedDataStorage);
+
                 }
+            }
             }
         }
     }
