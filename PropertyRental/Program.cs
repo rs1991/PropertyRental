@@ -27,13 +27,16 @@ namespace PropertyRental
 
             WriteDataStorage(dStorage, path);
 
-            List<RentalHomePointsScore> Scores = ScoreListForEachHome(TenantList, RentalHomes, api);
+            //List<RentalHomePointsScore> Scores = ScoreListForEachHome(TenantList, RentalHomes, api);
 
             //displayScoreOnly(Scores);
 
-            GetDataFromWeb();
+            //GetDataFromWeb();
 
            
+            RightmoveRentalHomeData home1 = new RightmoveRentalHomeData();
+            Console.WriteLine(home1.RentalHomeAddress);
+
 
         }
 

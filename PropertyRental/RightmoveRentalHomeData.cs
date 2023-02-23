@@ -9,12 +9,58 @@ namespace PropertyRental
 {
     public class RightmoveRentalHomeData
     {
-        public double MonthlyRentalPrice{ get; set; }
-        public string EstateAgentPhoneNumber{ get; set; }
-        public string RentalHomeAddress { get; set; }
-        public string RentalHomeDetails { get; set; }
-        public string RentalHomeDescription { get; set; }
-        public DateTime DateRentalHomeWasAdded { get; set; }
-        public string URL { get; set; }
+        private double _MonthlyRentalPrice;
+        private string _EstateAgentPhoneNumber;
+        private string _RentalHomeAddress;
+        private string _RentalHomeDetails;
+        private string _RentalHomeDescription;
+        private DateTime _DateRentalHomeWasAdded;
+
+
+        public double MonthlyRentalPrice
+        {
+            get { return _MonthlyRentalPrice; }
+        } 
+        
+        public string EstateAgentPhoneNumber
+        {
+            get { return _EstateAgentPhoneNumber; }
+        }
+ 
+        
+        public string RentalHomeAddress 
+        { 
+            get { return _RentalHomeAddress; }
+        }
+        
+        public string RentalHomeDetails 
+        {
+            get { return _RentalHomeDetails; } 
+        }
+        
+        
+        public string RentalHomeDescription 
+        { 
+            get { return _RentalHomeDescription; } 
+        }
+        
+        public DateTime DateRentalHomeWasAdded 
+        {
+            get { return _DateRentalHomeWasAdded; } 
+        }
+        
+        
+
+        public RightmoveRentalHomeData(double MonthlyRentalPrice, string EstateAgentPhoneNumber, string RentalHomeAddress, string RentalHomeDetails, string RentalHomeDescription, DateTime DateRentalHomeWasAdded)
+        {
+            _MonthlyRentalPrice = MonthlyRentalPrice;
+            _EstateAgentPhoneNumber = EstateAgentPhoneNumber;
+            _RentalHomeAddress = RentalHomeAddress;
+            _RentalHomeDetails = RentalHomeDetails;
+            _RentalHomeDescription = RentalHomeDescription;
+            _DateRentalHomeWasAdded = DateRentalHomeWasAdded;
+        }
     }
+
+    
 }

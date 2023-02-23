@@ -979,13 +979,13 @@ namespace PropertyRental
 
         public static void GetDataFromWeb()
         {
-        
-        HtmlWeb web = new HtmlWeb();
-        
 
-        var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=REGION%5E87490&maxPrice=1000&sortType=10&propertyTypes=&includeLetAgreed=false&mustHave=&dontShow=&furnishTypes=&keywords=");
+            HtmlWeb web = new HtmlWeb();
 
-            
+
+            var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=REGION%5E87490&maxPrice=1000&sortType=10&propertyTypes=&includeLetAgreed=false&mustHave=&dontShow=&furnishTypes=&keywords=");
+
+
 
             var cardXpath = "//*[@class='propertyCard-wrapper']";
 
@@ -1006,28 +1006,36 @@ namespace PropertyRental
 
 
                 RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData();
-                
+
                 var rentalHomeprice = priceNode.InnerText;
                 var rentalHomepriceReplacedChar = rentalHomeprice;
                 string result = rentalHomepriceReplacedChar.Replace("£", "").Replace("pcm", "");
                 double convertedMonthlyRentalPrice;
-                double.TryParse(result, out convertedMonthlyRentalPrice);
+                bool parseOK = double.TryParse(result, out convertedMonthlyRentalPrice);
+
+                if(!parseOK)
+                {
                 
+                    //write string and error message to logfile
+                }
+
 
 
                 var agentPhoneNumber = contactNode.InnerHtml;
                 var rentalHomeAddress = addressNode.InnerText.Trim();
                 var rentalHomeDetails = homeDetailsNode.InnerText.Trim();
                 var rentalHomeDescription = homeDescriptionNode.InnerText.Trim();
-                
-                
+
+
                 var dateRentalHomeWasAdded = dateRentalHomeWasAddedNode.InnerHtml;
 
                 DateTime today = DateTime.Now;
+                DateTime convertedtDate;
+                if (dateRentalHomeWasAdded.Contains("Added today") || dateRentalHomeWasAdded.Contains("Reduced today"))               
+                    convertedtDate = today;               
+                else
+                    convertedtDate = DateTime.Parse(dateRentalHomeWasAdded);
 
-                if(dateRentalHomeWasAdded.Contains("Added today") || dateRentalHomeWasAdded.Contains("Reduced today"))
-                {
-                    DateTime convertedtDate = today;
 
                 ScrapedDataStorage.MonthlyRentalPrice = convertedMonthlyRentalPrice;
                 ScrapedDataStorage.EstateAgentPhoneNumber = agentPhoneNumber;
@@ -1037,11 +1045,11 @@ namespace PropertyRental
                 ScrapedDataStorage.DateRentalHomeWasAdded = convertedtDate;
                 ScrapedDataList.Add(ScrapedDataStorage);
 
-                }
-            }
+
             }
         }
     }
+}
 
-        
-        
+
+
