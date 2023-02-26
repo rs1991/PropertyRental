@@ -20,33 +20,39 @@ namespace PropertyRental
         public double MonthlyRentalPrice
         {
             get { return _MonthlyRentalPrice; }
+            set { _MonthlyRentalPrice = value; }
         } 
         
         public string EstateAgentPhoneNumber
         {
             get { return _EstateAgentPhoneNumber; }
+            set { _EstateAgentPhoneNumber = value; }
         }
  
         
         public string RentalHomeAddress 
         { 
             get { return _RentalHomeAddress; }
+            set { _RentalHomeAddress = value;}
         }
         
         public string RentalHomeDetails 
         {
-            get { return _RentalHomeDetails; } 
+            get { return _RentalHomeDetails; }
+            set { _RentalHomeDetails = value; }
         }
         
         
         public string RentalHomeDescription 
         { 
-            get { return _RentalHomeDescription; } 
+            get { return _RentalHomeDescription; }
+            set { _RentalHomeDescription = value; }
         }
         
         public DateTime DateRentalHomeWasAdded 
         {
-            get { return _DateRentalHomeWasAdded; } 
+            get { return _DateRentalHomeWasAdded; }
+            set {_DateRentalHomeWasAdded = value;}
         }
         
         

@@ -1005,10 +1005,10 @@ namespace PropertyRental
 
 
 
-                RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData();
+                //RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData(priceNode, contactNode, addressNode, homeDetailsNode, homeDescriptionNode, dateRentalHomeWasAddedNode);
 
-                var rentalHomeprice = priceNode.InnerText;
-                var rentalHomepriceReplacedChar = rentalHomeprice;
+                string rentalHomeprice = priceNode.InnerText;
+                string rentalHomepriceReplacedChar = rentalHomeprice;
                 string result = rentalHomepriceReplacedChar.Replace("£", "").Replace("pcm", "");
                 double convertedMonthlyRentalPrice;
                 bool parseOK = double.TryParse(result, out convertedMonthlyRentalPrice);
@@ -1031,12 +1031,19 @@ namespace PropertyRental
 
                 DateTime today = DateTime.Now;
                 DateTime convertedtDate;
-                if (dateRentalHomeWasAdded.Contains("Added today") || dateRentalHomeWasAdded.Contains("Reduced today"))               
+                if (dateRentalHomeWasAdded.Contains("Added today") || dateRentalHomeWasAdded.Contains("Reduced today") || dateRentalHomeWasAdded.Contains("Reduced on") || dateRentalHomeWasAdded.Contains("Added on"))               
                     convertedtDate = today;               
                 else
                     convertedtDate = DateTime.Parse(dateRentalHomeWasAdded);
 
 
+
+                RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData(convertedMonthlyRentalPrice, agentPhoneNumber, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription, convertedtDate);
+
+                ScrapedDataList.Add(ScrapedDataStorage);
+
+
+                /*
                 ScrapedDataStorage.MonthlyRentalPrice = convertedMonthlyRentalPrice;
                 ScrapedDataStorage.EstateAgentPhoneNumber = agentPhoneNumber;
                 ScrapedDataStorage.RentalHomeAddress = rentalHomeAddress;
@@ -1044,7 +1051,7 @@ namespace PropertyRental
                 ScrapedDataStorage.RentalHomeDescription = rentalHomeDescription;
                 ScrapedDataStorage.DateRentalHomeWasAdded = convertedtDate;
                 ScrapedDataList.Add(ScrapedDataStorage);
-
+                */
 
             }
         }

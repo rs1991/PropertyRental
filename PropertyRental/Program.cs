@@ -31,12 +31,7 @@ namespace PropertyRental
 
             //displayScoreOnly(Scores);
 
-            //GetDataFromWeb();
-
-           
-            RightmoveRentalHomeData home1 = new RightmoveRentalHomeData();
-            Console.WriteLine(home1.RentalHomeAddress);
-
+            GetDataFromWeb();
 
         }
 
