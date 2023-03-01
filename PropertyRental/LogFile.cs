@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Protocols;
-
+using Serilog;
 
 namespace PropertyRental
 {
@@ -14,7 +14,11 @@ namespace PropertyRental
     {
         public static void WriteLog()
         {
-           
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .WriteTo.File(@"C:\tmp\log.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+            Log.Information("Information");
 
         }
 

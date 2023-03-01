@@ -10,6 +10,7 @@ using static PropertyRental.LogicMethods;
 using System.Collections;
 using System.Net;
 using ScrapySharp.Network;
+using Serilog;
 
 namespace PropertyRental
 {
@@ -23,8 +24,21 @@ namespace PropertyRental
                 Console.WriteLine($"Score: {score.Score} Address: {score.Rental.Address.PostCode} {score.Tenant.FirstName}");
             }
         }
-        
 
-        
+        /// <summary>
+        /// Method created to log errors and other useful information
+        /// </summary>
+        public static void WriteLog()
+        {
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .WriteTo.File(@"C:\tmp\log.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+            //Log.Information("Information");
+
+        }
+
+
+
     }
 }
