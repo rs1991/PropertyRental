@@ -985,7 +985,7 @@ namespace PropertyRental
             WriteToLog();
 
             HtmlWeb web = new HtmlWeb();
-            var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=REGION%5E87490&maxPrice=1000&sortType=10&propertyTypes=&includeLetAgreed=false&mustHave=&dontShow=&furnishTypes=&keywords=");
+            var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=REGION%5E87490&maxPrice=2000&propertyTypes=&includeLetAgreed=false&mustHave=&dontShow=&furnishTypes=&keywords=");
             
             var cardXpath = "//*[@class='propertyCard-wrapper']";
             var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
@@ -1011,6 +1011,7 @@ namespace PropertyRental
                 if(!parseOK)
                 {
                     //write string and error message to logfile
+                    Log.Error("Parse did not go well!");
                 }
                 
                 var agentPhoneNumber = contactNode.InnerHtml;
@@ -1025,13 +1026,16 @@ namespace PropertyRental
                     DateTime today = DateTime.Now;
                     DateTime convertedtDate;
                     
-                    if (dateRentalHomeWasAdded.Contains("Added today") || dateRentalHomeWasAdded.Contains("Reduced today") || dateRentalHomeWasAdded.Contains("Reduced on") || dateRentalHomeWasAdded.Contains("Added on"))
+                    if (dateRentalHomeWasAdded.Contains("Added today") || dateRentalHomeWasAdded.Contains("Reduced today") || dateRentalHomeWasAdded.Contains("Reduced on")
+                        || dateRentalHomeWasAdded.Contains("Added on") || dateRentalHomeWasAdded.Contains(""))
+                        
                         convertedtDate = today;
                     else
                         convertedtDate = DateTime.Parse(dateRentalHomeWasAdded);
                     
                     RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData(convertedMonthlyRentalPrice, agentPhoneNumber, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription, convertedtDate);
                     ScrapedDataList.Add(ScrapedDataStorage);
+
                 }
                 catch (Exception ex)
                 {
