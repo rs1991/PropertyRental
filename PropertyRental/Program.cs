@@ -36,23 +36,6 @@ namespace PropertyRental
             GetDataFromWeb();
 
 
-
-            //WriteToLog();
-            
-            
-            /*
-            try
-            {
-                int[] myNumbers = { 1, 2, 3 };
-                Console.WriteLine(myNumbers[10]);
-            }
-            catch(Exception ex)
-            {
-                Log.Error(ex, "Error Message");
-            }
-            */
-
-
         }
 
     }
