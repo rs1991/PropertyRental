@@ -4,7 +4,7 @@ using static PropertyRental.LogicMethods;
 //using static PropertyRental.LogFile;
 
 
-using static System.Formats.Asn1.AsnWriter;
+
 using Serilog;
 
 namespace PropertyRental
@@ -35,7 +35,23 @@ namespace PropertyRental
 
             //GetDataFromWeb();
 
+            WriteToLog();
             
+            /*    
+            try
+            {
+                Log.Information("Here is some info");
+                var a = 0;
+                var b = 1 / a;
+            }
+            catch(Exception ex)
+            {
+                Log.Error(ex, "An error");
+            }
+            */
+
+    
+
 
         }
 

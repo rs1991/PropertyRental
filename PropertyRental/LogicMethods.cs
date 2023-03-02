@@ -15,11 +15,14 @@ using System.IO;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
+using Serilog;
 
 namespace PropertyRental
 {
     public class LogicMethods
     {
+
+       
         public static List<RentalHome> GenerateMockRentalPropertyList()
         {
             var rp1 = new RentalHome();
@@ -301,61 +304,61 @@ namespace PropertyRental
             a1.Street = "Argyle road";
             a1.City = "London";
             a1.PostCode = "W13 8ER";
-
+            
             var a2 = new Address();
             a2.DoorNumber = 22;
             a2.Street = "Singapore road";
             a2.City = "London";
             a2.PostCode = "W13 0UF";
-
+            
             var a3 = new Address();
             a3.DoorNumber = 20;
             a3.Street = "Rosemount Rd";
             a3.City = "London";
             a3.PostCode = "W13 0HJ";
-
+            
             var a4 = new Address();
             a4.DoorNumber = 5;
             a4.Street = "Daleham Mews";
             a4.City = "London";
             a4.PostCode = "NW3 5DB";
-
+            
             var a5 = new Address();
             a5.DoorNumber = 5;
             a5.Street = "Blake hall road";
             a5.City = "London";
             a5.PostCode = "E11 2QQ";
-
+            
             var a6 = new Address();
             a6.DoorNumber = 5;
             a6.Street = "Boydell Court";
             a6.City = "London";
             a6.PostCode = "NW8 6Nh";
-
+            
             var a7 = new Address();
             a7.DoorNumber = 44;
             a7.Street = "Lowndes Square";
             a7.City = "London";
             a7.PostCode = "SW1 9xt";
-
+            
             var a8 = new Address();
             a8.DoorNumber = 41;
             a8.Street = "Sydenham hill";
             a8.City = "London";
             a8.PostCode = "SE26 6TH";
-
+            
             var a9 = new Address();
             a9.DoorNumber = 19;
             a9.Street = "Swan Drive";
             a9.City = "London";
             a9.PostCode = "NW9 5DE";
-
+            
             var a10 = new Address();
             a10.DoorNumber = 221;
             a10.Street = "Ardgowan Road";
             a10.City = "London";
             a10.PostCode = "SE6 1AJ";
-
+            
             var AddressList = new List<Address>();
             AddressList.Add(a1);
             AddressList.Add(a2);
@@ -367,7 +370,7 @@ namespace PropertyRental
             AddressList.Add(a8);
             AddressList.Add(a9);
             AddressList.Add(a10);
-
+            
             return AddressList;
         }
         public static List<Tenant> GenerateMockListOfTenants()
@@ -812,7 +815,6 @@ namespace PropertyRental
         }
 
 
-
         /// <summary>
         /// Overall rating is calculated to determine how suitable the home is for a tenant
         /// </summary>
@@ -985,8 +987,6 @@ namespace PropertyRental
 
             var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=REGION%5E87490&maxPrice=1000&sortType=10&propertyTypes=&includeLetAgreed=false&mustHave=&dontShow=&furnishTypes=&keywords=");
 
-
-
             var cardXpath = "//*[@class='propertyCard-wrapper']";
 
             var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
@@ -1003,10 +1003,7 @@ namespace PropertyRental
                 var homeDescriptionNode = node.SelectSingleNode(".//div[@class='propertyCard-description']");
                 var dateRentalHomeWasAddedNode = node.SelectSingleNode(".//span[@class='propertyCard-branchSummary-addedOrReduced']");
 
-
-
-                //RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData(priceNode, contactNode, addressNode, homeDetailsNode, homeDescriptionNode, dateRentalHomeWasAddedNode);
-
+               
                 string rentalHomeprice = priceNode.InnerText;
                 string rentalHomepriceReplacedChar = rentalHomeprice;
                 string result = rentalHomepriceReplacedChar.Replace("£", "").Replace("pcm", "");
@@ -1015,12 +1012,12 @@ namespace PropertyRental
 
                 if(!parseOK)
                 {
-                
                     //write string and error message to logfile
+                   
+                   
                 }
 
-
-
+              
                 var agentPhoneNumber = contactNode.InnerHtml;
                 var rentalHomeAddress = addressNode.InnerText.Trim();
                 var rentalHomeDetails = homeDetailsNode.InnerText.Trim();
@@ -1028,7 +1025,7 @@ namespace PropertyRental
 
 
                 var dateRentalHomeWasAdded = dateRentalHomeWasAddedNode.InnerHtml;
-
+               
                 DateTime today = DateTime.Now;
                 DateTime convertedtDate;
                 if (dateRentalHomeWasAdded.Contains("Added today") || dateRentalHomeWasAdded.Contains("Reduced today") || dateRentalHomeWasAdded.Contains("Reduced on") || dateRentalHomeWasAdded.Contains("Added on"))               
@@ -1036,12 +1033,14 @@ namespace PropertyRental
                 else
                     convertedtDate = DateTime.Parse(dateRentalHomeWasAdded);
 
-
+                
+              
+                
 
                 RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData(convertedMonthlyRentalPrice, agentPhoneNumber, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription, convertedtDate);
 
                 ScrapedDataList.Add(ScrapedDataStorage);
-
+              
 
                 /*
                 ScrapedDataStorage.MonthlyRentalPrice = convertedMonthlyRentalPrice;
