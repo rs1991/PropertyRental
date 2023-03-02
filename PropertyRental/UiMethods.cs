@@ -28,14 +28,12 @@ namespace PropertyRental
         /// <summary>
         /// Method created to log errors and other useful information
         /// </summary>
-        public static void WriteLog()
+        public static void WriteToLog()
         {
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console()
                 .WriteTo.File(@"C:\tmp\log.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
-            //Log.Information("Information");
-
         }
 
 
