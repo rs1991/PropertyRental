@@ -1010,7 +1010,7 @@ namespace PropertyRental
                 
                 if(!parseOK)
                 {
-                    //write string and error message to logfile
+                    
                     Log.Error("Parse did not go well!");
                 }
                 
