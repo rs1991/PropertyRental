@@ -33,24 +33,24 @@ namespace PropertyRental
 
             //displayScoreOnly(Scores);
 
-            //GetDataFromWeb();
+            GetDataFromWeb();
 
-            WriteToLog();
+
+
+            //WriteToLog();
             
-            /*    
+            
+            /*
             try
             {
-                Log.Information("Here is some info");
-                var a = 0;
-                var b = 1 / a;
+                int[] myNumbers = { 1, 2, 3 };
+                Console.WriteLine(myNumbers[10]);
             }
             catch(Exception ex)
             {
-                Log.Error(ex, "An error");
+                Log.Error(ex, "Error Message");
             }
             */
-
-    
 
 
         }
