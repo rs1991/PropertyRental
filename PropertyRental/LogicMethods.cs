@@ -1,27 +1,17 @@
-﻿using System;
-using static PropertyRental.Program;
-using System.Net.Mail;
+﻿using System.Net.Mail;
 using System.Text;
 using static PropertyRental.UiMethods;
 using System.Xml.Serialization;
 using System.Xml;
 using Newtonsoft.Json;
 using System.Net;
-using static System.Formats.Asn1.AsnWriter;
-using System.Collections.Generic;
 using HtmlAgilityPack;
-using CsvHelper;
-using System.IO;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Security.Cryptography.X509Certificates;
 using Serilog;
 
 namespace PropertyRental
 {
     public class LogicMethods
     {
-
        
         public static List<RentalHome> GenerateMockRentalPropertyList()
         {
@@ -1004,7 +994,8 @@ namespace PropertyRental
                 string rentalHomeprice = priceNode.InnerText;
                 string rentalHomepriceReplacedChar = rentalHomeprice;
                 string result = rentalHomepriceReplacedChar.Replace("£", "").Replace("pcm", "");
-                
+               
+
                 double convertedMonthlyRentalPrice;
                 bool parseOK = double.TryParse(result, out convertedMonthlyRentalPrice);
                 
@@ -1013,7 +1004,8 @@ namespace PropertyRental
                     
                     Log.Error("Parse did not go well!");
                 }
-                
+
+
                 var agentPhoneNumber = contactNode.InnerHtml;
                 var rentalHomeAddress = addressNode.InnerText.Trim();
                 var rentalHomeDetails = homeDetailsNode.InnerText.Trim();

@@ -1,11 +1,7 @@
 ﻿
 using static PropertyRental.UiMethods;
 using static PropertyRental.LogicMethods;
-//using static PropertyRental.LogFile;
 
-
-
-using Serilog;
 
 namespace PropertyRental
 {
