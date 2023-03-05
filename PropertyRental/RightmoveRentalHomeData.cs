@@ -57,7 +57,9 @@ namespace PropertyRental
         
         
 
-        public RightmoveRentalHomeData(double MonthlyRentalPrice, string EstateAgentPhoneNumber, string RentalHomeAddress, string RentalHomeDetails, string RentalHomeDescription, DateTime DateRentalHomeWasAdded)
+        public RightmoveRentalHomeData(double MonthlyRentalPrice, string EstateAgentPhoneNumber,
+            string RentalHomeAddress, 
+            string RentalHomeDetails, string RentalHomeDescription, DateTime DateRentalHomeWasAdded)
         {
             _MonthlyRentalPrice = MonthlyRentalPrice;
             _EstateAgentPhoneNumber = EstateAgentPhoneNumber;
@@ -65,6 +67,16 @@ namespace PropertyRental
             _RentalHomeDetails = RentalHomeDetails;
             _RentalHomeDescription = RentalHomeDescription;
             _DateRentalHomeWasAdded = DateRentalHomeWasAdded;
+        }
+
+        public RightmoveRentalHomeData(RightmoveRentalHomeData rightMoveRentalHome)
+        {
+            MonthlyRentalPrice = rightMoveRentalHome.MonthlyRentalPrice;
+            RentalHomeDescription= rightMoveRentalHome.RentalHomeDescription;
+            EstateAgentPhoneNumber= rightMoveRentalHome.EstateAgentPhoneNumber;
+            RentalHomeAddress= rightMoveRentalHome.RentalHomeAddress;
+            RentalHomeDetails= rightMoveRentalHome.RentalHomeDetails;
+            DateRentalHomeWasAdded= rightMoveRentalHome.DateRentalHomeWasAdded;
         }
     }
 

@@ -18,7 +18,7 @@ namespace PropertyRental
         private string _description;
         private EnergyType _heating;
         private CouncilTaxBand _councilTaxBand;
-        private string _agency;
+        private string _agencyPhoneNumber;
         private bool _furnished;
         private int _price;
         private int _rentalDuration;
@@ -30,13 +30,20 @@ namespace PropertyRental
         private double _floorSize;
         private SearchCriteriaFilter _elevatorAvailable;
 
-        /*
+        /// <summary>
+        /// Copy constructor for RightMoveRentalHomeData
+        /// </summary>
+        /// <param name="rmd"></param>
         public RentalHome(RightmoveRentalHomeData rmd)
         {
-            //   _price = rmd.RentalPrice;
-            throw new NotImplementedException();
+            _price = (int)rmd.MonthlyRentalPrice;
+            _description = rmd.RentalHomeDescription;
+            _agencyPhoneNumber = rmd.EstateAgentPhoneNumber;
+            //_address = rmd.RentalHomeAddress;
+            //RentalHomeDetails= rightMoveRentalHome.RentalHomeDetails;
+            //Date home was added 
         }
-        */
+
 
         public SearchCriteriaFilter ElevatorAvailable
         {
@@ -147,8 +154,8 @@ namespace PropertyRental
         /// </summary>
         public string Agency
         {
-            get { return _agency; }
-            set { _agency = value; }
+            get { return _agencyPhoneNumber; }
+            set { _agencyPhoneNumber = value; }
         }
 
         /// <summary>

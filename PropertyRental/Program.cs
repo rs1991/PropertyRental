@@ -1,7 +1,7 @@
 ﻿
 using static PropertyRental.UiMethods;
 using static PropertyRental.LogicMethods;
-
+using System.Security.Cryptography.X509Certificates;
 
 namespace PropertyRental
 {
@@ -24,13 +24,6 @@ namespace PropertyRental
             dStorage.ListOfAddresses = AddressList;
 
             WriteDataStorage(dStorage, path);
-
-            //List<RentalHomePointsScore> Scores = ScoreListForEachHome(TenantList, RentalHomes, api);
-
-            //displayScoreOnly(Scores);
-
-            GetDataFromWeb();
-
 
         }
 

@@ -15,7 +15,9 @@ namespace PropertyRental
        
         public static List<RentalHome> GenerateMockRentalPropertyList()
         {
-            var rp1 = new RentalHome();
+           
+
+            var rp1 = new RentalHome(RightmoveRentalHomeData r1);
             rp1.Furnished = false;
             rp1.Price = 1350;
             rp1.RentalDuration = 12;
