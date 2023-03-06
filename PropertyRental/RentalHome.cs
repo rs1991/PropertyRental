@@ -34,6 +34,7 @@ namespace PropertyRental
         /// Copy constructor for RightMoveRentalHomeData
         /// </summary>
         /// <param name="rmd"></param>
+        /*
         public RentalHome(RightmoveRentalHomeData rmd)
         {
             _price = (int)rmd.MonthlyRentalPrice;
@@ -43,6 +44,7 @@ namespace PropertyRental
             //RentalHomeDetails= rightMoveRentalHome.RentalHomeDetails;
             //Date home was added 
         }
+        */
 
 
         public SearchCriteriaFilter ElevatorAvailable
