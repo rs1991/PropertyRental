@@ -9,7 +9,7 @@ namespace PropertyRental
 {
     public class RentalHome
     {
-        
+
         private Address _address;
         private DateTime _availableOn;
         private int _bedRooms;
@@ -20,7 +20,7 @@ namespace PropertyRental
         private CouncilTaxBand _councilTaxBand;
         private string _agencyPhoneNumber;
         private bool _furnished;
-        private int _price;
+        private double _price;
         private int _rentalDuration;
         private bool _smokingAllowed;
         private bool _petsAllowed;
@@ -33,18 +33,22 @@ namespace PropertyRental
         /// <summary>
         /// Copy constructor for RightMoveRentalHomeData
         /// </summary>
-        /// <param name="rmd"></param>
-        /*
+        /// <param name = "rmd" ></ param >
+
+
         public RentalHome(RightmoveRentalHomeData rmd)
         {
-            _price = (int)rmd.MonthlyRentalPrice;
+            _price = rmd.MonthlyRentalPrice;
             _description = rmd.RentalHomeDescription;
             _agencyPhoneNumber = rmd.EstateAgentPhoneNumber;
-            //_address = rmd.RentalHomeAddress;
-            //RentalHomeDetails= rightMoveRentalHome.RentalHomeDetails;
-            //Date home was added 
+            var a = new Address();
+            a.Street = ""; //magic here
+            a.City = ""; //magic here
+            _address = a;
+            RentalHomeDetails = rightMoveRentalHome.RentalHomeDetails;
+          //  Date home was added
         }
-        */
+
 
 
         public SearchCriteriaFilter ElevatorAvailable
@@ -73,8 +77,8 @@ namespace PropertyRental
         public bool Parking
         {
             get { return _parking; }
-            set {_parking = value;}
-        } 
+            set { _parking = value; }
+        }
 
         /// <summary>
         /// Does the home have a garden
@@ -94,7 +98,7 @@ namespace PropertyRental
             get { return _childrenAllowed; }
             set { _childrenAllowed = value; }
         }
-       
+
 
         /// <summary>
         ///Does the property allow smoking
@@ -141,7 +145,7 @@ namespace PropertyRental
             get { return _heating; }
             set { _heating = value; }
         }
-        
+
         /// <summary>
         /// Property tax based on four different categories. Council tax band A, B, C & D 
         /// </summary>
@@ -150,7 +154,7 @@ namespace PropertyRental
             get { return _councilTaxBand; }
             set { _councilTaxBand = value; }
         }
-        
+
         /// <summary>
         /// Agency details 
         /// </summary>
@@ -163,7 +167,7 @@ namespace PropertyRental
         /// <summary>
         /// Property description 
         /// </summary>
-            
+
         public string Description
         {
             get { return _description; }
@@ -173,13 +177,13 @@ namespace PropertyRental
         /// <summary>
         /// Property type such as flat, house or bungalow
         /// </summary>
-        public TypeOfHome HomeType 
-        { 
+        public TypeOfHome HomeType
+        {
             get { return _homeType; }
             set { _homeType = value; }
         }
 
-        
+
         /// <summary>
         /// Property address 
         /// </summary>
@@ -216,7 +220,7 @@ namespace PropertyRental
             set { _price = value; }
         }
 
-        
+
 
         public override string ToString()
         {
