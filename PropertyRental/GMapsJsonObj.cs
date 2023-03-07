@@ -45,8 +45,6 @@ namespace PropertyRental
 
     }
 
-    
-
     public class Row
     {
         public List<Element> elements { get; set; }

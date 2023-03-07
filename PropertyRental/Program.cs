@@ -2,6 +2,9 @@
 using static PropertyRental.UiMethods;
 using static PropertyRental.LogicMethods;
 using System.Security.Cryptography.X509Certificates;
+using Nancy.Json;
+using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace PropertyRental
 {
@@ -26,8 +29,19 @@ namespace PropertyRental
             WriteDataStorage(dStorage, path);
 
             //RightmoveRentalHomeData rm1 = new RightmoveRentalHomeData(3000, "07162829028", "123 Zoo Lane", "2 bedrooms", "Lovely home", new DateTime(2022,12,01));
-            
-       
+
+
+            //GetDataFromWeb();
+
+
+            //var body = client.DownloadString($"https://maps.googleapis.com/maps/api/distancematrix/json?destinations={end}&origins={start}&unitsimperial&mode=walking&key={apiKey}");
+            //var distance = JsonConvert.DeserializeObject<GMapsJsonObj>(body);
+
+            //Step 1 Get the rental home string 
+            //Step 2 Convert the string into a class
+            //Step 3 
+
+
         }
 
     }

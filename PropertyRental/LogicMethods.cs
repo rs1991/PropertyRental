@@ -952,7 +952,6 @@ namespace PropertyRental
             return distanceInt;
         }
 
-
         public static List<RentalHomePointsScore> ScoreListForEachHome(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
         {
             List<RentalHomePointsScore> ScoresList = new List<RentalHomePointsScore>();

@@ -12,7 +12,7 @@ namespace PropertyRental
 
         private Address _address;
         private DateTime _availableOn;
-        private int _bedRooms;
+        private HomeDetails _homeDetails;
         private TypeOfHome _homeType;
         private SearchCriteriaFilter _wheelChairAccessAvailable;
         private string _description;
@@ -39,16 +39,24 @@ namespace PropertyRental
         public RentalHome(RightmoveRentalHomeData rmd)
         {
             _price = rmd.MonthlyRentalPrice;
-            _description = rmd.RentalHomeDescription;
             _agencyPhoneNumber = rmd.EstateAgentPhoneNumber;
+            _description = rmd.RentalHomeDescription;
+
+
+            //            private string _RentalHomeDetails;
+            //        private string _RentalHomeDescription; RentalHomeDescription
+            //        private DateTime _DateRentalHomeWasAdded;
+
             var a = new Address();
             a.Street = ""; //magic here
             a.City = ""; //magic here
             _address = a;
-            RentalHomeDetails = rightMoveRentalHome.RentalHomeDetails;
+        
+                
+
+           // RentalHomeDetails = rightMoveRentalHome.RentalHomeDetails;
           //  Date home was added
         }
-
 
 
         public SearchCriteriaFilter ElevatorAvailable
@@ -214,7 +222,7 @@ namespace PropertyRental
         /// <summary>
         /// Monthly rental price
         /// </summary>
-        public int Price
+        public double Price
         {
             get { return _price; }
             set { _price = value; }
