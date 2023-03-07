@@ -59,6 +59,12 @@ namespace PropertyRental
         }
 
 
+        public HomeDetails HomeDetails
+        {
+            get { return _homeDetails; }
+            set { _homeDetails = value; }
+        }
+
         public SearchCriteriaFilter ElevatorAvailable
         {
             get { return _elevatorAvailable; }
