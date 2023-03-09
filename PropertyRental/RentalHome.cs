@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
+﻿using Nancy.Json;
+using Newtonsoft.Json;
+using System.Net;
+using System.Text.Json.Nodes;
+using static PropertyRental.LogicMethods;
 
 namespace PropertyRental
 {
@@ -38,24 +37,33 @@ namespace PropertyRental
 
         public RentalHome(RightmoveRentalHomeData rmd)
         {
+            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+            
+            Address add = new Address();
+            add.Street = "Merchant Square East, Paddington W2";
+
+            string addressInStringFormat = GeoCodeAddress(add, api);
+            var output = JsonConvert.DeserializeObject<Address>(addressInStringFormat);           
+
+            
+            _address = output;
             _price = rmd.MonthlyRentalPrice;
             _agencyPhoneNumber = rmd.EstateAgentPhoneNumber;
             _description = rmd.RentalHomeDescription;
 
 
-            //            private string _RentalHomeDetails;
-            //        private string _RentalHomeDescription; RentalHomeDescription
-            //        private DateTime _DateRentalHomeWasAdded;
+            /*
+            var a = new Address();
+            a.Street = ""; //magic here
+            a.City = ""; //magic here
+            _address = a;
 
             var a = new Address();
             a.Street = ""; //magic here
             a.City = ""; //magic here
             _address = a;
-        
-                
+            */
 
-           // RentalHomeDetails = rightMoveRentalHome.RentalHomeDetails;
-          //  Date home was added
         }
 
 
@@ -216,15 +224,7 @@ namespace PropertyRental
             set { _availableOn = value; }
         }
 
-        /// <summary>
-        /// Number of bedrooms
-        /// </summary>
-        public int BedRooms
-        {
-            get { return _bedRooms; }
-            set { _bedRooms = value; }
-        }
-
+       
         /// <summary>
         /// Monthly rental price
         /// </summary>

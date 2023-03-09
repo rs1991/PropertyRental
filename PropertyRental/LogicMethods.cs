@@ -7,16 +7,18 @@ using Newtonsoft.Json;
 using System.Net;
 using HtmlAgilityPack;
 using Serilog;
+using System.Runtime.Intrinsics.Arm;
+using Nancy.Responses;
 
 namespace PropertyRental
 {
     public class LogicMethods
     {
-       
+        /*
         public static List<RentalHome> GenerateMockRentalPropertyList()
         {
            
-
+           
             var rp1 = new RentalHome();
             rp1.Furnished = false;
             rp1.Price = 1350;
@@ -289,6 +291,8 @@ namespace PropertyRental
 
             return ListOfRentalProperties;
         }
+
+        */
         public static List<Address> GenerateMockAddressList()
         {
             var a1 = new Address();
@@ -364,8 +368,9 @@ namespace PropertyRental
             AddressList.Add(a10);
             
             return AddressList;
-        }
-        public static List<Tenant> GenerateMockListOfTenants()
+           
+    }
+    public static List<Tenant> GenerateMockListOfTenants()
         {
             //First tenant
             var t1 = new Tenant();
@@ -859,7 +864,7 @@ namespace PropertyRental
             {
                 points += 10;
             }
-            if (rentalHome.BedRooms >= tenant.BedRoomsRequired)
+            if (rentalHome.HomeDetails.TotalBedrooms >= tenant.BedRoomsRequired)
             {
                 points += 15;
             }
@@ -951,6 +956,21 @@ namespace PropertyRental
 
             return distanceInt;
         }
+
+        public static string GeoCodeAddress(Address addr, string apiKey)
+        {
+            string inputAddress = JsonConvert.SerializeObject(addr);
+            
+            var client = new WebClient(); 
+            var body = client.DownloadString($"https://maps.googleapis.com/maps/api/geocode/json?address={inputAddress}&key={apiKey}");
+            
+            var adr = JsonConvert.DeserializeObject<Root>(body);
+            string answer = adr.results[0].formatted_address;
+            
+            return answer;
+        }
+
+
 
         public static List<RentalHomePointsScore> ScoreListForEachHome(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
         {
