@@ -19,7 +19,7 @@ namespace PropertyRental
             //List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
             //List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalPropertyList();
             //List<Address> AddressList = LogicMethods.GenerateMockAddressList();
-            
+
             //var dStorage = new DataStorage();
 
             //dStorage.ListOfTenants = TenantList;
@@ -28,10 +28,26 @@ namespace PropertyRental
 
             //WriteDataStorage(dStorage, path);
 
-            //RightmoveRentalHomeData rm1 = new RightmoveRentalHomeData(3000, "07162829028", "123 Zoo Lane", "2 bedrooms", "Lovely home", new DateTime(2022,12,01));
+            RightmoveRentalHomeData rm1 = new RightmoveRentalHomeData(3000, "07162829028", "123 Zoo Lane", "2 bedrooms", "Lovely home", new DateTime(2022,12,01));
 
 
             //GetDataFromWeb();
+
+            //RentalHome home = new RentalHome(rm1);
+            //Console.WriteLine(home.Address.Street);
+
+            Address add = new Address();
+            add.Street = "Zulla road";
+
+            string aaa = GeoCodeAddress(add, api);
+            
+
+            RentalHome sss = new RentalHome(rm1);
+            sss.Address.City = "zulla rd";
+            sss.Price = 2222;
+            sss.Description = "asasasa";
+            Console.WriteLine();
+
 
         }
 

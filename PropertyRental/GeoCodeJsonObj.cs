@@ -41,7 +41,7 @@ public class Result
     public List<string> types { get; set; }
 }
 
-public class Root
+public class GeoCodeJsonObj
 {
     public List<Result> results { get; set; }
 }

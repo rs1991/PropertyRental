@@ -11,6 +11,7 @@ namespace PropertyRental
 
         private Address _address;
         private DateTime _availableOn;
+        private DateTime _dateHomeWasAddedToWebSite;
         private HomeDetails _homeDetails;
         private TypeOfHome _homeType;
         private SearchCriteriaFilter _wheelChairAccessAvailable;
@@ -43,13 +44,15 @@ namespace PropertyRental
             add.Street = "Merchant Square East, Paddington W2";
 
             string addressInStringFormat = GeoCodeAddress(add, api);
-            var output = JsonConvert.DeserializeObject<Address>(addressInStringFormat);           
+            var output = JsonConvert.DeserializeObject<Address>(addressInStringFormat);
 
-            
+
             _address = output;
             _price = rmd.MonthlyRentalPrice;
             _agencyPhoneNumber = rmd.EstateAgentPhoneNumber;
             _description = rmd.RentalHomeDescription;
+            //_homeDetails = rmd.RentalHomeDetails;
+            _dateHomeWasAddedToWebSite = rmd.DateRentalHomeWasAdded;
 
 
             /*

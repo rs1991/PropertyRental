@@ -964,7 +964,7 @@ namespace PropertyRental
             var client = new WebClient(); 
             var body = client.DownloadString($"https://maps.googleapis.com/maps/api/geocode/json?address={inputAddress}&key={apiKey}");
             
-            var adr = JsonConvert.DeserializeObject<Root>(body);
+            var adr = JsonConvert.DeserializeObject<GeoCodeJsonObj>(body);
             string answer = adr.results[0].formatted_address;
             
             return answer;
