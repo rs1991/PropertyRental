@@ -36,14 +36,14 @@ namespace PropertyRental
         /// <param name = "rmd" ></ param >
 
 
-        public RentalHome(RightmoveRentalHomeData rmd, string api)
+        public RentalHome(RightmoveRentalHomeData rmd, string api, Address RentalHomeAddress)
         {
-            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+            //string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
             
-            Address add = new Address();
-            add.Street = "Merchant Square East, Paddington W2";
+            //Address add = new Address();
+            //add.Street = "Merchant Square East, Paddington W2";
 
-            string addressInStringFormat = GeoCodeAddress(add, api);
+            string addressInStringFormat = GeoCodeAddress(RentalHomeAddress, api);
             var output = JsonConvert.DeserializeObject<Address>(addressInStringFormat);
 
             string example = "123 zoo lane";

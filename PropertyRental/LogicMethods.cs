@@ -7,8 +7,6 @@ using Newtonsoft.Json;
 using System.Net;
 using HtmlAgilityPack;
 using Serilog;
-using System.Runtime.Intrinsics.Arm;
-using Nancy.Responses;
 
 namespace PropertyRental
 {

@@ -1,10 +1,6 @@
 ﻿
 using static PropertyRental.UiMethods;
 using static PropertyRental.LogicMethods;
-using System.Security.Cryptography.X509Certificates;
-using Nancy.Json;
-using System.Text.Json;
-using Newtonsoft.Json;
 
 namespace PropertyRental
 {
