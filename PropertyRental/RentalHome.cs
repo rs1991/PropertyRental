@@ -37,16 +37,12 @@ namespace PropertyRental
         {
             string addressInStringFormat = GeoCodeAddress(RentalHomeAddress, api);
             var output = JsonConvert.DeserializeObject<Address>(addressInStringFormat);
-            
-            string example = "123 zoo lane";
-            var output2 = JsonConvert.DeserializeObject<HomeDetails>(example);
-            
-            _homeDetails = output2;
+                        
+            //_homeDetails = ;
             _address = output;
             _price = rmd.MonthlyRentalPrice;
             _agencyPhoneNumber = rmd.EstateAgentPhoneNumber;
             _description = rmd.RentalHomeDescription;
-            //_homeDetails = rmd.RentalHomeDetails;
             _dateHomeWasAdvertised = rmd.DateRentalHomeWasAdded;
         }
 

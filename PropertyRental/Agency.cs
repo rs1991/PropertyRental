@@ -5,7 +5,7 @@
 
         private Address _address;
         private string _agencyName;
-        private string _agencyPhoneNumber;
+        private ContactInformation _contactInformation;
 
         /// <summary>
         /// Agency address
@@ -25,10 +25,10 @@
           set { _agencyName = value; } 
         }
 
-        public string AgencyPhoneNumber
+        public ContactInformation ContactInformation
         {
-            get { return _agencyPhoneNumber}
-            set { _agencyPhoneNumber = value; }
+            get { return _contactInformation; }
+            set { _contactInformation = value; }
         }
 
     }
