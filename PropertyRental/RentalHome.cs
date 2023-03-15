@@ -1,7 +1,4 @@
-﻿using Nancy.Json;
-using Newtonsoft.Json;
-using System.Net;
-using System.Text.Json.Nodes;
+﻿using Newtonsoft.Json;
 using static PropertyRental.LogicMethods;
 
 namespace PropertyRental
@@ -38,30 +35,19 @@ namespace PropertyRental
 
         public RentalHome(RightmoveRentalHomeData rmd, string api, Address RentalHomeAddress)
         {
-            //string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
-            
-            //Address add = new Address();
-            //add.Street = "Merchant Square East, Paddington W2";
-
             string addressInStringFormat = GeoCodeAddress(RentalHomeAddress, api);
             var output = JsonConvert.DeserializeObject<Address>(addressInStringFormat);
-
+            
             string example = "123 zoo lane";
             var output2 = JsonConvert.DeserializeObject<HomeDetails>(example);
-
             
-
             _homeDetails = output2;
-
-
             _address = output;
             _price = rmd.MonthlyRentalPrice;
             _agencyPhoneNumber = rmd.EstateAgentPhoneNumber;
             _description = rmd.RentalHomeDescription;
             //_homeDetails = rmd.RentalHomeDetails;
             _dateHomeWasAdvertised = rmd.DateRentalHomeWasAdded;
-
-
         }
 
 

@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net.Mail;
-using System.Xml;
-using System.Text.RegularExpressions;
-using static PropertyRental.LogicMethods;
-using System.Collections;
-using System.Net;
-using ScrapySharp.Network;
-using Serilog;
+﻿using Serilog;
 
 namespace PropertyRental
 {
