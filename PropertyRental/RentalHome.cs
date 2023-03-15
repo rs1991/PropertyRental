@@ -11,7 +11,7 @@ namespace PropertyRental
 
         private Address _address;
         private DateTime _availableOn;
-        private DateTime _dateHomeWasAddedToWebSite;
+        private DateTime _dateHomeWasAdvertised;
         private HomeDetails _homeDetails;
         private TypeOfHome _homeType;
         private SearchCriteriaFilter _wheelChairAccessAvailable;
@@ -36,7 +36,7 @@ namespace PropertyRental
         /// <param name = "rmd" ></ param >
 
 
-        public RentalHome(RightmoveRentalHomeData rmd)
+        public RentalHome(RightmoveRentalHomeData rmd, string api)
         {
             string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
             
@@ -46,29 +46,30 @@ namespace PropertyRental
             string addressInStringFormat = GeoCodeAddress(add, api);
             var output = JsonConvert.DeserializeObject<Address>(addressInStringFormat);
 
+            string example = "123 zoo lane";
+            var output2 = JsonConvert.DeserializeObject<HomeDetails>(example);
+
+            
+
+            _homeDetails = output2;
+
 
             _address = output;
             _price = rmd.MonthlyRentalPrice;
             _agencyPhoneNumber = rmd.EstateAgentPhoneNumber;
             _description = rmd.RentalHomeDescription;
             //_homeDetails = rmd.RentalHomeDetails;
-            _dateHomeWasAddedToWebSite = rmd.DateRentalHomeWasAdded;
+            _dateHomeWasAdvertised = rmd.DateRentalHomeWasAdded;
 
-
-            /*
-            var a = new Address();
-            a.Street = ""; //magic here
-            a.City = ""; //magic here
-            _address = a;
-
-            var a = new Address();
-            a.Street = ""; //magic here
-            a.City = ""; //magic here
-            _address = a;
-            */
 
         }
 
+
+        public DateTime DateHomeWasAdvertised
+        {
+            get { return _dateHomeWasAdvertised; }
+            set { _dateHomeWasAdvertised = value; }
+        } 
 
         public HomeDetails HomeDetails
         {

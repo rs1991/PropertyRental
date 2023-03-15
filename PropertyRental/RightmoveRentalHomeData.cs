@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace PropertyRental
 {
     public class RightmoveRentalHomeData
@@ -28,7 +22,6 @@ namespace PropertyRental
             get { return _EstateAgentPhoneNumber; }
             set { _EstateAgentPhoneNumber = value; }
         }
- 
         
         public string RentalHomeAddress 
         { 
@@ -42,7 +35,6 @@ namespace PropertyRental
             set { _RentalHomeDetails = value; }
         }
         
-        
         public string RentalHomeDescription 
         { 
             get { return _RentalHomeDescription; }
@@ -54,7 +46,6 @@ namespace PropertyRental
             get { return _DateRentalHomeWasAdded; }
             set {_DateRentalHomeWasAdded = value;}
         }
-        
         
 
         public RightmoveRentalHomeData(double MonthlyRentalPrice, string EstateAgentPhoneNumber, string RentalHomeAddress, 
@@ -68,9 +59,7 @@ namespace PropertyRental
             _DateRentalHomeWasAdded = DateRentalHomeWasAdded;
         }
 
-
        
     }
 
-    
 }

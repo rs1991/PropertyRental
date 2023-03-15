@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PropertyRental
+﻿namespace PropertyRental
 {
     public class Agency
     {
 
         private Address _address;
         private string _agencyName;
+        private string _agencyPhoneNumber;
 
         /// <summary>
-        /// Agency name and address
+        /// Agency address
         /// </summary>
         public Address Address 
         {
@@ -21,10 +16,19 @@ namespace PropertyRental
             set { _address = value; }
         }
 
+        /// <summary>
+        /// Agency name 
+        /// </summary>
         public string AgencyName 
         { 
           get { return _agencyName; }
           set { _agencyName = value; } 
+        }
+
+        public string AgencyPhoneNumber
+        {
+            get { return _agencyPhoneNumber}
+            set { _agencyPhoneNumber = value; }
         }
 
     }
