@@ -1,5 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using CsvHelper.Configuration;
+using Newtonsoft.Json;
+using Serilog;
 using static PropertyRental.LogicMethods;
+using static PropertyRental.UiMethods;
 
 namespace PropertyRental
 {
@@ -33,17 +36,33 @@ namespace PropertyRental
         /// <param name = "rmd" ></ param >
 
 
-        public RentalHome(RightmoveRentalHomeData rmd, string api, Address RentalHomeAddress)
+        public RentalHome(RightmoveRentalHomeData rightMoveRentalHome)
         {
-            string addressInStringFormat = GeoCodeAddress(RentalHomeAddress, api);
-            var output = JsonConvert.DeserializeObject<Address>(addressInStringFormat);
-                        
-            //_homeDetails = ;
-            _address = output;
-            _price = rmd.MonthlyRentalPrice;
-            _agencyPhoneNumber = rmd.EstateAgentPhoneNumber;
-            _description = rmd.RentalHomeDescription;
-            _dateHomeWasAdvertised = rmd.DateRentalHomeWasAdded;
+
+            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+
+            WriteToLog();
+
+            try
+            {
+
+                string addressInStringFormat = GeoCodeAddress(rightMoveRentalHome, api);
+                var outputOfConvertedString = JsonConvert.DeserializeObject<Address>(addressInStringFormat);
+
+                
+                _address = outputOfConvertedString;
+                _price = rightMoveRentalHome.MonthlyRentalPrice;
+                _agencyPhoneNumber = rightMoveRentalHome.EstateAgentPhoneNumber;
+                _description = rightMoveRentalHome.RentalHomeDescription;
+                _dateHomeWasAdvertised = rightMoveRentalHome.DateRentalHomeWasAdded;
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "JsonSerializationException ");
+            }
+            
+            
         }
 
 

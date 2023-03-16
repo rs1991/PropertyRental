@@ -47,7 +47,7 @@ namespace PropertyRental
             set {_DateRentalHomeWasAdded = value;}
         }
         
-
+        
         public RightmoveRentalHomeData(double MonthlyRentalPrice, string EstateAgentPhoneNumber, string RentalHomeAddress, 
             string RentalHomeDetails, string RentalHomeDescription, DateTime DateRentalHomeWasAdded)
         {
@@ -58,6 +58,7 @@ namespace PropertyRental
             _RentalHomeDescription = RentalHomeDescription;
             _DateRentalHomeWasAdded = DateRentalHomeWasAdded;
         }
+        
 
        
     }

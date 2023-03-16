@@ -12,17 +12,21 @@ namespace PropertyRental
 {
     public class LogicMethods
     {
+        
         /*
         public static List<RentalHome> GenerateMockRentalPropertyList()
         {
-           
-           
-            var rp1 = new RentalHome();
+
+            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+
+            RightmoveRentalHomeData rdHome = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 01, 20));
+                       
+            
+            var rp1 = new RentalHome(rdHome, api);
             rp1.Furnished = false;
             rp1.Price = 1350;
             rp1.RentalDuration = 12;
             rp1.AvailableOn = new DateTime(2022, 11, 30);
-            rp1.BedRooms = 1;
             rp1.Description = "This light and spacious ground floor one bedroom flat.";
             rp1.Agency = "Sargeants";
             rp1.Heating = EnergyType.Gas;
@@ -36,6 +40,7 @@ namespace PropertyRental
             rp1.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp1.ElevatorAvailable = SearchCriteriaFilter.Elevator;
 
+
             var a1 = new Address();
             a1.DoorNumber = 134;
             a1.Street = "Darwin Road";
@@ -43,6 +48,8 @@ namespace PropertyRental
             a1.PostCode = "W5 3RE";
             rp1.Address = a1;
 
+
+            /*
             var rp2 = new RentalHome();
             rp2.Furnished = false;
             rp2.Price = 2200;
@@ -273,24 +280,18 @@ namespace PropertyRental
             a10.City = "London";
             a10.PostCode = "E8 4FE";
             rp10.Address = a10;
+       
 
             List<RentalHome> ListOfRentalProperties = new List<RentalHome>();
 
             ListOfRentalProperties.Add(rp1);
-            ListOfRentalProperties.Add(rp2);
-            ListOfRentalProperties.Add(rp3);
-            ListOfRentalProperties.Add(rp4);
-            ListOfRentalProperties.Add(rp5);
-            ListOfRentalProperties.Add(rp6);
-            ListOfRentalProperties.Add(rp7);
-            ListOfRentalProperties.Add(rp8);
-            ListOfRentalProperties.Add(rp9);
-            ListOfRentalProperties.Add(rp10);
+            
 
             return ListOfRentalProperties;
         }
+    */
 
-        */
+        
         public static List<Address> GenerateMockAddressList()
         {
             var a1 = new Address();
@@ -955,7 +956,7 @@ namespace PropertyRental
             return distanceInt;
         }
 
-        public static string GeoCodeAddress(Address addr, string apiKey)
+        public static string GeoCodeAddress(RightmoveRentalHomeData addr, string apiKey)
         {
             string inputAddress = JsonConvert.SerializeObject(addr);
             
