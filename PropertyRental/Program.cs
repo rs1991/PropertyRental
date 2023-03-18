@@ -11,7 +11,7 @@ namespace PropertyRental
         static void Main(string[] args)
         {
 
-            //var path = @"C:\tmp\MockDataStorage.xml";
+            var path = @"C:\tmp\MockDataStorage.xml";
             string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
 
             
