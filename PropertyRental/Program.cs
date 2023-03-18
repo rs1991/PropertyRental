@@ -26,13 +26,13 @@ namespace PropertyRental
             //dStorage.ListOfAddresses = AddressList;
             //WriteDataStorage(dStorage, path);
             
-/*
+
 
            RightmoveRentalHomeData rdHome = new RightmoveRentalHomeData(2345, "0781273819", "Newman Street, London", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023,01,20));
             
            Console.WriteLine($"{rdHome.RentalHomeAddress} {rdHome.MonthlyRentalPrice}");
           
-            */
+           
         }
 
     }
