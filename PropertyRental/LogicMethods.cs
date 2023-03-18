@@ -956,7 +956,7 @@ namespace PropertyRental
             return distanceInt;
         }
 
-        public static string GeoCodeAddress(RightmoveRentalHomeData addr, string apiKey)
+        public static string GeoCodeAddress(Address addr, string apiKey)
         {
             string inputAddress = JsonConvert.SerializeObject(addr);
             

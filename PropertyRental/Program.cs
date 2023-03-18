@@ -2,6 +2,7 @@
 using static PropertyRental.UiMethods;
 using static PropertyRental.LogicMethods;
 using System.Runtime.Intrinsics.Arm;
+using Newtonsoft.Json;
 
 namespace PropertyRental
 {
@@ -11,30 +12,29 @@ namespace PropertyRental
         {
 
             //var path = @"C:\tmp\MockDataStorage.xml";
-            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+            //string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
 
-            /*
+            
             List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
-            List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalPropertyList();
+            //List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalPropertyList();
             List<Address> AddressList = LogicMethods.GenerateMockAddressList();
 
             var dStorage = new DataStorage();
 
             dStorage.ListOfTenants = TenantList;
-            dStorage.ListOfRentalHomes = RentalHomes;
+            //dStorage.ListOfRentalHomes = RentalHomes;
             dStorage.ListOfAddresses = AddressList;
-            WriteDataStorage(dStorage, path);
-            */
+            //WriteDataStorage(dStorage, path);
+            
+
+
+           RightmoveRentalHomeData rdHome = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023,01,20));
+
+           RentalHome home1 = new RentalHome(rdHome);
+           Console.WriteLine(home1.Address);
 
             
-            RightmoveRentalHomeData rdHome = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023,01,20));
 
-            RentalHome home1 = new RentalHome(rdHome);
-           
-           
-            Console.WriteLine(home1.Price);
-
-           
 
         }
 

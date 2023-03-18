@@ -1,5 +1,6 @@
 ﻿using CsvHelper.Configuration;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Serilog;
 using static PropertyRental.LogicMethods;
 using static PropertyRental.UiMethods;
@@ -38,19 +39,22 @@ namespace PropertyRental
 
         public RentalHome(RightmoveRentalHomeData rightMoveRentalHome)
         {
-
-            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
-
+           
             WriteToLog();
 
             try
             {
-
-                string addressInStringFormat = GeoCodeAddress(rightMoveRentalHome, api);
-                var outputOfConvertedString = JsonConvert.DeserializeObject<Address>(addressInStringFormat);
-
+                string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+                Address address = new Address();
+                address.Street = "Newman street";
                 
-                _address = outputOfConvertedString;
+
+                var addressInStringFormat = GeoCodeAddress(address, api);
+                var output = JsonConvert.DeserializeObject<Address>(addressInStringFormat);
+                Console.WriteLine(output);
+
+                //_address = rightMoveRentalHome.RentalHomeAddress
+                _address = output;                
                 _price = rightMoveRentalHome.MonthlyRentalPrice;
                 _agencyPhoneNumber = rightMoveRentalHome.EstateAgentPhoneNumber;
                 _description = rightMoveRentalHome.RentalHomeDescription;
