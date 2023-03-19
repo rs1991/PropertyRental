@@ -28,10 +28,18 @@ namespace PropertyRental
             
 
 
-           RightmoveRentalHomeData rdHome = new RightmoveRentalHomeData(2345, "0781273819", "Newman Street, London", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023,01,20));
+           RightmoveRentalHomeData rmHome = new RightmoveRentalHomeData(2345, "0781273819", "Newman Street, London", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023,01,20));
             
-           Console.WriteLine($"{rdHome.RentalHomeAddress} {rdHome.MonthlyRentalPrice}");
-          
+           Console.WriteLine($"{rmHome.RentalHomeAddress} {rmHome.MonthlyRentalPrice}");
+
+            Address a = new Address();
+            a.Street = "Newman street";
+            a.City = "London";
+            
+
+            RentalHome rentalhome1 = new RentalHome(rmHome, a, api);
+            Console.WriteLine(rentalhome1.Address);
+
            
         }
 
