@@ -956,17 +956,26 @@ namespace PropertyRental
             return distanceInt;
         }
 
-        public static string GeoCodeAddress(Address addr, string apiKey)
+        public static Address GeoCodeAddress(string inputAddress, string apiKey)
         {
-            string inputAddress = JsonConvert.SerializeObject(addr);
-            
-            var client = new WebClient(); 
-            var body = client.DownloadString($"https://maps.googleapis.com/maps/api/geocode/json?address={inputAddress}&key={apiKey}");
-            
-            var adr = JsonConvert.DeserializeObject<GeoCodeJsonObj>(body);
-            string answer = adr.results[0].formatted_address;
-            
+            WebClient client = new WebClient();
+            String body = client.DownloadString($"https://maps.googleapis.com/maps/api/geocode/json?address={inputAddress}&key={apiKey}");
+
+            GeoCodeJsonObj geoCodeResponse = JsonConvert.DeserializeObject<GeoCodeJsonObj>(body);
+            List<global::AddressComponent> convertedGeoCodeResponse = geoCodeResponse.results[0].address_components;           
+
+            foreach(var converted in convertedGeoCodeResponse)
+            {
+                Console.WriteLine(converted.short_name);
+            }
+
+
+            Address answer = new Address();
             return answer;
+
+
+            //TODO : get info from geocoderesponse , put iit into new adress obj
+
         }
 
 
