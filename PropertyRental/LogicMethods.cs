@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.Net;
 using HtmlAgilityPack;
 using Serilog;
+using System.Collections.Generic;
 
 namespace PropertyRental
 {
@@ -962,17 +963,25 @@ namespace PropertyRental
             String body = client.DownloadString($"https://maps.googleapis.com/maps/api/geocode/json?address={inputAddress}&key={apiKey}");
 
             GeoCodeJsonObj geoCodeResponse = JsonConvert.DeserializeObject<GeoCodeJsonObj>(body);
-            List<global::AddressComponent> convertedGeoCodeResponse = geoCodeResponse.results[0].address_components;           
+            List<global::AddressComponent> geoCodeResponseList = geoCodeResponse.results[0].address_components;
 
-            foreach(var converted in convertedGeoCodeResponse)
-            {
-                Console.WriteLine(converted.short_name);
-            }
+            string jsonConversionFromGeoCodeResponse = JsonConvert.SerializeObject(geoCodeResponseList);
 
+            Console.WriteLine(jsonConversionFromGeoCodeResponse);
 
             Address answer = new Address();
-            return answer;
+            answer = JsonConvert.DeserializeObject<Address>(jsonConversionFromGeoCodeResponse);
 
+            /*
+            foreach (var geoCodeResp in geoCodeResponseList)
+            {
+                Console.WriteLine(geoCodeResp.short_name);                
+            }
+            */
+
+
+
+            return answer;
 
             //TODO : get info from geocoderesponse , put iit into new adress obj
 
