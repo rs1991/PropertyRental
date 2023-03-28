@@ -8,6 +8,7 @@ using System.Net;
 using HtmlAgilityPack;
 using Serilog;
 using System.Collections.Generic;
+using Nancy.Responses;
 
 namespace PropertyRental
 {
@@ -293,6 +294,7 @@ namespace PropertyRental
     */
 
         
+       /*
         public static List<Address> GenerateMockAddressList()
         {
             var a1 = new Address();
@@ -370,6 +372,9 @@ namespace PropertyRental
             return AddressList;
            
     }
+       */
+
+        /*
     public static List<Tenant> GenerateMockListOfTenants()
         {
             //First tenant
@@ -811,6 +816,8 @@ namespace PropertyRental
             return TenantList;
         }
 
+        */
+
 
         /// <summary>
         /// Overall rating is calculated to determine how suitable the home is for a tenant
@@ -963,25 +970,41 @@ namespace PropertyRental
             String body = client.DownloadString($"https://maps.googleapis.com/maps/api/geocode/json?address={inputAddress}&key={apiKey}");
 
             GeoCodeJsonObj geoCodeResponse = JsonConvert.DeserializeObject<GeoCodeJsonObj>(body);
-            List<global::AddressComponent> geoCodeResponseList = geoCodeResponse.results[0].address_components;
+            List<global::AddressComponent> adressComponents = geoCodeResponse.results[0].address_components;
+            
+            
+            Console.WriteLine(adressComponents.Count);
+            Address returnAdress = new Address();
 
-            string jsonConversionFromGeoCodeResponse = JsonConvert.SerializeObject(geoCodeResponseList);
-
-            Console.WriteLine(jsonConversionFromGeoCodeResponse);
-
-            Address answer = new Address();
-            answer = JsonConvert.DeserializeObject<Address>(jsonConversionFromGeoCodeResponse);
-
-            /*
-            foreach (var geoCodeResp in geoCodeResponseList)
+            foreach(var component in adressComponents)
             {
-                Console.WriteLine(geoCodeResp.short_name);                
+                switch(component.types.First())
+                {
+                    case "street_number":
+                        returnAdress.DoorNumber = int.Parse(component.long_name);
+                        break;
+                    case "route":
+                        returnAdress.Street = component.long_name;
+                        break;
+                    case "street_address":
+                        returnAdress.Street = component.long_name;
+                        break;
+                    case "postal_code":
+                        returnAdress.PostCode = component.long_name;
+                        break;
+                    case "postal_town":
+                        returnAdress.City = component.long_name;
+                        break;
+                }
+
+               
             }
-            */
 
+            
 
-
-            return answer;
+            
+            
+            return returnAdress;
 
             //TODO : get info from geocoderesponse , put iit into new adress obj
 

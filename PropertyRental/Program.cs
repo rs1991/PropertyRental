@@ -38,6 +38,10 @@ namespace PropertyRental
             RentalHome rentalhome1 = new RentalHome(rmHome, testAddress, api);
             Console.WriteLine(rentalhome1.Address);
 
+            List<string> typesList = new List<string>();
+
+         
+
 
         }
 
