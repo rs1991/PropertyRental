@@ -1001,12 +1001,8 @@ namespace PropertyRental
             }
 
             
-
-            
-            
             return returnAdress;
-
-            //TODO : get info from geocoderesponse , put iit into new adress obj
+            
 
         }
 
@@ -1030,14 +1026,12 @@ namespace PropertyRental
             return ScoresList;
         }
 
-        public static void GetDataFromWeb()
+        public static List<RightmoveRentalHomeData> GetDataFromWeb()
         {
-
             WriteToLog();
 
             HtmlWeb web = new HtmlWeb();
-            var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=REGION%5E87490&maxPrice=2000&propertyTypes=&includeLetAgreed=false&mustHave=&dontShow=&furnishTypes=&keywords=");
-            
+            var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=2750&minBedrooms=&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
             var cardXpath = "//*[@class='propertyCard-wrapper']";
             var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
             
@@ -1055,18 +1049,15 @@ namespace PropertyRental
                 string rentalHomeprice = priceNode.InnerText;
                 string rentalHomepriceReplacedChar = rentalHomeprice;
                 string result = rentalHomepriceReplacedChar.Replace("£", "").Replace("pcm", "");
-               
-
                 double convertedMonthlyRentalPrice;
+                
                 bool parseOK = double.TryParse(result, out convertedMonthlyRentalPrice);
                 
                 if(!parseOK)
                 {
-                    
                     Log.Error("Parse did not go well!");
                 }
-
-
+                
                 var agentPhoneNumber = contactNode.InnerHtml;
                 var rentalHomeAddress = addressNode.InnerText.Trim();
                 var rentalHomeDetails = homeDetailsNode.InnerText.Trim();
@@ -1075,27 +1066,24 @@ namespace PropertyRental
                 try
                 {
                     var dateRentalHomeWasAdded = dateRentalHomeWasAddedNode.InnerHtml;
-                    
                     DateTime today = DateTime.Now;
                     DateTime convertedtDate;
                     
                     if (dateRentalHomeWasAdded.Contains("Added today") || dateRentalHomeWasAdded.Contains("Reduced today") || dateRentalHomeWasAdded.Contains("Reduced on")
                         || dateRentalHomeWasAdded.Contains("Added on") || dateRentalHomeWasAdded.Contains(""))
-                        
                         convertedtDate = today;
                     else
-                        convertedtDate = DateTime.Parse(dateRentalHomeWasAdded);
+                        convertedtDate = DateTime.Parse(dateRentalHomeWasAdded.ToString());
                     
                     RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData(convertedMonthlyRentalPrice, agentPhoneNumber, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription, convertedtDate);
                     ScrapedDataList.Add(ScrapedDataStorage);
-
                 }
                 catch (Exception ex)
                 {
-                   
                     Log.Error(ex, "System.FormatException:");
                 }
             }
+            return ScrapedDataList;
         }
     }
 }

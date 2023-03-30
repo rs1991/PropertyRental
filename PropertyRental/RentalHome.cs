@@ -43,7 +43,7 @@ namespace PropertyRental
             {
                 
                 Address parsedAddress = GeoCodeAddress(address, apikey);
-               
+              
                 
 
                 _address = parsedAddress;                
@@ -234,7 +234,6 @@ namespace PropertyRental
             get { return _price; }
             set { _price = value; }
         }
-
 
 
         public override string ToString()

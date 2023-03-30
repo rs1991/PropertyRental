@@ -27,20 +27,20 @@ namespace PropertyRental
             //WriteDataStorage(dStorage, path);
 
 
+            List<RightmoveRentalHomeData> RightMoveHomesList = GetDataFromWeb();
 
-            RightmoveRentalHomeData rmHome = new RightmoveRentalHomeData(2345, "0781273819", "Newman Street, London", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 01, 20));
-
-            Console.WriteLine($"{rmHome.RentalHomeAddress} {rmHome.MonthlyRentalPrice}");
-
-            string testAddress = "23 Newman street london ";
+            RightmoveRentalHomeData rmHome = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 01, 20));
+            
+            string testAddress = "18 Zulla road Nottingham";
 
 
             RentalHome rentalhome1 = new RentalHome(rmHome, testAddress, api);
-            Console.WriteLine(rentalhome1.Address);
 
-            List<string> typesList = new List<string>();
+            Console.WriteLine($"Test Rental home: {rentalhome1.Address.DoorNumber} {rentalhome1.Address.Street} {rentalhome1.Address.City} {rentalhome1.Address.PostCode}");
 
-         
+
+
+
 
 
         }
