@@ -58,9 +58,9 @@ namespace PropertyRental
             _RentalHomeDescription = RentalHomeDescription;
             _DateRentalHomeWasAdded = DateRentalHomeWasAdded;
         }
-        
 
-       
+        public RightmoveRentalHomeData() { }
+
     }
 
 }

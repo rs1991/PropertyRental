@@ -7,24 +7,23 @@ using Newtonsoft.Json;
 using System.Net;
 using HtmlAgilityPack;
 using Serilog;
-using System.Collections.Generic;
-using Nancy.Responses;
 
 namespace PropertyRental
 {
     public class LogicMethods
     {
-        
-        /*
+
+
         public static List<RentalHome> GenerateMockRentalPropertyList()
         {
 
             string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
 
             RightmoveRentalHomeData rdHome = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 01, 20));
-                       
-            
-            var rp1 = new RentalHome(rdHome, api);
+
+            string PlaceHolderAddressString = "";
+
+            var rp1 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp1.Furnished = false;
             rp1.Price = 1350;
             rp1.RentalDuration = 12;
@@ -51,13 +50,12 @@ namespace PropertyRental
             rp1.Address = a1;
 
 
-            /*
+
             var rp2 = new RentalHome();
             rp2.Furnished = false;
             rp2.Price = 2200;
             rp2.RentalDuration = 12;
             rp2.AvailableOn = new DateTime(2022, 11, 30);
-            rp2.BedRooms = 4;
             rp2.Description = "We are delighted to offer for rent this 4 bedroom terrace house within walking distance to local amenities";
             rp2.Agency = "Open Rent";
             rp2.Heating = EnergyType.Gas;
@@ -82,7 +80,6 @@ namespace PropertyRental
             rp3.Price = 11700;
             rp3.RentalDuration = 12;
             rp3.AvailableOn = new DateTime(2023, 01, 02);
-            rp3.BedRooms = 3;
             rp3.Description = "An outstanding three bedroom Georgian family home";
             rp3.Agency = "Dexters";
             rp3.Heating = EnergyType.Electric;
@@ -107,7 +104,6 @@ namespace PropertyRental
             rp4.Price = 1000;
             rp4.RentalDuration = 12;
             rp4.AvailableOn = new DateTime(2022, 11, 29);
-            rp4.BedRooms = 3;
             rp4.Description = "Situated just moments from Crystal Palace Station and Park";
             rp4.Agency = "Streets ahead";
             rp4.Heating = EnergyType.Electric;
@@ -134,7 +130,6 @@ namespace PropertyRental
             rp5.Price = 1700;
             rp5.RentalDuration = 12;
             rp5.AvailableOn = new DateTime(2022, 12, 29);
-            rp5.BedRooms = 3;
             rp5.Description = "A spacious 2 bedroom bungalow built circa 1930 ";
             rp5.Agency = "Amanda Roberts agency";
             rp5.Heating = EnergyType.Solar;
@@ -160,7 +155,6 @@ namespace PropertyRental
             rp6.Price = 2400;
             rp6.RentalDuration = 12;
             rp6.AvailableOn = new DateTime(2023, 01, 14);
-            rp6.BedRooms = 3;
             rp6.Description = "Rare to market, very unique and modern";
             rp6.Agency = "Open rent";
             rp6.Heating = EnergyType.Solar;
@@ -186,7 +180,6 @@ namespace PropertyRental
             rp7.Price = 5850;
             rp7.RentalDuration = 6;
             rp7.AvailableOn = new DateTime(2023, 02, 10);
-            rp7.BedRooms = 3;
             rp7.Description = "This stunning and truly unique penthouse apartment is full of character ";
             rp7.Agency = "John D Wood and Co";
             rp7.Heating = EnergyType.Gas;
@@ -212,7 +205,6 @@ namespace PropertyRental
             rp8.Price = 2500;
             rp8.RentalDuration = 3;
             rp8.AvailableOn = new DateTime(2022, 12, 10);
-            rp8.BedRooms = 5;
             rp8.Description = "Proud to present this luxury, bright, and spacious";
             rp8.Agency = "B&C Properties";
             rp8.Heating = EnergyType.Gas;
@@ -237,7 +229,6 @@ namespace PropertyRental
             rp9.Price = 67000;
             rp9.RentalDuration = 12;
             rp9.AvailableOn = new DateTime(2023, 03, 01);
-            rp9.BedRooms = 3;
             rp9.Description = "Home near Harrods";
             rp9.Agency = "Stanley Properties";
             rp9.Heating = EnergyType.Gas;
@@ -262,7 +253,6 @@ namespace PropertyRental
             rp10.Price = 4000;
             rp10.RentalDuration = 12;
             rp10.AvailableOn = new DateTime(2022, 12, 13);
-            rp10.BedRooms = 3;
             rp10.Description = "A stunning four-bedroom mid-terrace house situated ";
             rp10.Agency = "View Properties";
             rp10.Heating = EnergyType.Electric;
@@ -282,19 +272,25 @@ namespace PropertyRental
             a10.City = "London";
             a10.PostCode = "E8 4FE";
             rp10.Address = a10;
-       
+
 
             List<RentalHome> ListOfRentalProperties = new List<RentalHome>();
 
             ListOfRentalProperties.Add(rp1);
-            
+            ListOfRentalProperties.Add(rp2);
+            ListOfRentalProperties.Add(rp3);
+            ListOfRentalProperties.Add(rp4);
+            ListOfRentalProperties.Add(rp5);
+            ListOfRentalProperties.Add(rp6);
+            ListOfRentalProperties.Add(rp7);
+            ListOfRentalProperties.Add(rp8);
+            ListOfRentalProperties.Add(rp9);
+            ListOfRentalProperties.Add(rp10);
 
             return ListOfRentalProperties;
         }
-    */
 
-        
-       /*
+
         public static List<Address> GenerateMockAddressList()
         {
             var a1 = new Address();
@@ -302,61 +298,61 @@ namespace PropertyRental
             a1.Street = "Argyle road";
             a1.City = "London";
             a1.PostCode = "W13 8ER";
-            
+
             var a2 = new Address();
             a2.DoorNumber = 22;
             a2.Street = "Singapore road";
             a2.City = "London";
             a2.PostCode = "W13 0UF";
-            
+
             var a3 = new Address();
             a3.DoorNumber = 20;
             a3.Street = "Rosemount Rd";
             a3.City = "London";
             a3.PostCode = "W13 0HJ";
-            
+
             var a4 = new Address();
             a4.DoorNumber = 5;
             a4.Street = "Daleham Mews";
             a4.City = "London";
             a4.PostCode = "NW3 5DB";
-            
+
             var a5 = new Address();
             a5.DoorNumber = 5;
             a5.Street = "Blake hall road";
             a5.City = "London";
             a5.PostCode = "E11 2QQ";
-            
+
             var a6 = new Address();
             a6.DoorNumber = 5;
             a6.Street = "Boydell Court";
             a6.City = "London";
             a6.PostCode = "NW8 6Nh";
-            
+
             var a7 = new Address();
             a7.DoorNumber = 44;
             a7.Street = "Lowndes Square";
             a7.City = "London";
             a7.PostCode = "SW1 9xt";
-            
+
             var a8 = new Address();
             a8.DoorNumber = 41;
             a8.Street = "Sydenham hill";
             a8.City = "London";
             a8.PostCode = "SE26 6TH";
-            
+
             var a9 = new Address();
             a9.DoorNumber = 19;
             a9.Street = "Swan Drive";
             a9.City = "London";
             a9.PostCode = "NW9 5DE";
-            
+
             var a10 = new Address();
             a10.DoorNumber = 221;
             a10.Street = "Ardgowan Road";
             a10.City = "London";
             a10.PostCode = "SE6 1AJ";
-            
+
             var AddressList = new List<Address>();
             AddressList.Add(a1);
             AddressList.Add(a2);
@@ -368,14 +364,14 @@ namespace PropertyRental
             AddressList.Add(a8);
             AddressList.Add(a9);
             AddressList.Add(a10);
-            
-            return AddressList;
-           
-    }
-       */
 
-        /*
-    public static List<Tenant> GenerateMockListOfTenants()
+            return AddressList;
+
+        }
+
+
+
+        public static List<Tenant> GenerateMockListOfTenants()
         {
             //First tenant
             var t1 = new Tenant();
@@ -816,7 +812,7 @@ namespace PropertyRental
             return TenantList;
         }
 
-        */
+
 
 
         /// <summary>
@@ -971,14 +967,13 @@ namespace PropertyRental
 
             GeoCodeJsonObj geoCodeResponse = JsonConvert.DeserializeObject<GeoCodeJsonObj>(body);
             List<global::AddressComponent> adressComponents = geoCodeResponse.results[0].address_components;
-            
-            
-            Console.WriteLine(adressComponents.Count);
+
+
             Address returnAdress = new Address();
 
-            foreach(var component in adressComponents)
+            foreach (var component in adressComponents)
             {
-                switch(component.types.First())
+                switch (component.types.First())
                 {
                     case "street_number":
                         returnAdress.DoorNumber = int.Parse(component.long_name);
@@ -997,12 +992,12 @@ namespace PropertyRental
                         break;
                 }
 
-               
+
             }
 
-            
+
             return returnAdress;
-            
+
 
         }
 
@@ -1026,55 +1021,59 @@ namespace PropertyRental
             return ScoresList;
         }
 
-        public static List<RightmoveRentalHomeData> GetDataFromWeb()
+        public static List<RightmoveRentalHomeData> GetDataFromWeb(int page)
         {
             WriteToLog();
 
             HtmlWeb web = new HtmlWeb();
-            var htmlDoc = web.Load("https://www.rightmove.co.uk/property-to-rent/find.html?searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=2750&minBedrooms=&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
+            HtmlDocument htmlDoc = web.Load($"https://www.rightmove.co.uk/property-to-rent/find.html?index={page * 42}searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=2750&minBedrooms=&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
+
             var cardXpath = "//*[@class='propertyCard-wrapper']";
             var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
-            
+
             List<RightmoveRentalHomeData> ScrapedDataList = new List<RightmoveRentalHomeData>();
-            
+
             foreach (var node in cardNodes)
+
             {
+
                 var priceNode = node.SelectSingleNode(".//*[@class='propertyCard-priceValue']");
                 var contactNode = node.SelectSingleNode(".//*[@class='propertyCard-contactsPhoneNumber']");
                 var addressNode = node.SelectSingleNode(".//*[@class='propertyCard-address']");
                 var homeDetailsNode = node.SelectSingleNode(".//div[@class='propertyCard-details']");
                 var homeDescriptionNode = node.SelectSingleNode(".//div[@class='propertyCard-description']");
                 var dateRentalHomeWasAddedNode = node.SelectSingleNode(".//span[@class='propertyCard-branchSummary-addedOrReduced']");
-                
+
                 string rentalHomeprice = priceNode.InnerText;
                 string rentalHomepriceReplacedChar = rentalHomeprice;
                 string result = rentalHomepriceReplacedChar.Replace("£", "").Replace("pcm", "");
                 double convertedMonthlyRentalPrice;
-                
+
                 bool parseOK = double.TryParse(result, out convertedMonthlyRentalPrice);
-                
-                if(!parseOK)
+
+                if (!parseOK)
                 {
                     Log.Error("Parse did not go well!");
                 }
-                
+
                 var agentPhoneNumber = contactNode.InnerHtml;
                 var rentalHomeAddress = addressNode.InnerText.Trim();
                 var rentalHomeDetails = homeDetailsNode.InnerText.Trim();
                 var rentalHomeDescription = homeDescriptionNode.InnerText.Trim();
-                
+
                 try
                 {
                     var dateRentalHomeWasAdded = dateRentalHomeWasAddedNode.InnerHtml;
+
                     DateTime today = DateTime.Now;
                     DateTime convertedtDate;
-                    
+
                     if (dateRentalHomeWasAdded.Contains("Added today") || dateRentalHomeWasAdded.Contains("Reduced today") || dateRentalHomeWasAdded.Contains("Reduced on")
-                        || dateRentalHomeWasAdded.Contains("Added on") || dateRentalHomeWasAdded.Contains(""))
+                         || dateRentalHomeWasAdded.Contains("Added on") || dateRentalHomeWasAdded.Contains(""))
                         convertedtDate = today;
+
                     else
                         convertedtDate = DateTime.Parse(dateRentalHomeWasAdded.ToString());
-                    
                     RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData(convertedMonthlyRentalPrice, agentPhoneNumber, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription, convertedtDate);
                     ScrapedDataList.Add(ScrapedDataStorage);
                 }
@@ -1082,11 +1081,16 @@ namespace PropertyRental
                 {
                     Log.Error(ex, "System.FormatException:");
                 }
+
+                
             }
             return ScrapedDataList;
         }
     }
 }
 
+
+        
+  
 
 

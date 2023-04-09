@@ -44,8 +44,6 @@ namespace PropertyRental
                 
                 Address parsedAddress = GeoCodeAddress(address, apikey);
               
-                
-
                 _address = parsedAddress;                
                 _price = rightMoveRentalHome.MonthlyRentalPrice;
                 _agencyPhoneNumber = rightMoveRentalHome.EstateAgentPhoneNumber;
@@ -241,6 +239,8 @@ namespace PropertyRental
             return $"Address: {Address.PostCode} FloorSize: {FloorSize} Available On: {AvailableOn} Price: {Price} Heating: {Heating} Type of Home: {HomeType} +" +
                 $" Council tax band: {CouncilTaxBand}";
         }
+
+        public RentalHome() { }
 
     }
 }

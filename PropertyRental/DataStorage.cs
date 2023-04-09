@@ -6,6 +6,7 @@
         public List<RentalHome> ListOfRentalHomes;
         public List<Address> ListOfAddresses;
         public List<RentalHomePointsScore> ListOfScores;
+        public List<RightmoveRentalHomeData> ListOfRightMoveHomes;
     }
 
 }

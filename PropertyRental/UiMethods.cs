@@ -5,6 +5,10 @@ namespace PropertyRental
     public class UiMethods
     {        
         
+        /// <summary>
+        /// Displays a compatability score based on the tenant's requirements 
+        /// </summary>
+        /// <param name="ScoresList"></param>
         public static void displayScoreOnly(List<RentalHomePointsScore> ScoresList)
         {
             foreach(var score in ScoresList)
