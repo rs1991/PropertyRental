@@ -6,7 +6,7 @@ namespace PropertyRental
 {
     public class RentalHome
     {
-
+        //TODO:: add string property DataSourceURL
         private Address _address;
         private DateTime _availableOn;
         private DateTime _dateHomeWasAdvertised;

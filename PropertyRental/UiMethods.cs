@@ -28,6 +28,14 @@ namespace PropertyRental
                 .CreateLogger();
         }
 
+        public static void LoopThroughListOfRightMoveHomes(List<RightmoveRentalHomeData> ScrapedHomes)
+        {
+            foreach (var home in ScrapedHomes) {
+
+                Console.WriteLine($"{home.RentalHomeAddress}");
+            }
+        }
+
 
     }
 }

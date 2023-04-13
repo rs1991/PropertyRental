@@ -29,10 +29,9 @@ namespace PropertyRental
 
             List<RightmoveRentalHomeData> ScrapedHomes =  GetDataFromWeb(2);
 
-            foreach(var home in ScrapedHomes)
-            {
-                Console.WriteLine(home.MonthlyRentalPrice);
-            }
+            LoopThroughListOfRightMoveHomes(ScrapedHomes);
+
+
 
 
         }
