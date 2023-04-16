@@ -16,7 +16,7 @@ namespace PropertyRental
             //List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
             //List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalPropertyList();
             //List<Address> AddressList = LogicMethods.GenerateMockAddressList();
-            List<RightmoveRentalHomeData> RightMoveHomesList = GetDataFromWeb(42);
+            List<RightmoveRentalHomeData> RightMoveHomesList = GetDataFromWeb(2);
 
             var dStorage = new DataStorage();
 
@@ -27,11 +27,17 @@ namespace PropertyRental
             WriteDataStorage(dStorage, path);
 
 
-            List<RightmoveRentalHomeData> ScrapedHomes =  GetDataFromWeb(2);
+            //List<RightmoveRentalHomeData> ScrapedHomes =  GetDataFromWeb(2);
 
-            LoopThroughListOfRightMoveHomes(ScrapedHomes);
+            //LoopThroughListOfRightMoveHomes(ScrapedHomes);
 
+            int pageNumber = 2;
+            List<ZooplaHomeRentalData> ZooplaHomes = GetDataFromZoopla(pageNumber);
 
+            foreach(var zoopla in ZooplaHomes)
+            {
+                Console.WriteLine(zoopla);
+            }
 
 
         }

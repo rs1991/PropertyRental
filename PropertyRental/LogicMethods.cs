@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.Net;
 using HtmlAgilityPack;
 using Serilog;
+using Nancy.Routing.Trie.Nodes;
 
 namespace PropertyRental
 {
@@ -1086,11 +1087,21 @@ namespace PropertyRental
             }
             return ScrapedDataList;
         }
+
+        public static List<ZooplaHomeRentalData> GetDataFromZoopla(int pageNum)
+        {
+            WriteToLog();
+
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument htmlDoc = web.Load($"https://www.zoopla.co.uk/to-rent/property/london/?price_frequency=per_month&q=London&search_source=home&pn={pageNum}");
+
+            var cardXpath = "//*[@class='f0xnzq2']";
+            Console.WriteLine(cardXpath);
+
+            throw new NotImplementedException();
+            
+        }
+
+
     }
 }
-
-
-        
-  
-
-
