@@ -8,6 +8,7 @@ using System.Net;
 using HtmlAgilityPack;
 using Serilog;
 using Nancy.Routing.Trie.Nodes;
+using System.Xml.Linq;
 
 namespace PropertyRental
 {
@@ -1083,7 +1084,7 @@ namespace PropertyRental
                     Log.Error(ex, "System.FormatException:");
                 }
 
-                
+
             }
             return ScrapedDataList;
         }
@@ -1095,13 +1096,51 @@ namespace PropertyRental
             HtmlWeb web = new HtmlWeb();
             HtmlDocument htmlDoc = web.Load($"https://www.zoopla.co.uk/to-rent/property/london/?price_frequency=per_month&q=London&search_source=home&pn={pageNum}");
 
-            var cardXpath = "//*[@class='f0xnzq2']";
-            Console.WriteLine(cardXpath);
+            List<ZooplaHomeRentalData> zooplaHomeRentalData = new List<ZooplaHomeRentalData>();
 
-            throw new NotImplementedException();
-            
+            try
+            {
+
+                var cardXpath = "//div[@class='f0xnzq2']";
+                var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
+
+
+
+                foreach (var node in cardNodes)
+                {
+                    var priceNode = node.SelectSingleNode("//*[@class='_170k6632 _1ftx2fq6']");
+
+                    string rentalHomeprice = priceNode.InnerText;
+                    string rentalHomepriceReplacedChar = rentalHomeprice;
+                    string result = rentalHomepriceReplacedChar.Replace("£", "").Replace("pcm", "");
+                    double convertedMonthlyRentalPrice;
+
+                    bool parseOK = double.TryParse(result, out convertedMonthlyRentalPrice);
+
+                    if (!parseOK)
+                    {
+                        Log.Error("Parse did not go well!");
+                    }
+
+                    ZooplaHomeRentalData ScrapedDataStorage = new ZooplaHomeRentalData(convertedMonthlyRentalPrice);
+                    zooplaHomeRentalData.Add(ScrapedDataStorage);
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "System.FormatException:");
+            }
+            finally
+            {
+
+            }
+            return zooplaHomeRentalData;
+
         }
-
 
     }
 }
+
+    
