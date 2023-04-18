@@ -27,9 +27,11 @@ namespace PropertyRental
             WriteDataStorage(dStorage, path);
 
 
-            //List<RightmoveRentalHomeData> ScrapedHomes =  GetDataFromWeb(2);
+            /*
+            List<RightmoveRentalHomeData> ScrapedHomes =  GetDataFromWeb(5);
+            LoopThroughListOfRightMoveHomes(ScrapedHomes);
+            */
 
-            //LoopThroughListOfRightMoveHomes(ScrapedHomes);
 
             int pageNumber = 2;
             List<ZooplaHomeRentalData> ZooplaHomes = GetDataFromZoopla(pageNumber);
@@ -38,6 +40,9 @@ namespace PropertyRental
             {
                 Console.WriteLine(zoopla);
             }
+            
+
+
 
 
         }
