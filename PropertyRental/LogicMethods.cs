@@ -7,8 +7,6 @@ using Newtonsoft.Json;
 using System.Net;
 using HtmlAgilityPack;
 using Serilog;
-using Nancy.Routing.Trie.Nodes;
-using System.Xml.Linq;
 
 namespace PropertyRental
 {
@@ -1089,33 +1087,25 @@ namespace PropertyRental
             return ScrapedDataList;
         }
 
-        public static List<ZooplaHomeRentalData> GetDataFromZoopla(int pageNum)
+        public static List<ZooplaHomeRentalData> GetDataFromZoopla()
         {
             WriteToLog();
 
             HtmlWeb web = new HtmlWeb();
-            HtmlDocument htmlDoc = web.Load($"https://www.zoopla.co.uk/to-rent/property/london/?price_frequency=per_month&q=London&search_source=home&pn={pageNum}");
-
-            String cardXpath = ".//*[@class='kii3au6']";
-            //*[@class='kii3au6']
-            HtmlNodeCollection cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
-            Console.WriteLine(cardNodes);
-
+            HtmlDocument htmlDoc = web.Load($"https://www.zoopla.co.uk/to-rent/property/nottingham/?price_frequency=per_month&q=Nottingham&search_source=home");
+            
             List<ZooplaHomeRentalData> zooplaHomeRentalData = new List<ZooplaHomeRentalData>();
+            
+            var homeListings = htmlDoc.DocumentNode.SelectNodes("//*[@class='f0xnzq2']");
+   
 
-            foreach(var card in cardNodes)
+            foreach (var card in homeListings)
             {
                 Console.WriteLine(card);
             }
             
-            
-
             return zooplaHomeRentalData;
-
-        
-
         }
-
     }
 }
 

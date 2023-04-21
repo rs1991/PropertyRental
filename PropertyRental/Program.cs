@@ -33,8 +33,8 @@ namespace PropertyRental
             */
 
 
-            int pageNumber = 2;
-            List<ZooplaHomeRentalData> ZooplaHomes = GetDataFromZoopla(pageNumber);
+            
+            List<ZooplaHomeRentalData> ZooplaHomes = GetDataFromZoopla();
 
             foreach(var zoopla in ZooplaHomes)
             {
