@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using System.Net;
 using HtmlAgilityPack;
 using Serilog;
+using static System.Net.WebRequestMethods;
+using File = System.IO.File;
 
 namespace PropertyRental
 {
@@ -947,6 +949,7 @@ namespace PropertyRental
                 serializer.Serialize(streamWriter, lists);
             }
         }
+
         public static int DistanceCalculation(Address origin, Address destination, string apiKey)
         {
             string start = JsonConvert.SerializeObject(origin);
@@ -1021,7 +1024,7 @@ namespace PropertyRental
             return ScoresList;
         }
 
-        public static List<RightmoveRentalHomeData> GetDataFromWeb(int page)
+        public static List<RightmoveRentalHomeData> GetDataFromRightMove(int page)
         {
             WriteToLog();
 
@@ -1091,22 +1094,26 @@ namespace PropertyRental
         {
             WriteToLog();
 
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument htmlDoc = web.Load($"https://www.zoopla.co.uk/to-rent/property/nottingham/?price_frequency=per_month&q=Nottingham&search_source=home");
-            
-            List<ZooplaHomeRentalData> zooplaHomeRentalData = new List<ZooplaHomeRentalData>();
-            
-            var homeListings = htmlDoc.DocumentNode.SelectNodes("//*[@class='f0xnzq2']");
-   
+            WebClient client = new WebClient();
 
-            foreach (var card in homeListings)
+            client.Headers.Add("User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36");
+            client.Headers.Add(HttpRequestHeader.Cookie, "Cookie: zooplapsid=203c5e1cd0a54addaab69355590034e8; ajs_anonymous_id=5659da3fea2e4938bb1a1e86c0989052; base_device_id=9947c09a-4385-47c5-9b7b-2651189d9191; cookie_consents={\"schemaVersion\":4,\"content\":{\"brand\":1,\"consents\":[{\"apiVersion\":1,\"stored\":false,\"date\":\"Sat, 29 Apr 2023 15:31:00 GMT\",\"categories\":[{\"id\":1,\"consentGiven\":true},{\"id\":3,\"consentGiven\":true},{\"id\":4,\"consentGiven\":true}]}]}}; zid=0712466a1af34cf5b4d689b675f35cde; zooplasid=0712466a1af34cf5b4d689b675f35cde; forced_features={}; forced_experiments={}; active_session=anon; base_session_id=19cc3c25-fd0a-4b78-85fb-64e9f316d106; base_session_count=7; g_state={\"i_p\":1683040976409,\"i_l\":2}; cf_clearance=lrATGVIP9gefR50h0Pv.eU0SMQqNJ4L70Kxd94uuEVg-1682956738-0-250; __cf_bm=1kVs5zubECE4ko5NXAasLYb4IruAEHm1.K19V2DTT3s-1682956770-0-AbbuNP8QysoZ41LPiF5lI0Iihh0W/rzgXfB3phFhwv9WeVfUczTJjaqq+oq+S3PuMYC+GmDq1FFISkJOszBCd19Vhw2BbuUNORSzaDekqhQIkDgRuuDiDl4GnSXqWfkJl6lSm6D1Eh/a0MkRT3b7Wd4=");
+            String body = client.DownloadString($"https://www.zoopla.co.uk/to-rent/property/nottingham/?price_frequency=per_month&q=Nottingham&search_source=home");
+            HtmlDocument html = new HtmlDocument();
+            html.LoadHtml(body);
+            var cardXpath = "//*[@class='kii3au0 _1ftx2fq5']";
+            var cardNodes = html.DocumentNode.SelectNodes(cardXpath);
+            List<ZooplaHomeRentalData> zooplaHomeRentalData = new List<ZooplaHomeRentalData>();
+            foreach (var node in cardNodes)
             {
-                Console.WriteLine(card);
+                Console.WriteLine(node.ToString());
             }
+
+
+               
             
             return zooplaHomeRentalData;
         }
     }
 }
 
-    
