@@ -1130,6 +1130,34 @@ namespace PropertyRental
 
             return zooplaHomeRentalData;
         }
+
+        public static List<OpenRentData> GetDataFromOpenRent()
+        {
+
+            WriteToLog();
+
+            WebClient client = new WebClient();
+
+            //client.Headers.Add("User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36");
+            //client.Headers.Add(HttpRequestHeader.Cookie, "Cookie: zooplapsid=203c5e1cd0a54addaab69355590034e8; ajs_anonymous_id=5659da3fea2e4938bb1a1e86c0989052; base_device_id=9947c09a-4385-47c5-9b7b-2651189d9191; cookie_consents={\"schemaVersion\":4,\"content\":{\"brand\":1,\"consents\":[{\"apiVersion\":1,\"stored\":false,\"date\":\"Sat, 29 Apr 2023 15:31:00 GMT\",\"categories\":[{\"id\":1,\"consentGiven\":true},{\"id\":3,\"consentGiven\":true},{\"id\":4,\"consentGiven\":true}]}]}}; zid=0712466a1af34cf5b4d689b675f35cde; zooplasid=0712466a1af34cf5b4d689b675f35cde; forced_features={}; forced_experiments={}; active_session=anon; g_state={\"i_p\":1683040976409,\"i_l\":2}; base_session_start_page=https://www.zoopla.co.uk/to-rent/property/nottingham/?price_frequency=per_month&q=Nottingham&search_source=home; base_referrer=https://www.zoopla.co.uk/to-rent/property/nottingham/?price_frequency=per_month&q=Nottingham&search_source=home&__cf_chl_tk=Dr3Ub_kPNuaRJptjnm7mP_Cx7FJZzn0Nhyo5sPVUP.0-1682954164-0-gaNycGzNDpA; base_request=https://www.zoopla.co.uk/to-rent/property/nottingham/; base_session_id=ca939f9c-eb00-40ff-a2ea-b9a4cbf07025; base_session_count=9; cf_chl_2=0eff248a230df49; cf_clearance=mOkT9Dh8MuXjbwoA2P5aXMT7KwJOMAxltmmSyvB7RSI-1682964820-0-250; __cf_bm=eKSQnYl3zieE_7xqjkvM7GIn0QQzCb8o.FMug7PfAuw-1682964842-0-AfIH1ubPsMNjNxW3EAU1vs0IRes8jZmT7FUftYHPt0B8J75GxM7U5/hCcuWzG532nVwImhFJK0rauZflTfkH6K/0XegXYUnMlAal8ojJk6aQDW2ITxhy3FTducfo2Ji07xUDqBaDjkQ2QxjFAz2052c=");
+            String body = client.DownloadString($"https://www.openrent.co.uk/properties-to-rent/london?term=London&prices_max=2000&viewingProperty=4");
+
+            HtmlDocument html = new HtmlDocument();
+            html.LoadHtml(body);
+
+            var cardXpath = "//*[@class='lpcc']";
+            var cardNodes = html.DocumentNode.SelectNodes(cardXpath);
+
+
+            List<OpenRentData> OpenRentDataList = new List<OpenRentData>();
+
+            foreach(var node in cardNodes)
+            {
+                Console.WriteLine(node);
+            }
+
+            return OpenRentDataList;
+        }
     }
 }
 
