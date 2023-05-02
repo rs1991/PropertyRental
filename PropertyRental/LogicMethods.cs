@@ -1091,10 +1091,14 @@ namespace PropertyRental
         }
 
         /// <summary>
-        /// At first when running this method you see a 403 error. 
-        /// This is first fixed by looking at Fiddler to see the cookie string that is sent by the client (Web browser)
-        /// Once this cookie string is copied into the method as part of the headers collection. The problem with this is that it seems to have an expiry time which means that every time you run this method, you have to change the cookie string which is really inconvenient. When I was first seeing the 403 code, I thought that the WebProxy class would be needed. It turns out that only the user-agent and cookie string are needed.    
-        /// </summary>
+        /// When attempting to run this method, a 403 error may occur.
+        /// To resolve this issue, it is recommended to analyze the cookie string 
+        /// sent by the client (Web browser) using Fiddler. Once the cookie string 
+        /// has been identified, it can be copied into the method's headers collection.
+        /// However, it's worth noting that this cookie string has an expiry time, 
+        /// which means that it will need to be updated every time the method is run. 
+        /// This can be an inconvenience.
+        /// Initially, it was thought that the WebProxy class would be necessary to fix the 403 error, but it turns out that only the user-agent and cookie string are required. </summary>
         /// <returns></returns>
         public static List<ZooplaHomeRentalData> GetDataFromZoopla()
         {
