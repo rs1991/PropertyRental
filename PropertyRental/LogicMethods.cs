@@ -1090,6 +1090,12 @@ namespace PropertyRental
             return ScrapedDataList;
         }
 
+        /// <summary>
+        /// At first when running this method you see a 403 error. 
+        /// This is first fixed by looking at Fiddler to see the cookie string that is sent by the client (Web browser)
+        /// Once this cookie string is copied into the method as part of the headers collection. The problem with this is that it seems to have an expiry time which means that every time you run this method, you have to change the cookie string which is really inconvenient. When I was first seeing the 403 code, I thought that the WebProxy class would be needed. It turns out that only the user-agent and cookie string are needed.    
+        /// </summary>
+        /// <returns></returns>
         public static List<ZooplaHomeRentalData> GetDataFromZoopla()
         {
             WriteToLog();
@@ -1097,21 +1103,27 @@ namespace PropertyRental
             WebClient client = new WebClient();
 
             client.Headers.Add("User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36");
-            client.Headers.Add(HttpRequestHeader.Cookie, "Cookie: zooplapsid=203c5e1cd0a54addaab69355590034e8; ajs_anonymous_id=5659da3fea2e4938bb1a1e86c0989052; base_device_id=9947c09a-4385-47c5-9b7b-2651189d9191; cookie_consents={\"schemaVersion\":4,\"content\":{\"brand\":1,\"consents\":[{\"apiVersion\":1,\"stored\":false,\"date\":\"Sat, 29 Apr 2023 15:31:00 GMT\",\"categories\":[{\"id\":1,\"consentGiven\":true},{\"id\":3,\"consentGiven\":true},{\"id\":4,\"consentGiven\":true}]}]}}; zid=0712466a1af34cf5b4d689b675f35cde; zooplasid=0712466a1af34cf5b4d689b675f35cde; forced_features={}; forced_experiments={}; active_session=anon; base_session_id=19cc3c25-fd0a-4b78-85fb-64e9f316d106; base_session_count=7; g_state={\"i_p\":1683040976409,\"i_l\":2}; cf_clearance=lrATGVIP9gefR50h0Pv.eU0SMQqNJ4L70Kxd94uuEVg-1682956738-0-250; __cf_bm=1kVs5zubECE4ko5NXAasLYb4IruAEHm1.K19V2DTT3s-1682956770-0-AbbuNP8QysoZ41LPiF5lI0Iihh0W/rzgXfB3phFhwv9WeVfUczTJjaqq+oq+S3PuMYC+GmDq1FFISkJOszBCd19Vhw2BbuUNORSzaDekqhQIkDgRuuDiDl4GnSXqWfkJl6lSm6D1Eh/a0MkRT3b7Wd4=");
+            client.Headers.Add(HttpRequestHeader.Cookie, "Cookie: zooplapsid=203c5e1cd0a54addaab69355590034e8; ajs_anonymous_id=5659da3fea2e4938bb1a1e86c0989052; base_device_id=9947c09a-4385-47c5-9b7b-2651189d9191; cookie_consents={\"schemaVersion\":4,\"content\":{\"brand\":1,\"consents\":[{\"apiVersion\":1,\"stored\":false,\"date\":\"Sat, 29 Apr 2023 15:31:00 GMT\",\"categories\":[{\"id\":1,\"consentGiven\":true},{\"id\":3,\"consentGiven\":true},{\"id\":4,\"consentGiven\":true}]}]}}; zid=0712466a1af34cf5b4d689b675f35cde; zooplasid=0712466a1af34cf5b4d689b675f35cde; forced_features={}; forced_experiments={}; active_session=anon; g_state={\"i_p\":1683040976409,\"i_l\":2}; base_session_start_page=https://www.zoopla.co.uk/to-rent/property/nottingham/?price_frequency=per_month&q=Nottingham&search_source=home; base_referrer=https://www.zoopla.co.uk/to-rent/property/nottingham/?price_frequency=per_month&q=Nottingham&search_source=home&__cf_chl_tk=Dr3Ub_kPNuaRJptjnm7mP_Cx7FJZzn0Nhyo5sPVUP.0-1682954164-0-gaNycGzNDpA; base_request=https://www.zoopla.co.uk/to-rent/property/nottingham/; base_session_id=ca939f9c-eb00-40ff-a2ea-b9a4cbf07025; base_session_count=9; cf_chl_2=0eff248a230df49; cf_clearance=mOkT9Dh8MuXjbwoA2P5aXMT7KwJOMAxltmmSyvB7RSI-1682964820-0-250; __cf_bm=eKSQnYl3zieE_7xqjkvM7GIn0QQzCb8o.FMug7PfAuw-1682964842-0-AfIH1ubPsMNjNxW3EAU1vs0IRes8jZmT7FUftYHPt0B8J75GxM7U5/hCcuWzG532nVwImhFJK0rauZflTfkH6K/0XegXYUnMlAal8ojJk6aQDW2ITxhy3FTducfo2Ji07xUDqBaDjkQ2QxjFAz2052c=");
             String body = client.DownloadString($"https://www.zoopla.co.uk/to-rent/property/nottingham/?price_frequency=per_month&q=Nottingham&search_source=home");
+            
             HtmlDocument html = new HtmlDocument();
             html.LoadHtml(body);
+            
             var cardXpath = "//*[@class='kii3au0 _1ftx2fq5']";
             var cardNodes = html.DocumentNode.SelectNodes(cardXpath);
+            
             List<ZooplaHomeRentalData> zooplaHomeRentalData = new List<ZooplaHomeRentalData>();
+            
             foreach (var node in cardNodes)
             {
-                Console.WriteLine(node.ToString());
+                var priceNode = node.SelectSingleNode("//*[@data-testid='listing-price']");
+
+                string price = priceNode.InnerText;
+                Console.WriteLine(price);
             }
 
-
-               
             
+
             return zooplaHomeRentalData;
         }
     }
