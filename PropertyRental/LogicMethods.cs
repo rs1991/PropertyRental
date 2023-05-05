@@ -1041,12 +1041,12 @@ namespace PropertyRental
 
             {
 
-                var priceNode = node.SelectSingleNode(".//*[@class='propertyCard-priceValue']");
-                var contactNode = node.SelectSingleNode(".//*[@class='propertyCard-contactsPhoneNumber']");
-                var addressNode = node.SelectSingleNode(".//*[@class='propertyCard-address']");
-                var homeDetailsNode = node.SelectSingleNode(".//div[@class='propertyCard-details']");
-                var homeDescriptionNode = node.SelectSingleNode(".//div[@class='propertyCard-description']");
-                var dateRentalHomeWasAddedNode = node.SelectSingleNode(".//span[@class='propertyCard-branchSummary-addedOrReduced']");
+                HtmlNode priceNode = node.SelectSingleNode(".//*[@class='propertyCard-priceValue']");
+                HtmlNode contactNode = node.SelectSingleNode(".//*[@class='propertyCard-contactsPhoneNumber']");
+                HtmlNode addressNode = node.SelectSingleNode(".//*[@class='propertyCard-address']");
+                HtmlNode homeDetailsNode = node.SelectSingleNode(".//div[@class='propertyCard-details']");
+                HtmlNode homeDescriptionNode = node.SelectSingleNode(".//div[@class='propertyCard-description']");
+                HtmlNode dateRentalHomeWasAddedNode = node.SelectSingleNode(".//span[@class='propertyCard-branchSummary-addedOrReduced']");
 
                 string rentalHomeprice = priceNode.InnerText;
                 string rentalHomepriceReplacedChar = rentalHomeprice;
