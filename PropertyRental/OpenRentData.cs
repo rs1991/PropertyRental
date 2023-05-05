@@ -10,31 +10,15 @@ namespace PropertyRental
     {
 
         private double _MonthlyRentalPrice;
-        private string _EstateAgentPhoneNumber;
-        private string _EstateAgentName;
         private string _RentalHomeAddress;
         private string _RentalHomeDetails;
         private string _RentalHomeDescription;
-        private DateTime _DateRentalHomeWasAdded;
-
-
+   
 
         public double MonthlyRentalPrice
         {
             get { return _MonthlyRentalPrice; }
             set { _MonthlyRentalPrice = value; }
-        }
-
-        public string EstateAgentPhoneNumber
-        {
-            get { return _EstateAgentPhoneNumber; }
-            set { _EstateAgentPhoneNumber = value; }
-        }
-
-        public string EstateAgentName
-        {
-            get { return _EstateAgentName; }
-            set { _EstateAgentName = value; }
         }
 
         public string RentalHomeAddress
@@ -55,10 +39,14 @@ namespace PropertyRental
             set { _RentalHomeDescription = value; }
         }
 
-        public DateTime DateRentalHomeWasAdded
+        public OpenRentData(double MonthlyRentalPrice, string RentalHomeAddress,
+           string RentalHomeDetails, string RentalHomeDescription)
         {
-            get { return _DateRentalHomeWasAdded; }
-            set { _DateRentalHomeWasAdded = value; }
+            _MonthlyRentalPrice = MonthlyRentalPrice;
+            _RentalHomeAddress = RentalHomeAddress;
+            _RentalHomeDetails = RentalHomeDetails;
+            _RentalHomeDescription = RentalHomeDescription;
+           
         }
 
 

@@ -1134,53 +1134,52 @@ namespace PropertyRental
 
         public static List<OpenRentData> GetDataFromOpenRent()
         {
-
             WriteToLog();
-
+            
             WebClient client = new WebClient();
-                        
+            
             String body = client.DownloadString($"https://www.openrent.co.uk/properties-to-rent/london?term=London&prices_max=2000&viewingProperty=4");
-
+            
             HtmlDocument html = new HtmlDocument();
+            
             html.LoadHtml(body);
-
+            
             var cardXpath = "//*[@class='lpcc']";
             var cardNodes = html.DocumentNode.SelectNodes(cardXpath);
-
-
-            List<OpenRentData> OpenRentDataList = new List<OpenRentData>();
-
+            
+            List<OpenRentData> ScrapedOpenRentHomesList = new List<OpenRentData>();
+            
             foreach(var node in cardNodes)
             {
-
-                HtmlNode rentalHomeAddress = node.SelectSingleNode("//*[@class='banda pt listing-title']");
-                HtmlNode monthlyRentalPriceeNode = node.SelectSingleNode("//*[@class='pim pl-title']");
+                HtmlNode rentalAddress = node.SelectSingleNode("//*[@class='banda pt listing-title']");
+                HtmlNode monthlyRentalPriceNode = node.SelectSingleNode("//*[@class='pim pl-title']");
+                HtmlNode rentalHomeDescriptionNode = node.SelectSingleNode("//*[@class='listing-desc']");
+                HtmlNode rentalHomeDetailsNode = node.SelectSingleNode("//*[@class='lic clearfix']");
                 
-                string rentalHomeprice = monthlyRentalPriceeNode.InnerText;
-
+                string rentalHomeprice = monthlyRentalPriceNode.InnerText;
                 string rentalHomepriceReplacedChar = rentalHomeprice;
                 string formattedRentalHomePrice = rentalHomepriceReplacedChar.Replace("&#163;", "").Replace("per month", "").Trim();
                 double convertedMonthlyRentalPrice;
                 
-                bool parseOK = double.TryParse(formattedRentalHomePrice, out convertedMonthlyRentalPrice);              
-
+                bool parseOK = double.TryParse(formattedRentalHomePrice, out convertedMonthlyRentalPrice);
+                
                 if (!parseOK)
                 {
-                    Log.Error("Parse did not go well!");
+                    Log.Error("Parse did not go well for the price conversion from string to double!");
                 }
-
-
-                /*
-               
                 
-                var homeDetailsNode = node.SelectSingleNode("");
-                var homeDescriptionNode = node.SelectSingleNode("");
-                var dateRentalHomeWasAddedNode = node.SelectSingleNode("");
-                */
+                string rentalHomeAddress = rentalAddress.InnerText.Trim();
+                string rentalHomeDescription = rentalHomeDescriptionNode.InnerText.Trim();
+                string rentalHomeDetails = rentalHomeDetailsNode.InnerText.Trim();
+                    
+                OpenRentData ScrapedDataStorage = new OpenRentData(convertedMonthlyRentalPrice, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription);
+                    ScrapedOpenRentHomesList.Add(ScrapedDataStorage);
             }
+            return ScrapedOpenRentHomesList;
+        }
 
-            return OpenRentDataList;
+           
         }
     }
-}
+
 
