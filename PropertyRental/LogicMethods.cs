@@ -1103,6 +1103,18 @@ namespace PropertyRental
 
         }
 
+        public static List<RightmoveRentalHomeData> LoadRightMoveDataList(string path)
+        {
+            List<RightmoveRentalHomeData> RightMoveRentalHomesList;
+            XmlSerializer serializer = new XmlSerializer(typeof(List<RightmoveRentalHomeData>));
+            using (FileStream file = File.OpenRead(path))
+            {
+                RightMoveRentalHomesList = serializer.Deserialize(file) as List<RightmoveRentalHomeData>;
+
+            }
+            return RightMoveRentalHomesList;
+        }
+
 
         /// <summary>
         /// When attempting to run this method, a 403 error may occur.
