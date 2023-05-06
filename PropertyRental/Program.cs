@@ -37,14 +37,13 @@ namespace PropertyRental
 
 
             
-            List<OpenRentData> OpenRentHomes = GetDataFromOpenRent();
+            List<OpenRentData> ListOfHomes = GetDataFromOpenRent();
 
-            
-
-            foreach (var openRentHome in OpenRentHomes)
+            foreach(var h in ListOfHomes)
             {
-                Console.WriteLine(openRentHome);
+                Console.WriteLine(h.RentalHomeDescription);
             }
+
             
 
 

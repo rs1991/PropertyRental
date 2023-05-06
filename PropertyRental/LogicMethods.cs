@@ -1035,7 +1035,7 @@ namespace PropertyRental
             var cardXpath = "//*[@class='propertyCard-wrapper']";
             var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
 
-            List<RightmoveRentalHomeData> ScrapedDataList = new List<RightmoveRentalHomeData>();
+            List<RightmoveRentalHomeData> ListOfRightMoveHomes = new List<RightmoveRentalHomeData>();
 
             foreach (var node in cardNodes)
 
@@ -1079,7 +1079,7 @@ namespace PropertyRental
                     else
                         convertedtDate = DateTime.Parse(dateRentalHomeWasAdded.ToString());
                     RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData(convertedMonthlyRentalPrice, agentPhoneNumber, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription, convertedtDate);
-                    ScrapedDataList.Add(ScrapedDataStorage);
+                    ListOfRightMoveHomes.Add(ScrapedDataStorage);
                 }
                 catch (Exception ex)
                 {
@@ -1088,8 +1088,21 @@ namespace PropertyRental
 
 
             }
-            return ScrapedDataList;
+            return ListOfRightMoveHomes;
         }
+
+
+        public static void WriteRightMoveRentalHomesList(List<RightmoveRentalHomeData> ListOfRightMoveHomes, string path)
+        {
+
+            XmlSerializer serializer = new XmlSerializer(typeof(List<RightmoveRentalHomeData>));
+            using(FileStream file = File.Create(path))
+            {
+                serializer.Serialize(file, ListOfRightMoveHomes);
+            }
+
+        }
+
 
         /// <summary>
         /// When attempting to run this method, a 403 error may occur.
@@ -1135,22 +1148,22 @@ namespace PropertyRental
         public static List<OpenRentData> GetDataFromOpenRent()
         {
             WriteToLog();
-            
-            WebClient client = new WebClient();
-            
-            String body = client.DownloadString($"https://www.openrent.co.uk/properties-to-rent/london?term=London&prices_max=2000&viewingProperty=4");
-            
-            HtmlDocument html = new HtmlDocument();
-            
-            html.LoadHtml(body);
-            
+
+
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument htmlDoc = web.Load($"https://www.openrent.co.uk/properties-to-rent/nottingham-nottinghamshire?term=Nottingham,%20Nottinghamshire&prices_min=300&prices_max=800&viewingProperty=37");
+
+
             var cardXpath = "//*[@class='lpcc']";
-            var cardNodes = html.DocumentNode.SelectNodes(cardXpath);
-            
-            List<OpenRentData> ScrapedOpenRentHomesList = new List<OpenRentData>();
-            
-            foreach(var node in cardNodes)
+            var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
+
+            foreach (var node in cardNodes)
             {
+               
+
+
+                List<OpenRentData> ScrapedOpenRentHomesList = new List<OpenRentData>();
+
                 HtmlNode rentalAddress = node.SelectSingleNode("//*[@class='banda pt listing-title']");
                 HtmlNode monthlyRentalPriceNode = node.SelectSingleNode("//*[@class='pim pl-title']");
                 HtmlNode rentalHomeDescriptionNode = node.SelectSingleNode("//*[@class='listing-desc']");
@@ -1174,12 +1187,17 @@ namespace PropertyRental
                     
                 OpenRentData ScrapedDataStorage = new OpenRentData(convertedMonthlyRentalPrice, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription);
                     ScrapedOpenRentHomesList.Add(ScrapedDataStorage);
+
+                
+
+                
             }
+
             return ScrapedOpenRentHomesList;
+
         }
 
            
         }
     }
-
 
