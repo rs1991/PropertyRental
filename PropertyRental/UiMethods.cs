@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using static PropertyRental.LogicMethods;
 
 namespace PropertyRental
 {
@@ -34,6 +35,27 @@ namespace PropertyRental
 
                 Console.WriteLine($"{home.RentalHomeAddress}");
             }
+        }
+
+        public static void ProcessTenantAndRentalHomes(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
+        {
+            
+            foreach (Tenant tenant in TenantList)
+            {
+
+                foreach (RentalHome home in RentalHomes)
+                {
+                    double points = PointsScoredForEachHome(tenant, home, api);
+                    Console.WriteLine(points);
+                }
+            }
+
+        }
+       
+
+public static void SendRentalApplication(Tenant tenant)
+        {
+            throw new NotImplementedException();
         }
 
 

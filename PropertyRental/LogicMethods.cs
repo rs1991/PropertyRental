@@ -1,10 +1,10 @@
-﻿using System.Net.Mail;
+﻿using System.Net;
+using System.Net.Mail;
 using System.Text;
 using static PropertyRental.UiMethods;
 using System.Xml.Serialization;
 using System.Xml;
 using Newtonsoft.Json;
-using System.Net;
 using HtmlAgilityPack;
 using Serilog;
 using File = System.IO.File;
@@ -16,8 +16,11 @@ namespace PropertyRental
         public static List<RentalHome> GenerateMockRentalPropertyList()
         {
             string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+
             RightmoveRentalHomeData rdHome = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 01, 20));
+
             string PlaceHolderAddressString = "";
+
             var rp1 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp1.Furnished = false;
             rp1.Price = 1350;
@@ -35,13 +38,19 @@ namespace PropertyRental
             rp1.FloorSize = 40;
             rp1.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp1.ElevatorAvailable = SearchCriteriaFilter.Elevator;
+            rp1.HomeDetails.TotalBedrooms = 1;
+            rp1.HomeDetails.TotalBathrooms = 1;
+
+
+
             var a1 = new Address();
             a1.DoorNumber = 134;
             a1.Street = "Darwin Road";
             a1.City = "London";
             a1.PostCode = "W5 3RE";
             rp1.Address = a1;
-            var rp2 = new RentalHome();
+
+            var rp2 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp2.Furnished = false;
             rp2.Price = 2200;
             rp2.RentalDuration = 12;
@@ -57,6 +66,9 @@ namespace PropertyRental
             rp2.Parking = false;
             rp2.FloorSize = 50;
             rp2.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp1.HomeDetails.TotalBedrooms = 4;
+            rp1.HomeDetails.TotalBathrooms = 1;
+
             var a2 = new Address();
             a2.DoorNumber = 90;
             a2.Street = "Victoria Road";
@@ -343,18 +355,21 @@ namespace PropertyRental
             t1.CouncilTaxBand = CouncilTaxBand.Band_C;
             t1.TenantPreferredHomeType = TypeOfHome.Flat;
             t1.TenantPreferredEnergyType = EnergyType.Gas;
+
             var a1 = new Address();
             a1.DoorNumber = 64;
             a1.Street = "Lenton Boulevard";
             a1.City = "Nottingham";
             a1.PostCode = "NG1 1QZ";
             t1.Address = a1;
+
             var prefAddress1 = new Address();
             prefAddress1.DoorNumber = 22;
             prefAddress1.Street = "Holborn";
             prefAddress1.City = "London";
             prefAddress1.PostCode = "EC1N 2TD";
             t1.PreferredAdress = prefAddress1;
+
             var contact1 = new ContactInformation();
             contact1.PhoneNumber = "07283472938";
             contact1.Email = new MailAddress("john.smith@gmail.com");
@@ -846,36 +861,52 @@ namespace PropertyRental
             int distanceInt = distance.rows[0].elements[0].distance.value;
             return distanceInt;
         }
-        public static Address GeoCodeAddress(string inputAddress, string apiKey)
+        
+        public static Address GeoCodeAddress(string inputAddress, string api)
         {
-            WebClient client = new WebClient();
-            String body = client.DownloadString($"https://maps.googleapis.com/maps/api/geocode/json?address={inputAddress}&key={apiKey}");
-            GeoCodeJsonObj geoCodeResponse = JsonConvert.DeserializeObject<GeoCodeJsonObj>(body);
-            List<global::AddressComponent> adressComponents = geoCodeResponse.results[0].address_components;
-            Address returnAdress = new Address();
-            foreach (var component in adressComponents)
+
+            WriteToLog();
+
+            try
             {
-                switch (component.types.First())
+
+
+                WebClient client = new WebClient();
+                String body = client.DownloadString($"https://maps.googleapis.com/maps/api/geocode/json?address={inputAddress}&key={api}");
+                GeoCodeJsonObj geoCodeResponse = JsonConvert.DeserializeObject<GeoCodeJsonObj>(body);
+                List<global::AddressComponent> adressComponents = geoCodeResponse.results[0].address_components;
+                Address returnAdress = new Address();
+                foreach (var component in adressComponents)
                 {
-                    case "street_number":
-                        returnAdress.DoorNumber = int.Parse(component.long_name);
-                        break;
-                    case "route":
-                        returnAdress.Street = component.long_name;
-                        break;
-                    case "street_address":
-                        returnAdress.Street = component.long_name;
-                        break;
-                    case "postal_code":
-                        returnAdress.PostCode = component.long_name;
-                        break;
-                    case "postal_town":
-                        returnAdress.City = component.long_name;
-                        break;
+                    switch (component.types.First())
+                    {
+                        case "street_number":
+                            returnAdress.DoorNumber = int.Parse(component.long_name);
+                            break;
+                        case "route":
+                            returnAdress.Street = component.long_name;
+                            break;
+                        case "street_address":
+                            returnAdress.Street = component.long_name;
+                            break;
+                        case "postal_code":
+                            returnAdress.PostCode = component.long_name;
+                            break;
+                        case "postal_town":
+                            returnAdress.City = component.long_name;
+                            break;
+                    }
                 }
+                return returnAdress;
+
             }
-            return returnAdress;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
+    
         public static List<RentalHomePointsScore> ScoreListForEachHome(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
         {
             List<RentalHomePointsScore> ScoresList = new List<RentalHomePointsScore>();
@@ -1051,6 +1082,13 @@ namespace PropertyRental
             }
             return ScrapedOpenRentHomesList;
         }
+
+        public static bool AcceptOrRejectRentalApplication()
+        {
+
+ 
+            throw new NotImplementedException();
+        } 
     }
 }
 

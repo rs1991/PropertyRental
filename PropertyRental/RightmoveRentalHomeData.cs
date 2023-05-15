@@ -61,6 +61,13 @@ namespace PropertyRental
 
         public RightmoveRentalHomeData() { }
 
+
+        public RentalHome ToRentalHome()
+        {
+            
+            return new RentalHome();
+        }
+
     }
 
 }
