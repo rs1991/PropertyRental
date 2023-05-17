@@ -38,11 +38,7 @@ namespace PropertyRental
             rp1.FloorSize = 40;
             rp1.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp1.ElevatorAvailable = SearchCriteriaFilter.Elevator;
-            rp1.HomeDetails.TotalBedrooms = 1;
-            rp1.HomeDetails.TotalBathrooms = 1;
-
-
-
+            
             var a1 = new Address();
             a1.DoorNumber = 134;
             a1.Street = "Darwin Road";
@@ -66,8 +62,7 @@ namespace PropertyRental
             rp2.Parking = false;
             rp2.FloorSize = 50;
             rp2.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-            rp1.HomeDetails.TotalBedrooms = 4;
-            rp1.HomeDetails.TotalBathrooms = 1;
+            
 
             var a2 = new Address();
             a2.DoorNumber = 90;
@@ -351,7 +346,6 @@ namespace PropertyRental
             t1.GardenRequired = true;
             t1.ParkingRequired = true;
             t1.FurnitureRequired = false;
-            t1.BedRoomsRequired = 1;
             t1.CouncilTaxBand = CouncilTaxBand.Band_C;
             t1.TenantPreferredHomeType = TypeOfHome.Flat;
             t1.TenantPreferredEnergyType = EnergyType.Gas;
@@ -373,6 +367,7 @@ namespace PropertyRental
             var contact1 = new ContactInformation();
             contact1.PhoneNumber = "07283472938";
             contact1.Email = new MailAddress("john.smith@gmail.com");
+            
             //Second tenant
             var t2 = new Tenant();
             t2.FirstName = "Lewis";
@@ -390,7 +385,7 @@ namespace PropertyRental
             t2.GardenRequired = true;
             t2.ParkingRequired = true;
             t2.FurnitureRequired = false;
-            t2.BedRoomsRequired = 3;
+   
             t2.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible;
             t2.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
             t2.MustMoveInOnThisDate = new DateTime(2022, 11, 22);
@@ -739,6 +734,7 @@ namespace PropertyRental
         /// <returns>Rating</returns>
         public static double PointsScoredForEachHome(Tenant tenant, RentalHome rentalHome, string api)
         {
+            try { 
             double points = 0;
             if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
             {
@@ -819,6 +815,15 @@ namespace PropertyRental
                 points += points;
             }
             return points;
+
+            }
+
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return 0;
+
         }
         /// <summary>
         /// The monthly rent is multiplied by 12 to give the total for the year.
