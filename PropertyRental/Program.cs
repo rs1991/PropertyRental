@@ -10,7 +10,7 @@ namespace PropertyRental
         static void Main(string[] args)
         {
 
-            //string path = @"C:\tmp\MockDataStorage.xml";
+            string path = @"C:\tmp\MockDataStorage.xml";
             string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
 
             const string rightMoveRentalHomespath = @"C:\tmp\RightMoveRentalHomesList.xml";
@@ -31,6 +31,7 @@ namespace PropertyRental
             dStorage.ListOfRightMoveHomes = RightMoveHomesList;
             
             WriteDataStorage(dStorage, rightMoveRentalHomespath);
+            WriteDataStorage(dStorage, path);
 
 
             /*
@@ -53,10 +54,17 @@ namespace PropertyRental
 
             */
 
-            ProcessTenantAndRentalHomes(TenantList, RentalHomes, api);
+            foreach (var t in TenantList)
+            {
+                Console.WriteLine($"Tenant list: { t.BedRoomsRequired}");
+            }
 
+            foreach(var h in RentalHomes)
+            {
+                Console.WriteLine($"{h.HomeDetails.TotalBedrooms}");
+            }
 
-
+            //ProcessTenantAndRentalHomes(TenantList, RentalHomes, api);
 
 
         }

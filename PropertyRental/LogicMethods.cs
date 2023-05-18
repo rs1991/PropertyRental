@@ -21,7 +21,7 @@ namespace PropertyRental
 
             string PlaceHolderAddressString = "";
 
-            var rp1 = new RentalHome(rdHome, PlaceHolderAddressString, api);
+            RentalHome rp1 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp1.Furnished = false;
             rp1.Price = 1350;
             rp1.RentalDuration = 12;
@@ -39,14 +39,18 @@ namespace PropertyRental
             rp1.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp1.ElevatorAvailable = SearchCriteriaFilter.Elevator;
             
-            var a1 = new Address();
+
+            HomeDetails homeDetails1 = new HomeDetails();
+            homeDetails1.TotalBedrooms = 1;
+
+            Address a1 = new Address();
             a1.DoorNumber = 134;
             a1.Street = "Darwin Road";
             a1.City = "London";
             a1.PostCode = "W5 3RE";
             rp1.Address = a1;
 
-            var rp2 = new RentalHome(rdHome, PlaceHolderAddressString, api);
+            RentalHome rp2 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp2.Furnished = false;
             rp2.Price = 2200;
             rp2.RentalDuration = 12;
@@ -63,14 +67,17 @@ namespace PropertyRental
             rp2.FloorSize = 50;
             rp2.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             
+            HomeDetails homeDetails2 = new HomeDetails();
+            homeDetails2.TotalBedrooms = 4;
 
-            var a2 = new Address();
+            Address a2 = new Address();
             a2.DoorNumber = 90;
             a2.Street = "Victoria Road";
             a2.City = "London";
             a2.PostCode = "N9 4XV";
             rp2.Address = a2;
-            var rp3 = new RentalHome();
+
+            RentalHome rp3 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp3.Furnished = false;
             rp3.Price = 11700;
             rp3.RentalDuration = 12;
@@ -86,13 +93,18 @@ namespace PropertyRental
             rp3.Parking = false;
             rp3.FloorSize = 60;
             rp3.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-            var a3 = new Address();
+
+            HomeDetails homeDetails3 = new HomeDetails();
+            homeDetails3.TotalBedrooms = 3;
+
+            Address a3 = new Address();
             a3.DoorNumber = 4;
             a3.Street = "Lincoln Street";
             a3.City = "London";
             a3.PostCode = "SW3 4QX";
             rp3.Address = a3;
-            var rp4 = new RentalHome();
+
+            RentalHome rp4 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp4.Furnished = false;
             rp4.Price = 1000;
             rp4.RentalDuration = 12;
@@ -109,13 +121,17 @@ namespace PropertyRental
             rp4.FloorSize = 90;
             rp4.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp4.ElevatorAvailable = SearchCriteriaFilter.Elevator;
-            var a4 = new Address();
+            HomeDetails homeDetails4 = new HomeDetails();
+            homeDetails4.TotalBedrooms = 4;
+
+            Address a4 = new Address();
             a4.DoorNumber = 31;
             a4.Street = "Hamlet road";
             a4.City = "London";
             a4.PostCode = "SE20 1NF";
             rp4.Address = a4;
-            var rp5 = new RentalHome();
+
+            RentalHome rp5 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp5.Furnished = false;
             rp5.Price = 1700;
             rp5.RentalDuration = 12;
@@ -131,13 +147,18 @@ namespace PropertyRental
             rp5.Parking = false;
             rp5.FloorSize = 45;
             rp5.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-            var a5 = new Address();
+            
+            HomeDetails homeDetails5 = new HomeDetails();
+            homeDetails5.TotalBedrooms = 2;
+
+            Address a5 = new Address();
             a5.DoorNumber = 2;
             a5.Street = "Sunset Avenue";
             a5.City = "London";
             a5.PostCode = "E4 8OM";
             rp5.Address = a5;
-            var rp6 = new RentalHome();
+
+            RentalHome rp6 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp6.Furnished = false;
             rp6.Price = 2400;
             rp6.RentalDuration = 12;
@@ -153,13 +174,19 @@ namespace PropertyRental
             rp6.Parking = false;
             rp6.FloorSize = 105;
             rp6.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-            var a6 = new Address();
+
+            HomeDetails homeDetails6 = new HomeDetails();
+            homeDetails6.TotalBedrooms = 3;
+
+
+            Address a6 = new Address();
             a6.DoorNumber = 190;
             a6.Street = "Bury Street";
             a6.City = "London";
             a6.PostCode = "N9 9JZ";
             rp6.Address = a6;
-            var rp7 = new RentalHome();
+
+            RentalHome rp7 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp7.Furnished = false;
             rp7.Price = 5850;
             rp7.RentalDuration = 6;
@@ -176,13 +203,18 @@ namespace PropertyRental
             rp7.FloorSize = 55;
             rp7.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp7.ElevatorAvailable = SearchCriteriaFilter.Elevator;
-            var a7 = new Address();
+
+            HomeDetails homeDetails7 = new HomeDetails();
+            homeDetails7.TotalBedrooms = 3;
+
+            Address a7 = new Address();
             a7.DoorNumber = 190;
             a7.Street = "Water road";
             a7.City = "London";
             a7.PostCode = "W4 7XT";
             rp7.Address = a7;
-            var rp8 = new RentalHome();
+
+            RentalHome rp8 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp8.Furnished = false;
             rp8.Price = 2500;
             rp8.RentalDuration = 3;
@@ -198,13 +230,18 @@ namespace PropertyRental
             rp8.Parking = false;
             rp8.FloorSize = 66;
             rp8.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-            var a8 = new Address();
+
+            HomeDetails homeDetails8 = new HomeDetails();
+            homeDetails8.TotalBedrooms = 2;
+
+            Address a8 = new Address();
             a8.DoorNumber = 40;
             a8.Street = "Tizzard Grove";
             a8.City = "London";
             a8.PostCode = "SE13 8EQ";
             rp8.Address = a8;
-            var rp9 = new RentalHome();
+
+            RentalHome rp9 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp9.Furnished = false;
             rp9.Price = 67000;
             rp9.RentalDuration = 12;
@@ -220,13 +257,18 @@ namespace PropertyRental
             rp9.Parking = false;
             rp9.FloorSize = 40;
             rp9.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+
+            HomeDetails homeDetails9 = new HomeDetails();
+            homeDetails9.TotalBedrooms = 2;
+
             var a9 = new Address();
             a9.DoorNumber = 12;
             a9.Street = "Herbert Crescent";
             a9.City = "London";
             a9.PostCode = "SW1X 7LA";
             rp9.Address = a9;
-            var rp10 = new RentalHome();
+
+            RentalHome rp10 = new RentalHome(rdHome, PlaceHolderAddressString, api);
             rp10.Furnished = false;
             rp10.Price = 4000;
             rp10.RentalDuration = 12;
@@ -243,12 +285,17 @@ namespace PropertyRental
             rp10.FloorSize = 70;
             rp10.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp10.ElevatorAvailable = SearchCriteriaFilter.Elevator;
-            var a10 = new Address();
+
+            HomeDetails homeDetails10 = new HomeDetails();
+            homeDetails10.TotalBedrooms = 4;
+
+            Address a10 = new Address();
             a10.DoorNumber = 18;
             a10.Street = "Brownlow road";
             a10.City = "London";
             a10.PostCode = "E8 4FE";
             rp10.Address = a10;
+            
             List<RentalHome> ListOfRentalProperties = new List<RentalHome>();
             ListOfRentalProperties.Add(rp1);
             ListOfRentalProperties.Add(rp2);
@@ -349,6 +396,7 @@ namespace PropertyRental
             t1.CouncilTaxBand = CouncilTaxBand.Band_C;
             t1.TenantPreferredHomeType = TypeOfHome.Flat;
             t1.TenantPreferredEnergyType = EnergyType.Gas;
+            t1.BedRoomsRequired = 3;
 
             var a1 = new Address();
             a1.DoorNumber = 64;
@@ -385,28 +433,33 @@ namespace PropertyRental
             t2.GardenRequired = true;
             t2.ParkingRequired = true;
             t2.FurnitureRequired = false;
-   
+            t2.BedRoomsRequired = 3;
+
             t2.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible;
             t2.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
             t2.MustMoveInOnThisDate = new DateTime(2022, 11, 22);
             t2.CouncilTaxBand = CouncilTaxBand.Band_D;
             t2.TenantPreferredHomeType = TypeOfHome.House;
             t2.TenantPreferredEnergyType = EnergyType.Solar;
+            
             var a2 = new Address();
             a2.DoorNumber = 13;
             a2.Street = "North Parade road";
             a2.City = "Bath";
             a2.PostCode = "BA2 4AL";
             t2.Address = a2;
+            
             var prefAddress2 = new Address();
             prefAddress2.DoorNumber = 33;
             prefAddress2.Street = "Foley Street";
             prefAddress2.City = "London";
             prefAddress2.PostCode = "W1W 7TL";
             t2.PreferredAdress = prefAddress2;
+            
             var contact2 = new ContactInformation();
             contact2.PhoneNumber = "07912384721";
             contact2.Email = new MailAddress("lewis.miller@gmail.com");
+            
             //Third tenant
             var t3 = new Tenant();
             t3.FirstName = "Rachel";
@@ -430,6 +483,7 @@ namespace PropertyRental
             t3.CouncilTaxBand = CouncilTaxBand.Band_C;
             t3.TenantPreferredHomeType = TypeOfHome.House;
             t3.TenantPreferredEnergyType = EnergyType.Gas;
+            
             var a3 = new Address();
             a3.DoorNumber = 64;
             a3.Street = "West Street";
@@ -632,12 +686,14 @@ namespace PropertyRental
             var contact8 = new ContactInformation();
             contact8.PhoneNumber = "07832091284";
             contact8.Email = new MailAddress("michael.evans@gmail.com");
+            
             var prefAddress8 = new Address();
             prefAddress8.DoorNumber = 37;
             prefAddress8.Street = "Berners St";
             prefAddress8.City = "London";
             prefAddress8.PostCode = "W1T 3LZ";
             t8.PreferredAdress = prefAddress8;
+            
             //9th tenant
             var t9 = new Tenant();
             t9.FirstName = "William";
@@ -660,21 +716,25 @@ namespace PropertyRental
             t9.CouncilTaxBand = CouncilTaxBand.Band_C;
             t9.TenantPreferredHomeType = TypeOfHome.House;
             t9.TenantPreferredEnergyType = EnergyType.Gas;
+            
             var a9 = new Address();
             a9.DoorNumber = 19;
             a9.Street = "Driver street";
             a9.City = "London";
             a9.PostCode = "W6 2EZ";
             t9.Address = a9;
+            
             var contact9 = new ContactInformation();
             contact9.PhoneNumber = "07817321284";
             contact9.Email = new MailAddress("william.white@gmail.com");
+            
             var prefAddress9 = new Address();
             prefAddress9.DoorNumber = 53;
             prefAddress9.Street = "Cleveland St";
             prefAddress9.City = "London";
             prefAddress9.PostCode = "W1T 4JJ";
             t9.PreferredAdress = prefAddress9;
+            
             //10th tenant
             var t10 = new Tenant();
             t10.FirstName = "Benjamin";
@@ -698,6 +758,7 @@ namespace PropertyRental
             t10.CouncilTaxBand = CouncilTaxBand.Band_A;
             t10.TenantPreferredHomeType = TypeOfHome.Flat;
             t10.TenantPreferredEnergyType = EnergyType.Gas;
+
             var a10 = new Address();
             a10.DoorNumber = 190;
             a10.Street = "Middleton road";
@@ -735,7 +796,9 @@ namespace PropertyRental
         public static double PointsScoredForEachHome(Tenant tenant, RentalHome rentalHome, string api)
         {
             try { 
-            double points = 0;
+            
+                double points = 0;
+            
             if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
             {
                 points += 10;
@@ -781,6 +844,7 @@ namespace PropertyRental
             if (rentalHome.HomeDetails.TotalBedrooms >= tenant.BedRoomsRequired)
             {
                 points += 15;
+                   
             }
             if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
             {
