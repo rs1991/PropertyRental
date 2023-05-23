@@ -53,10 +53,25 @@ namespace PropertyRental
         }
        
 
-public static void SendRentalApplication(Tenant tenant)
-        {
+        public static void SendRentalApplication(Tenant tenant)
+            {
             throw new NotImplementedException();
+            }
+
+
+        public static void AddRightMoveHomeToRentalHome(List<RentalHome> rentalHomesList, List<RightmoveRentalHomeData> rightMoveHomesList, string googleAPIKey)
+        {
+            List<RightmoveRentalHomeData> rightMoveData = GetDataFromRightMove(2);
+
+            foreach (var rightMoveHome in rightMoveData)
+            {
+                RentalHome newRentalHome = new RentalHome(rightMoveHome, googleAPIKey);
+                rentalHomesList.Add(newRentalHome);
+                
+            }
         }
+
+
 
 
     }

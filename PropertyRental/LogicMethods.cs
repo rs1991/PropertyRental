@@ -19,9 +19,8 @@ namespace PropertyRental
 
             RightmoveRentalHomeData rdHome = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 01, 20));
 
-            string PlaceHolderAddressString = "";
-
-            RentalHome rp1 = new RentalHome(rdHome, PlaceHolderAddressString, api);
+           
+            RentalHome rp1 = new RentalHome(rdHome, api);
             rp1.Furnished = false;
             rp1.Price = 1350;
             rp1.RentalDuration = 12;
@@ -39,7 +38,6 @@ namespace PropertyRental
             rp1.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp1.ElevatorAvailable = SearchCriteriaFilter.Elevator;
             
-
             HomeDetails homeDetails1 = new HomeDetails();
             homeDetails1.TotalBedrooms = 1;
 
@@ -50,7 +48,7 @@ namespace PropertyRental
             a1.PostCode = "W5 3RE";
             rp1.Address = a1;
 
-            RentalHome rp2 = new RentalHome(rdHome, PlaceHolderAddressString, api);
+            RentalHome rp2 = new RentalHome(rdHome, api);
             rp2.Furnished = false;
             rp2.Price = 2200;
             rp2.RentalDuration = 12;
@@ -77,7 +75,7 @@ namespace PropertyRental
             a2.PostCode = "N9 4XV";
             rp2.Address = a2;
 
-            RentalHome rp3 = new RentalHome(rdHome, PlaceHolderAddressString, api);
+            RentalHome rp3 = new RentalHome(rdHome, api);
             rp3.Furnished = false;
             rp3.Price = 11700;
             rp3.RentalDuration = 12;
@@ -104,7 +102,7 @@ namespace PropertyRental
             a3.PostCode = "SW3 4QX";
             rp3.Address = a3;
 
-            RentalHome rp4 = new RentalHome(rdHome, PlaceHolderAddressString, api);
+            RentalHome rp4 = new RentalHome(rdHome, api);
             rp4.Furnished = false;
             rp4.Price = 1000;
             rp4.RentalDuration = 12;
@@ -131,7 +129,7 @@ namespace PropertyRental
             a4.PostCode = "SE20 1NF";
             rp4.Address = a4;
 
-            RentalHome rp5 = new RentalHome(rdHome, PlaceHolderAddressString, api);
+            RentalHome rp5 = new RentalHome(rdHome, api);
             rp5.Furnished = false;
             rp5.Price = 1700;
             rp5.RentalDuration = 12;
@@ -158,7 +156,7 @@ namespace PropertyRental
             a5.PostCode = "E4 8OM";
             rp5.Address = a5;
 
-            RentalHome rp6 = new RentalHome(rdHome, PlaceHolderAddressString, api);
+            RentalHome rp6 = new RentalHome(rdHome, api);
             rp6.Furnished = false;
             rp6.Price = 2400;
             rp6.RentalDuration = 12;
@@ -186,7 +184,7 @@ namespace PropertyRental
             a6.PostCode = "N9 9JZ";
             rp6.Address = a6;
 
-            RentalHome rp7 = new RentalHome(rdHome, PlaceHolderAddressString, api);
+            RentalHome rp7 = new RentalHome(rdHome, api);
             rp7.Furnished = false;
             rp7.Price = 5850;
             rp7.RentalDuration = 6;
@@ -214,7 +212,7 @@ namespace PropertyRental
             a7.PostCode = "W4 7XT";
             rp7.Address = a7;
 
-            RentalHome rp8 = new RentalHome(rdHome, PlaceHolderAddressString, api);
+            RentalHome rp8 = new RentalHome(rdHome, api);
             rp8.Furnished = false;
             rp8.Price = 2500;
             rp8.RentalDuration = 3;
@@ -241,7 +239,7 @@ namespace PropertyRental
             a8.PostCode = "SE13 8EQ";
             rp8.Address = a8;
 
-            RentalHome rp9 = new RentalHome(rdHome, PlaceHolderAddressString, api);
+            RentalHome rp9 = new RentalHome(rdHome, api);
             rp9.Furnished = false;
             rp9.Price = 67000;
             rp9.RentalDuration = 12;
@@ -268,7 +266,7 @@ namespace PropertyRental
             a9.PostCode = "SW1X 7LA";
             rp9.Address = a9;
 
-            RentalHome rp10 = new RentalHome(rdHome, PlaceHolderAddressString, api);
+            RentalHome rp10 = new RentalHome(rdHome, api);
             rp10.Furnished = false;
             rp10.Price = 4000;
             rp10.RentalDuration = 12;
@@ -307,6 +305,7 @@ namespace PropertyRental
             ListOfRentalProperties.Add(rp8);
             ListOfRentalProperties.Add(rp9);
             ListOfRentalProperties.Add(rp10);
+            
             return ListOfRentalProperties;
         }
         public static List<Address> GenerateMockAddressList()
@@ -774,6 +773,7 @@ namespace PropertyRental
             prefAddress10.City = "London";
             prefAddress10.PostCode = "W1T 4EY";
             t10.PreferredAdress = prefAddress10;
+            
             var TenantList = new List<Tenant>();
             TenantList.Add(t1);
             TenantList.Add(t2);
@@ -793,7 +793,7 @@ namespace PropertyRental
         /// <param name="tenant"></param>
         /// <param name="rentalHome"></param>
         /// <returns>Rating</returns>
-        public static double PointsScoredForEachHome(Tenant tenant, RentalHome rentalHome, string api)
+        public static double PointsScoredForEachHome(Tenant tenant, RentalHome rentalHome, string googleAPIKey)
         {
             try { 
             
@@ -870,7 +870,7 @@ namespace PropertyRental
             {
                 return 0;
             }
-            int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, api);
+            int walkingDistanceValue = DistanceCalculation(tenant.PreferredAdress, rentalHome.Address, googleAPIKey);
             int maximumAcceptedwalkingDistanceValue = 5000;
             if (walkingDistanceValue <= maximumAcceptedwalkingDistanceValue)
             {
@@ -922,13 +922,26 @@ namespace PropertyRental
         }
         public static int DistanceCalculation(Address origin, Address destination, string apiKey)
         {
+            WriteToLog();
+
+            try { 
+            
             string start = JsonConvert.SerializeObject(origin);
             string end = JsonConvert.SerializeObject(destination);
-            var client = new WebClient();
+            
+            WebClient client = new WebClient();
             var body = client.DownloadString($"https://maps.googleapis.com/maps/api/distancematrix/json?destinations={end}&origins={start}&unitsimperial&mode=walking&key={apiKey}");
             var distance = JsonConvert.DeserializeObject<GMapsJsonObj>(body);
             int distanceInt = distance.rows[0].elements[0].distance.value;
+            
             return distanceInt;
+            }
+            
+            catch(Exception ex ) 
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
         
         public static Address GeoCodeAddress(string inputAddress, string api)

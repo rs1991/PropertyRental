@@ -34,7 +34,7 @@ namespace PropertyRental
         /// <param name = "rmd" ></ param >
 
 
-        public RentalHome(RightmoveRentalHomeData rightMoveRentalHome, string address, string apikey)
+        public RentalHome(RightmoveRentalHomeData rightMoveRentalHome, string apikey)
         {
            
             WriteToLog();
@@ -42,7 +42,7 @@ namespace PropertyRental
             try
             {
                 
-                Address parsedAddress = GeoCodeAddress(address, apikey);
+                Address parsedAddress = GeoCodeAddress(rightMoveRentalHome.RentalHomeAddress, apikey);
               
                 _address = parsedAddress;                
                 _price = rightMoveRentalHome.MonthlyRentalPrice;

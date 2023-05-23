@@ -11,7 +11,7 @@ namespace PropertyRental
         {
 
             string path = @"C:\tmp\MockDataStorage.xml";
-            string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+            string googleAPIKey = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
 
             const string rightMoveRentalHomespath = @"C:\tmp\RightMoveRentalHomesList.xml";
 
@@ -23,6 +23,7 @@ namespace PropertyRental
             //List<OpenRentData> OpenRentListOfHomes = GetDataFromOpenRent();
             List<RightmoveRentalHomeData> RightMoveHomesList = GetDataFromRightMove(2);
 
+          
             var dStorage = new DataStorage();
 
             dStorage.ListOfTenants = TenantList;
@@ -34,37 +35,7 @@ namespace PropertyRental
             WriteDataStorage(dStorage, path);
 
 
-            /*
-            List<RightmoveRentalHomeData> ScrapedHomes =  GetDataFromWeb(5);
-            LoopThroughListOfRightMoveHomes(ScrapedHomes);
-            */
-
-
-
-
-            //RentalHomes.AddRange(RightMoveHomesList.Select(rightMoveRentalHome => new RentalHome { Price = rightMoveRentalHome.MonthlyRentalPrice, Address = rightMoveRentalHome.RentalHomeAddress.ToString() }));
-
-            /*
-            RentalHomes.AddRange(RightMoveHomesList.Select(data => data.ToRentalHome()));
-
-            foreach(var rh in RentalHomes)
-            {
-                Console.WriteLine(rh.Address);
-            }
-
-            */
-
-            foreach (var t in TenantList)
-            {
-                Console.WriteLine($"Tenant list: { t.BedRoomsRequired}");
-            }
-
-            foreach(var h in RentalHomes)
-            {
-                Console.WriteLine($"{h.HomeDetails.TotalBedrooms}");
-            }
-
-            //ProcessTenantAndRentalHomes(TenantList, RentalHomes, api);
+            AddRightMoveHomeToRentalHome(RentalHomes, RightMoveHomesList, googleAPIKey);
 
 
         }
