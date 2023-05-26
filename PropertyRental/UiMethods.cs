@@ -1,4 +1,8 @@
-﻿using Serilog;
+﻿using HtmlAgilityPack;
+using Microsoft.IdentityModel.Tokens;
+using Serilog;
+using System.Net.Mail;
+using System.Numerics;
 using static PropertyRental.LogicMethods;
 
 namespace PropertyRental
@@ -55,8 +59,94 @@ namespace PropertyRental
 
         public static void SendRentalApplication(Tenant tenant)
             {
-            throw new NotImplementedException();
+            // Step 1: Validate the data in the application
+            // Step 2: Once data is validated, send the application  
+            if (string.IsNullOrEmpty(tenant.FirstName))
+            {
+                throw new ArgumentException("Enter your first name");
             }
+            if (string.IsNullOrEmpty(tenant.LastName))
+            {
+                throw new ArgumentException("Enter your last name");
+            }
+            if(tenant.BirthDate == default(DateTime))
+            {
+                throw new ArgumentException("Please put in a valid date of birth");
+            }
+            if(tenant.AvailableToMoveOn == default(DateTime))
+            {
+                throw new ArgumentException("Put in the date that you want to move");
+            }
+            if(tenant.MustMoveInOnThisDate == default(DateTime))
+            {
+                throw new ArgumentException("The date that you need to move by");
+            }
+            if (string.IsNullOrEmpty(tenant.JobTitle))
+            {
+                throw new ArgumentException("Put in your job title");
+            }
+            if (string.IsNullOrEmpty(tenant.Nationality))
+            { 
+                throw new ArgumentException("Put in your nationality");
+            }
+            if(tenant.Salary <= 0)
+            {
+                throw new ArgumentException("Please provide your salary");
+            }
+            if (!tenant.Pets)
+            {
+                throw new ArgumentException("Please indicate if you have pets");
+            }
+            if (!tenant.Smoker)
+            {
+                throw new ArgumentException("Please indicate if you smoke");
+            }
+            if (tenant.Gender != Gender.Male && tenant.Gender != Gender.Female)
+            {
+                throw new ArgumentException("Enter a gender");
+            }
+            if(tenant.RentalTerm <= 0)
+            {
+                throw new ArgumentException("Please indicate your preferred rental term");
+            }
+            if(tenant.Budget <= 0)
+            {
+                throw new ArgumentException("Please put in your budget");
+            }
+            if (!tenant.ParkingRequired)
+            {
+                throw new ArgumentException("Please indicate if you will need parking");
+            }
+            if (!tenant.FurnitureRequired)
+            {
+                throw new ArgumentException("Please indicate if you a furnished or unfurnished home");
+            }
+            if (!tenant.GardenRequired)
+            {
+                throw new ArgumentException("Please indicate if you would like a garden");
+            }
+            if (tenant.BedRoomsRequired <= 0)
+            {
+                throw new ArgumentException("Please put in the number of bedrooms you would like");
+            }
+            if(tenant.Address == null)
+            {
+                throw new ArgumentException("Your current address is required");
+            }
+            if(tenant.PreferredAdress == null)
+            {
+                throw new ArgumentException("Enter the address where you would like you home to be near");
+            }
+            if(tenant.RoomMates == null)
+            {
+                throw new ArgumentException("Roomates list cannot be null");
+            }
+            if (tenant.FloorSizeRequired <=0)
+            {
+                throw new ArgumentException("Floor size required");
+            }
+           
+        }
 
 
         public static void AddRightMoveHomeToRentalHome(List<RentalHome> rentalHomesList, List<RightmoveRentalHomeData> rightMoveHomesList, string googleAPIKey)
