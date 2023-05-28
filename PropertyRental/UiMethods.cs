@@ -149,6 +149,8 @@ namespace PropertyRental
 
             MimeMessage message = new MimeMessage();
             message.From.Add(new MailboxAddress(tenant.FirstName, tenant.Email));
+
+            throw new NotImplementedException();
            
         }
 
