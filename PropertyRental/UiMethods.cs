@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using Microsoft.IdentityModel.Tokens;
+using MimeKit;
 using Serilog;
 using System.Net.Mail;
 using System.Numerics;
@@ -145,6 +146,9 @@ namespace PropertyRental
             {
                 throw new ArgumentException("Floor size required");
             }
+
+            MimeMessage message = new MimeMessage();
+            message.From.Add(new MailboxAddress(tenant.FirstName, tenant.Email));
            
         }
 

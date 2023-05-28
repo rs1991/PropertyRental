@@ -5,6 +5,7 @@ namespace PropertyRental
     {
         private string _firstName;
         private string _lastName;
+        private string _email;
         private DateTime _birthDate;
         private DateTime _availableToMoveOn;
         private DateTime _mustMoveInOnThisDate;
@@ -31,6 +32,14 @@ namespace PropertyRental
         private CouncilTaxBand _tenantsPreferredcouncilTaxBand;
         private TypeOfHome _tenantspreferredHomeType;
         
+
+
+
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
+        }
 
         public SearchCriteriaFilter ElevatorAccessRequired
         {
