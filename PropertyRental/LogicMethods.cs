@@ -396,6 +396,10 @@ namespace PropertyRental
             t1.TenantPreferredHomeType = TypeOfHome.Flat;
             t1.TenantPreferredEnergyType = EnergyType.Gas;
             t1.BedRoomsRequired = 3;
+            t1.AvailableToMoveOn = new DateTime(2023, 08, 01);
+            t1.MustMoveInOnThisDate = new DateTime(2023, 08, 10);
+            t1.Budget = 3500;
+           
 
             var a1 = new Address();
             a1.DoorNumber = 64;
@@ -414,7 +418,8 @@ namespace PropertyRental
             var contact1 = new ContactInformation();
             contact1.PhoneNumber = "07283472938";
             contact1.Email = new MailAddress("john.smith@gmail.com");
-            
+            t1.ContactInformation = contact1;
+
             //Second tenant
             var t2 = new Tenant();
             t2.FirstName = "Lewis";
@@ -764,9 +769,12 @@ namespace PropertyRental
             a10.City = "London";
             a10.PostCode = "W9 4XV";
             t10.Address = a10;
+
             var contact10 = new ContactInformation();
             contact10.PhoneNumber = "07817321284";
             contact10.Email = new MailAddress("benjamin.sterling@gmail.com");
+            t10.ContactInformation = contact10;
+            
             var prefAddress10 = new Address();
             prefAddress10.DoorNumber = 66;
             prefAddress10.Street = "Whitfield St";
@@ -786,6 +794,25 @@ namespace PropertyRental
             TenantList.Add(t9);
             TenantList.Add(t10);
             return TenantList;
+        }
+
+        public static List<Landlord> GenerateMockListOfLandlords()
+        {
+            //First landlord
+            Landlord landlord1 = new Landlord();
+            landlord1.FirstName = "John";
+            landlord1.LastName = "Smith";
+            
+            ContactInformation contact1 = new ContactInformation();
+            contact1.PhoneNumber = "07182738292";
+            contact1.Email = new MailAddress("rida.serroukh@gmail.com");
+            landlord1.ContactInformation = contact1;
+
+
+            var LandlordList = new List<Landlord>();
+            LandlordList.Add(landlord1);
+           
+            return LandlordList;
         }
         /// <summary>
         /// Overall rating is calculated to determine how suitable the home is for a tenant
@@ -909,17 +936,26 @@ namespace PropertyRental
         }
         public static void WriteDataStorage(DataStorage lists, string path)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(DataStorage));
-            using (FileStream file = File.Create(path))
-            {
-                var streamWriter = XmlWriter.Create(file, new()
+            WriteToLog();
+
+            try {
+                XmlSerializer serializer = new XmlSerializer(typeof(DataStorage));
+                using (FileStream file = File.Create(path))
                 {
-                    Encoding = Encoding.UTF8,
-                    Indent = true
-                });
-                serializer.Serialize(streamWriter, lists);
+                    var streamWriter = XmlWriter.Create(file, new()
+                    {
+                        Encoding = Encoding.UTF8,
+                        Indent = true
+                    });
+                    serializer.Serialize(streamWriter, lists);
+                }
+            }
+            catch(Exception exceptionMessage)
+            {
+                Console.WriteLine(exceptionMessage.Message);
             }
         }
+
         public static int DistanceCalculation(Address origin, Address destination, string apiKey)
         {
             WriteToLog();

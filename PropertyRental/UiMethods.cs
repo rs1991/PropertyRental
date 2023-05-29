@@ -2,6 +2,9 @@
 using Microsoft.IdentityModel.Tokens;
 using MimeKit;
 using Serilog;
+using System;
+using System.Linq.Expressions;
+using System.Net;
 using System.Net.Mail;
 using System.Numerics;
 using static PropertyRental.LogicMethods;
@@ -30,9 +33,11 @@ namespace PropertyRental
         {
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console()
-                .WriteTo.File(@"C:\tmp\log.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.File(@"C:\tmp\logs\log.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
         }
+
+        
 
         public static void LoopThroughListOfRightMoveHomes(List<RightmoveRentalHomeData> ScrapedHomes)
         {
@@ -56,12 +61,15 @@ namespace PropertyRental
             }
 
         }
-       
 
-        public static void SendRentalApplication(Tenant tenant)
-            {
-            // Step 1: Validate the data in the application
-            // Step 2: Once data is validated, send the application  
+
+        public static void SendRentalApplication(Tenant tenant, Landlord landlord, string smtp, int port, string password)
+        {
+            WriteToLog();
+
+            try { 
+
+
             if (string.IsNullOrEmpty(tenant.FirstName))
             {
                 throw new ArgumentException("Enter your first name");
@@ -70,15 +78,15 @@ namespace PropertyRental
             {
                 throw new ArgumentException("Enter your last name");
             }
-            if(tenant.BirthDate == default(DateTime))
+            if (tenant.BirthDate == default(DateTime))
             {
                 throw new ArgumentException("Please put in a valid date of birth");
             }
-            if(tenant.AvailableToMoveOn == default(DateTime))
+            if (tenant.AvailableToMoveOn == default(DateTime))
             {
                 throw new ArgumentException("Put in the date that you want to move");
             }
-            if(tenant.MustMoveInOnThisDate == default(DateTime))
+            if (tenant.MustMoveInOnThisDate == default(DateTime))
             {
                 throw new ArgumentException("The date that you need to move by");
             }
@@ -87,18 +95,18 @@ namespace PropertyRental
                 throw new ArgumentException("Put in your job title");
             }
             if (string.IsNullOrEmpty(tenant.Nationality))
-            { 
+            {
                 throw new ArgumentException("Put in your nationality");
             }
-            if(tenant.Salary <= 0)
+            if (tenant.Salary <= 0)
             {
                 throw new ArgumentException("Please provide your salary");
             }
-            if (!tenant.Pets)
+            if (tenant.Pets != true && tenant.Pets != false)
             {
                 throw new ArgumentException("Please indicate if you have pets");
             }
-            if (!tenant.Smoker)
+            if (tenant.Smoker != true && tenant.Smoker != false)
             {
                 throw new ArgumentException("Please indicate if you smoke");
             }
@@ -106,23 +114,23 @@ namespace PropertyRental
             {
                 throw new ArgumentException("Enter a gender");
             }
-            if(tenant.RentalTerm <= 0)
+            if (tenant.RentalTerm <= 0)
             {
                 throw new ArgumentException("Please indicate your preferred rental term");
             }
-            if(tenant.Budget <= 0)
+            if (tenant.Budget <= 0)
             {
                 throw new ArgumentException("Please put in your budget");
             }
-            if (!tenant.ParkingRequired)
+            if (tenant.ParkingRequired != true && tenant.ParkingRequired != false)
             {
                 throw new ArgumentException("Please indicate if you will need parking");
             }
-            if (!tenant.FurnitureRequired)
+            if (tenant.FurnitureRequired != true && tenant.FurnitureRequired != false)
             {
                 throw new ArgumentException("Please indicate if you a furnished or unfurnished home");
             }
-            if (!tenant.GardenRequired)
+            if (tenant.GardenRequired != true && tenant.GardenRequired != false)
             {
                 throw new ArgumentException("Please indicate if you would like a garden");
             }
@@ -130,27 +138,55 @@ namespace PropertyRental
             {
                 throw new ArgumentException("Please put in the number of bedrooms you would like");
             }
-            if(tenant.Address == null)
+            if (tenant.Address == null)
             {
                 throw new ArgumentException("Your current address is required");
             }
-            if(tenant.PreferredAdress == null)
+            if (tenant.PreferredAdress == null)
             {
                 throw new ArgumentException("Enter the address where you would like you home to be near");
             }
-            if(tenant.RoomMates == null)
-            {
-                throw new ArgumentException("Roomates list cannot be null");
-            }
-            if (tenant.FloorSizeRequired <=0)
+            if (tenant.FloorSizeRequired <= 0)
             {
                 throw new ArgumentException("Floor size required");
             }
 
-            MimeMessage message = new MimeMessage();
-            message.From.Add(new MailboxAddress(tenant.FirstName, tenant.Email));
+            MailMessage message = new MailMessage();
+            message.From = tenant.ContactInformation.Email;
+            message.To.Add(landlord.ContactInformation.Email);
+            message.Subject = "My rental application";
 
-            throw new NotImplementedException();
+            message.Body = "Dear " + landlord.FirstName + ",\n\n" +
+            "I am interested in renting your property and have attached my rental application for your review.\n\n" +
+            "Please let me know if you require any additional information or documentation.\n\n" +
+            "Thank you,\n" +
+            tenant.FirstName + " " + tenant.LastName;
+
+            string senderEmail = tenant.ContactInformation.Email.Address;
+
+            SmtpClient smtpClient = new SmtpClient(smtp, port);
+            smtpClient.EnableSsl = true;
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.Credentials = new NetworkCredential(senderEmail, password);
+            smtpClient.Send(message);
+            }
+            catch (ArgumentException argumentException)
+            {
+  
+                Log.Error(argumentException, "An argument exception has occured");
+            }
+            catch(SmtpException smptpException)
+            {
+                Log.Error(smptpException, "An error occurred while sending the email");
+            }
+            catch (Exception generalException)
+            {
+  
+                Log.Error(generalException, "An exception has occured");
+            }
+
+                
+           
            
         }
 

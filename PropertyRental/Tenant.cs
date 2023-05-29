@@ -5,7 +5,7 @@ namespace PropertyRental
     {
         private string _firstName;
         private string _lastName;
-        private string _email;
+        private ContactInformation _contact;
         private DateTime _birthDate;
         private DateTime _availableToMoveOn;
         private DateTime _mustMoveInOnThisDate;
@@ -35,10 +35,10 @@ namespace PropertyRental
 
 
 
-        public string Email
+        public ContactInformation ContactInformation
         {
-            get { return _email; }
-            set { _email = value; }
+            get { return _contact; }
+            set { _contact = value; }
         }
 
         public SearchCriteriaFilter ElevatorAccessRequired
