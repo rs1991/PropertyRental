@@ -43,7 +43,8 @@ namespace PropertyRental
  
 
 
-            SendRentalApplication(TenantList[0], landlordList[0], "smtp.gmail.com", 587, emailPassword);
+            SendRentalApplication(TenantList[0], landlordList[0], "smtp-relay.sendinblue.com", 587, emailPassword);
+
 
 
         }
