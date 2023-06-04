@@ -377,11 +377,11 @@ namespace PropertyRental
         {
             //First tenant
             var t1 = new Tenant();
-            t1.FirstName = "John";
-            t1.LastName = "Smith";
+            t1.FirstName = "Hussein";
+            t1.LastName = "Hashem";
             t1.BirthDate = new DateTime(1996, 11, 12);
             t1.JobTitle = "Project Manager";
-            t1.Nationality = "British";
+            t1.Nationality = "Jordanian";
             t1.Salary = 65000;
             t1.Children = false;
             t1.Pets = false;
@@ -417,7 +417,7 @@ namespace PropertyRental
 
             var contact1 = new ContactInformation();
             contact1.PhoneNumber = "07283472938";
-            contact1.Email = new MailAddress("john.smith@gmail.com");
+            contact1.Email = new MailAddress("rida.serroukh@gmail.com");
             t1.ContactInformation = contact1;
 
             //Second tenant
@@ -800,8 +800,8 @@ namespace PropertyRental
         {
             //First landlord
             Landlord landlord1 = new Landlord();
-            landlord1.FirstName = "John";
-            landlord1.LastName = "Smith";
+            landlord1.FirstName = "Michael";
+            landlord1.LastName = "Johnson";
             
             ContactInformation contact1 = new ContactInformation();
             contact1.PhoneNumber = "07182738292";

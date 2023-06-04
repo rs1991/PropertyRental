@@ -11,7 +11,10 @@ namespace PropertyRental
 
             string path = @"C:\tmp\MockDataStorage.xml";
             string googleAPIKey = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
-            string emailPassword = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\Password.txt");
+            string smtpUserName = "rida.serroukh@gmail.com";
+            string smtpPassword = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\Password.txt");
+            string smtpServer = "smtp-relay.sendinblue.com";
+            int smtpPort = 587;
 
             const string rightMoveRentalHomespath = @"C:\tmp\RightMoveRentalHomesList.xml";
 
@@ -39,12 +42,8 @@ namespace PropertyRental
 
             //AddRightMoveHomeToRentalHome(RentalHomes, RightMoveHomesList, googleAPIKey);
 
-            WriteToLog();
- 
 
-
-            SendRentalApplication(TenantList[0], landlordList[0], "smtp-relay.sendinblue.com", 587, emailPassword);
-
+            SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword);
 
 
         }
