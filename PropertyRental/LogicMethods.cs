@@ -1212,6 +1212,7 @@ namespace PropertyRental
         {
             //Need to download a package that handles sending pdfs as an attachment
             //Basically need to convert the tenantProfile object to a pdf 
+            //Once it is converted to PDF, this method can be called in the SendApplication method
 
             throw new NotImplementedException();
         }
