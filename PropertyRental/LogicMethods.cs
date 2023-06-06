@@ -800,12 +800,12 @@ namespace PropertyRental
         {
             //First landlord
             Landlord landlord1 = new Landlord();
-            landlord1.FirstName = "Michael";
-            landlord1.LastName = "Johnson";
+            landlord1.FirstName = "Jomana";
+            landlord1.LastName = "Madieh";
             
             ContactInformation contact1 = new ContactInformation();
             contact1.PhoneNumber = "07182738292";
-            contact1.Email = new MailAddress("rida.serroukh@gmail.com");
+            contact1.Email = new MailAddress("jomana.madieh96@gmail.com");
             landlord1.ContactInformation = contact1;
 
 
@@ -1207,6 +1207,14 @@ namespace PropertyRental
  
             throw new NotImplementedException();
         } 
+
+        public static void AddPdfAttachement(Tenant tenantProfile)
+        {
+            //Need to download a package that handles sending pdfs as an attachment
+            //Basically need to convert the tenantProfile object to a pdf 
+
+            throw new NotImplementedException();
+        }
     }
 }
 

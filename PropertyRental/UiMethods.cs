@@ -163,108 +163,24 @@ namespace PropertyRental
 
         }
 
-        public static void SendRentalApplication(Tenant tenant, Landlord landlord, string smtpServer, int port, string username, string password)
+        public static void SendRentalApplication(Tenant tenant, Landlord landlord, string smtpServer, int port, string username, string password, string emailSubject, string emailBody)
         {
             WriteToLog();
-            //half bakeed example start
+            
             var valResult = ValidateTenant(tenant);
-
+            
             if (!valResult.Valid)
             {
                 Console.WriteLine(valResult.ErrorMessage);
             }
-            //half bakeed example end
-
+            
             try
             {
-                if (string.IsNullOrEmpty(tenant.FirstName))
-                {
-                    throw new ArgumentException("Enter your first name");
-                }
-                if (string.IsNullOrEmpty(tenant.LastName))
-                {
-                    throw new ArgumentException("Enter your last name");
-                }
-                if (tenant.BirthDate == default(DateTime))
-                {
-                    throw new ArgumentException("Please put in a valid date of birth");
-                }
-                if (tenant.AvailableToMoveOn == default(DateTime))
-                {
-                    throw new ArgumentException("Put in the date that you want to move");
-                }
-                if (tenant.MustMoveInOnThisDate == default(DateTime))
-                {
-                    throw new ArgumentException("The date that you need to move by");
-                }
-                if (string.IsNullOrEmpty(tenant.JobTitle))
-                {
-                    throw new ArgumentException("Put in your job title");
-                }
-                if (string.IsNullOrEmpty(tenant.Nationality))
-                {
-                    throw new ArgumentException("Put in your nationality");
-                }
-                if (tenant.Salary <= 0)
-                {
-                    throw new ArgumentException("Please provide your salary");
-                }
-                if (tenant.Pets != true && tenant.Pets != false)
-                {
-                    throw new ArgumentException("Please indicate if you have pets");
-                }
-                if (tenant.Smoker != true && tenant.Smoker != false)
-                {
-                    throw new ArgumentException("Please indicate if you smoke");
-                }
-                if (tenant.Gender != Gender.Male && tenant.Gender != Gender.Female)
-                {
-                    throw new ArgumentException("Enter a gender");
-                }
-                if (tenant.RentalTerm <= 0)
-                {
-                    throw new ArgumentException("Please indicate your preferred rental term");
-                }
-                if (tenant.Budget <= 0)
-                {
-                    throw new ArgumentException("Please put in your budget");
-                }
-                if (tenant.ParkingRequired != true && tenant.ParkingRequired != false)
-                {
-                    throw new ArgumentException("Please indicate if you will need parking");
-                }
-                if (tenant.FurnitureRequired != true && tenant.FurnitureRequired != false)
-                {
-                    throw new ArgumentException("Please indicate if you a furnished or unfurnished home");
-                }
-                if (tenant.GardenRequired != true && tenant.GardenRequired != false)
-                {
-                    throw new ArgumentException("Please indicate if you would like a garden");
-                }
-                if (tenant.BedRoomsRequired <= 0)
-                {
-                    throw new ArgumentException("Please put in the number of bedrooms you would like");
-                }
-                if (tenant.Address == null)
-                {
-                    throw new ArgumentException("Your current address is required");
-                }
-                if (tenant.PreferredAdress == null)
-                {
-                    throw new ArgumentException("Enter the address where you would like you home to be near");
-                }
-                if (tenant.FloorSizeRequired <= 0)
-                {
-                    throw new ArgumentException("Floor size required");
-                }
                 using (var message = new MailMessage(tenant.ContactInformation.Email, landlord.ContactInformation.Email))
                 {
-                    message.Subject = "I would like to rent your home";
-                    message.Body = "Dear " + landlord.FirstName + ",\n\n" +
-                    "I am interested in renting your property and have attached my rental application for your review.\n\n" +
-                    "Please let me know if you require any additional information or documentation.\n\n" +
-                    "Thank you,\n" +
-                    tenant.FirstName + " " + tenant.LastName;
+                    message.Subject = emailSubject;
+                    message.Body = emailBody;
+
                     using (var client = new SmtpClient(smtpServer, port))
                     {
                         client.EnableSsl = true;
@@ -295,10 +211,6 @@ namespace PropertyRental
 
             }
         }
-
-
-
-
 
 
 

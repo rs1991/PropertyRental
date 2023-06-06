@@ -11,11 +11,6 @@ namespace PropertyRental
 
             string path = @"C:\tmp\MockDataStorage.xml";
             string googleAPIKey = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
-            string smtpUserName = "rida.serroukh@gmail.com";
-            string smtpPassword = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\Password.txt");
-            string smtpServer = "smtp-relay.sendinblue.com";
-            int smtpPort = 587;
-
             const string rightMoveRentalHomespath = @"C:\tmp\RightMoveRentalHomesList.xml";
 
 
@@ -39,11 +34,28 @@ namespace PropertyRental
             WriteDataStorage(dStorage, rightMoveRentalHomespath);
             WriteDataStorage(dStorage, path);
 
+            //Parameters for the SendRentalApplication method
+            string emailSubject = "I would love to rent your home";
+            string emailBody = $"Dear {landlordList[0].FirstName},\n\n" +
+                    $"I am interested in renting your property and have attached my rental application for your review.\n\n" +
+                    $"Please let me know if you require any additional information or documentation.\n\n" +
+                    $"Thank you,\n{TenantList[0].FirstName} {TenantList[0].LastName}";
+
+            string smtpUserName = "rida.serroukh@gmail.com";
+            string smtpPassword = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\Password.txt");
+            string smtpServer = "smtp-relay.sendinblue.com";
+            int smtpPort = 587;
+
 
             //AddRightMoveHomeToRentalHome(RentalHomes, RightMoveHomesList, googleAPIKey);
 
 
-            SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword);
+            //SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword, emailSubject, emailBody);
+
+            
+
+            //List<int> numbersList = new List<int>();
+            
 
 
         }
