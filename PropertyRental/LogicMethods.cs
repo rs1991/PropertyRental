@@ -1217,6 +1217,7 @@ namespace PropertyRental
             WriteToLog();
 
             try { 
+            
             PdfWriter writer = new PdfWriter(outputPath);
             PdfDocument pdfDoc = new PdfDocument(writer);
             Document document = new Document(pdfDoc);
@@ -1231,7 +1232,6 @@ namespace PropertyRental
             {
                 Log.Error("Conversion to PDF did not go well!");
                 Console.WriteLine("An error occurred while converting to PDF: " + ex.Message);
-
 
             }
 
