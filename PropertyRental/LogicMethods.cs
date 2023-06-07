@@ -1216,6 +1216,9 @@ namespace PropertyRental
             //Need to download a package that handles sending pdfs as an attachment
             //Basically need to convert the tenantProfile object to a pdf 
             //Once it is converted to PDF, this method can be called in the SendApplication method
+            WriteToLog();
+
+            try { 
             PdfWriter writer = new PdfWriter(outputPath);
             PdfDocument pdfDoc = new PdfDocument(writer);
             Document document = new Document(pdfDoc);
@@ -1225,9 +1228,17 @@ namespace PropertyRental
             document.Add(new Paragraph(text));
 
             document.Close();
-            
+            }
+            catch(Exception ex) 
+            {
+                Log.Error("Conversion to PDF did not go well!");
+                Console.WriteLine("An error occurred while converting to PDF: " + ex.Message);
 
-         
+
+            }
+
+
+
         }
     }
 }
