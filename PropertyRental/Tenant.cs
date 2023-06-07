@@ -224,8 +224,9 @@ namespace PropertyRental
 
         public override string ToString()
         {
-            return $"First Name: {FirstName} Floorsize required: {FloorSizeRequired} Must move on this date: {MustMoveInOnThisDate} " +
-                $"Budget: {Budget} Bedrooms required: {BedRoomsRequired} Elevator: {ElevatorAccessRequired} Smoker: {Smoker} ";
+            return $"First Name: {FirstName} Last Name: {LastName} Gender {Gender} Nationality: {Nationality} DOB: {BirthDate} Job title: {JobTitle} Salary: {Salary} +" +
+                $" Budget: {Budget} Children: {Children} Pets {Pets} Smoker: {Smoker} Preferred rental term: {RentalTerm}  " +
+                $" Must move on this date: {MustMoveInOnThisDate} Available to move on this date: {AvailableToMoveOn} ";
         }
 
     }
