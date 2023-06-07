@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 using HtmlAgilityPack;
 using Serilog;
 using File = System.IO.File;
+using iText.Layout;
+using iText.Kernel.Pdf;
+using iText.Layout.Element;
 
 namespace PropertyRental
 {
@@ -1208,14 +1211,23 @@ namespace PropertyRental
             throw new NotImplementedException();
         } 
 
-        public static void AddPdfAttachement(Tenant tenantProfile)
+        public static void AddPdfAttachement(Tenant tenantProfile, string outputPath)
         {
             //Need to download a package that handles sending pdfs as an attachment
             //Basically need to convert the tenantProfile object to a pdf 
             //Once it is converted to PDF, this method can be called in the SendApplication method
+            PdfWriter writer = new PdfWriter(outputPath);
+            PdfDocument pdfDoc = new PdfDocument(writer);
+            Document document = new Document(pdfDoc);
+
+            string text = tenantProfile.ToString();
+
+            document.Add(new Paragraph(text));
+
+            document.Close();
             
 
-            throw new NotImplementedException();
+         
         }
     }
 }

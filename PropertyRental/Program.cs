@@ -12,6 +12,7 @@ namespace PropertyRental
             string path = @"C:\tmp\MockDataStorage.xml";
             string googleAPIKey = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
             const string rightMoveRentalHomespath = @"C:\tmp\RightMoveRentalHomesList.xml";
+            string newlyCreatedPdfPath = @"C:\tmp\attahcment.pdf";
 
 
             List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
@@ -52,10 +53,9 @@ namespace PropertyRental
 
             //SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword, emailSubject, emailBody);
 
-            
+            AddPdfAttachement(TenantList[0], newlyCreatedPdfPath);
 
-            //List<int> numbersList = new List<int>();
-            
+
 
 
         }
