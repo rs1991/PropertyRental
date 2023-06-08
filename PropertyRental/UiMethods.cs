@@ -163,10 +163,11 @@ namespace PropertyRental
 
         }
 
-        public static void SendRentalApplication(Tenant tenant, Landlord landlord, string smtpServer, int port, string username, string password, string emailSubject, string emailBody)
+        public static void SendRentalApplication(Tenant tenant, Landlord landlord, string smtpServer, int port, string username, string password, string emailSubject, string emailBody, string newlyCreatedPdf)
         {
             WriteToLog();
-            
+
+
             var valResult = ValidateTenant(tenant);
             
             if (!valResult.Valid)
@@ -178,9 +179,11 @@ namespace PropertyRental
             {
                 using (var message = new MailMessage(tenant.ContactInformation.Email, landlord.ContactInformation.Email))
                 {
+
+                    AddPdfAttachement(tenant, newlyCreatedPdf);
                     message.Subject = emailSubject;
                     message.Body = emailBody;
-
+                    
                     using (var client = new SmtpClient(smtpServer, port))
                     {
                         client.EnableSsl = true;

@@ -1211,9 +1211,8 @@ namespace PropertyRental
             throw new NotImplementedException();
         } 
 
-        public static void AddPdfAttachement(Tenant tenantProfile, string outputPath)
+        public static PdfDocument CreatedPdfDoc(Tenant tenantProfile, string outputPath)
         {
-            
             WriteToLog();
 
             try { 
@@ -1221,22 +1220,22 @@ namespace PropertyRental
             PdfWriter writer = new PdfWriter(outputPath);
             PdfDocument pdfDoc = new PdfDocument(writer);
             Document document = new Document(pdfDoc);
-
+            
             string text = tenantProfile.ToString();
-
             document.Add(new Paragraph(text));
-
             document.Close();
+            
+            return pdfDoc;
+            
             }
             catch(Exception ex) 
             {
+                
                 Log.Error("Conversion to PDF did not go well!");
                 Console.WriteLine("An error occurred while converting to PDF: " + ex.Message);
+                return null;
 
             }
-
-
-
         }
     }
 }
