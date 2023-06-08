@@ -808,7 +808,7 @@ namespace PropertyRental
             
             ContactInformation contact1 = new ContactInformation();
             contact1.PhoneNumber = "07182738292";
-            contact1.Email = new MailAddress("jomana.madieh96@gmail.com");
+            contact1.Email = new MailAddress("rida.serroukh@gmail.com");
             landlord1.ContactInformation = contact1;
 
 

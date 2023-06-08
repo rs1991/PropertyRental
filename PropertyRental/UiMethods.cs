@@ -11,6 +11,7 @@ using System.Numerics;
 using SendGrid.Helpers.Mail;
 using static PropertyRental.LogicMethods;
 using System.ComponentModel.DataAnnotations;
+using iText.Kernel.Pdf;
 
 namespace PropertyRental
 {
@@ -163,43 +164,52 @@ namespace PropertyRental
 
         }
 
-        public static void SendRentalApplication(Tenant tenant, Landlord landlord, string smtpServer, int port, string username, string password, string emailSubject, string emailBody, string newlyCreatedPdf)
+        public static void SendRentalApplication(Tenant tenant, Landlord landlord, string smtpServer, int port, string username, string password, string emailSubject,
+                                                  string emailBody, string pdfPath)
         {
             WriteToLog();
 
-
-            var valResult = ValidateTenant(tenant);
+            ValidationResult valResult = ValidateTenant(tenant);
             
             if (!valResult.Valid)
             {
                 Console.WriteLine(valResult.ErrorMessage);
             }
-            
+
+            //Create the pdf file
+            CreatedPdfDoc(tenant, pdfPath);
+
+
             try
             {
                 using (var message = new MailMessage(tenant.ContactInformation.Email, landlord.ContactInformation.Email))
                 {
-
-                    AddPdfAttachement(tenant, newlyCreatedPdf);
                     message.Subject = emailSubject;
                     message.Body = emailBody;
+
+                    //Attachy the pdfFile
+                    System.Net.Mail.Attachment attachment = new System.Net.Mail.Attachment(pdfPath);
+                    message.Attachments.Add(attachment);
+                        
+                    
                     
                     using (var client = new SmtpClient(smtpServer, port))
-                    {
-                        client.EnableSsl = true;
-                        client.UseDefaultCredentials = false;
-                        client.Credentials = new NetworkCredential(username, password);
-                        client.Send(message);
+                        {
+                            client.EnableSsl = true;
+                            client.UseDefaultCredentials = false;
+                            client.Credentials = new NetworkCredential(username, password);
+                            client.Send(message);
+                        }
                     }
-                }
             }
             catch (Exception ex)
             {
-                // Handle the exception here or throw it to the calling code
+                Log.Error(ex.Message);
                 Console.WriteLine("An error occurred while sending the email: " + ex.Message);
             }
         }
 
+              
 
 
 
