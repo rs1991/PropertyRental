@@ -1,17 +1,7 @@
-﻿using HtmlAgilityPack;
-using Microsoft.IdentityModel.Tokens;
-using MimeKit;
-using SendGrid;
-using Serilog;
-using System;
-using System.Linq.Expressions;
+﻿using Serilog;
 using System.Net;
 using System.Net.Mail;
-using System.Numerics;
-using SendGrid.Helpers.Mail;
 using static PropertyRental.LogicMethods;
-using System.ComponentModel.DataAnnotations;
-using iText.Kernel.Pdf;
 
 namespace PropertyRental
 {
