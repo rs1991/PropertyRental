@@ -47,12 +47,10 @@ namespace PropertyRental
             string smtpServer = "smtp-relay.sendinblue.com";
             int smtpPort = 587;
 
-                      
-
-            SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword, emailSubject, emailBody, newlyCreatedPdfPath);
-            
+            ExportRentalHomes(RentalHomes);
 
 
+            SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword, emailSubject, emailBody, newlyCreatedPdfPath);           
 
         }
 
