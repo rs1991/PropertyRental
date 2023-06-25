@@ -44,6 +44,7 @@ namespace PropertyRental
 
             HomeDetails homeDetails1 = new HomeDetails();
             homeDetails1.TotalBedrooms = 1;
+            rp1.HomeDetails = homeDetails1;
 
             Address a1 = new Address();
             a1.DoorNumber = 134;
@@ -71,6 +72,7 @@ namespace PropertyRental
 
             HomeDetails homeDetails2 = new HomeDetails();
             homeDetails2.TotalBedrooms = 4;
+            rp2.HomeDetails = homeDetails2;
 
             Address a2 = new Address();
             a2.DoorNumber = 90;
@@ -98,7 +100,8 @@ namespace PropertyRental
 
             HomeDetails homeDetails3 = new HomeDetails();
             homeDetails3.TotalBedrooms = 3;
-
+            rp3.HomeDetails = homeDetails3;
+            
             Address a3 = new Address();
             a3.DoorNumber = 4;
             a3.Street = "Lincoln Street";
@@ -122,9 +125,11 @@ namespace PropertyRental
             rp4.Parking = false;
             rp4.FloorSize = 90;
             rp4.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-            rp4.ElevatorAvailable = SearchCriteriaFilter.Elevator;
+            rp4.ElevatorAvailable = SearchCriteriaFilter.Elevator;          
+
             HomeDetails homeDetails4 = new HomeDetails();
-            homeDetails4.TotalBedrooms = 4;
+            homeDetails3.TotalBedrooms = 4;
+            rp4.HomeDetails = homeDetails4;
 
             Address a4 = new Address();
             a4.DoorNumber = 31;
@@ -152,6 +157,7 @@ namespace PropertyRental
 
             HomeDetails homeDetails5 = new HomeDetails();
             homeDetails5.TotalBedrooms = 2;
+            rp5.HomeDetails = homeDetails5;
 
             Address a5 = new Address();
             a5.DoorNumber = 2;
@@ -179,7 +185,7 @@ namespace PropertyRental
 
             HomeDetails homeDetails6 = new HomeDetails();
             homeDetails6.TotalBedrooms = 3;
-
+            rp6.HomeDetails = homeDetails6;
 
             Address a6 = new Address();
             a6.DoorNumber = 190;
@@ -208,6 +214,7 @@ namespace PropertyRental
 
             HomeDetails homeDetails7 = new HomeDetails();
             homeDetails7.TotalBedrooms = 3;
+            rp7.HomeDetails = homeDetails7;
 
             Address a7 = new Address();
             a7.DoorNumber = 190;
@@ -235,6 +242,7 @@ namespace PropertyRental
 
             HomeDetails homeDetails8 = new HomeDetails();
             homeDetails8.TotalBedrooms = 2;
+            rp8.HomeDetails = homeDetails8;
 
             Address a8 = new Address();
             a8.DoorNumber = 40;
@@ -262,6 +270,7 @@ namespace PropertyRental
 
             HomeDetails homeDetails9 = new HomeDetails();
             homeDetails9.TotalBedrooms = 2;
+            rp9.HomeDetails = homeDetails9;
 
             var a9 = new Address();
             a9.DoorNumber = 12;
@@ -290,6 +299,7 @@ namespace PropertyRental
 
             HomeDetails homeDetails10 = new HomeDetails();
             homeDetails10.TotalBedrooms = 4;
+            rp10.HomeDetails = homeDetails10;
 
             Address a10 = new Address();
             a10.DoorNumber = 18;
@@ -403,7 +413,6 @@ namespace PropertyRental
             t1.AvailableToMoveOn = new DateTime(2023, 08, 01);
             t1.MustMoveInOnThisDate = new DateTime(2023, 08, 10);
             t1.Budget = 3500;
-
 
             var a1 = new Address();
             a1.DoorNumber = 64;
@@ -916,7 +925,8 @@ namespace PropertyRental
 
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+             Log.Error($"ERROR: {ex.Message}");
+
             }
             return 0;
 

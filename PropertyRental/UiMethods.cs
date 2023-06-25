@@ -80,11 +80,11 @@ namespace PropertyRental
             {
                 result.ErrorMessage = "Please put in a valid date of birth";
             }
-            if(tenant.AvailableToMoveOn == default(DateTime))
+            if (tenant.AvailableToMoveOn == default(DateTime))
             {
                 result.ErrorMessage = "Put in the date that you want to move";
             }
-            if(tenant.MustMoveInOnThisDate == default(DateTime))
+            if (tenant.MustMoveInOnThisDate == default(DateTime))
             {
                 result.ErrorMessage = "The date that you need to move by";
             }
@@ -96,34 +96,34 @@ namespace PropertyRental
             {
                 result.ErrorMessage = "Put in your nationality";
             }
-            if(tenant.Salary <= 0)
+            if (tenant.Salary <= 0)
             {
                 result.ErrorMessage = "Please provide your salary";
             }
-            if(tenant.Pets != true && tenant.Pets != false)
+            if (tenant.Pets != true && tenant.Pets != false)
             {
                 result.ErrorMessage = "Please indicate if you have pets";
             }
-            if(tenant.Smoker != true && tenant.Smoker != false)
+            if (tenant.Smoker != true && tenant.Smoker != false)
             {
                 result.ErrorMessage = "Please indicate if you smoke";
             }
-            if(tenant.Gender != Gender.Male && tenant.Gender != Gender.Female)
+            if (tenant.Gender != Gender.Male && tenant.Gender != Gender.Female)
             {
                 result.ErrorMessage = "Enter a gender";
             }
-            if(tenant.RentalTerm <= 0)
+            if (tenant.RentalTerm <= 0)
             {
                 result.ErrorMessage = "Please indicate your preferred rental term";
             }
-            if(tenant.Budget <= 0)
+            if (tenant.Budget <= 0)
             {
                 result.ErrorMessage = "Please put in your budget";
             }
-            if(tenant.ParkingRequired != true && tenant.ParkingRequired != false)
+            if (tenant.ParkingRequired != true && tenant.ParkingRequired != false)
             {
                 result.ErrorMessage = "Please indicate if you will need parking";
-            } 
+            }
             if (tenant.FurnitureRequired != true && tenant.FurnitureRequired != false)
             {
                 result.ErrorMessage = "Please indicate if you a furnished or unfurnished home";
@@ -160,7 +160,7 @@ namespace PropertyRental
             WriteToLog();
 
             ValidationResult valResult = ValidateTenant(tenant);
-            
+
             if (!valResult.Valid)
             {
                 Console.WriteLine(valResult.ErrorMessage);
@@ -180,17 +180,17 @@ namespace PropertyRental
                     //Attachy the pdfFile
                     System.Net.Mail.Attachment attachment = new System.Net.Mail.Attachment(pdfPath);
                     message.Attachments.Add(attachment);
-                        
-                    
-                    
+
+
+
                     using (var client = new SmtpClient(smtpServer, port))
-                        {
-                            client.EnableSsl = true;
-                            client.UseDefaultCredentials = false;
-                            client.Credentials = new NetworkCredential(username, password);
-                            client.Send(message);
-                        }
+                    {
+                        client.EnableSsl = true;
+                        client.UseDefaultCredentials = false;
+                        client.Credentials = new NetworkCredential(username, password);
+                        client.Send(message);
                     }
+                }
             }
             catch (Exception ex)
             {
@@ -199,7 +199,7 @@ namespace PropertyRental
             }
         }
 
-              
+
 
 
 
@@ -217,5 +217,21 @@ namespace PropertyRental
 
 
 
+        public static void ProccessTenantAndHomesListForScores(List<Tenant> tenantList, List<RentalHome> rentalHomesList, string googleAPIKey)
+        {
+
+            foreach (var tenant in tenantList)
+            {
+                foreach (var home in rentalHomesList)
+                {
+                    PointsScoredForEachHome(tenant, home, googleAPIKey);
+                }
+            }
+        }
+
     }
+
+
+
 }
+
