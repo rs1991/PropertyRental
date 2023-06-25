@@ -1252,7 +1252,6 @@ namespace PropertyRental
         }
 
 
-
         public static void ExportRentalHomes(List<RentalHome> rentalHomes)
         {
             WriteToLog();

@@ -52,9 +52,9 @@ namespace PropertyRental
 
             //SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword, emailSubject, emailBody, newlyCreatedPdfPath);           
 
-            ProccessTenantAndHomesListForScores(TenantList, RentalHomes, googleAPIKey);
-         
+            //ProccessTenantAndHomesListForScores(TenantList, RentalHomes, googleAPIKey);
 
+            ScoreListForEachHome(TenantList, RentalHomes, googleAPIKey);
 
 
 

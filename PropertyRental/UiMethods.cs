@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
 using static PropertyRental.LogicMethods;
@@ -201,8 +202,6 @@ namespace PropertyRental
 
 
 
-
-
         public static void AddRightMoveHomeToRentalHome(List<RentalHome> rentalHomesList, List<RightmoveRentalHomeData> rightMoveHomesList, string googleAPIKey)
         {
             List<RightmoveRentalHomeData> rightMoveData = GetDataFromRightMove(2);
@@ -215,19 +214,7 @@ namespace PropertyRental
             }
         }
 
-
-
-        public static void ProccessTenantAndHomesListForScores(List<Tenant> tenantList, List<RentalHome> rentalHomesList, string googleAPIKey)
-        {
-
-            foreach (var tenant in tenantList)
-            {
-                foreach (var home in rentalHomesList)
-                {
-                    PointsScoredForEachHome(tenant, home, googleAPIKey);
-                }
-            }
-        }
+              
 
     }
 
