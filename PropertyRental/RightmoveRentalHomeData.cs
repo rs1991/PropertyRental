@@ -1,35 +1,35 @@
 ﻿
 namespace PropertyRental
 {
-    public class RightmoveRentalHomeData
+    public class RightmoveRentalHomeData : AbstractRentalHome
     {
         private double _MonthlyRentalPrice;
-        private string _EstateAgentPhoneNumber;
+        private string _EstateContactPhoneNumber;
         private string _RentalHomeAddress;
         private string _RentalHomeDetails;
         private string _RentalHomeDescription;
         private DateTime _DateRentalHomeWasAdded;
 
 
-        public double MonthlyRentalPrice
+        public double RentalPricePerMonth
         {
             get { return _MonthlyRentalPrice; }
             set { _MonthlyRentalPrice = value; }
         } 
         
-        public string EstateAgentPhoneNumber
+        public string EstateAgentContactNumber
         {
-            get { return _EstateAgentPhoneNumber; }
-            set { _EstateAgentPhoneNumber = value; }
+            get { return _EstateContactPhoneNumber; }
+            set { _EstateContactPhoneNumber = value; }
         }
         
-        public string RentalHomeAddress 
+        public string AddressForRentalHome 
         { 
             get { return _RentalHomeAddress; }
             set { _RentalHomeAddress = value;}
         }
         
-        public string RentalHomeDetails 
+        public string DetailsForRentalHome 
         {
             get { return _RentalHomeDetails; }
             set { _RentalHomeDetails = value; }
@@ -47,26 +47,24 @@ namespace PropertyRental
             set {_DateRentalHomeWasAdded = value;}
         }
         
-        
-        public RightmoveRentalHomeData(double MonthlyRentalPrice, string EstateAgentPhoneNumber, string RentalHomeAddress, 
-            string RentalHomeDetails, string RentalHomeDescription, DateTime DateRentalHomeWasAdded)
-        {
-            _MonthlyRentalPrice = MonthlyRentalPrice;
-            _EstateAgentPhoneNumber = EstateAgentPhoneNumber;
-            _RentalHomeAddress = RentalHomeAddress;
-            _RentalHomeDetails = RentalHomeDetails;
-            _RentalHomeDescription = RentalHomeDescription;
-            _DateRentalHomeWasAdded = DateRentalHomeWasAdded;
-        }
+                
 
         public RightmoveRentalHomeData() { }
 
-
-        public RentalHome ToRentalHome()
+        public override RentalHome ToRentalHome()
         {
-            
-            return new RentalHome();
+            RentalHome rentalHome = new RentalHome();
+            rentalHome.MonthlyRentalPrice = this.MonthlyRentalPrice;
+            rentalHome.EstateAgentPhoneNumber = this.EstateAgentPhoneNumber;
+            rentalHome.RentalHomeAddress = this.RentalHomeAddress;
+            rentalHome.RentalHomeDetails = this.RentalHomeDetails;
+            rentalHome.Description = this.RentalHomeDescription;
+            rentalHome.DateHomeWasAdvertised = this.DateRentalHomeWasAdded;
+
+            return rentalHome;
         }
+
+
 
     }
 

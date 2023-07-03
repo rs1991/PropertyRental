@@ -4,7 +4,7 @@ using static PropertyRental.UiMethods;
 
 namespace PropertyRental
 {
-    public class RentalHome
+    public class RentalHome : AbstractRentalHome
     {
         private string _dataSourceURL;
         private Address _address;
@@ -27,6 +27,7 @@ namespace PropertyRental
         private bool _parking;
         private double _floorSize;
         private SearchCriteriaFilter _elevatorAvailable;
+       
 
         /// <summary>
         /// Copy constructor for RightMoveRentalHomeData
@@ -246,7 +247,16 @@ namespace PropertyRental
                 $" Council tax band: {CouncilTaxBand}";
         }
 
-        public RentalHome() { }
+        public RentalHome()
+        {
+            
+        }
 
+        public override RentalHome ToRentalHome()
+        {
+            return this;
+        }
+
+       
     }
 }
