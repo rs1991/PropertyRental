@@ -451,6 +451,7 @@ namespace PropertyRental
             t2.ParkingRequired = true;
             t2.FurnitureRequired = false;
             t2.BedRoomsRequired = 3;
+            t2.Budget = 2500;
 
             t2.WheelChairAccessNeeded = SearchCriteriaFilter.WheelChairAccessible;
             t2.ElevatorAccessRequired = SearchCriteriaFilter.Elevator;
@@ -500,6 +501,7 @@ namespace PropertyRental
             t3.CouncilTaxBand = CouncilTaxBand.Band_C;
             t3.TenantPreferredHomeType = TypeOfHome.House;
             t3.TenantPreferredEnergyType = EnergyType.Gas;
+            t3.Budget = 4500;
 
             var a3 = new Address();
             a3.DoorNumber = 64;
@@ -507,15 +509,18 @@ namespace PropertyRental
             a3.City = "London";
             a3.PostCode = "WC2H 9NQ";
             t3.Address = a3;
+
             var contact3 = new ContactInformation();
             contact3.PhoneNumber = "07712484721";
             contact3.Email = new MailAddress("rachel.johnson@gmail.com");
+            
             var prefAddress3 = new Address();
             prefAddress3.DoorNumber = 22;
             prefAddress3.Street = "Holborn";
             prefAddress3.City = "London";
             prefAddress3.PostCode = "EC1N 2TD";
             t3.PreferredAdress = prefAddress3;
+            
             //4th tenant
             var t4 = new Tenant();
             t4.FirstName = "Natasha";
@@ -540,21 +545,26 @@ namespace PropertyRental
             t4.CouncilTaxBand = CouncilTaxBand.Band_B;
             t4.TenantPreferredHomeType = TypeOfHome.Flat;
             t4.TenantPreferredEnergyType = EnergyType.Electric;
+            t4.Budget = 1250;
+
             var a4 = new Address();
             a4.DoorNumber = 16;
             a4.Street = "High Street";
             a4.City = "London";
             a4.PostCode = "W5 5DB";
             t4.Address = a4;
+
             var contact4 = new ContactInformation();
             contact4.PhoneNumber = "07712484721";
             contact4.Email = new MailAddress("natasha.devon@gmail.com");
+            
             var prefAddress4 = new Address();
             prefAddress4.DoorNumber = 22;
             prefAddress4.Street = "Holborn";
             prefAddress4.City = "London";
             prefAddress4.PostCode = "EC1N 2TD";
             t4.PreferredAdress = prefAddress4;
+            
             //5th tenant
             var t5 = new Tenant();
             t5.FirstName = "Laurent";
@@ -580,21 +590,26 @@ namespace PropertyRental
             t5.CouncilTaxBand = CouncilTaxBand.Band_D;
             t5.TenantPreferredHomeType = TypeOfHome.Flat;
             t5.TenantPreferredEnergyType = EnergyType.Electric;
+            t5.Budget = 2200;
+
             var a5 = new Address();
             a5.DoorNumber = 16;
             a5.Street = "South Kensington";
             a5.City = "London";
             a5.PostCode = "SW7 4RB";
             t5.Address = a5;
+
             var contact5 = new ContactInformation();
             contact5.PhoneNumber = "07712484727";
             contact5.Email = new MailAddress("laurent.sevran@gmail.com");
+            
             var prefAddress5 = new Address();
             prefAddress5.DoorNumber = 22;
             prefAddress5.Street = "Holborn";
             prefAddress5.City = "London";
             prefAddress5.PostCode = "EC1N 2TD";
             t5.PreferredAdress = prefAddress5;
+            
             //6th tenant
             var t6 = new Tenant();
             t6.FirstName = "Ali";
@@ -618,21 +633,26 @@ namespace PropertyRental
             t6.CouncilTaxBand = CouncilTaxBand.Band_D;
             t6.TenantPreferredHomeType = TypeOfHome.Bungalow;
             t6.TenantPreferredEnergyType = EnergyType.Gas;
+            t6.Budget = 5200;
+
             var a6 = new Address();
             a6.DoorNumber = 16;
             a6.Street = "Edgware road";
             a6.City = "London";
             a6.PostCode = "W2 2JE";
             t6.Address = a6;
+
             var contact6 = new ContactInformation();
             contact6.PhoneNumber = "07717487721";
             contact6.Email = new MailAddress("ali.nachef@gmail.com");
+            
             var prefAddress6 = new Address();
             prefAddress6.DoorNumber = 22;
             prefAddress6.Street = "Holborn";
             prefAddress6.City = "London";
             prefAddress6.PostCode = "EC1N 2TD";
             t6.PreferredAdress = prefAddress6;
+            
             //7th tenant
             var t7 = new Tenant();
             t7.FirstName = "George";
@@ -656,21 +676,26 @@ namespace PropertyRental
             t7.CouncilTaxBand = CouncilTaxBand.Band_B;
             t7.TenantPreferredHomeType = TypeOfHome.House;
             t7.TenantPreferredEnergyType = EnergyType.Gas;
+            t7.Budget = 7200;
+
             var a7 = new Address();
             a7.DoorNumber = 119;
             a7.Street = "Holland Park Avenue";
             a7.City = "London";
             a7.PostCode = "W11 4UE";
             t7.Address = a7;
+
             var contact7 = new ContactInformation();
             contact7.PhoneNumber = "07832091284";
             contact7.Email = new MailAddress("george.carlin@gmail.com");
+            
             var prefAddress7 = new Address();
             prefAddress7.DoorNumber = 44;
             prefAddress7.Street = "Essex Rd";
             prefAddress7.City = "London";
             prefAddress7.PostCode = "N1 8LN";
             t7.PreferredAdress = prefAddress7;
+            
             //8th tenant           
             var t8 = new Tenant();
             t8.FirstName = "Michael";
@@ -691,15 +716,18 @@ namespace PropertyRental
             t8.BedRoomsRequired = 5;
             t8.AvailableToMoveOn = new DateTime(2022, 12, 23);
             t8.MustMoveInOnThisDate = new DateTime(2023, 01, 30);
-            t4.CouncilTaxBand = CouncilTaxBand.Band_A;
-            t4.TenantPreferredHomeType = TypeOfHome.House;
-            t4.TenantPreferredEnergyType = EnergyType.Gas;
+            t8.CouncilTaxBand = CouncilTaxBand.Band_A;
+            t8.TenantPreferredHomeType = TypeOfHome.House;
+            t8.TenantPreferredEnergyType = EnergyType.Gas;
+            t8.Budget = 4200;
+            
             var a8 = new Address();
             a8.DoorNumber = 119;
             a8.Street = "Holland Park Avenue";
             a8.City = "London";
             a8.PostCode = "W11 4UE";
             t8.Address = a8;
+            
             var contact8 = new ContactInformation();
             contact8.PhoneNumber = "07832091284";
             contact8.Email = new MailAddress("michael.evans@gmail.com");
@@ -733,6 +761,7 @@ namespace PropertyRental
             t9.CouncilTaxBand = CouncilTaxBand.Band_C;
             t9.TenantPreferredHomeType = TypeOfHome.House;
             t9.TenantPreferredEnergyType = EnergyType.Gas;
+            t9.Budget = 6000;
 
             var a9 = new Address();
             a9.DoorNumber = 19;
@@ -775,6 +804,7 @@ namespace PropertyRental
             t10.CouncilTaxBand = CouncilTaxBand.Band_A;
             t10.TenantPreferredHomeType = TypeOfHome.Flat;
             t10.TenantPreferredEnergyType = EnergyType.Gas;
+            t10.Budget = 5400;
 
             var a10 = new Address();
             a10.DoorNumber = 190;
@@ -1045,6 +1075,7 @@ namespace PropertyRental
         public static List<RentalHomePointsScore> ScoreListForEachHome(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
         {
             List<RentalHomePointsScore> ScoresList = new List<RentalHomePointsScore>();
+            
             foreach (var home in RentalHomes)
             {
                 foreach (var tenant in TenantList)
@@ -1059,6 +1090,26 @@ namespace PropertyRental
             }
             return ScoresList;
         }
+
+        public static List<RentalHomePointsScore> ScoreListForEachRightMoveHome(List<Tenant> TenantList, List<RightmoveRentalHomeData> RentalHomes, string api)
+        {
+            List<RentalHomePointsScore> ScoresList = new List<RentalHomePointsScore>();
+
+            foreach (var home in RentalHomes)
+            {
+                foreach (var tenant in TenantList)
+                {
+                    double score = PointsScoredForEachHome(tenant, home, api);
+                    RentalHomePointsScore ScoreStorage = new RentalHomePointsScore();
+                    ScoreStorage.Tenant = tenant;
+                    ScoreStorage.Rental = home;
+                    ScoreStorage.Score = score;
+                    ScoresList.Add(ScoreStorage);
+                }
+            }
+            return ScoresList;
+        }
+
         public static List<RightmoveRentalHomeData> GetDataFromRightMove(int page)
         {
             WriteToLog();
