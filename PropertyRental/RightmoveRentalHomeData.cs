@@ -1,7 +1,7 @@
 ﻿
 namespace PropertyRental
 {
-    public class RightmoveRentalHomeData : AbstractRentalHome
+    public class RightmoveRentalHomeData 
     {
         private double _MonthlyRentalPrice;
         private string _EstateContactPhoneNumber;
@@ -46,24 +46,10 @@ namespace PropertyRental
             get { return _DateRentalHomeWasAdded; }
             set {_DateRentalHomeWasAdded = value;}
         }
-        
-                
-
+                       
         public RightmoveRentalHomeData() { }
 
-        public override RentalHome ToRentalHome()
-        {
-            RentalHome rentalHome = new RentalHome();
-            rentalHome.MonthlyRentalPrice = this.MonthlyRentalPrice;
-            rentalHome.EstateAgentPhoneNumber = this.EstateAgentPhoneNumber;
-            rentalHome.RentalHomeAddress = this.RentalHomeAddress;
-            rentalHome.RentalHomeDetails = this.RentalHomeDetails;
-            rentalHome.Description = this.RentalHomeDescription;
-            rentalHome.DateHomeWasAdvertised = this.DateRentalHomeWasAdded;
-
-            return rentalHome;
-        }
-
+        
 
 
     }

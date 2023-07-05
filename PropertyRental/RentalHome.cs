@@ -4,7 +4,7 @@ using static PropertyRental.UiMethods;
 
 namespace PropertyRental
 {
-    public class RentalHome : AbstractRentalHome
+    public class RentalHome
     {
         private string _dataSourceURL;
         private Address _address;
@@ -43,11 +43,11 @@ namespace PropertyRental
             try
             {
                 
-                Address parsedAddress = GeoCodeAddress(rightMoveRentalHome.RentalHomeAddress, apikey);
+                Address parsedAddress = GeoCodeAddress(rightMoveRentalHome.AddressForRentalHome, apikey);
               
                 _address = parsedAddress;                
-                _price = rightMoveRentalHome.MonthlyRentalPrice;
-                _agencyPhoneNumber = rightMoveRentalHome.EstateAgentPhoneNumber;
+                _price = rightMoveRentalHome.RentalPricePerMonth;
+                _agencyPhoneNumber = rightMoveRentalHome.EstateAgentContactNumber;
                 _description = rightMoveRentalHome.RentalHomeDescription;
                 _dateHomeWasAdvertised = rightMoveRentalHome.DateRentalHomeWasAdded;
 
@@ -246,17 +246,13 @@ namespace PropertyRental
             return $"Address: {Address.PostCode} FloorSize: {FloorSize} Available On: {AvailableOn} Price: {Price} Heating: {Heating} Type of Home: {HomeType} +" +
                 $" Council tax band: {CouncilTaxBand}";
         }
-
+      
         public RentalHome()
         {
             
         }
 
-        public override RentalHome ToRentalHome()
-        {
-            return this;
-        }
-
+      
        
     }
 }
