@@ -9,7 +9,11 @@ namespace PropertyRental
         private string _RentalHomeDetails;
         private string _RentalHomeDescription;
         private DateTime _DateRentalHomeWasAdded;
-
+        private double convertedMonthlyRentalPrice;
+        private string agentPhoneNumber;
+        private string rentalHomeAddress;
+        private string rentalHomeDetails;
+        private DateTime convertedtDate;
 
         public double RentalPricePerMonth
         {
@@ -49,9 +53,15 @@ namespace PropertyRental
                        
         public RightmoveRentalHomeData() { }
 
-        
-
-
+        public RightmoveRentalHomeData(double convertedMonthlyRentalPrice, string agentPhoneNumber, string rentalHomeAddress, string rentalHomeDetails, string rentalHomeDescription, DateTime convertedtDate)
+        {
+            this.convertedMonthlyRentalPrice = convertedMonthlyRentalPrice;
+            this.agentPhoneNumber = agentPhoneNumber;
+            this.rentalHomeAddress = rentalHomeAddress;
+            this.rentalHomeDetails = rentalHomeDetails;
+            RentalHomeDescription = rentalHomeDescription;
+            this.convertedtDate = convertedtDate;
+        }
     }
 
 }

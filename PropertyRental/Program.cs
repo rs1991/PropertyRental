@@ -54,8 +54,11 @@ namespace PropertyRental
 
             //ProccessTenantAndHomesListForScores(TenantList, RentalHomes, googleAPIKey);
 
-            ScoreListForEachHome(TenantList, RentalHomes, googleAPIKey);
+            //ScoreListForEachHome(TenantList, RentalHomes, googleAPIKey);
 
+           
+
+            AddRightMoveHomeToRentalHome(RightMoveHomesList, googleAPIKey);
 
 
         }

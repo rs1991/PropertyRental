@@ -10,18 +10,6 @@ namespace PropertyRental
     {
 
         /// <summary>
-        /// Displays a compatability score based on the tenant's requirements 
-        /// </summary>
-        /// <param name="ScoresList"></param>
-        public static void displayScoreOnly(List<RentalHomePointsScore> ScoresList)
-        {
-            foreach (var score in ScoresList)
-            {
-                Console.WriteLine($"Score: {score.Score} Address: {score.Rental.Address.PostCode} {score.Tenant.FirstName}");
-            }
-        }
-
-        /// <summary>
         /// Method created to log errors and other useful information
         /// </summary>
         public static void WriteToLog()
@@ -33,15 +21,6 @@ namespace PropertyRental
         }
 
 
-
-        public static void LoopThroughListOfRightMoveHomes(List<RightmoveRentalHomeData> ScrapedHomes)
-        {
-            foreach (var home in ScrapedHomes)
-            {
-
-                Console.WriteLine($"{home.RentalHomeAddress}");
-            }
-        }
 
         public static void ProcessTenantAndRentalHomes(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
         {
@@ -201,24 +180,29 @@ namespace PropertyRental
         }
 
 
-
-        public static void AddRightMoveHomeToRentalHome(List<RentalHome> rentalHomesList, List<RightmoveRentalHomeData> rightMoveHomesList, string googleAPIKey)
+        public static List<RentalHome> AddRightMoveHomeToRentalHome(List<RightmoveRentalHomeData> rightMoveHomeList, string googleAPIKey)
         {
-            List<RightmoveRentalHomeData> rightMoveData = GetDataFromRightMove(2);
-
-            foreach (var rightMoveHome in rightMoveData)
+            WriteToLog();
+            try
             {
-                RentalHome newRentalHome = new RentalHome(rightMoveHome, googleAPIKey);
-                rentalHomesList.Add(newRentalHome);
-
+                List<RentalHome> rentalHomesList = new List<RentalHome>();
+                foreach (var rmHome in rightMoveHomeList)
+                {
+                    RentalHome newRentalHome = new RentalHome(rmHome, googleAPIKey);
+                    rentalHomesList.Add(newRentalHome);
+                }
+                return rentalHomesList;
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"ERROR: {ex.Message}");
+                return null;
             }
         }
+    
 
-              
+
 
     }
-
-
-
 }
 

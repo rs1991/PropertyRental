@@ -1091,7 +1091,7 @@ namespace PropertyRental
             return ScoresList;
         }
 
-        public static List<RentalHomePointsScore> ScoreListForEachRightMoveHome(List<Tenant> TenantList, List<RightmoveRentalHomeData> RentalHomes, string api)
+        public static List<RentalHomePointsScore> ScoreListForEachRightMoveHome(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
         {
             List<RentalHomePointsScore> ScoresList = new List<RentalHomePointsScore>();
 
@@ -1266,14 +1266,7 @@ namespace PropertyRental
             }
             return ScrapedOpenRentHomesList;
         }
-
-        public static bool AcceptOrRejectRentalApplication()
-        {
-
-
-            throw new NotImplementedException();
-        }
-
+               
         public static PdfDocument CreatedPdfDoc(Tenant tenantProfile, string outputPath)
         {
             WriteToLog();
@@ -1299,42 +1292,6 @@ namespace PropertyRental
                 Console.WriteLine("An error occurred while converting to PDF: " + ex.Message);
                 return null;
 
-            }
-        }
-
-
-        public static void ExportRentalHomes(List<RentalHome> rentalHomes)
-        {
-            WriteToLog();
-
-            try {
-
-            WorkBook wb = WorkBook.Create(ExcelFileFormat.XLSX); //Create the file 
-            WorkSheet sheet = wb.CreateWorkSheet("RentalHomes");
-            
-              
-            // Write column headers
-            
-            sheet.SetCellValue(0,0, "Address");
-            sheet.SetCellValue(0,1, "Price");
-            sheet.SetCellValue(0,2, "Description");
-            
-            int rowIndex = 1;
-            // Write RentalHome data to the worksheet
-            
-            foreach (RentalHome home in rentalHomes)
-            {
-                sheet.SetCellValue(rowIndex, 0, home.Address);
-                sheet.SetCellValue(rowIndex, 1, home.Price);
-                sheet.SetCellValue(rowIndex, 2, home.Description);
-                rowIndex++;
-            }
-            
-             wb.SaveAs(@"C:\tmp\RentalHomes.xlsx"); // Export as .xlsx file
-            }
-            catch(Exception ex)
-            {
-                Log.Error(ex.Message);
             }
         }
 
