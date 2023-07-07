@@ -1067,7 +1067,7 @@ namespace PropertyRental
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Log.Error($"ERROR: {ex.Message}");
                 return null;
             }
         }
