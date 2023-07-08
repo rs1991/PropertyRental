@@ -23,7 +23,6 @@ namespace PropertyRental
 
             RightmoveRentalHomeData rdHome = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 01, 20));
 
-
             RentalHome rp1 = new RentalHome(rdHome, api);
             rp1.Furnished = false;
             rp1.Price = 1350;
@@ -52,6 +51,8 @@ namespace PropertyRental
             a1.City = "London";
             a1.PostCode = "W5 3RE";
             rp1.Address = a1;
+
+
 
             RentalHome rp2 = new RentalHome(rdHome, api);
             rp2.Furnished = false;
@@ -1067,6 +1068,7 @@ namespace PropertyRental
             }
             catch (Exception ex)
             {
+ 
                 Log.Error($"ERROR: {ex.Message}");
                 return null;
             }

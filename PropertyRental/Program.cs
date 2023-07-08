@@ -20,10 +20,17 @@ namespace PropertyRental
             List<Address> AddressList = LogicMethods.GenerateMockAddressList();
             List<Landlord> landlordList = LogicMethods.GenerateMockListOfLandlords();
 
-            //List<OpenRentData> OpenRentListOfHomes = GetDataFromOpenRent();
+            
+
             List<RightmoveRentalHomeData> RightMoveHomesList = GetDataFromRightMove(1);
 
-          
+            foreach(var home in RightMoveHomesList)
+            {
+                Console.WriteLine(home.AddressForRentalHome);
+            }
+
+            
+
             var dStorage = new DataStorage();
 
             dStorage.ListOfTenants = TenantList;
@@ -47,7 +54,6 @@ namespace PropertyRental
             string smtpServer = "smtp-relay.sendinblue.com";
             int smtpPort = 587;
 
-            
 
             AddRightMoveHomeToRentalHome(RightMoveHomesList, googleAPIKey);
 

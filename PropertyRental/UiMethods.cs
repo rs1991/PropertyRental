@@ -182,11 +182,10 @@ namespace PropertyRental
 
         public static List<RentalHome> AddRightMoveHomeToRentalHome(List<RightmoveRentalHomeData> rightMoveHomeList, string googleAPIKey)
         {
-           
+            WriteToLog();
+         
             try
             {
-                WriteToLog();
-
                 List<RentalHome> rentalHomesList = new List<RentalHome>();
                 foreach (var rmHome in rightMoveHomeList)
                 {
