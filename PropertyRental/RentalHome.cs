@@ -6,7 +6,6 @@ namespace PropertyRental
 {
     public class RentalHome
     {
-        private string _dataSourceURL;
         private Address _address;
         private DateTime _availableOn;
         private DateTime _dateHomeWasAdvertised;
@@ -27,6 +26,7 @@ namespace PropertyRental
         private bool _parking;
         private double _floorSize;
         private SearchCriteriaFilter _elevatorAvailable;
+        private Landlord _landlord;
        
 
         /// <summary>
@@ -60,12 +60,11 @@ namespace PropertyRental
             
         }
 
-        public string DataSourceURL
+       public Landlord Landlord
         {
-            get { return _dataSourceURL; }
-            set { _dataSourceURL = value; }
-        }
-                
+            get { return _landlord; }
+            set { _landlord = value; }
+        }                
         
         public DateTime DateHomeWasAdvertised
         {
