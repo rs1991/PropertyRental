@@ -1177,15 +1177,7 @@ namespace PropertyRental
             return ListOfRightMoveHomes;
         }
 
-        public static void WriteRightMoveRentalHomesList(List<RightmoveRentalHomeData> ListOfRightMoveHomes, string path)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<RightmoveRentalHomeData>));
-            using (FileStream file = File.Create(path))
-            {
-                serializer.Serialize(file, ListOfRightMoveHomes);
-            }
-        }
-
+        
         public static List<RightmoveRentalHomeData> LoadRightMoveDataList(string path)
         {
             List<RightmoveRentalHomeData> RightMoveRentalHomesList;
