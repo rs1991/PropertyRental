@@ -1005,28 +1005,7 @@ namespace PropertyRental
             }
             return false;
         }
-        public static void WriteDataStorage(DataStorage lists, string path)
-        {
-            WriteToLog();
-
-            try
-            {
-                XmlSerializer serializer = new XmlSerializer(typeof(DataStorage));
-                using (FileStream file = File.Create(path))
-                {
-                    var streamWriter = XmlWriter.Create(file, new()
-                    {
-                        Encoding = Encoding.UTF8,
-                        Indent = true
-                    });
-                    serializer.Serialize(streamWriter, lists);
-                }
-            }
-            catch (Exception exceptionMessage)
-            {
-                Console.WriteLine(exceptionMessage.Message);
-            }
-        }
+        
 
         public static int DistanceCalculation(Address origin, Address destination, string apiKey)
         {
