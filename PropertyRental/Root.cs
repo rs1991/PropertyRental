@@ -10,10 +10,7 @@ namespace PropertyRental
             public string short_name { get; set; }
             public List<string> types { get; set; }
 
-        public static implicit operator AddressComponent(global::AddressComponent v)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 
         public class Geometry
