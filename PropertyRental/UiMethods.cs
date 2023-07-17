@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
+using System.Text;
+using System.Xml.Serialization;
+using System.Xml;
 using static PropertyRental.LogicMethods;
 
 namespace PropertyRental
@@ -200,7 +203,30 @@ namespace PropertyRental
                 return null;
             }
         }
-    
+
+        public static void WriteDataStorage(DataStorage lists, string path)
+        {
+            WriteToLog();
+
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(DataStorage));
+                using (FileStream file = File.Create(path))
+                {
+                    var streamWriter = XmlWriter.Create(file, new()
+                    {
+                        Encoding = Encoding.UTF8,
+                        Indent = true
+                    });
+                    serializer.Serialize(streamWriter, lists);
+                }
+            }
+            catch (Exception exceptionMessage)
+            {
+                Console.WriteLine(exceptionMessage.Message);
+            }
+        }
+
 
 
 
