@@ -1219,52 +1219,7 @@ namespace PropertyRental
             }
             return zooplaHomeRentalData;
         }
-
-
-        public static List<OpenRentData> GetDataFromOpenRent()
-        {
-            WriteToLog();
-
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument htmlDoc = web.Load($"https://www.openrent.co.uk/properties-to-rent/nottingham-nottinghamshire?term=Nottingham,%20Nottinghamshire&prices_min=300&prices_max=800&viewingProperty=37");
-
-            var cardXpath = "//*[@class='lpcc']";
-            var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
-
-            List<OpenRentData> ScrapedOpenRentHomesList = new List<OpenRentData>();
-
-            foreach (var node in cardNodes)
-            {
-
-                HtmlNode rentalAddress = node.SelectSingleNode("//*[@class='banda pt listing-title']");
-                HtmlNode monthlyRentalPriceNode = node.SelectSingleNode("//*[@class='pim pl-title']");
-                HtmlNode rentalHomeDescriptionNode = node.SelectSingleNode("//*[@class='listing-desc']");
-                HtmlNode rentalHomeDetailsNode = node.SelectSingleNode("//*[@class='lic clearfix']");
-
-                string rentalHomeprice = monthlyRentalPriceNode.InnerText;
-                string rentalHomepriceReplacedChar = rentalHomeprice;
-                string formattedRentalHomePrice = rentalHomepriceReplacedChar.Replace("&#163;", "").Replace("per month", "").Trim();
-                double convertedMonthlyRentalPrice;
-
-                bool parseOK = double.TryParse(formattedRentalHomePrice, out convertedMonthlyRentalPrice);
-
-                if (!parseOK)
-                {
-                    Log.Error("Parse did not go well for the price conversion from string to double!");
-                }
-
-                string rentalHomeAddress = rentalAddress.InnerText.Trim();
-                string rentalHomeDescription = rentalHomeDescriptionNode.InnerText.Trim();
-                string rentalHomeDetails = rentalHomeDetailsNode.InnerText.Trim();
-
-                OpenRentData ScrapedDataStorage = new OpenRentData(convertedMonthlyRentalPrice, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription);
-                ScrapedOpenRentHomesList.Add(ScrapedDataStorage);
-
-
-            }
-            return ScrapedOpenRentHomesList;
-        }
-               
+                               
         public static PdfDocument CreatedPdfDoc(Tenant tenantProfile, string outputPath)
         {
             WriteToLog();
