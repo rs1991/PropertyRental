@@ -17,7 +17,12 @@ namespace PropertyRental
 {
     public class LogicMethods
     {
-        public static List<RentalHome> GenerateMockRentalPropertyList()
+
+        /// <summary>
+        /// This method generates a list of mock rental homes
+        /// </summary>
+        /// <returns></returns>
+        public static List<RentalHome> GenerateMockRentalHomesList()
         {
             string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
 
@@ -331,6 +336,11 @@ namespace PropertyRental
 
             return ListOfRentalProperties;
         }
+        
+        /// <summary>
+        /// This method generates a list of mock addresses  
+        /// </summary>
+        /// <returns></returns>
         public static List<Address> GenerateMockAddressList()
         {
             var a1 = new Address();
@@ -407,6 +417,11 @@ namespace PropertyRental
             
             return AddressList;
         }
+        
+        /// <summary>
+        /// Generates a list of mock tenants 
+        /// </summary>
+        /// <returns></returns>
         public static List<Tenant> GenerateMockListOfTenants()
         {
             //First tenant
@@ -865,6 +880,10 @@ namespace PropertyRental
             return TenantList;
         }
 
+        /// <summary>
+        /// Generates a list of mock landlords 
+        /// </summary>
+        /// <returns></returns>
         public static List<Landlord> GenerateMockListOfLandlords()
         {
             //First landlord
@@ -883,6 +902,7 @@ namespace PropertyRental
 
             return LandlordList;
         }
+        
         /// <summary>
         /// Overall rating is calculated to determine how suitable the home is for a tenant
         /// </summary>
@@ -1006,7 +1026,13 @@ namespace PropertyRental
             return false;
         }
         
-
+        /// <summary>
+        /// Performs a distance calculation based on the origin address and the destination address
+        /// </summary>
+        /// <param name="origin"></param>
+        /// <param name="destination"></param>
+        /// <param name="apiKey"></param>
+        /// <returns></returns>
         public static int DistanceCalculation(Address origin, Address destination, string apiKey)
         {
             WriteToLog();
@@ -1078,44 +1104,12 @@ namespace PropertyRental
             }
         }
 
-        public static List<RentalHomePointsScore> ScoreListForEachHome(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
-        {
-            List<RentalHomePointsScore> ScoresList = new List<RentalHomePointsScore>();
-            
-            foreach (var home in RentalHomes)
-            {
-                foreach (var tenant in TenantList)
-                {
-                    double score = PointsScoredForEachHome(tenant, home, api);
-                    RentalHomePointsScore ScoreStorage = new RentalHomePointsScore();
-                    ScoreStorage.Tenant = tenant;
-                    ScoreStorage.Rental = home;
-                    ScoreStorage.Score = score;
-                    ScoresList.Add(ScoreStorage);
-                }
-            }
-            return ScoresList;
-        }
-
-        public static List<RentalHomePointsScore> ScoreListForEachRightMoveHome(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
-        {
-            List<RentalHomePointsScore> ScoresList = new List<RentalHomePointsScore>();
-
-            foreach (var home in RentalHomes)
-            {
-                foreach (var tenant in TenantList)
-                {
-                    double score = PointsScoredForEachHome(tenant, home, api);
-                    RentalHomePointsScore ScoreStorage = new RentalHomePointsScore();
-                    ScoreStorage.Tenant = tenant;
-                    ScoreStorage.Rental = home;
-                    ScoreStorage.Score = score;
-                    ScoresList.Add(ScoreStorage);
-                }
-            }
-            return ScoresList;
-        }
-
+       
+        /// <summary>
+        /// This returns a list of rental homes from the website Rightmove. You can select which page you want to scrape from when the website loads
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
         public static List<RightmoveRentalHomeData> GetDataFromRightMove(int page)
         {
             WriteToLog();
@@ -1219,7 +1213,13 @@ namespace PropertyRental
             }
             return zooplaHomeRentalData;
         }
-                               
+
+        /// <summary>
+        /// Creates a PDF document intended for tenants to attach to the email sent to landlords.
+        /// </summary>
+        /// <param name="tenantProfile"></param>
+        /// <param name="outputPath"></param>
+        /// <returns></returns>
         public static PdfDocument CreatedPdfDoc(Tenant tenantProfile, string outputPath)
         {
             WriteToLog();

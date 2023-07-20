@@ -16,7 +16,7 @@ namespace PropertyRental
 
 
             List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
-            List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalPropertyList();
+            List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalHomesList();
             List<Address> AddressList = LogicMethods.GenerateMockAddressList();
             List<Landlord> landlordList = LogicMethods.GenerateMockListOfLandlords();
 
