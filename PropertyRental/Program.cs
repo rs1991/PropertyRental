@@ -19,16 +19,9 @@ namespace PropertyRental
             List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalHomesList();
             List<Address> AddressList = LogicMethods.GenerateMockAddressList();
             List<Landlord> landlordList = LogicMethods.GenerateMockListOfLandlords();
-
-            
-
             List<RightmoveRentalHomeData> RightMoveHomesList = GetDataFromRightMove(1);
 
-            foreach(var home in RightMoveHomesList)
-            {
-                Console.WriteLine(home.AddressForRentalHome);
-            }
-
+          
             
 
             var dStorage = new DataStorage();
