@@ -25,10 +25,12 @@ namespace PropertyRental
             List<Landlord> landlordList = GenerateMockListOfLandlords();
             List<RightmoveRentalHomeData> RightMoveHomesList = GetDataFromRightMove(1);
 
+            /*
             for (int i = 2; i < 5; i++)
             {
                 RightMoveHomesList.AddRange(GetDataFromRightMove(i));
             }
+            */
 
 
             var dStorage = new DataStorage();
@@ -41,7 +43,7 @@ namespace PropertyRental
             dStorage.ListOfRightMoveHomes = RightMoveHomesList;
             dStorage.ListOfLandlords = landlordList;
 
-            AddRightMoveHomeToRentalHome(RightMoveHomesList, RentalHomesList, googleAPIKey);
+            //AddRightMoveHomeToRentalHome(RightMoveHomesList, RentalHomesList, googleAPIKey);
 
             WriteDataStorage(dStorage, path);
 
@@ -58,10 +60,11 @@ namespace PropertyRental
             int smtpPort = 587;
 
 
-            
+            SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword, emailSubject, emailBody, newlyCreatedPdfPath);
 
 
-                       
+
+
 
         }
     }

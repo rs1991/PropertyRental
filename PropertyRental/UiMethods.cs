@@ -155,8 +155,8 @@ namespace PropertyRental
 
             try
             {
-                string email = "john@doe.com";
-                using (var message = new MailMessage(new MailAddress(email), landlord.ContactInformation.Email))
+                
+                using (var message = new MailMessage(tenant.ContactInformation.Email, landlord.ContactInformation.Email))
                 {
                     message.Subject = emailSubject;
                     message.Body = emailBody;
