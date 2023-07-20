@@ -155,7 +155,8 @@ namespace PropertyRental
 
             try
             {
-                using (var message = new MailMessage(tenant.ContactInformation.Email, landlord.ContactInformation.Email))
+                string email = "john@doe.com";
+                using (var message = new MailMessage(new MailAddress(email), landlord.ContactInformation.Email))
                 {
                     message.Subject = emailSubject;
                     message.Body = emailBody;
@@ -183,13 +184,13 @@ namespace PropertyRental
         }
 
 
-        public static List<RentalHome> AddRightMoveHomeToRentalHome(List<RightmoveRentalHomeData> rightMoveHomeList, string googleAPIKey)
+        public static List<RentalHome> AddRightMoveHomeToRentalHome(List<RightmoveRentalHomeData> rightMoveHomeList, List<RentalHome> rentalHomesList, string googleAPIKey)
         {
             WriteToLog();
          
             try
             {
-                List<RentalHome> rentalHomesList = new List<RentalHome>();
+                //List<RentalHome> rentalHomesList = new List<RentalHome>();
                 foreach (var rmHome in rightMoveHomeList)
                 {
                     RentalHome newRentalHome = new RentalHome(rmHome, googleAPIKey);

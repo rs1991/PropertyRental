@@ -9,28 +9,40 @@ namespace PropertyRental
         static void Main(string[] args)
         {
 
+            /*var stroedData = new DataStorage();
+            stroedData = LoadDataStorage(@"c:\....");
+            */
+
             string path = @"C:\tmp\MockDataStorage.xml";
             string googleAPIKey = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
-            string rightMoveRentalHomespath = @"C:\tmp\RightMoveRentalHomesList.xml";
+            //string rightMoveRentalHomespath = @"C:\tmp\RightMoveRentalHomesList.xml";
             string newlyCreatedPdfPath = @"C:\tmp\attachment.pdf";
 
 
             List<Tenant> TenantList = GenerateMockListOfTenants();
-            List<RentalHome> RentalHomes = GenerateMockRentalHomesList();
+            List<RentalHome> RentalHomesList = GenerateMockRentalHomesList();
             List<Address> AddressList = GenerateMockAddressList();
             List<Landlord> landlordList = GenerateMockListOfLandlords();
             List<RightmoveRentalHomeData> RightMoveHomesList = GetDataFromRightMove(1);
 
+            for (int i = 2; i < 5; i++)
+            {
+                RightMoveHomesList.AddRange(GetDataFromRightMove(i));
+            }
+
 
             var dStorage = new DataStorage();
 
+
+
             dStorage.ListOfTenants = TenantList;
-            dStorage.ListOfRentalHomes = RentalHomes;
+            dStorage.ListOfRentalHomes = RentalHomesList;
             dStorage.ListOfAddresses = AddressList;
             dStorage.ListOfRightMoveHomes = RightMoveHomesList;
             dStorage.ListOfLandlords = landlordList;
 
-            WriteDataStorage(dStorage, rightMoveRentalHomespath);
+            AddRightMoveHomeToRentalHome(RightMoveHomesList, RentalHomesList, googleAPIKey);
+
             WriteDataStorage(dStorage, path);
 
             //Parameters for the SendRentalApplication method
@@ -46,7 +58,7 @@ namespace PropertyRental
             int smtpPort = 587;
 
 
-            AddRightMoveHomeToRentalHome(RightMoveHomesList, googleAPIKey);
+            
 
 
                        
