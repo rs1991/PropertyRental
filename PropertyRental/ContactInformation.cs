@@ -19,7 +19,10 @@ namespace PropertyRental
             set { _email = value; }
         }
 
+        public ContactInformation()
+        {
 
+        }
     }
 
    
