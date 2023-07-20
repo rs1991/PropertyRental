@@ -1,9 +1,7 @@
 ﻿using System.Net;
 using System.Net.Mail;
-using System.Text;
 using static PropertyRental.UiMethods;
 using System.Xml.Serialization;
-using System.Xml;
 using Newtonsoft.Json;
 using HtmlAgilityPack;
 using Serilog;
@@ -11,7 +9,6 @@ using File = System.IO.File;
 using iText.Layout;
 using iText.Kernel.Pdf;
 using iText.Layout.Element;
-using IronXL;
 
 namespace PropertyRental
 {
@@ -298,7 +295,7 @@ namespace PropertyRental
             rp10.Price = 4000;
             rp10.RentalDuration = 12;
             rp10.AvailableOn = new DateTime(2022, 12, 13);
-            rp10.Description = "A stunning four-bedroom mid-terrace house situated ";
+            rp10.Description = "A stunning four-bedroom mid-terrace house situated";
             rp10.Agency = "View Properties";
             rp10.Heating = EnergyType.Electric;
             rp10.CouncilTaxBand = CouncilTaxBand.Band_A;
