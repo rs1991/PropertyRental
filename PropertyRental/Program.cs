@@ -15,11 +15,11 @@ namespace PropertyRental
             string newlyCreatedPdfPath = @"C:\tmp\attachment.pdf";
 
 
-            List<Tenant> TenantList = LogicMethods.GenerateMockListOfTenants();
-            List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalHomesList();
-            List<Address> AddressList = LogicMethods.GenerateMockAddressList();
-            List<Landlord> landlordList = LogicMethods.GenerateMockListOfLandlords();
-            List<RightmoveRentalHomeData> RightMoveHomesList = LogicMethods.GetDataFromRightMove(1);
+            List<Tenant> TenantList = GenerateMockListOfTenants();
+            List<RentalHome> RentalHomes = GenerateMockRentalHomesList();
+            List<Address> AddressList = GenerateMockAddressList();
+            List<Landlord> landlordList = GenerateMockListOfLandlords();
+            List<RightmoveRentalHomeData> RightMoveHomesList = GetDataFromRightMove(1);
 
 
             var dStorage = new DataStorage();

@@ -223,7 +223,7 @@ namespace PropertyRental
             }
             catch (Exception exceptionMessage)
             {
-                Console.WriteLine(exceptionMessage.Message);
+                Log.Error($"ERROR: {exceptionMessage.Message}");
             }
         }
 
