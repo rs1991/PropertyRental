@@ -18,6 +18,8 @@ namespace PropertyRental
             get { return _email; }
             set { _email = value; }
         }
+
+
     }
 
    

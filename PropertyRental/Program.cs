@@ -11,7 +11,7 @@ namespace PropertyRental
 
             string path = @"C:\tmp\MockDataStorage.xml";
             string googleAPIKey = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
-            const string rightMoveRentalHomespath = @"C:\tmp\RightMoveRentalHomesList.xml";
+            string rightMoveRentalHomespath = @"C:\tmp\RightMoveRentalHomesList.xml";
             string newlyCreatedPdfPath = @"C:\tmp\attachment.pdf";
 
 
@@ -19,10 +19,8 @@ namespace PropertyRental
             List<RentalHome> RentalHomes = LogicMethods.GenerateMockRentalHomesList();
             List<Address> AddressList = LogicMethods.GenerateMockAddressList();
             List<Landlord> landlordList = LogicMethods.GenerateMockListOfLandlords();
-            List<RightmoveRentalHomeData> RightMoveHomesList = GetDataFromRightMove(1);
+            List<RightmoveRentalHomeData> RightMoveHomesList = LogicMethods.GetDataFromRightMove(1);
 
-          
-            
 
             var dStorage = new DataStorage();
 
@@ -31,7 +29,7 @@ namespace PropertyRental
             dStorage.ListOfAddresses = AddressList;
             dStorage.ListOfRightMoveHomes = RightMoveHomesList;
             dStorage.ListOfLandlords = landlordList;
-            
+
             WriteDataStorage(dStorage, rightMoveRentalHomespath);
             WriteDataStorage(dStorage, path);
 
@@ -51,9 +49,8 @@ namespace PropertyRental
             AddRightMoveHomeToRentalHome(RightMoveHomesList, googleAPIKey);
 
 
-
+                       
 
         }
-
     }
 }

@@ -447,7 +447,6 @@ namespace PropertyRental
             t1.TenantPreferredHomeType = TypeOfHome.Flat;
             t1.TenantPreferredEnergyType = EnergyType.Gas;
             t1.BedRoomsRequired = 3;
-            
             t1.Budget = 3500;
 
             var a1 = new Address();
@@ -877,6 +876,7 @@ namespace PropertyRental
             TenantList.Add(t8);
             TenantList.Add(t9);
             TenantList.Add(t10);
+            
             return TenantList;
         }
 
