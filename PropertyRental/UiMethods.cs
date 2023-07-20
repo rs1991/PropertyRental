@@ -205,37 +205,7 @@ namespace PropertyRental
             }
         }
 
-        public static void WriteDataStorage(DataStorage lists, string path)
-        {
-            WriteToLog();
-
-            try
-            {
-                XmlSerializer serializer = new XmlSerializer(typeof(DataStorage));
-                using (FileStream file = File.Create(path))
-                {
-                    var streamWriter = XmlWriter.Create(file, new()
-                    {
-                        Encoding = Encoding.UTF8,
-                        Indent = true
-                    });
-                    serializer.Serialize(streamWriter, lists);
-                }
-            }
-            catch (Exception exceptionMessage)
-            {
-                Log.Error($"ERROR: {exceptionMessage.Message}");
-            }
-        }
-
-        public static void WriteRightMoveRentalHomesList(List<RightmoveRentalHomeData> ListOfRightMoveHomes, string path)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<RightmoveRentalHomeData>));
-            using (FileStream file = File.Create(path))
-            {
-                serializer.Serialize(file, ListOfRightMoveHomes);
-            }
-        }
+        
 
 
 
