@@ -25,13 +25,15 @@ namespace PropertyRental
         {
             string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
 
+            //RentalHome1 
             RightmoveRentalHomeData rdHome = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 01, 20));
 
             RentalHome rp1 = new RentalHome(rdHome, api);
             rp1.Furnished = false;
             rp1.Price = 1350;
             rp1.RentalDuration = 12;
-            rp1.AvailableOn = new DateTime(2022, 11, 30);
+            rp1.AvailableOn = new DateTime(2023, 10, 28);
+            rp1.DateHomeWasAdvertised = new DateTime(2023, 07, 23);
             rp1.Description = "This light and spacious ground floor one bedroom flat.";
             rp1.Agency = "Sargeants";
             rp1.Heating = EnergyType.Gas;
@@ -65,6 +67,34 @@ namespace PropertyRental
             a1.City = "London";
             a1.PostCode = "W5 3RE";
             rp1.Address = a1;
+
+            /*
+             *  
+        
+        private DateTime _dateHomeWasAdvertised;
+        private HomeDetails _homeDetails;
+        private TypeOfHome _homeType;
+        private SearchCriteriaFilter _wheelChairAccessAvailable;
+        private string _description;
+        private EnergyType _heating;
+        private CouncilTaxBand _councilTaxBand;
+        private string _agencyPhoneNumber;
+        private bool _furnished;
+        private double _price;
+        private int _rentalDuration;
+        private bool _smokingAllowed;
+        private bool _petsAllowed;
+        private bool _childrenAllowed;
+        private bool _garden;
+        private bool _parking;
+        private double _floorSize;
+        private SearchCriteriaFilter _elevatorAvailable;
+        private Landlord _landlord;
+             */
+
+
+
+
 
             RentalHome rp2 = new RentalHome(rdHome, api);
             rp2.Furnished = false;
