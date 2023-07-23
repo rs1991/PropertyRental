@@ -46,6 +46,8 @@ namespace PropertyRental
             rp1.FloorSize = 40;
             rp1.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp1.ElevatorAvailable = SearchCriteriaFilter.Elevator;
+            rp1.Garden = false;
+
 
             Landlord landlord1 = new Landlord();
             landlord1.FirstName = "Jomana";
@@ -67,34 +69,6 @@ namespace PropertyRental
             a1.City = "London";
             a1.PostCode = "W5 3RE";
             rp1.Address = a1;
-
-            /*
-             *  
-        
-        private DateTime _dateHomeWasAdvertised;
-        private HomeDetails _homeDetails;
-        private TypeOfHome _homeType;
-        private SearchCriteriaFilter _wheelChairAccessAvailable;
-        private string _description;
-        private EnergyType _heating;
-        private CouncilTaxBand _councilTaxBand;
-        private string _agencyPhoneNumber;
-        private bool _furnished;
-        private double _price;
-        private int _rentalDuration;
-        private bool _smokingAllowed;
-        private bool _petsAllowed;
-        private bool _childrenAllowed;
-        private bool _garden;
-        private bool _parking;
-        private double _floorSize;
-        private SearchCriteriaFilter _elevatorAvailable;
-        private Landlord _landlord;
-             */
-
-
-
-
 
             RentalHome rp2 = new RentalHome(rdHome, api);
             rp2.Furnished = false;
