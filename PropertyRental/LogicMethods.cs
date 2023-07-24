@@ -74,7 +74,8 @@ namespace PropertyRental
             rp2.Furnished = false;
             rp2.Price = 2200;
             rp2.RentalDuration = 12;
-            rp2.AvailableOn = new DateTime(2022, 11, 30);
+            rp2.AvailableOn = new DateTime(2023, 11, 30);
+            rp2.DateHomeWasAdvertised = new DateTime(2023, 07, 23);
             rp2.Description = "We are delighted to offer for rent this 4 bedroom terrace house within walking distance to local amenities";
             rp2.Agency = "Open Rent";
             rp2.Heating = EnergyType.Gas;
@@ -86,6 +87,7 @@ namespace PropertyRental
             rp2.Parking = false;
             rp2.FloorSize = 50;
             rp2.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp2.Garden = true;
 
             Landlord landlord2 = new Landlord();
             landlord2.FirstName = "Jo";
@@ -107,7 +109,8 @@ namespace PropertyRental
             rp3.Furnished = false;
             rp3.Price = 11700;
             rp3.RentalDuration = 12;
-            rp3.AvailableOn = new DateTime(2023, 01, 02);
+            rp3.AvailableOn = new DateTime(2023, 11, 02);
+            rp3.DateHomeWasAdvertised = new DateTime(2023, 07, 23);
             rp3.Description = "An outstanding three bedroom Georgian family home";
             rp3.Agency = "Dexters";
             rp3.Heating = EnergyType.Electric;
@@ -118,7 +121,7 @@ namespace PropertyRental
             rp3.ChildrenAllowed = false;
             rp3.Parking = false;
             rp3.FloorSize = 60;
-            rp3.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp3.Garden = true;
 
             Landlord landlord3 = new Landlord();
             landlord3.FirstName = "Jim";
@@ -140,7 +143,8 @@ namespace PropertyRental
             rp4.Furnished = false;
             rp4.Price = 1000;
             rp4.RentalDuration = 12;
-            rp4.AvailableOn = new DateTime(2022, 11, 29);
+            rp4.AvailableOn = new DateTime(2023, 10, 15);
+            rp4.DateHomeWasAdvertised = new DateTime(2023, 07, 23);
             rp4.Description = "Situated just moments from Crystal Palace Station and Park";
             rp4.Agency = "Streets ahead";
             rp4.Heating = EnergyType.Electric;
@@ -153,6 +157,7 @@ namespace PropertyRental
             rp4.FloorSize = 90;
             rp4.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp4.ElevatorAvailable = SearchCriteriaFilter.Elevator;
+            rp4.Garden = false;
 
             Landlord landlord4 = new Landlord();
             landlord4.FirstName = "Martin";
@@ -174,7 +179,8 @@ namespace PropertyRental
             rp5.Furnished = false;
             rp5.Price = 1700;
             rp5.RentalDuration = 12;
-            rp5.AvailableOn = new DateTime(2022, 12, 29);
+            rp5.AvailableOn = new DateTime(2023, 12, 29);
+            rp5.DateHomeWasAdvertised = new DateTime(2023, 07, 23);
             rp5.Description = "A spacious 2 bedroom bungalow built circa 1930 ";
             rp5.Agency = "Amanda Roberts agency";
             rp5.Heating = EnergyType.Solar;
@@ -186,6 +192,7 @@ namespace PropertyRental
             rp5.Parking = false;
             rp5.FloorSize = 45;
             rp5.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp5.Garden = false;
 
             Landlord landlord5 = new Landlord();
             landlord5.FirstName = "Peter";
@@ -207,7 +214,8 @@ namespace PropertyRental
             rp6.Furnished = false;
             rp6.Price = 2400;
             rp6.RentalDuration = 12;
-            rp6.AvailableOn = new DateTime(2023, 01, 14);
+            rp6.AvailableOn = new DateTime(2023, 09, 24);
+            rp6.DateHomeWasAdvertised = new DateTime(2023, 07, 23);
             rp6.Description = "Rare to market, very unique and modern";
             rp6.Agency = "Open rent";
             rp6.Heating = EnergyType.Solar;
@@ -219,6 +227,7 @@ namespace PropertyRental
             rp6.Parking = false;
             rp6.FloorSize = 105;
             rp6.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp6.Garden = true;
 
             Landlord landlord6 = new Landlord();
             landlord6.FirstName = "David";
@@ -241,7 +250,8 @@ namespace PropertyRental
             rp7.Furnished = false;
             rp7.Price = 5850;
             rp7.RentalDuration = 6;
-            rp7.AvailableOn = new DateTime(2023, 02, 10);
+            rp7.AvailableOn = new DateTime(2023, 12, 10);
+            rp7.DateHomeWasAdvertised = new DateTime(2023, 07, 23);
             rp7.Description = "This stunning and truly unique penthouse apartment is full of character ";
             rp7.Agency = "John D Wood and Co";
             rp7.Heating = EnergyType.Gas;
@@ -254,7 +264,8 @@ namespace PropertyRental
             rp7.FloorSize = 55;
             rp7.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp7.ElevatorAvailable = SearchCriteriaFilter.Elevator;
-
+            rp7.Garden = false;
+                       
             Landlord landlord7 = new Landlord();
             landlord7.FirstName = "Gabriel";
             landlord7.LastName = "Ineu";
@@ -275,7 +286,8 @@ namespace PropertyRental
             rp8.Furnished = false;
             rp8.Price = 2500;
             rp8.RentalDuration = 3;
-            rp8.AvailableOn = new DateTime(2022, 12, 10);
+            rp8.AvailableOn = new DateTime(2023, 12, 10);
+            rp8.DateHomeWasAdvertised = new DateTime(2023, 07, 23);
             rp8.Description = "Proud to present this luxury, bright, and spacious";
             rp8.Agency = "B&C Properties";
             rp8.Heating = EnergyType.Gas;
@@ -287,6 +299,7 @@ namespace PropertyRental
             rp8.Parking = false;
             rp8.FloorSize = 66;
             rp8.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp8.Garden = false;
 
             Landlord landlord8 = new Landlord();
             landlord8.FirstName = "Dean";
@@ -308,7 +321,8 @@ namespace PropertyRental
             rp9.Furnished = false;
             rp9.Price = 67000;
             rp9.RentalDuration = 12;
-            rp9.AvailableOn = new DateTime(2023, 03, 01);
+            rp9.AvailableOn = new DateTime(2023, 11, 01);
+            rp9.DateHomeWasAdvertised = new DateTime(2023, 07, 23);
             rp9.Description = "Home near Harrods";
             rp9.Agency = "Stanley Properties";
             rp9.Heating = EnergyType.Gas;
@@ -320,6 +334,7 @@ namespace PropertyRental
             rp9.Parking = false;
             rp9.FloorSize = 40;
             rp9.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+            rp9.Garden = true;
 
             Landlord landlord9 = new Landlord();
             landlord9.FirstName = "Jessica";
@@ -341,7 +356,8 @@ namespace PropertyRental
             rp10.Furnished = false;
             rp10.Price = 4000;
             rp10.RentalDuration = 12;
-            rp10.AvailableOn = new DateTime(2022, 12, 13);
+            rp10.AvailableOn = new DateTime(2023, 12, 13);
+            rp10.DateHomeWasAdvertised = new DateTime(2023, 07, 23);
             rp10.Description = "A stunning four-bedroom mid-terrace house situated";
             rp10.Agency = "View Properties";
             rp10.Heating = EnergyType.Electric;
@@ -350,10 +366,9 @@ namespace PropertyRental
             rp10.SmokingAllowed = false;
             rp10.PetsAllowed = false;
             rp10.ChildrenAllowed = false;
-            rp10.Parking = false;
+            rp10.Parking = true;
             rp10.FloorSize = 70;
-            rp10.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-            rp10.ElevatorAvailable = SearchCriteriaFilter.Elevator;
+            rp10.Garden = true;
 
             Landlord landlord10 = new Landlord();
             landlord10.FirstName = "Tom";
