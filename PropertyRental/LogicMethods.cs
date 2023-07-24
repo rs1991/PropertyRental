@@ -87,6 +87,11 @@ namespace PropertyRental
             rp2.FloorSize = 50;
             rp2.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
+            Landlord landlord2 = new Landlord();
+            landlord2.FirstName = "Jo";
+            landlord2.LastName = "Mack";
+            rp2.Landlord = landlord2;
+
             HomeDetails homeDetails2 = new HomeDetails();
             homeDetails2.TotalBedrooms = 4;
             rp2.HomeDetails = homeDetails2;
@@ -115,6 +120,11 @@ namespace PropertyRental
             rp3.FloorSize = 60;
             rp3.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
+            Landlord landlord3 = new Landlord();
+            landlord3.FirstName = "Jim";
+            landlord3.LastName = "Smith";
+            rp3.Landlord = landlord3;
+
             HomeDetails homeDetails3 = new HomeDetails();
             homeDetails3.TotalBedrooms = 3;
             rp3.HomeDetails = homeDetails3;
@@ -142,7 +152,12 @@ namespace PropertyRental
             rp4.Parking = false;
             rp4.FloorSize = 90;
             rp4.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
-            rp4.ElevatorAvailable = SearchCriteriaFilter.Elevator;          
+            rp4.ElevatorAvailable = SearchCriteriaFilter.Elevator;
+
+            Landlord landlord4 = new Landlord();
+            landlord4.FirstName = "Martin";
+            landlord4.LastName = "Gabor";
+            rp4.Landlord = landlord4;
 
             HomeDetails homeDetails4 = new HomeDetails();
             homeDetails3.TotalBedrooms = 4;
@@ -172,6 +187,11 @@ namespace PropertyRental
             rp5.FloorSize = 45;
             rp5.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
+            Landlord landlord5 = new Landlord();
+            landlord5.FirstName = "Peter";
+            landlord5.LastName = "Noden";
+            rp5.Landlord = landlord5;
+
             HomeDetails homeDetails5 = new HomeDetails();
             homeDetails5.TotalBedrooms = 2;
             rp5.HomeDetails = homeDetails5;
@@ -199,6 +219,12 @@ namespace PropertyRental
             rp6.Parking = false;
             rp6.FloorSize = 105;
             rp6.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+
+            Landlord landlord6 = new Landlord();
+            landlord6.FirstName = "David";
+            landlord6.LastName = "Lewis";
+            rp6.Landlord = landlord6;
+
 
             HomeDetails homeDetails6 = new HomeDetails();
             homeDetails6.TotalBedrooms = 3;
@@ -229,6 +255,11 @@ namespace PropertyRental
             rp7.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp7.ElevatorAvailable = SearchCriteriaFilter.Elevator;
 
+            Landlord landlord7 = new Landlord();
+            landlord7.FirstName = "Gabriel";
+            landlord7.LastName = "Ineu";
+            rp7.Landlord = landlord7;
+
             HomeDetails homeDetails7 = new HomeDetails();
             homeDetails7.TotalBedrooms = 3;
             rp7.HomeDetails = homeDetails7;
@@ -256,6 +287,11 @@ namespace PropertyRental
             rp8.Parking = false;
             rp8.FloorSize = 66;
             rp8.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
+
+            Landlord landlord8 = new Landlord();
+            landlord8.FirstName = "Dean";
+            landlord8.LastName = "Amni";
+            rp8.Landlord = landlord8;
 
             HomeDetails homeDetails8 = new HomeDetails();
             homeDetails8.TotalBedrooms = 2;
@@ -285,6 +321,11 @@ namespace PropertyRental
             rp9.FloorSize = 40;
             rp9.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
 
+            Landlord landlord9 = new Landlord();
+            landlord9.FirstName = "Jessica";
+            landlord9.LastName = "Black";
+            rp9.Landlord = landlord9;
+
             HomeDetails homeDetails9 = new HomeDetails();
             homeDetails9.TotalBedrooms = 2;
             rp9.HomeDetails = homeDetails9;
@@ -313,6 +354,11 @@ namespace PropertyRental
             rp10.FloorSize = 70;
             rp10.WheelChairAccess = SearchCriteriaFilter.WheelChairAccessible;
             rp10.ElevatorAvailable = SearchCriteriaFilter.Elevator;
+
+            Landlord landlord10 = new Landlord();
+            landlord10.FirstName = "Tom";
+            landlord10.LastName = "Jacobs";
+            rp10.Landlord = landlord10;
 
             HomeDetails homeDetails10 = new HomeDetails();
             homeDetails10.TotalBedrooms = 4;
