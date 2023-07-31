@@ -25,12 +25,7 @@ namespace PropertyRental
             List<Landlord> landlordList = GenerateMockListOfLandlords();
             //List<RightmoveRentalHomeData> RightMoveHomesList = GetMultiplePagesFromRightMove(1, 20);
 
-
-
-
             var dStorage = new DataStorage();
-
-
 
             dStorage.ListOfTenants = TenantList;
             dStorage.ListOfRentalHomes = RentalHomesList;
@@ -42,7 +37,7 @@ namespace PropertyRental
 
             WriteDataStorage(dStorage, path);
 
-            //Parameters for the SendRentalApplication method
+            /*Parameters for the SendRentalApplication method
             
             string emailSubject = "I would love to rent your home";
             string emailBody = $"Dear {landlordList[0].FirstName},\n\n" +
@@ -54,12 +49,16 @@ namespace PropertyRental
             string smtpPassword = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\Password.txt");
             string smtpServer = "smtp-relay.sendinblue.com";
             int smtpPort = 587;
-            
+            */
 
-            SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword, emailSubject, emailBody, newlyCreatedPdfPath);
+            //SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword, emailSubject, emailBody, newlyCreatedPdfPath);
 
             //PointsScoredForEachHome(TenantList, RentalHomesList, googleAPIKey);
 
+            int startIndex = 1;
+            int endIndex = 100;
+
+            GetMultiplePagesFromRightMove(startIndex, endIndex);
 
 
         }
