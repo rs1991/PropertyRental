@@ -23,14 +23,9 @@ namespace PropertyRental
             List<RentalHome> RentalHomesList = GenerateMockRentalHomesList();
             List<Address> AddressList = GenerateMockAddressList();
             List<Landlord> landlordList = GenerateMockListOfLandlords();
-            List<RightmoveRentalHomeData> RightMoveHomesList = GetDataFromRightMove(1);
+            //List<RightmoveRentalHomeData> RightMoveHomesList = GetMultiplePagesFromRightMove(1, 20);
 
-            /*
-            for (int i = 2; i < 5; i++)
-            {
-                RightMoveHomesList.AddRange(GetDataFromRightMove(i));
-            }
-            */
+
 
 
             var dStorage = new DataStorage();
@@ -40,7 +35,7 @@ namespace PropertyRental
             dStorage.ListOfTenants = TenantList;
             dStorage.ListOfRentalHomes = RentalHomesList;
             dStorage.ListOfAddresses = AddressList;
-            dStorage.ListOfRightMoveHomes = RightMoveHomesList;
+            //dStorage.ListOfRightMoveHomes = RightMoveHomesList;
             dStorage.ListOfLandlords = landlordList;
 
             //AddRightMoveHomeToRentalHome(RightMoveHomesList, RentalHomesList, googleAPIKey);
@@ -48,6 +43,7 @@ namespace PropertyRental
             WriteDataStorage(dStorage, path);
 
             //Parameters for the SendRentalApplication method
+            
             string emailSubject = "I would love to rent your home";
             string emailBody = $"Dear {landlordList[0].FirstName},\n\n" +
                     $"I am interested in renting your property and have attached my rental application for your review.\n\n" +
@@ -58,11 +54,11 @@ namespace PropertyRental
             string smtpPassword = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\Password.txt");
             string smtpServer = "smtp-relay.sendinblue.com";
             int smtpPort = 587;
-
+            
 
             SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword, emailSubject, emailBody, newlyCreatedPdfPath);
 
-
+            //PointsScoredForEachHome(TenantList, RentalHomesList, googleAPIKey);
 
 
 

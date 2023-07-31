@@ -1382,7 +1382,6 @@ namespace PropertyRental
         
 
 
-
         public static void WriteRightMoveRentalHomesList(List<RightmoveRentalHomeData> ListOfRightMoveHomes, string path)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<RightmoveRentalHomeData>));
@@ -1392,8 +1391,25 @@ namespace PropertyRental
             }
         }
 
+        public static List<RightmoveRentalHomeData> GetMultiplePagesFromRightMove(int startPage, int endPage)
+        {
+            List<RightmoveRentalHomeData> rightMoveHomesMultiplePagesList = new List<RightmoveRentalHomeData>();
+
+            for (int page = startPage; page <= endPage; page++)
+            {
+  
+                List<RightmoveRentalHomeData> dataFromPage = (GetDataFromRightMove(page));
+                rightMoveHomesMultiplePagesList.AddRange(dataFromPage);
+
+            }
+
+            return rightMoveHomesMultiplePagesList;
+        }
+
+         
 
 
-    }
+
+}
 }
 
