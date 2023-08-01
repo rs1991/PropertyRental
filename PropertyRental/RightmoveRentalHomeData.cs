@@ -9,6 +9,7 @@ namespace PropertyRental
         private string _RentalHomeDetails;
         private string _RentalHomeDescription;
         private DateTime _DateRentalHomeWasAdded;
+        private string _RightMoveHomeUrl;
         
 
         public double RentalPricePerMonth
@@ -46,10 +47,16 @@ namespace PropertyRental
             get { return _DateRentalHomeWasAdded; }
             set {_DateRentalHomeWasAdded = value;}
         }
+
+        public string RightMoveHomeUrl
+        {
+            get { return _RightMoveHomeUrl; }
+            set { _RightMoveHomeUrl = value; }
+        }
                        
         public RightmoveRentalHomeData() { }
 
-        public RightmoveRentalHomeData(double MonthlyRentalPrice, string EstateAgentPhoneNumber, string RentalHomeAddress, string RentalHomeDetails, string RentalHomeDescription, DateTime DateRentalHomeWasAdded)
+        public RightmoveRentalHomeData(double MonthlyRentalPrice, string EstateAgentPhoneNumber, string RentalHomeAddress, string RentalHomeDetails, string RentalHomeDescription, DateTime DateRentalHomeWasAdded, string RightMoveHomeUrl)
         {
             _MonthlyRentalPrice = MonthlyRentalPrice;
             _EstateContactPhoneNumber = EstateAgentPhoneNumber;
@@ -57,6 +64,7 @@ namespace PropertyRental
             _RentalHomeDetails = RentalHomeDetails;
             _RentalHomeDescription = RentalHomeDescription;
             _DateRentalHomeWasAdded = DateRentalHomeWasAdded;
+            _RightMoveHomeUrl= RightMoveHomeUrl;
         }
     }
 }
