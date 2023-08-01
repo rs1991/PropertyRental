@@ -26,7 +26,7 @@ namespace PropertyRental
             string api = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
 
             //RentalHome1 
-            RightmoveRentalHomeData rightMoveHome1 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20));
+            RightmoveRentalHomeData rightMoveHome1 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20), "https://www.rightmove.co.uk/properties/138161573#/?channel=RES_LET");
 
             RentalHome rp1 = new RentalHome(rightMoveHome1, api);
             rp1.Furnished = false;
@@ -70,7 +70,7 @@ namespace PropertyRental
             a1.PostCode = "W5 3RE";
             rp1.Address = a1;
 
-            RightmoveRentalHomeData rightMoveHome2 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20));
+            RightmoveRentalHomeData rightMoveHome2 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20), "https://www.rightmove.co.uk/properties/138161573#/?channel=RES_LET");
 
             RentalHome rp2 = new RentalHome(rightMoveHome2, api);
             rp2.Furnished = false;
@@ -107,7 +107,7 @@ namespace PropertyRental
             a2.PostCode = "N9 4XV";
             rp2.Address = a2;
 
-            RightmoveRentalHomeData rightMoveHome3 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20));
+            RightmoveRentalHomeData rightMoveHome3 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20), "https://www.rightmove.co.uk/properties/138161573#/?channel=RES_LET");
 
             RentalHome rp3 = new RentalHome(rightMoveHome3, api);
             rp3.Furnished = false;
@@ -143,7 +143,7 @@ namespace PropertyRental
             a3.PostCode = "SW3 4QX";
             rp3.Address = a3;
 
-            RightmoveRentalHomeData rightMoveHome4 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20));
+            RightmoveRentalHomeData rightMoveHome4 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20), "https://www.rightmove.co.uk/properties/138161573#/?channel=RES_LET");
 
             RentalHome rp4 = new RentalHome(rightMoveHome4, api);
             rp4.Furnished = false;
@@ -181,7 +181,7 @@ namespace PropertyRental
             a4.PostCode = "SE20 1NF";
             rp4.Address = a4;
 
-            RightmoveRentalHomeData rightMoveHome5 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20));
+            RightmoveRentalHomeData rightMoveHome5 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20), "https://www.rightmove.co.uk/properties/138161573#/?channel=RES_LET");
 
             RentalHome rp5 = new RentalHome(rightMoveHome5, api);
             rp5.Furnished = false;
@@ -218,7 +218,7 @@ namespace PropertyRental
             a5.PostCode = "E4 8OM";
             rp5.Address = a5;
 
-            RightmoveRentalHomeData rightMoveHome6 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20));
+            RightmoveRentalHomeData rightMoveHome6 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20), "https://www.rightmove.co.uk/properties/138161573#/?channel=RES_LET");
 
             RentalHome rp6 = new RentalHome(rightMoveHome6, api);
             rp6.Furnished = false;
@@ -256,7 +256,7 @@ namespace PropertyRental
             a6.PostCode = "N9 9JZ";
             rp6.Address = a6;
 
-            RightmoveRentalHomeData rightMoveHome7 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 22));
+            RightmoveRentalHomeData rightMoveHome7 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 22), "https://www.rightmove.co.uk/properties/138161573#/?channel=RES_LET");
 
             RentalHome rp7 = new RentalHome(rightMoveHome7, api);
             rp7.Furnished = false;
@@ -294,7 +294,7 @@ namespace PropertyRental
             a7.PostCode = "W4 7XT";
             rp7.Address = a7;
 
-            RightmoveRentalHomeData rightMoveHome8 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20));
+            RightmoveRentalHomeData rightMoveHome8 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20), "https://www.rightmove.co.uk/properties/138161573#/?channel=RES_LET");
 
             RentalHome rp8 = new RentalHome(rightMoveHome8, api);
             rp8.Furnished = false;
@@ -331,7 +331,7 @@ namespace PropertyRental
             a8.PostCode = "SE13 8EQ";
             rp8.Address = a8;
 
-            RightmoveRentalHomeData rightMoveHome9 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20));
+            RightmoveRentalHomeData rightMoveHome9 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20), "https://www.rightmove.co.uk/properties/138161573#/?channel=RES_LET");
 
             RentalHome rp9 = new RentalHome(rightMoveHome9, api);
             rp9.Furnished = false;
@@ -368,7 +368,7 @@ namespace PropertyRental
             a9.PostCode = "SW1X 7LA";
             rp9.Address = a9;
 
-            RightmoveRentalHomeData rightMoveHome10 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20));
+            RightmoveRentalHomeData rightMoveHome10 = new RightmoveRentalHomeData(2345, "0781273819", "18 Zulla road, Nottingham", "Great location", "2 bedrooms, 1 bathroom", new DateTime(2023, 07, 20), "https://www.rightmove.co.uk/properties/138161573#/?channel=RES_LET");
 
             RentalHome rp10 = new RentalHome(rightMoveHome10, api);
             rp10.Furnished = false;
@@ -1212,11 +1212,13 @@ namespace PropertyRental
                 HtmlNode homeDetailsNode = node.SelectSingleNode(".//div[@class='propertyCard-details']");
                 HtmlNode homeDescriptionNode = node.SelectSingleNode(".//div[@class='propertyCard-description']");
                 HtmlNode dateRentalHomeWasAddedNode = node.SelectSingleNode(".//span[@class='propertyCard-branchSummary-addedOrReduced']");
+                HtmlNode homeUrl = node.SelectSingleNode("//*[@class='propertyCard-link']");
 
                 string rentalHomeprice = priceNode.InnerText;
                 string rentalHomepriceReplacedChar = rentalHomeprice;
                 string result = rentalHomepriceReplacedChar.Replace("£", "").Replace("pcm", "");
                 double convertedMonthlyRentalPrice;
+                string urlForHome = homeUrl.InnerText;
 
                 bool parseOK = double.TryParse(result, out convertedMonthlyRentalPrice);
 
@@ -1229,6 +1231,7 @@ namespace PropertyRental
                 string rentalHomeAddress = addressNode.InnerText.Trim();
                 string rentalHomeDetails = homeDetailsNode.InnerText.Trim();
                 string rentalHomeDescription = homeDescriptionNode.InnerText.Trim();
+               
 
                 try
                 {
@@ -1242,7 +1245,7 @@ namespace PropertyRental
                     else
                         convertedtDate = DateTime.Parse(dateRentalHomeWasAdded.ToString());
 
-                    RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData(convertedMonthlyRentalPrice, agentPhoneNumber, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription, convertedtDate);
+                    RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData(convertedMonthlyRentalPrice, agentPhoneNumber, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription, convertedtDate, urlForHome);
                     ListOfRightMoveHomes.Add(ScrapedDataStorage);
                 }
                 catch (Exception ex)
