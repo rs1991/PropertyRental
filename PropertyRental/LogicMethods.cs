@@ -1257,17 +1257,6 @@ namespace PropertyRental
         }
 
         
-        public static List<RightmoveRentalHomeData> LoadRightMoveDataList(string path)
-        {
-            List<RightmoveRentalHomeData> RightMoveRentalHomesList;
-            XmlSerializer serializer = new XmlSerializer(typeof(List<RightmoveRentalHomeData>));
-            using (FileStream file = File.OpenRead(path))
-            {
-                RightMoveRentalHomesList = serializer.Deserialize(file) as List<RightmoveRentalHomeData>;
-            }
-            return RightMoveRentalHomesList;
-        }
-
         /// <summary>
         /// When attempting to run this method, a 403 error may occur.
         /// To resolve this issue, it is recommended to analyze the cookie string 
@@ -1394,14 +1383,26 @@ namespace PropertyRental
             }
         }
 
-        public static List<RightmoveRentalHomeData> GetMultiplePagesFromRightMove(int startPage, int endPage)
+
+        public static List<RightmoveRentalHomeData> LoadRightMoveDataList(string path)
+        {
+            List<RightmoveRentalHomeData> RightMoveRentalHomesList;
+            XmlSerializer serializer = new XmlSerializer(typeof(List<RightmoveRentalHomeData>));
+            using (FileStream file = File.OpenRead(path))
+            {
+                RightMoveRentalHomesList = serializer.Deserialize(file) as List<RightmoveRentalHomeData>;
+            }
+            return RightMoveRentalHomesList;
+        }
+
+        public static List<RightmoveRentalHomeData> GetMultiplePagesFromRightMove(int startIndex, int endIndex)
         {
             List<RightmoveRentalHomeData> rightMoveHomesMultiplePagesList = new List<RightmoveRentalHomeData>();
 
-            for (int page = startPage; page <= endPage; page++)
+            for (int index = startIndex; index <= endIndex; index++)
             {
   
-                List<RightmoveRentalHomeData> dataFromPage = (GetDataFromRightMove(page));
+                List<RightmoveRentalHomeData> dataFromPage = (GetDataFromRightMove(index));
                 rightMoveHomesMultiplePagesList.AddRange(dataFromPage);
 
             }

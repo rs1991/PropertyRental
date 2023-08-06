@@ -56,9 +56,13 @@ namespace PropertyRental
             //PointsScoredForEachHome(TenantList, RentalHomesList, googleAPIKey);
 
             int startIndex = 1;
-            int endIndex = 100;
+            int endIndex = 5;
 
             GetMultiplePagesFromRightMove(startIndex, endIndex);
+
+
+            ProcessTenantAndRentalHomes(TenantList, RentalHomesList, googleAPIKey);
+
 
 
         }
