@@ -993,6 +993,9 @@ namespace PropertyRental
         /// <returns>Rating</returns>
         public static double PointsScoredForEachHome(Tenant tenant, RentalHome rentalHome, string googleAPIKey)
         {
+
+            WriteToLog();
+            
             try
             {
 
@@ -1395,11 +1398,11 @@ namespace PropertyRental
             return RightMoveRentalHomesList;
         }
 
-        public static List<RightmoveRentalHomeData> GetMultiplePagesFromRightMove(int startIndex, int endIndex)
+        public static List<RightmoveRentalHomeData> GetMultiplePagesFromRightMove(int startPage, int endPage)
         {
             List<RightmoveRentalHomeData> rightMoveHomesMultiplePagesList = new List<RightmoveRentalHomeData>();
 
-            for (int index = startIndex; index <= endIndex; index++)
+            for (int index = startPage; index <= endPage; index++)
             {
   
                 List<RightmoveRentalHomeData> dataFromPage = (GetDataFromRightMove(index));

@@ -8,36 +8,57 @@ namespace PropertyRental
     {
         static void Main(string[] args)
         {
+                       
+            //Insert the pages you wish to extract from the RightMove website
+            int startPage = 1;
+            int endPage = 15;
 
-            /*var stroedData = new DataStorage();
-            stroedData = LoadDataStorage(@"c:\....");
-            */
+            //Fetches RightMove data
+            List<RightmoveRentalHomeData> RightMoveHomesList = GetMultiplePagesFromRightMove(startPage, endPage);
 
+            //Paths and keys
             string path = @"C:\tmp\MockDataStorage.xml";
             string googleAPIKey = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
-            //string rightMoveRentalHomespath = @"C:\tmp\RightMoveRentalHomesList.xml";
             string newlyCreatedPdfPath = @"C:\tmp\attachment.pdf";
 
+            //Generate mock data 
 
             List<Tenant> TenantList = GenerateMockListOfTenants();
             List<RentalHome> RentalHomesList = GenerateMockRentalHomesList();
             List<Address> AddressList = GenerateMockAddressList();
             List<Landlord> landlordList = GenerateMockListOfLandlords();
-            //List<RightmoveRentalHomeData> RightMoveHomesList = GetMultiplePagesFromRightMove(1, 20);
-
+            
+            //Prepare data storage 
             var dStorage = new DataStorage();
-
             dStorage.ListOfTenants = TenantList;
             dStorage.ListOfRentalHomes = RentalHomesList;
             dStorage.ListOfAddresses = AddressList;
-            //dStorage.ListOfRightMoveHomes = RightMoveHomesList;
+            dStorage.ListOfRightMoveHomes = RightMoveHomesList;
             dStorage.ListOfLandlords = landlordList;
 
-            //AddRightMoveHomeToRentalHome(RightMoveHomesList, RentalHomesList, googleAPIKey);
+            //Add RightMove data to rental homes list
+            AddRightMoveHomeToRentalHome(RightMoveHomesList, RentalHomesList, googleAPIKey);
 
+            //Write DataStorage to to XML
             WriteDataStorage(dStorage, path);
 
-            /*Parameters for the SendRentalApplication method
+            //Load DataStorage from to XML
+            var loadedDataStorage = LoadDataStorage(path);
+                      
+
+            
+
+            List<Tenant> loadedTenantList = loadedDataStorage.ListOfTenants;
+            List<RentalHome> loadedRentalHomesList = loadedDataStorage.ListOfRentalHomes;
+
+            ProcessTenantAndRentalHomes(loadedTenantList, loadedRentalHomesList, googleAPIKey);
+
+        }
+    }
+}
+
+
+/*Parameters for the SendRentalApplication method
             
             string emailSubject = "I would love to rent your home";
             string emailBody = $"Dear {landlordList[0].FirstName},\n\n" +
@@ -51,20 +72,6 @@ namespace PropertyRental
             int smtpPort = 587;
             */
 
-            //SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword, emailSubject, emailBody, newlyCreatedPdfPath);
+//SendRentalApplication(TenantList[0], landlordList[0], smtpServer, smtpPort, smtpUserName, smtpPassword, emailSubject, emailBody, newlyCreatedPdfPath);
 
-            //PointsScoredForEachHome(TenantList, RentalHomesList, googleAPIKey);
-
-            int startIndex = 1;
-            int endIndex = 5;
-
-            GetMultiplePagesFromRightMove(startIndex, endIndex);
-
-
-            ProcessTenantAndRentalHomes(TenantList, RentalHomesList, googleAPIKey);
-
-
-
-        }
-    }
-}
+//PointsScoredForEachHome(TenantList, RentalHomesList, googleAPIKey);

@@ -34,7 +34,7 @@ namespace PropertyRental
                 foreach (RentalHome home in RentalHomes)
                 {
                     double points = PointsScoredForEachHome(tenant, home, api);
-                    Console.WriteLine(points);
+                    Console.WriteLine($"Points total: {points}");
                 }
             }
 
