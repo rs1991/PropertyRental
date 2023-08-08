@@ -1001,58 +1001,58 @@ namespace PropertyRental
 
                 double points = 0;
 
-                if (tenant.Smoker == rentalHome.SmokingAllowed || tenant.Smoker == false)
+                if (tenant?.Smoker == rentalHome?.SmokingAllowed || tenant?.Smoker == false)
                 {
                     points += 10;
                 }
-                if (tenant.CouncilTaxBand == rentalHome.CouncilTaxBand)
+                if (tenant?.CouncilTaxBand == rentalHome?.CouncilTaxBand)
                 {
                     points += 10;
                 }
-                if (tenant.WheelChairAccessNeeded == rentalHome.WheelChairAccess)
+                if (tenant?.WheelChairAccessNeeded == rentalHome?.WheelChairAccess)
                 {
                     points += 10;
                 }
-                if (tenant.Pets != rentalHome.PetsAllowed && tenant.Pets == true)
+                if (tenant?.Pets != rentalHome?.PetsAllowed && tenant?.Pets == true)
                 {
                     points += 10;
                 }
-                if (tenant.Children != rentalHome.ChildrenAllowed && tenant.Children == true)
+                if (tenant?.Children != rentalHome?.ChildrenAllowed && tenant?.Children == true)
                 {
                     points += 5;
                 }
-                if (tenant.Budget > rentalHome.Price)
+                if (tenant?.Budget > rentalHome?.Price)
                 {
                     double score;
                     score = tenant.Budget / rentalHome.Price * 100;
                     points = points + score;
                 }
-                if (tenant.FurnitureRequired != rentalHome.Furnished && tenant.FurnitureRequired == true)
+                if (tenant?.FurnitureRequired != rentalHome?.Furnished && tenant?.FurnitureRequired == true)
                 {
                     points += 5;
                 }
-                if (tenant.ParkingRequired != rentalHome.Parking && tenant.ParkingRequired == true)
+                if (tenant?.ParkingRequired != rentalHome?.Parking && tenant?.ParkingRequired == true)
                 {
                     points += 5;
                 }
-                if (tenant.GardenRequired != rentalHome.Garden && tenant.GardenRequired == true)
+                if (tenant?.GardenRequired != rentalHome?.Garden && tenant?.GardenRequired == true)
                 {
                     points += 5;
                 }
-                if (tenant.ElevatorAccessRequired == rentalHome.ElevatorAvailable)
+                if (tenant?.ElevatorAccessRequired == rentalHome?.ElevatorAvailable)
                 {
                     points += 10;
                 }
-                if (rentalHome.HomeDetails.TotalBedrooms >= tenant.BedRoomsRequired)
+                if (rentalHome?.HomeDetails?.TotalBedrooms >= tenant?.BedRoomsRequired)
                 {
                     points += 15;
 
                 }
-                if (rentalHome.FloorSize >= tenant.FloorSizeRequired)
+                if (rentalHome?.FloorSize >= tenant?.FloorSizeRequired)
                 {
                     points += 20;
                 }
-                if (rentalHome.FloorSize < tenant.FloorSizeRequired)
+                if (rentalHome?.FloorSize < tenant?.FloorSizeRequired)
                 {
                     double sizeDifference = rentalHome.FloorSize / tenant.FloorSizeRequired;
                     points += sizeDifference * 20;
@@ -1200,7 +1200,7 @@ namespace PropertyRental
             WriteToLog();
 
             HtmlWeb web = new HtmlWeb();
-            HtmlDocument htmlDoc = web.Load($"https://www.rightmove.co.uk/property-to-rent/find.html?index={page}searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=2750&minBedrooms=&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
+            HtmlDocument htmlDoc = web.Load($"https://www.rightmove.co.uk/property-to-rent/find.html?index={page}searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=4000&minBedrooms=1&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
 
             var cardXpath = "//*[@class='propertyCard-wrapper']";
             var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
