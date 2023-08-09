@@ -1138,8 +1138,8 @@ namespace PropertyRental
 
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                throw;
+                Log.Error($"ERROR: {ex.Message}");
+                return 0;
             }
         }
 
