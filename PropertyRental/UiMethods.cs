@@ -27,17 +27,24 @@ namespace PropertyRental
 
         public static void ProcessTenantAndRentalHomes(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
         {
+            WriteToLog();
 
             foreach (Tenant tenant in TenantList)
             {
-
                 foreach (RentalHome home in RentalHomes)
                 {
+                    try
+                    {
+                    
                     double points = PointsScoredForEachHome(tenant, home, api);
                     Console.WriteLine($"Points total: {points}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error($"ERROR: {ex.Message}");
+                    }
                 }
             }
-
         }
 
         /// <summary>
@@ -186,11 +193,12 @@ namespace PropertyRental
 
         public static List<RentalHome> AddRightMoveHomeToRentalHome(List<RightmoveRentalHomeData> rightMoveHomeList, List<RentalHome> rentalHomesList, string googleAPIKey)
         {
-            WriteToLog();
-         
+            WriteToLog();         
+
             try
             {
                 //List<RentalHome> rentalHomesList = new List<RentalHome>();
+
                 foreach (var rmHome in rightMoveHomeList)
                 {
                     RentalHome newRentalHome = new RentalHome(rmHome, googleAPIKey);

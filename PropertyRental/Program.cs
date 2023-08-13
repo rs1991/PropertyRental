@@ -8,7 +8,20 @@ namespace PropertyRental
     {
         static void Main(string[] args)
         {
-                       
+
+            //Paths and keys
+            string path = @"C:\tmp\MockDataStorage.xml";
+            string googleAPIKey = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+            string newlyCreatedPdfPath = @"C:\tmp\attachment.pdf";
+
+                      
+            //Generate mock data 
+
+            List<Tenant> TenantList = GenerateMockListOfTenants();
+            List<RentalHome> RentalHomesList = GenerateMockRentalHomesList();
+            List<Address> AddressList = GenerateMockAddressList();
+            List<Landlord> landlordList = GenerateMockListOfLandlords();
+
             //Insert the pages you wish to extract from the RightMove website
             int startPage = 1;
             int endPage = 15;
@@ -16,18 +29,7 @@ namespace PropertyRental
             //Fetches RightMove data
             List<RightmoveRentalHomeData> RightMoveHomesList = GetMultiplePagesFromRightMove(startPage, endPage);
 
-            //Paths and keys
-            string path = @"C:\tmp\MockDataStorage.xml";
-            string googleAPIKey = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
-            string newlyCreatedPdfPath = @"C:\tmp\attachment.pdf";
 
-            //Generate mock data 
-
-            List<Tenant> TenantList = GenerateMockListOfTenants();
-            List<RentalHome> RentalHomesList = GenerateMockRentalHomesList();
-            List<Address> AddressList = GenerateMockAddressList();
-            List<Landlord> landlordList = GenerateMockListOfLandlords();
-            
             //Prepare data storage 
             var dStorage = new DataStorage();
             dStorage.ListOfTenants = TenantList;
@@ -36,17 +38,19 @@ namespace PropertyRental
             dStorage.ListOfRightMoveHomes = RightMoveHomesList;
             dStorage.ListOfLandlords = landlordList;
 
-            //Add RightMove data to rental homes list
-            AddRightMoveHomeToRentalHome(RightMoveHomesList, RentalHomesList, googleAPIKey);
+
+            
 
             //Write DataStorage to to XML
             WriteDataStorage(dStorage, path);
 
             //Load DataStorage from to XML
             var loadedDataStorage = LoadDataStorage(path);
-                      
 
-            
+            //Add RightMove data to rental homes list
+            AddRightMoveHomeToRentalHome(RightMoveHomesList, RentalHomesList, googleAPIKey);
+
+
 
             List<Tenant> loadedTenantList = loadedDataStorage.ListOfTenants;
             List<RentalHome> loadedRentalHomesList = loadedDataStorage.ListOfRentalHomes;
