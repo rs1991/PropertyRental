@@ -27,25 +27,17 @@ namespace PropertyRental
 
         public static void ProcessTenantAndRentalHomes(List<Tenant> TenantList, List<RentalHome> RentalHomes, string api)
         {
-            WriteToLog();
-
+            
             foreach (Tenant tenant in TenantList)
             {
                 foreach (RentalHome home in RentalHomes)
-                {
-                    try
-                    {
-                    
+                {                  
                     double points = PointsScoredForEachHome(tenant, home, api);
                     Console.WriteLine($"Points total: {points}");
                     }
-                    catch (Exception ex)
-                    {
-                        Log.Error($"ERROR: {ex.Message}");
-                    }
                 }
-            }
-        }
+         }
+        
 
         /// <summary>
         /// This method validates that the tenant puts in the correct information
@@ -197,7 +189,7 @@ namespace PropertyRental
 
             try
             {
-                //List<RentalHome> rentalHomesList = new List<RentalHome>();
+               
 
                 foreach (var rmHome in rightMoveHomeList)
                 {
@@ -209,9 +201,12 @@ namespace PropertyRental
             catch (Exception ex)
             {
                 Log.Error($"ERROR: {ex.Message}");
-                return null;
+                Log.Error($"StackTrace: {ex.StackTrace}");
+               
             }
+            return rentalHomesList;
         }
+  
 
         
 

@@ -11,6 +11,7 @@ using iText.Kernel.Pdf;
 using iText.Layout.Element;
 using System.Text;
 using System.Xml;
+using System;
 
 namespace PropertyRental
 {
@@ -1124,23 +1125,30 @@ namespace PropertyRental
 
             try
             {
-
                 string start = JsonConvert.SerializeObject(origin);
                 string end = JsonConvert.SerializeObject(destination);
-
+                
                 WebClient client = new WebClient();
                 var body = client.DownloadString($"https://maps.googleapis.com/maps/api/distancematrix/json?destinations={end}&origins={start}&unitsimperial&mode=walking&key={apiKey}");
                 var distance = JsonConvert.DeserializeObject<GMapsJsonObj>(body);
-                int distanceInt = distance.rows[0].elements[0].distance.value;
-
-                return distanceInt;
+                
+                int? distanceInt = distance?.rows?[0]?.elements?[0]?.distance?.value;
+                
+                if (distanceInt.HasValue)
+                {
+                    return distanceInt.Value;
+                }
+                else
+                {
+                    Log.Error("Distance data is not available or properly structured");
+                }
             }
-
             catch (Exception ex)
             {
-                Log.Error($"ERROR: {ex.Message}");
-                return 0;
+                Log.Error($"RIDA: {ex.Message}");
+                Log.Error($"Stack trace: { ex.StackTrace}");
             }
+            return 0;
         }
 
         public static Address GeoCodeAddress(string inputAddress, string api)
@@ -1195,13 +1203,13 @@ namespace PropertyRental
         /// </summary>
         /// <param name="page"></param>
         /// <returns></returns>
-        public static List<RightmoveRentalHomeData> GetDataFromRightMove(int page)
+        public static List<RightmoveRentalHomeData> GetDataFromRightMove(int index)
         {
             WriteToLog();
 
             HtmlWeb web = new HtmlWeb();
-            HtmlDocument htmlDoc = web.Load($"https://www.rightmove.co.uk/property-to-rent/find.html?index={page}searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=4000&minBedrooms=1&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
-
+            //HtmlDocument htmlDoc = web.Load($"https://www.rightmove.co.uk/property-to-rent/find.html?index={page}searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=4000&minBedrooms=1&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
+            HtmlDocument htmlDoc = web.Load($"https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=REGION%5E1019&minBedrooms=1&maxPrice=4000&index={index}&propertyTypes=&includeLetAgreed=false&mustHave=&dontShow=&furnishTypes=&keywords=");
             var cardXpath = "//*[@class='propertyCard-wrapper']";
             var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
 
@@ -1344,7 +1352,8 @@ namespace PropertyRental
             }
             catch (Exception exceptionMessage)
             {
-                Log.Error($"ERROR: {exceptionMessage.Message}");
+                Log.Error($"ERROR RIDA: {exceptionMessage.Message}");
+                Log.Error($"Stack trace: {exceptionMessage.StackTrace}");
             }
         }
 
@@ -1368,11 +1377,19 @@ namespace PropertyRental
                     }
                 }
             }
-            catch(Exception exception)
+            catch(XmlException exception)
             {
                 Log.Error($"ERROR: {exception.Message}");
-                return null;
+                Log.Error($"StackTrace: {exception.StackTrace}");
+                
             }
+            catch(Exception ex)
+            {
+                Log.Error($"ERROR: {ex.Message}");
+                Log.Error($"StackTrace {ex.StackTrace}");
+            }
+
+            return null;
         }
         
 
@@ -1398,24 +1415,38 @@ namespace PropertyRental
             return RightMoveRentalHomesList;
         }
 
-        public static List<RightmoveRentalHomeData> GetMultiplePagesFromRightMove(int startPage, int endPage)
+        public static List<RightmoveRentalHomeData> GetMultiplePagesFromRightMove(int startIndex, int endIndex)
         {
+
             List<RightmoveRentalHomeData> rightMoveHomesMultiplePagesList = new List<RightmoveRentalHomeData>();
+            
+            WriteToLog();
 
-            for (int index = startPage; index <= endPage; index++)
+            try
             {
-  
-                List<RightmoveRentalHomeData> dataFromPage = (GetDataFromRightMove(index));
-                rightMoveHomesMultiplePagesList.AddRange(dataFromPage);
-
+                for (int index = startIndex; index <= endIndex; index++)
+                {
+                
+                    List<RightmoveRentalHomeData> dataFromPage = (GetDataFromRightMove(index));
+                    if(dataFromPage != null)
+                    {
+                        rightMoveHomesMultiplePagesList.AddRange(dataFromPage);
+                    }
+                
+                    else
+                    {
+                        Log.Warning($"Error retrieving data {index}");
+                    }
+                }
             }
-
+            catch (Exception exception)
+            {
+                Log.Error($"Error: {exception.Message}");
+            }
             return rightMoveHomesMultiplePagesList;
         }
 
-         
-
-
+    
 
 }
 }
