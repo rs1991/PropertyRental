@@ -1145,8 +1145,8 @@ namespace PropertyRental
             }
             catch (Exception ex)
             {
-                Log.Error($"RIDA: {ex.Message}");
-                Log.Error($"Stack trace: { ex.StackTrace}");
+                Log.Error($"ERROR: {ex.Message}");
+                //Log.Error($"Stack trace: { ex.StackTrace}");
             }
             return 0;
         }
