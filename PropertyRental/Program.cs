@@ -8,13 +8,14 @@ namespace PropertyRental
     {
         static void Main(string[] args)
         {
-                        
 
             //Paths and keys
             string path = @"C:\tmp\MockDataStorage.xml";
             string googleAPIKey = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
-            string newlyCreatedPdfPath = @"C:\tmp\attachment.pdf";
+            //string newlyCreatedPdfPath = @"C:\tmp\attachment.pdf";
 
+            try
+            { 
             
             //Generate mock data 
 
@@ -25,7 +26,7 @@ namespace PropertyRental
 
             //Insert the pages you wish to extract from the RightMove website
             int startPage = 1;
-            int endPage = 4;
+            int endPage = 2;
 
             //Fetches RightMove data
             List<RightmoveRentalHomeData> RightMoveHomesList = GetMultiplePagesFromRightMove(startPage, endPage);
@@ -54,7 +55,11 @@ namespace PropertyRental
             List<RentalHome> loadedRentalHomesList = loadedDataStorage.ListOfRentalHomes;
 
             ProcessTenantAndRentalHomes(loadedTenantList, loadedRentalHomesList, googleAPIKey);
-
+            }
+            catch(Exception exception)
+            {
+                Console.WriteLine($"ERROR: {exception.Message}");
+            }
         }
     }
 }
