@@ -1146,7 +1146,6 @@ namespace PropertyRental
             catch (Exception ex)
             {
                 Log.Error($"ERROR: {ex.Message}");
-                //Log.Error($"Stack trace: { ex.StackTrace}");
             }
             return 0;
         }
