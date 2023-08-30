@@ -1228,7 +1228,11 @@ namespace PropertyRental
                 string rentalHomepriceReplacedChar = rentalHomeprice;
                 string result = rentalHomepriceReplacedChar.Replace("£", "").Replace("pcm", "");
                 double convertedMonthlyRentalPrice;
-                string urlForHome = homeUrl.InnerText;
+                string urlForHome = homeUrl?.GetAttributeValue("href", "");
+
+                string baseURL = "https://www.rightmove.co.uk/";
+
+                string CompleteURL = baseURL + urlForHome; 
 
                 bool parseOK = double.TryParse(result, out convertedMonthlyRentalPrice);
 
@@ -1255,7 +1259,7 @@ namespace PropertyRental
                     else
                         convertedtDate = DateTime.Parse(dateRentalHomeWasAdded.ToString());
 
-                    RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData(convertedMonthlyRentalPrice, agentPhoneNumber, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription, convertedtDate, urlForHome);
+                    RightmoveRentalHomeData ScrapedDataStorage = new RightmoveRentalHomeData(convertedMonthlyRentalPrice, agentPhoneNumber, rentalHomeAddress, rentalHomeDetails, rentalHomeDescription, convertedtDate, CompleteURL);
                     ListOfRightMoveHomes.Add(ScrapedDataStorage);
                 }
                 catch (Exception ex)
@@ -1379,13 +1383,13 @@ namespace PropertyRental
             catch(XmlException exception)
             {
                 Log.Error($"ERROR: {exception.Message}");
-                Log.Error($"StackTrace: {exception.StackTrace}");
+                //Log.Error($"StackTrace: {exception.StackTrace}");
                 
             }
             catch(Exception ex)
             {
                 Log.Error($"ERROR: {ex.Message}");
-                Log.Error($"StackTrace {ex.StackTrace}");
+                //Log.Error($"StackTrace {ex.StackTrace}");
             }
 
             return null;
