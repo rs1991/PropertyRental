@@ -1420,31 +1420,32 @@ namespace PropertyRental
 
         public static List<RightmoveRentalHomeData> GetMultiplePagesFromRightMove(int startIndex, int endIndex)
         {
+            WriteToLog();
 
             List<RightmoveRentalHomeData> rightMoveHomesMultiplePagesList = new List<RightmoveRentalHomeData>();
             
-            WriteToLog();
-
             try
             {
-                for (int index = startIndex; index <= endIndex; index++)
+                for (int index = startIndex; index < endIndex; index++)
                 {
-                
                     List<RightmoveRentalHomeData> dataFromPage = (GetDataFromRightMove(index));
                     if(dataFromPage != null)
                     {
                         rightMoveHomesMultiplePagesList.AddRange(dataFromPage);
                     }
-                
                     else
                     {
                         Log.Warning($"Error retrieving data {index}");
                     }
                 }
             }
-            catch (Exception exception)
+            catch (IndexOutOfRangeException exception)
             {
                 Log.Error($"Error: {exception.Message}");
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Error: {ex.Message}");
             }
             return rightMoveHomesMultiplePagesList;
         }

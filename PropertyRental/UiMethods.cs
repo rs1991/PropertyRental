@@ -185,11 +185,11 @@ namespace PropertyRental
 
         public static List<RentalHome> AddRightMoveHomeToRentalHome(List<RightmoveRentalHomeData> rightMoveHomeList, List<RentalHome> rentalHomesList, string googleAPIKey)
         {
-            WriteToLog();         
+            WriteToLog();
+
 
             try
-            {
-               
+            {  
 
                 foreach (var rmHome in rightMoveHomeList)
                 {
@@ -198,11 +198,15 @@ namespace PropertyRental
                 }
                 return rentalHomesList;
             }
+            catch (IndexOutOfRangeException ex)
+            {
+                // Handle index-related errors here
+                Log.Error($"Index out of range error: {ex.Message}");
+            }
             catch (Exception ex)
             {
                 Log.Error($"ERROR: {ex.Message}");
-                Log.Error($"StackTrace: {ex.StackTrace}");
-               
+                    
             }
             return rentalHomesList;
         }
