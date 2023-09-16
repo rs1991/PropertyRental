@@ -193,19 +193,24 @@ namespace PropertyRental
 
                 foreach (var rmHome in rightMoveHomeList)
                 {
+                    if(rmHome.Index >= 0 && rmHome.Index < rentalHomesList.Count)
+                    {
+
+                    
                     RentalHome newRentalHome = new RentalHome(rmHome, googleAPIKey);
                     rentalHomesList.Add(newRentalHome);
+                    }
+                    else
+                    {
+                        Log.Error("Index is out of range");
+                    }
                 }
                 return rentalHomesList;
-            }
-            catch (IndexOutOfRangeException ex)
-            {
-                // Handle index-related errors here
-                Log.Error($"Index out of range error: {ex.Message}");
             }
             catch (Exception ex)
             {
                 Log.Error($"ERROR: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
                     
             }
             return rentalHomesList;

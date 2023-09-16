@@ -1,68 +1,65 @@
 ﻿using static PropertyRental.UiMethods;
 using static PropertyRental.LogicMethods;
 
-
 namespace PropertyRental
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-
-            //Paths and keys
-            string path = @"C:\tmp\MockDataStorage.xml";
-            string googleAPIKey = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
-            //string newlyCreatedPdfPath = @"C:\tmp\attachment.pdf";
-
             try
-            { 
-            
-            //Generate mock data 
+            {
+                // Paths and keys
+                string path = @"C:\tmp\MockDataStorage.xml";
+                string googleAPIKey = System.IO.File.ReadAllText(@"C:\Users\Nick\source\repos\PropertyRental\PropertyRental\apiKey.txt");
+                //string newlyCreatedPdfPath = @"C:\tmp\attachment.pdf";
 
-            List<Tenant> TenantList = GenerateMockListOfTenants();
-            List<RentalHome> RentalHomesList = GenerateMockRentalHomesList();
-            List<Address> AddressList = GenerateMockAddressList();
-            List<Landlord> landlordList = GenerateMockListOfLandlords();
+                // Generate mock data 
+                List<Tenant> TenantList = GenerateMockListOfTenants();
+                List<RentalHome> RentalHomesList = GenerateMockRentalHomesList();
+                List<Address> AddressList = GenerateMockAddressList();
+                List<Landlord> landlordList = GenerateMockListOfLandlords();
 
-            //Insert the pages you wish to extract from the RightMove website
-            int startPage = 1;
-            int endPage = 2;
+                // Insert the pages you wish to extract from the RightMove website
+                int startPage = 1;
+                int endPage = 2;
 
-            //Fetches RightMove data
-            List<RightmoveRentalHomeData> RightMoveHomesList = GetMultiplePagesFromRightMove(startPage, endPage);
+                // Fetch RightMove data
+                List<RightmoveRentalHomeData> RightMoveHomesList = GetMultiplePagesFromRightMove(startPage, endPage);
 
-            //Add RightMove data to rental homes list
-            RentalHomesList = AddRightMoveHomeToRentalHome(RightMoveHomesList, RentalHomesList, googleAPIKey);
+                // Add RightMove data to rental homes list
+                RentalHomesList = AddRightMoveHomeToRentalHome(RightMoveHomesList, RentalHomesList, googleAPIKey);
 
+                // Prepare data storage 
+                var dStorage = new DataStorage
+                {
+                    ListOfTenants = TenantList,
+                    ListOfRentalHomes = RentalHomesList,
+                    ListOfAddresses = AddressList,
+                    ListOfRightMoveHomes = RightMoveHomesList,
+                    ListOfLandlords = landlordList
+                };
 
-            //Prepare data storage 
-            var dStorage = new DataStorage();
-            dStorage.ListOfTenants = TenantList;
-            dStorage.ListOfRentalHomes = RentalHomesList;
-            dStorage.ListOfAddresses = AddressList;
-            dStorage.ListOfRightMoveHomes = RightMoveHomesList;
-            dStorage.ListOfLandlords = landlordList;
+                // Write DataStorage to XML
+                WriteDataStorage(dStorage, path);
 
-            
-            //Write DataStorage to to XML
-            WriteDataStorage(dStorage, path);
+                // Load DataStorage from XML
+                var loadedDataStorage = LoadDataStorage(path);
 
-            //Load DataStorage from to XML
-            var loadedDataStorage = LoadDataStorage(path);
-                        
+                List<Tenant> loadedTenantList = loadedDataStorage.ListOfTenants;
+                List<RentalHome> loadedRentalHomesList = loadedDataStorage.ListOfRentalHomes;
 
-            List<Tenant> loadedTenantList = loadedDataStorage.ListOfTenants;
-            List<RentalHome> loadedRentalHomesList = loadedDataStorage.ListOfRentalHomes;
-
-            ProcessTenantAndRentalHomes(loadedTenantList, loadedRentalHomesList, googleAPIKey);
+                // Process Tenant and Rental Homes
+                ProcessTenantAndRentalHomes(loadedTenantList, loadedRentalHomesList, googleAPIKey);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 Console.WriteLine($"ERROR: {exception.Message}");
             }
         }
     }
 }
+
 
 
 /*Parameters for the SendRentalApplication method

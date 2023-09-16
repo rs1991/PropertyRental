@@ -242,10 +242,11 @@ namespace PropertyRental
 
         public override string ToString()
         {
-            return $"Address: {Address.PostCode} FloorSize: {FloorSize} Available On: {AvailableOn} Price: {Price} Heating: {Heating} Type of Home: {HomeType} +" +
-                $" Council tax band: {CouncilTaxBand}";
+            return $"Address: {Address?.PostCode ?? "N/A"} FloorSize: {FloorSize} Available On: {AvailableOn} Price: {Price} Heating: {Heating} Type of Home: {HomeType} Council tax band: {CouncilTaxBand}";
         }
-      
+
+
+
         public RentalHome()
         {
             

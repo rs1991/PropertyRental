@@ -10,7 +10,7 @@ namespace PropertyRental
         private string _RentalHomeDescription;
         private DateTime _DateRentalHomeWasAdded;
         private string _RightMoveHomeUrl;
-        
+        private int _index;
 
         public double RentalPricePerMonth
         {
@@ -53,7 +53,13 @@ namespace PropertyRental
             get { return _RightMoveHomeUrl; }
             set { _RightMoveHomeUrl = value; }
         }
-                       
+
+        public int Index
+        {
+            get { return _index; }
+            set { _index = value; }
+        }
+
         public RightmoveRentalHomeData() { }
 
         public RightmoveRentalHomeData(double MonthlyRentalPrice, string EstateAgentPhoneNumber, string RentalHomeAddress, string RentalHomeDetails, string RentalHomeDescription, DateTime DateRentalHomeWasAdded, string RightMoveHomeUrl)
