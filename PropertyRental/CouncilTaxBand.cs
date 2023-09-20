@@ -7,5 +7,6 @@
             Band_B = 1,
             Band_C = 2,
             Band_D = 3,
+            Unknown = 4,
         }
 }

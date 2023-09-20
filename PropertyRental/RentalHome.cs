@@ -51,6 +51,8 @@ namespace PropertyRental
                 _description = rightMoveRentalHome.RentalHomeDescription;
                 _dateHomeWasAdvertised = rightMoveRentalHome.DateRentalHomeWasAdded;
 
+                
+               
             }
             catch (Exception ex)
             {
@@ -249,7 +251,7 @@ namespace PropertyRental
 
         public RentalHome()
         {
-            
+            _wheelChairAccessAvailable = SearchCriteriaFilter.Unknown;
         }
 
       

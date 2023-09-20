@@ -60,7 +60,10 @@ namespace PropertyRental
             set { _index = value; }
         }
 
-        public RightmoveRentalHomeData() { }
+        public RightmoveRentalHomeData() 
+        { 
+            
+        }
 
         public RightmoveRentalHomeData(double MonthlyRentalPrice, string EstateAgentPhoneNumber, string RentalHomeAddress, string RentalHomeDetails, string RentalHomeDescription, DateTime DateRentalHomeWasAdded, string RightMoveHomeUrl)
         {

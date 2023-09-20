@@ -1,10 +1,6 @@
 ﻿using Serilog;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
-using System.Xml.Serialization;
-using System.Xml;
 using static PropertyRental.LogicMethods;
 
 namespace PropertyRental
@@ -185,6 +181,7 @@ namespace PropertyRental
 
         public static List<RentalHome> AddRightMoveHomeToRentalHome(List<RightmoveRentalHomeData> rightMoveHomeList, List<RentalHome> rentalHomesList, string googleAPIKey)
         {
+            
             WriteToLog();
 
 
@@ -198,7 +195,13 @@ namespace PropertyRental
 
                     
                     RentalHome newRentalHome = new RentalHome(rmHome, googleAPIKey);
-                    rentalHomesList.Add(newRentalHome);
+
+                        if(newRentalHome.CouncilTaxBand == CouncilTaxBand.Band_A)
+                        {
+                             
+                            newRentalHome.CouncilTaxBand = CouncilTaxBand.Unknown;
+                        }
+                        rentalHomesList.Add(newRentalHome);
                     }
                     else
                     {
@@ -216,9 +219,6 @@ namespace PropertyRental
             return rentalHomesList;
         }
   
-
-        
-
 
 
 

@@ -1355,7 +1355,7 @@ namespace PropertyRental
             }
             catch (Exception exceptionMessage)
             {
-                Log.Error($"ERROR RIDA: {exceptionMessage.Message}");
+                Log.Error($"ERROR: {exceptionMessage.Message}");
                 Log.Error($"Stack trace: {exceptionMessage.StackTrace}");
             }
         }
@@ -1383,13 +1383,13 @@ namespace PropertyRental
             catch(XmlException exception)
             {
                 Log.Error($"ERROR: {exception.Message}");
-                //Log.Error($"StackTrace: {exception.StackTrace}");
+  
                 
             }
             catch(Exception ex)
             {
                 Log.Error($"ERROR: {ex.Message}");
-                //Log.Error($"StackTrace {ex.StackTrace}");
+  
             }
 
             return null;
