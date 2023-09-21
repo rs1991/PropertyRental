@@ -252,6 +252,7 @@ namespace PropertyRental
         public RentalHome()
         {
             _wheelChairAccessAvailable = SearchCriteriaFilter.Unknown;
+            _heating = EnergyType.Unknown; 
         }
 
       

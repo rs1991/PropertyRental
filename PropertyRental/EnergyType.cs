@@ -3,8 +3,9 @@
         [Flags]
         public enum EnergyType
         {
-            Gas = 0,
-            Electric = 1,
-            Solar = 2,
+            Unknown = 0,
+            Gas = 1,
+            Electric = 2,
+            Solar = 3,
         }
 }
