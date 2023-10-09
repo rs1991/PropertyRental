@@ -1207,7 +1207,7 @@ namespace PropertyRental
             WriteToLog();
 
             HtmlWeb web = new HtmlWeb();
-            //HtmlDocument htmlDoc = web.Load($"https://www.rightmove.co.uk/property-to-rent/find.html?index={page}searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=4000&minBedrooms=1&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
+            //HtmlDocument htmlDoc = web.Load($"https://www.rightmove.co.uk/property-to-rent/find.html?index={index}searchType=RENT&locationIdentifier=REGION%5E87490&insId=1&radius=0.0&minPrice=&maxPrice=4000&minBedrooms=1&maxBedrooms=&displayPropertyType=&maxDaysSinceAdded=&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=&secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=");
             HtmlDocument htmlDoc = web.Load($"https://www.rightmove.co.uk/property-to-rent/find.html?locationIdentifier=REGION%5E1019&minBedrooms=1&maxPrice=4000&index={index}&propertyTypes=&includeLetAgreed=false&mustHave=&dontShow=&furnishTypes=&keywords=");
             var cardXpath = "//*[@class='propertyCard-wrapper']";
             var cardNodes = htmlDoc.DocumentNode.SelectNodes(cardXpath);
@@ -1418,40 +1418,41 @@ namespace PropertyRental
             return RightMoveRentalHomesList;
         }
 
-        public static List<RightmoveRentalHomeData> GetMultiplePagesFromRightMove(int startIndex, int endIndex)
+        public static List<RightmoveRentalHomeData> GetMultiplePagesFromRightMove(int numberOfHomes)
         {
-            WriteToLog();
-
             List<RightmoveRentalHomeData> rightMoveHomesMultiplePagesList = new List<RightmoveRentalHomeData>();
-            
+
             try
             {
-                for (int index = startIndex; index < endIndex; index++)
+                int pageCount = (int)Math.Ceiling((double)numberOfHomes / 25);
+
+                for (int i = 0; i < pageCount; i++)
                 {
-                    List<RightmoveRentalHomeData> dataFromPage = (GetDataFromRightMove(index));
-                    if(dataFromPage != null)
+                    int currentIndex = i * 25;
+
+                    List<RightmoveRentalHomeData> dataFromPage = GetDataFromRightMove(currentIndex);
+
+                    if (dataFromPage != null)
                     {
                         rightMoveHomesMultiplePagesList.AddRange(dataFromPage);
                     }
                     else
                     {
-                        Log.Warning($"Error retrieving data {index}");
+                        Log.Warning($"Error retrieving data for index {currentIndex}");
                     }
                 }
-            }
-            catch (IndexOutOfRangeException exception)
-            {
-                Log.Error($"Error: {exception.Message}");
             }
             catch (Exception ex)
             {
                 Log.Error($"Error: {ex.Message}");
             }
+
             return rightMoveHomesMultiplePagesList;
         }
 
-    
 
-}
+
+
+    }
 }
 

@@ -21,11 +21,11 @@ namespace PropertyRental
                 List<Landlord> landlordList = GenerateMockListOfLandlords();
 
                 // Insert the pages you wish to extract from the RightMove website
-                int startPage = 1;
-                int endPage = 2;
+               
+                int numberOfHomes = 25;
 
                 // Fetch RightMove data
-                List<RightmoveRentalHomeData> RightMoveHomesList = GetMultiplePagesFromRightMove(startPage, endPage);
+                List<RightmoveRentalHomeData> RightMoveHomesList = GetMultiplePagesFromRightMove(numberOfHomes);
 
                 // Add RightMove data to rental homes list
                 RentalHomesList = AddRightMoveHomeToRentalHome(RightMoveHomesList, RentalHomesList, googleAPIKey);
